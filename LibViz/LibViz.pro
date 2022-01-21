@@ -12,12 +12,14 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     memberwidget.cpp \
-    procedurewidget.cpp
+    procedurewidget.cpp \
+    selectionwidget.cpp
 
 HEADERS += \
     mainwindow.h \
     memberwidget.h \
-    procedurewidget.h
+    procedurewidget.h \
+    selectionwidget.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
