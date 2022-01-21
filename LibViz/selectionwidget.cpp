@@ -7,11 +7,6 @@ SelectionWidget::SelectionWidget(QString name, QWidget *parent) : ProcedureWidge
 
     gridlayout = new QGridLayout();
 
-    itemTypeLabel = new QLabel("Item type:");
-    itemTypeLineEdit = new QLineEdit();
-    gridlayout->addWidget(itemTypeLabel,0,0);
-    gridlayout->addWidget(itemTypeLineEdit,0,1);
-
     condLabel = new QLabel("Condition:");
     condTextEdit = new QTextEdit();
     gridlayout->addWidget(condLabel,1,0);
@@ -26,16 +21,6 @@ SelectionWidget::SelectionWidget(QString name, QWidget *parent) : ProcedureWidge
     whileCondTextEdit = new QTextEdit();
     gridlayout->addWidget(whileCondLabel,3,0);
     gridlayout->addWidget(whileCondTextEdit,3,1);
-
-    destructorLabel = new QLabel("Destructor:");
-    destructorTextEdit = new QTextEdit();
-    gridlayout->addWidget(destructorLabel,4,0);
-    gridlayout->addWidget(destructorTextEdit,4,1);
-
-    enorLabel = new QLabel("Enumerator:");
-    enorComboBox = new QComboBox();
-    gridlayout->addWidget(enorLabel,5,0);
-    gridlayout->addWidget(enorComboBox,5,1);
 
     vboxlayout->addLayout(gridlayout);
 }

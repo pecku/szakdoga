@@ -21,6 +21,25 @@ ProcedureWidget::ProcedureWidget(QWidget *parent) : QWidget(parent)
     vboxlayout->addWidget(addnewmemberbutton);
 
     vboxlayout->addLayout(memberLayout);
+
+    gridlayout = new QGridLayout();
+
+    itemTypeLabel = new QLabel("Item type:");
+    itemTypeLineEdit = new QLineEdit();
+    gridlayout->addWidget(itemTypeLabel,0,0);
+    gridlayout->addWidget(itemTypeLineEdit,0,1);
+
+    enorLabel = new QLabel("Enumerator:");
+    enorComboBox = new QComboBox();
+    gridlayout->addWidget(enorLabel,1,0);
+    gridlayout->addWidget(enorComboBox,1,1);
+
+    destructorLabel = new QLabel("Destructor:");
+    destructorTextEdit = new QTextEdit();
+    gridlayout->addWidget(destructorLabel,2,0);
+    gridlayout->addWidget(destructorTextEdit,2,1);
+
+    vboxlayout->addLayout(gridlayout);
 }
 
 void ProcedureWidget::onAddNewMemberClicked(){

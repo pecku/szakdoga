@@ -5,6 +5,8 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QComboBox>
+#include <QTextEdit>
 #include "memberwidget.h"
 
 class ProcedureWidget : public QWidget
@@ -18,9 +20,16 @@ public:
 
 private:
     QLabel* nameLabel;
-    QLabel* parentClassLabel;
+    QLabel* parentClassLabel;    
     QVector<MemberWidget*> members;
     QVBoxLayout* memberLayout;
+    QLabel* itemTypeLabel;
+    QLineEdit* itemTypeLineEdit;
+    QLabel* enorLabel;
+    QComboBox* enorComboBox;
+    QLabel* destructorLabel;
+    QTextEdit* destructorTextEdit;
+    QGridLayout* gridlayout;
 
 protected:
     QVBoxLayout* vboxlayout;

@@ -3,9 +3,7 @@
 
 #include <QWidget>
 #include <QLabel>
-#include <QComboBox>
 #include <QGridLayout>
-#include <QLineEdit>
 #include <QTextEdit>
 #include "procedurewidget.h"
 
@@ -20,10 +18,6 @@ public:
 private:
     QGridLayout* gridlayout;
 
-    //template < typename Item >
-    QLabel* itemTypeLabel;
-    QLineEdit* itemTypeLineEdit;
-
     //bool cond(const Item& e) const
     QLabel* condLabel;
     QTextEdit* condTextEdit;
@@ -35,14 +29,6 @@ private:
     //bool whileCond(const Item& current) const
     QLabel* whileCondLabel;
     QTextEdit* whileCondTextEdit;
-
-    //destructor
-    QLabel* destructorLabel;
-    QTextEdit* destructorTextEdit;
-
-    //addEnumerator(Enumerator<Item>* en)
-    QLabel* enorLabel;
-    QComboBox* enorComboBox;
 
 signals:
 
