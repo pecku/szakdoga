@@ -12,6 +12,7 @@ SOURCES += \
     linsearchwidget.cpp \
     main.cpp \
     mainwindow.cpp \
+    maxsearchwidget.cpp \
     memberwidget.cpp \
     procedurewidget.cpp \
     selectionwidget.cpp
@@ -19,6 +20,7 @@ SOURCES += \
 HEADERS += \
     linsearchwidget.h \
     mainwindow.h \
+    maxsearchwidget.h \
     memberwidget.h \
     procedurewidget.h \
     selectionwidget.h

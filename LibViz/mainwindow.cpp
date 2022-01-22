@@ -5,8 +5,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     centralSplitter = new QSplitter(Qt::Horizontal);
     setCentralWidget(centralSplitter);
-
-    centralSplitter->addWidget(new LinSearchWidget("lins"));
 }
 
 MainWindow::~MainWindow()
