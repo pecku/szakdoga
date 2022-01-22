@@ -1,21 +1,23 @@
-#ifndef SELECTIONWIDGET_H
-#define SELECTIONWIDGET_H
+#ifndef LINSEARCHWIDGET_H
+#define LINSEARCHWIDGET_H
 
-#include <QLabel>
-#include <QGridLayout>
-#include <QTextEdit>
+#include <QCheckBox>
 #include "procedurewidget.h"
 
-class SelectionWidget : public ProcedureWidget
+class LinSearchWidget : public ProcedureWidget
 {
     Q_OBJECT
 public:
-    explicit SelectionWidget(QString name, QWidget *parent = nullptr);
+    explicit LinSearchWidget(QString name, QWidget *parent = nullptr);
 
     QMap<QString,QString> getData(){return QMap<QString,QString>();}
 
 private:
     QGridLayout* gridlayout;
+
+    //optimist
+    QLabel* optimistLabel;
+    QCheckBox* optimistCheckBox;
 
     //bool cond(const Item& e) const
     QLabel* condLabel;
@@ -33,4 +35,4 @@ signals:
 
 };
 
-#endif // SELECTIONWIDGET_H
+#endif // LINSEARCHWIDGET_H
