@@ -9,25 +9,17 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    countingwidget.cpp \
-    linsearchwidget.cpp \
+    enumeratorwidget.cpp \
     main.cpp \
     mainwindow.cpp \
-    maxsearchwidget.cpp \
     memberwidget.cpp \
-    procedurewidget.cpp \
-    selectionwidget.cpp \
-    summationwidget.cpp
+    procedurewidget.cpp
 
 HEADERS += \
-    countingwidget.h \
-    linsearchwidget.h \
+    enumeratorwidget.h \
     mainwindow.h \
-    maxsearchwidget.h \
     memberwidget.h \
-    procedurewidget.h \
-    selectionwidget.h \
-    summationwidget.h
+    procedurewidget.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

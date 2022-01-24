@@ -3,6 +3,11 @@
 
 #include <QMainWindow>
 #include <QSplitter>
+#include <QToolBox>
+#include <QTextBrowser>
+
+#include "procedurewidget.h"
+#include "enumeratorwidget.h"
 
 class MainWindow : public QMainWindow
 {
@@ -14,6 +19,6 @@ public:
 
 private:
     QSplitter* centralSplitter;
-
+    QToolBox* toolBox;
 };
 #endif // MAINWINDOW_H
