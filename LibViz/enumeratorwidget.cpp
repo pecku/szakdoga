@@ -9,8 +9,9 @@ EnumeratorWidget::EnumeratorWidget(QString name, EnumeratorType type, QWidget *p
 
     memberLayout = new QVBoxLayout();
 
+    this->name = name;
     nameLabel = new QLabel(name);
-    parentClassLabel = new QLabel("Enumerator");
+    parentClassLabel = new QLabel(enumeratorTypeNameStrings[type]);
     QHBoxLayout* nameLayout = new QHBoxLayout();
     nameLayout->addWidget(nameLabel);
     nameLayout->addSpacerItem(new QSpacerItem(maximumWidth(),0,QSizePolicy::Maximum));
@@ -31,6 +32,15 @@ EnumeratorWidget::EnumeratorWidget(QString name, EnumeratorType type, QWidget *p
     itemTypeLineEdit = new QLineEdit();
     gridlayout->addWidget(itemTypeLabel,0,0);
     gridlayout->addWidget(itemTypeLineEdit,0,1);
+
+    firstLabel = nullptr;
+    firstTextEdit = nullptr;
+    nextLabel = nullptr;
+    nextTextEdit = nullptr;
+    endLabel = nullptr;
+    endTextEdit = nullptr;
+    currentLabel = nullptr;
+    currentTextEdit = nullptr;
 
     if(type != SEQINFILE){
         firstLabel = new QLabel("First:");
@@ -76,3 +86,16 @@ QMap<QString,QString> EnumeratorWidget::getMembers(){
     return map;
 }
 
+QMap<Method,QString> EnumeratorWidget::getData(){
+    QMap<Method,QString> map;
+    map.insert(DESTRUCTOR,destructorTextEdit->toPlainText());
+    if(firstTextEdit != nullptr)
+        map.insert(FIRST,firstTextEdit->toPlainText());
+    if(nextTextEdit != nullptr)
+        map.insert(NEXT,nextTextEdit->toPlainText());
+    if(endTextEdit != nullptr)
+        map.insert(END,endTextEdit->toPlainText());
+    if(currentTextEdit != nullptr)
+        map.insert(CURRENT,currentTextEdit->toPlainText());
+    return map;
+}

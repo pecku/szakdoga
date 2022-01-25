@@ -9,16 +9,22 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    createcomponentdialog.cpp \
     enumeratorwidget.cpp \
     main.cpp \
     mainwindow.cpp \
     memberwidget.cpp \
+    model.cpp \
     procedurewidget.cpp
 
 HEADERS += \
+    createcomponentdialog.h \
     enumeratorwidget.h \
     mainwindow.h \
     memberwidget.h \
+    model.h \
+    modelkit.h \
+    popuptextedit.h \
     procedurewidget.h
 
 # Default rules for deployment.

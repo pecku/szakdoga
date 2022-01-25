@@ -5,9 +5,12 @@
 #include <QSplitter>
 #include <QToolBox>
 #include <QTextBrowser>
+#include <QMenuBar>
 
 #include "procedurewidget.h"
 #include "enumeratorwidget.h"
+#include "createcomponentdialog.h"
+#include "model.h"
 
 class MainWindow : public QMainWindow
 {
@@ -18,7 +21,22 @@ public:
     ~MainWindow();
 
 private:
+    Model* model;
+    CreateComponentDialog* createComponentDialog;
+    QMenuBar* menuBar;
     QSplitter* centralSplitter;
     QToolBox* toolBox;
+    QTextBrowser* sourceTextBrowser;
+    QVector<ProcedureWidget*> procedureWidgets;
+    QVector<EnumeratorWidget*> enumeratorWidgets;
+
+    void initMenuBar();
+    void showCreateComponentDialog();
+
+private slots:
+    void showCreateProcedureDialog();
+    void showCreateEnumeratorDialog();
+    void createComponent();
+    void generateSource();
 };
 #endif // MAINWINDOW_H

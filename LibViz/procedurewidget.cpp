@@ -1,7 +1,5 @@
 #include "procedurewidget.h"
 
-const QString ProcedureWidget::procedureTypeNameStrings[] = {"Counting", "LinSearch", "MaxSearch", "Selection", "Summation"};
-
 ProcedureWidget::ProcedureWidget(QString name, ProcedureType type, QWidget *parent) : QWidget(parent)
 {
     vboxlayout = new QVBoxLayout(this);
@@ -9,6 +7,7 @@ ProcedureWidget::ProcedureWidget(QString name, ProcedureType type, QWidget *pare
 
     memberLayout = new QVBoxLayout();
 
+    this->name = name;
     nameLabel = new QLabel(name);
     parentClassLabel = new QLabel(procedureTypeNameStrings[type]);
     QHBoxLayout* nameLayout = new QHBoxLayout();
@@ -133,8 +132,17 @@ QMap<QString,QString> ProcedureWidget::getMembers(){
     return map;
 }
 
-QMap<QString,QString> ProcedureWidget::getData(){
-    QMap<QString,QString> map;
-    //TODO
+QMap<Method,QString> ProcedureWidget::getData(){
+    QMap<Method,QString> map;
+    map.insert(DESTRUCTOR,destructorTextEdit->toPlainText());
+    if(neutralTextEdit != nullptr)
+        map.insert(NEUTRAL,neutralTextEdit->toPlainText());
+    if(addTextEdit != nullptr)
+        map.insert(ADD,addTextEdit->toPlainText());
+    if(funcTextEdit != nullptr)
+        map.insert(FUNC,funcTextEdit->toPlainText());
+    map.insert(COND,condTextEdit->toPlainText());
+    map.insert(FIRST,firstTextEdit->toPlainText());
+    map.insert(WHILECOND,whileCondTextEdit->toPlainText());
     return map;
 }

@@ -10,8 +10,7 @@
 #include <QCheckBox>
 #include <QRadioButton>
 #include "memberwidget.h"
-
-enum ProcedureType{COUNTING, LINSEARCH, MAXSEARCH, SELECTION, SUMMATION};
+#include "modelkit.h"
 
 class ProcedureWidget : public QWidget
 {
@@ -20,11 +19,13 @@ public:
     explicit ProcedureWidget(QString name, ProcedureType type, QWidget *parent = nullptr);
 
     void setName(QString name){nameLabel->setText(name);}
-    QMap<QString,QString> getData();
+    QMap<Method,QString> getData();
+    QMap<QString,QString> getMembers();
+    QString getName(){return name;}
+    ProcedureType getType(){return type;}
 
 private:
-    static const QString procedureTypeNameStrings[];
-
+    QString name;
     ProcedureType type;
 
     QLabel* nameLabel;
@@ -77,9 +78,6 @@ private:
     QTextEdit* whileCondTextEdit;
 
     QVBoxLayout* vboxlayout;
-
-    QMap<QString,QString> getMembers();
-
 
 private slots:
     void onAddNewMemberClicked();

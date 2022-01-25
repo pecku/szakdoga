@@ -7,8 +7,7 @@
 #include <QTextEdit>
 #include <QPushButton>
 #include "memberwidget.h"
-
-enum EnumeratorType{DEFAULT, ARRAY, INTERVAL, STRINGSTREAM, SEQINFILE};
+#include "modelkit.h"
 
 class EnumeratorWidget : public QWidget
 {
@@ -16,9 +15,13 @@ class EnumeratorWidget : public QWidget
 public:
     explicit EnumeratorWidget(QString name, EnumeratorType type, QWidget *parent = nullptr);
 
-    virtual QMap<QString,QString> getData(){return QMap<QString,QString>();}
+    QMap<QString,QString> getMembers();
+    QMap<Method,QString> getData();
+    QString getName(){return name;}
+    EnumeratorType getType(){return type;}
 
 private:
+    QString name;
     EnumeratorType type;
 
     QLabel* nameLabel;
@@ -47,13 +50,7 @@ private:
     QTextEdit* currentTextEdit;
 
     QGridLayout* gridlayout;
-
-protected:
     QVBoxLayout* vboxlayout;
-
-    void setParentClass(QString parentClass){parentClassLabel->setText(parentClass);}
-    QMap<QString,QString> getMembers();
-
 
 private slots:
     void onAddNewMemberClicked();
