@@ -2,24 +2,30 @@
 
 Model::Model(QObject *parent) : QObject(parent)
 {
-
+    lastID = 0;
 }
 
-void Model::createProcedure(QString name, ProcedureType type, QMap<Method,QString> methods, QMap<QString,QString> members){
-    procedures.push_back(new Procedure(name,type,methods,members));
+int Model::createComponent(QString name, ComponentType type){
+    int componentID = newID();
+    components.insert(componentID, new Component(name,type));
+    return componentID;
 }
-void Model::createEnumerator(QString name, EnumeratorType type, QMap<Method,QString> methods, QMap<QString,QString> members){
-    enumerators.push_back(new Enumerator(name,type,methods,members));
+
+int Model::createMember(int componentID, QString name, QString value){
+    int memberID = newID();
+    components[componentID]->setMember(memberID, name, value);
+    return memberID;
+}
+
+void Model::modifyMember(int componentID, int memberID, QString name, QString value){
+    components[componentID]->setMember(memberID, name, value);
 }
 
 QString Model::generateSource(){
     QString source;
     QTextStream ts(&source);
-    for(Procedure* procedure : procedures){
-        ts << Qt::endl << procedure->getSource();
-    }
-    for(Enumerator* enumerator : enumerators){
-        ts << Qt::endl << enumerator->getSource();
+    foreach(Component* component, components){
+        ts << Qt::endl << component->getSource();
     }
     return source;
 }

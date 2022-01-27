@@ -31,11 +31,9 @@ private:
     QVector<EnumeratorWidget*> enumeratorWidgets;
 
     void initMenuBar();
-    void showCreateComponentDialog();
 
 private slots:
-    void showCreateProcedureDialog();
-    void showCreateEnumeratorDialog();
+    void showCreateComponentDialog();
     void createComponent();
     void generateSource();
 };

@@ -1,6 +1,6 @@
 #include "procedurewidget.h"
 
-ProcedureWidget::ProcedureWidget(QString name, ProcedureType type, QWidget *parent) : QWidget(parent)
+ProcedureWidget::ProcedureWidget(QString name, ComponentType type, QWidget *parent) : QWidget(parent)
 {
     vboxlayout = new QVBoxLayout(this);
     vboxlayout->setAlignment(Qt::Alignment(Qt::AlignmentFlag::AlignTop));
@@ -9,7 +9,7 @@ ProcedureWidget::ProcedureWidget(QString name, ProcedureType type, QWidget *pare
 
     this->name = name;
     nameLabel = new QLabel(name);
-    parentClassLabel = new QLabel(procedureTypeNameStrings[type]);
+    parentClassLabel = new QLabel(componentTypeNameStrings[type]);
     QHBoxLayout* nameLayout = new QHBoxLayout();
     nameLayout->addWidget(nameLabel);
     nameLayout->addSpacerItem(new QSpacerItem(maximumWidth(),0,QSizePolicy::Maximum));
@@ -132,8 +132,8 @@ QMap<QString,QString> ProcedureWidget::getMembers(){
     return map;
 }
 
-QMap<Method,QString> ProcedureWidget::getData(){
-    QMap<Method,QString> map;
+QMap<MethodType,QString> ProcedureWidget::getData(){
+    QMap<MethodType,QString> map;
     map.insert(DESTRUCTOR,destructorTextEdit->toPlainText());
     if(neutralTextEdit != nullptr)
         map.insert(NEUTRAL,neutralTextEdit->toPlainText());

@@ -11,6 +11,10 @@ CreateComponentDialog::CreateComponentDialog() : QDialog()
     componentTypeSelect = new QComboBox();
     componentTypeSelect->setPlaceholderText("type");
 
+    foreach(ComponentType componentType, componentTypeNameStrings.keys()){
+        componentTypeSelect->addItem(componentTypeNameStrings[componentType],componentType);
+    }
+
     QVBoxLayout* vboxlayout = new QVBoxLayout(this);
     QHBoxLayout* hboxlayout = new QHBoxLayout();
 
@@ -23,29 +27,6 @@ CreateComponentDialog::CreateComponentDialog() : QDialog()
 
     connect(okButton, SIGNAL(clicked()), this, SLOT(accept()));
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
-}
-
-void CreateComponentDialog::setMode(CreateComponentDialogMode mode){
-    if(this->mode == mode) return;
-    this->mode = mode;
-    switch (mode) {
-        case PROCEDURE:{
-            componentTypeSelect->clear();
-            auto prockeys = procedureTypeNameStrings.keys();
-            for(ProcedureType proctype : prockeys){
-                componentTypeSelect->addItem(procedureTypeNameStrings[proctype],proctype);
-            }
-            break;
-        }
-        case ENUMERATOR:{
-            componentTypeSelect->clear();
-            auto enorkeys = enumeratorTypeNameStrings.keys();
-            for(EnumeratorType enortype : enorkeys){
-                componentTypeSelect->addItem(enumeratorTypeNameStrings[enortype],enortype);
-            }
-            break;
-        }
-    }
 }
 
 void CreateComponentDialog::clear(){

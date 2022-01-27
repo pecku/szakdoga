@@ -1,6 +1,6 @@
 #include "enumeratorwidget.h"
 
-EnumeratorWidget::EnumeratorWidget(QString name, EnumeratorType type, QWidget *parent) : QWidget(parent)
+EnumeratorWidget::EnumeratorWidget(QString name, ComponentType type, QWidget *parent) : QWidget(parent)
 {
     this->type = type;
 
@@ -11,7 +11,7 @@ EnumeratorWidget::EnumeratorWidget(QString name, EnumeratorType type, QWidget *p
 
     this->name = name;
     nameLabel = new QLabel(name);
-    parentClassLabel = new QLabel(enumeratorTypeNameStrings[type]);
+    parentClassLabel = new QLabel(componentTypeNameStrings[type]);
     QHBoxLayout* nameLayout = new QHBoxLayout();
     nameLayout->addWidget(nameLabel);
     nameLayout->addSpacerItem(new QSpacerItem(maximumWidth(),0,QSizePolicy::Maximum));
@@ -80,14 +80,14 @@ void EnumeratorWidget::onAddNewMemberClicked(){
 
 QMap<QString,QString> EnumeratorWidget::getMembers(){
     QMap<QString,QString> map;
-    for(MemberWidget* member : members){
+    foreach(MemberWidget* member, members){
         map.insert(member->getType(),member->getName());
     }
     return map;
 }
 
-QMap<Method,QString> EnumeratorWidget::getData(){
-    QMap<Method,QString> map;
+QMap<MethodType,QString> EnumeratorWidget::getData(){
+    QMap<MethodType,QString> map;
     map.insert(DESTRUCTOR,destructorTextEdit->toPlainText());
     if(firstTextEdit != nullptr)
         map.insert(FIRST,firstTextEdit->toPlainText());

@@ -26,21 +26,15 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::createComponent(){
     QString name = createComponentDialog->getName();
-    int component = createComponentDialog->getComponent().toInt();
-    CreateComponentDialogMode mode = createComponentDialog->getMode();
-    switch (mode) {
-        case PROCEDURE:{
-            ProcedureWidget* procedure = new ProcedureWidget(name, (ProcedureType)component);
-            toolBox->addItem(procedure,name);
-            procedureWidgets.push_back(procedure);
-            break;
-        }
-        case ENUMERATOR:{
-            EnumeratorWidget* enumerator = new EnumeratorWidget(name, (EnumeratorType)component);
-            toolBox->addItem(enumerator,name);
-            enumeratorWidgets.push_back(enumerator);
-            break;
-        }
+    ComponentType componentType = (ComponentType)createComponentDialog->getComponent().toInt();
+    if(componentType == COUNTING || componentType == LINSEARCH || componentType == MAXSEARCH || componentType == SELECTION || componentType == SUMMATION){
+        ProcedureWidget* procedure = new ProcedureWidget(name, componentType);
+        toolBox->addItem(procedure,name);
+        procedureWidgets.push_back(procedure);
+    }else{
+        EnumeratorWidget* enumerator = new EnumeratorWidget(name, componentType);
+        toolBox->addItem(enumerator,name);
+        enumeratorWidgets.push_back(enumerator);
     }
 
 }
@@ -51,12 +45,9 @@ void MainWindow::initMenuBar(){
 
     QMenu* createMenu = new QMenu("Create");
     menuBar->addMenu(createMenu);
-    QAction* createProcedureAction = new QAction("Create Procedure");
-    createMenu->addAction(createProcedureAction);
-    connect(createProcedureAction,SIGNAL(triggered()),this,SLOT(showCreateProcedureDialog()));
-    QAction* createEnumeratorAction = new QAction("Create Enumerator");
-    createMenu->addAction(createEnumeratorAction);
-    connect(createEnumeratorAction,SIGNAL(triggered()),this,SLOT(showCreateEnumeratorDialog()));
+    QAction* createComponentAction = new QAction("Create Component");
+    createMenu->addAction(createComponentAction);
+    connect(createComponentAction,SIGNAL(triggered()),this,SLOT(showCreateComponentDialog()));
 
     QMenu* generateMenu = new QMenu("Generate");
     menuBar->addMenu(generateMenu);
@@ -67,22 +58,13 @@ void MainWindow::initMenuBar(){
 
 void MainWindow::generateSource(){
     model->clear();
-    for(ProcedureWidget* procedure : procedureWidgets){
-        model->createProcedure(procedure->getName(), procedure->getType(), procedure->getData(), procedure->getMembers());
+    foreach(ProcedureWidget* procedure, procedureWidgets){
+        model->createComponent(procedure->getName(), procedure->getType());
     }
-    for(EnumeratorWidget* enumerator : enumeratorWidgets){
-        model->createEnumerator(enumerator->getName(), enumerator->getType(), enumerator->getData(), enumerator->getMembers());
+    foreach(EnumeratorWidget* enumerator, enumeratorWidgets){
+        model->createComponent(enumerator->getName(), enumerator->getType());
     }
     sourceTextBrowser->setText(model->generateSource());
-}
-
-void MainWindow::showCreateProcedureDialog(){
-    createComponentDialog->setMode(PROCEDURE);
-    showCreateComponentDialog();
-}
-void MainWindow::showCreateEnumeratorDialog(){
-    createComponentDialog->setMode(ENUMERATOR);
-    showCreateComponentDialog();
 }
 
 void MainWindow::showCreateComponentDialog(){

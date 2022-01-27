@@ -15,6 +15,7 @@ SOURCES += \
     mainwindow.cpp \
     memberwidget.cpp \
     model.cpp \
+    modelkit.cpp \
     procedurewidget.cpp
 
 HEADERS += \

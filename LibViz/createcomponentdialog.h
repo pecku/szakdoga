@@ -16,14 +16,11 @@ class CreateComponentDialog : public QDialog
     Q_OBJECT
 public:
     explicit CreateComponentDialog();
-    void setMode(CreateComponentDialogMode mode);
     QString getName(){return nameLineEdit->text();}
-    CreateComponentDialogMode getMode(){return mode;}
     QVariant getComponent(){return componentTypeSelect->currentData();}
     void clear();
 
 private:
-    CreateComponentDialogMode mode;
     QPushButton* okButton;
     QPushButton* cancelButton;
     QLineEdit* nameLineEdit;

@@ -11,13 +11,24 @@ public:
     explicit Model(QObject *parent = nullptr);
 
     QString generateSource();
-    void createProcedure(QString name, ProcedureType type, QMap<Method,QString> methods, QMap<QString,QString> members);
-    void createEnumerator(QString name, EnumeratorType type, QMap<Method,QString> methods, QMap<QString,QString> members);
-    void clear(){procedures.clear();enumerators.clear();}
+    int createComponent(QString name, ComponentType type);
+    int createMember(int componentID, QString name, QString value);
+    void modifyMember(int componentID, int memberID, QString name, QString value);
+
+    void setItem(int componentID, QString item){components[componentID]->setItem(item);}
+    void setValue(int componentID, QString value){components[componentID]->setValue(value);}
+    void setOptimist(int componentID, bool optimist){components[componentID]->setOptimist(optimist);}
+    void setCompare(int componentID, QString compare){components[componentID]->setCompare(compare);}
+    void setEnumerator(int componentID, QString enumeratorName){components[componentID]->setEnumerator(enumeratorName);}
+    void setMethod(int componentID, MethodType methodType, QString methodBody){components[componentID]->setMethod(methodType,methodBody);}
+
+    void clear(){components.clear();}
 
 private:
-    QVector<Procedure*> procedures;
-    QVector<Enumerator*> enumerators;
+    QMap<int,Component*> components;
+    int lastID;
+
+    int newID(){return ++lastID;}
 
 signals:
 

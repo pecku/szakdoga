@@ -5,19 +5,15 @@
 #include <QString>
 #include <QTextStream>
 
-enum ProcedureType{COUNTING, LINSEARCH, MAXSEARCH, SELECTION, SUMMATION};
-enum EnumeratorType{DEFAULT, ARRAY, INTERVAL, STRINGSTREAM, SEQINFILE};
-enum Method{DESTRUCTOR, NEUTRAL, ADD, FUNC, COND, FIRST, WHILECOND, NEXT, END, CURRENT};
+enum ComponentType{COUNTING, LINSEARCH, MAXSEARCH, SELECTION, SUMMATION, DEFAULT, ARRAY, INTERVAL, STRINGSTREAM, SEQINFILE};
+enum MethodType{DESTRUCTOR, NEUTRAL, ADD, FUNC, COND, FIRST, WHILECOND, NEXT, END, CURRENT};
 
-static const QMap<ProcedureType,QString> procedureTypeNameStrings = {
+static const QMap<ComponentType,QString> componentTypeNameStrings = {
     {COUNTING, "Counting"},
     {LINSEARCH, "LinSearch"},
     {MAXSEARCH, "MaxSearch"},
     {SELECTION, "Selection"},
-    {SUMMATION, "Summation"}
-};
-
-static const QMap<EnumeratorType,QString> enumeratorTypeNameStrings = {
+    {SUMMATION, "Summation"},
     {DEFAULT, "Enumerator"},
     {ARRAY, "ArrayEnumerator"},
     {INTERVAL, "IntervalEnumerator"},
@@ -25,61 +21,49 @@ static const QMap<EnumeratorType,QString> enumeratorTypeNameStrings = {
     {SEQINFILE, "SeqInFileEnumerator"}
 };
 
-static const QMap<Method,QString> methodNameStrings = {
+static const QMap<MethodType,QString> methodHeaderStrings = {
     {DESTRUCTOR, "destructor()"},
     {NEUTRAL, "neutral()"},
     {ADD, "add()"},
     {FUNC, "func()"},
-    {COND, "cond()"},
-    {FIRST, "first()"},
-    {WHILECOND, "whileCond()"},
-    {NEXT, "next()"},
-    {END, "end()"},
+    {COND, "bool cond()"},
+    {FIRST, "void first()"},
+    {WHILECOND, "bool whileCond()"},
+    {NEXT, "void next()"},
+    {END, "bool end()"},
     {CURRENT, "current()"}
 };
 
-class Procedure{
-private:
+struct Member{
+    QString type;
     QString name;
-    ProcedureType type;
-    QMap<Method,QString> methods;
-    QMap<QString,QString> members;
-public:
-    Procedure(QString name, ProcedureType type, QMap<Method,QString> methods, QMap<QString, QString> members) : name(name), type(type), methods(methods), members(members){}
-    QString getSource(){
-        QString source;
-        QTextStream ts(&source);
-        ts << name << " " << procedureTypeNameStrings[type];
-        for(QString key : members.keys()){
-            ts << Qt::endl << key << " " <<  members[key];
-        }
-        for(Method key : methods.keys()){
-            ts << Qt::endl << methodNameStrings[key] << " " << methods[key];
-        }
-        return source;
-    }
+    Member(){}
+    Member(QString type, QString name) : type(type), name(name){}
 };
 
-class Enumerator{
+class Component{
 private:
     QString name;
-    EnumeratorType type;
-    QMap<Method,QString> methods;
-    QMap<QString,QString> members;
+    ComponentType type;
+    QString item;
+    QString enor;
+    bool optimist;
+    QString value;
+    QString compare;
+    QMap<MethodType,QString> methods;
+    QMap<int,Member> members;
 public:
-    Enumerator(QString name, EnumeratorType type, QMap<Method,QString> methods, QMap<QString, QString> members) : name(name), type(type), methods(methods), members(members){}
-    QString getSource(){
-        QString source;
-        QTextStream ts(&source);
-        ts << name << " " << enumeratorTypeNameStrings[type];
-        for(QString key : members.keys()){
-            ts << Qt::endl << key << " " <<  members[key];
-        }
-        for(Method key : methods.keys()){
-            ts << Qt::endl << methodNameStrings[key] << " " << methods[key];
-        }
-        return source;
-    }
+    Component(QString name, ComponentType type);
+
+    QString getSource();
+
+    void setItem(QString item){this->item = item;}
+    void setValue(QString value){this->value = value;}
+    void setOptimist(bool optimist){this->optimist = optimist;}
+    void setCompare(QString compare){this->compare = compare;}
+    void setEnumerator(QString enumeratorName){this->enor = enumeratorName;}
+    void setMethod(MethodType methodType, QString methodBody){methods[methodType] = methodBody;}
+    void setMember(int id, QString type, QString name){members[id] = Member(type,name);}
 };
 
 #endif // MODELKIT_H

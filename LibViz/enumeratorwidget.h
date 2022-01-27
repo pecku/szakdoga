@@ -13,16 +13,16 @@ class EnumeratorWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit EnumeratorWidget(QString name, EnumeratorType type, QWidget *parent = nullptr);
+    explicit EnumeratorWidget(QString name, ComponentType type, QWidget *parent = nullptr);
 
     QMap<QString,QString> getMembers();
-    QMap<Method,QString> getData();
+    QMap<MethodType,QString> getData();
     QString getName(){return name;}
-    EnumeratorType getType(){return type;}
+    ComponentType getType(){return type;}
 
 private:
     QString name;
-    EnumeratorType type;
+    ComponentType type;
 
     QLabel* nameLabel;
     QLabel* parentClassLabel;

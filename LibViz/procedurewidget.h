@@ -16,17 +16,17 @@ class ProcedureWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ProcedureWidget(QString name, ProcedureType type, QWidget *parent = nullptr);
+    explicit ProcedureWidget(QString name, ComponentType type, QWidget *parent = nullptr);
 
     void setName(QString name){nameLabel->setText(name);}
-    QMap<Method,QString> getData();
+    QMap<MethodType,QString> getData();
     QMap<QString,QString> getMembers();
     QString getName(){return name;}
-    ProcedureType getType(){return type;}
+    ComponentType getType(){return type;}
 
 private:
     QString name;
-    ProcedureType type;
+    ComponentType type;
 
     QLabel* nameLabel;
     QLabel* parentClassLabel;    
