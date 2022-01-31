@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     toolBox = new QToolBox();
     centralSplitter->addWidget(toolBox);
+    toolBox->resize(width()/3,0);
 
     centralSplitter->addWidget(new QTextEdit());
     sourceTextBrowser = new QTextBrowser();
@@ -28,11 +29,11 @@ void MainWindow::createComponent(){
     QString name = createComponentDialog->getName();
     ComponentType componentType = (ComponentType)createComponentDialog->getComponent().toInt();
     if(componentType == COUNTING || componentType == LINSEARCH || componentType == MAXSEARCH || componentType == SELECTION || componentType == SUMMATION){
-        ProcedureWidget* procedure = new ProcedureWidget(name, componentType);
+        ProcedureWidget* procedure = new ProcedureWidget(model->createComponent(name, componentType),name,componentType,model);
         toolBox->addItem(procedure,name);
         procedureWidgets.push_back(procedure);
     }else{
-        EnumeratorWidget* enumerator = new EnumeratorWidget(name, componentType);
+        EnumeratorWidget* enumerator = new EnumeratorWidget(model->createComponent(name, componentType),name,componentType,model);
         toolBox->addItem(enumerator,name);
         enumeratorWidgets.push_back(enumerator);
     }
@@ -57,13 +58,6 @@ void MainWindow::initMenuBar(){
 }
 
 void MainWindow::generateSource(){
-    model->clear();
-    foreach(ProcedureWidget* procedure, procedureWidgets){
-        model->createComponent(procedure->getName(), procedure->getType());
-    }
-    foreach(EnumeratorWidget* enumerator, enumeratorWidgets){
-        model->createComponent(enumerator->getName(), enumerator->getType());
-    }
     sourceTextBrowser->setText(model->generateSource());
 }
 

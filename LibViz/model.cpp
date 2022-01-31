@@ -11,14 +11,14 @@ int Model::createComponent(QString name, ComponentType type){
     return componentID;
 }
 
-int Model::createMember(int componentID, QString name, QString value){
+int Model::createMember(int componentID){
     int memberID = newID();
-    components[componentID]->setMember(memberID, name, value);
+    components[componentID]->createMember(memberID);
     return memberID;
 }
 
-void Model::modifyMember(int componentID, int memberID, QString name, QString value){
-    components[componentID]->setMember(memberID, name, value);
+void Model::modifyMember(int componentID, int memberID, QString type, QString name){
+    components[componentID]->setMember(memberID, type, name);
 }
 
 QString Model::generateSource(){

@@ -1,6 +1,6 @@
 #include "memberwidget.h"
 
-MemberWidget::MemberWidget(QWidget *parent) : QWidget(parent)
+MemberWidget::MemberWidget(const int id, QWidget *parent) : QWidget(parent), id(id)
 {
     hboxlayout = new QHBoxLayout(this);
     type = new QLineEdit();
@@ -11,4 +11,7 @@ MemberWidget::MemberWidget(QWidget *parent) : QWidget(parent)
     hboxlayout->addWidget(name);
 
     hboxlayout->setContentsMargins(0,0,0,0);
+
+    connect(type,SIGNAL(editingFinished()),this,SIGNAL(edited()));
+    connect(name,SIGNAL(editingFinished()),this,SIGNAL(edited()));
 }

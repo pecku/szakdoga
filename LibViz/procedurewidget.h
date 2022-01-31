@@ -6,17 +6,17 @@
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <QComboBox>
-#include <QTextEdit>
 #include <QCheckBox>
 #include <QRadioButton>
 #include "memberwidget.h"
-#include "modelkit.h"
+#include "model.h"
+#include "popuptextedit.h"
 
 class ProcedureWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ProcedureWidget(QString name, ComponentType type, QWidget *parent = nullptr);
+    explicit ProcedureWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);
 
     void setName(QString name){nameLabel->setText(name);}
     QMap<MethodType,QString> getData();
@@ -25,8 +25,10 @@ public:
     ComponentType getType(){return type;}
 
 private:
+    const int id;
     QString name;
     ComponentType type;
+    Model* model;
 
     QLabel* nameLabel;
     QLabel* parentClassLabel;    
@@ -37,7 +39,7 @@ private:
     QLabel* enorLabel;
     QComboBox* enorComboBox;
     QLabel* destructorLabel;
-    QTextEdit* destructorTextEdit;
+    PopUpTextEdit* destructorTextEdit;
     QGridLayout* gridlayout;
 
     //optimist
@@ -55,32 +57,38 @@ private:
 
     //Value neutral() const
     QLabel* neutralLabel;
-    QTextEdit* neutralTextEdit;
+    PopUpTextEdit* neutralTextEdit;
 
     //Value add( const Value& a, const Value& b) const
     QLabel* addLabel;
-    QTextEdit* addTextEdit;
+    PopUpTextEdit* addTextEdit;
 
     //Value func(const Item& e) const
     QLabel* funcLabel;
-    QTextEdit* funcTextEdit;
+    PopUpTextEdit* funcTextEdit;
 
     //bool cond(const Item& e) const
     QLabel* condLabel;
-    QTextEdit* condTextEdit;
+    PopUpTextEdit* condTextEdit;
 
     //void first()
     QLabel* firstLabel;
-    QTextEdit* firstTextEdit;
+    PopUpTextEdit* firstTextEdit;
 
     //bool whileCond(const Item& current) const
     QLabel* whileCondLabel;
-    QTextEdit* whileCondTextEdit;
+    PopUpTextEdit* whileCondTextEdit;
 
     QVBoxLayout* vboxlayout;
 
 private slots:
     void onAddNewMemberClicked();
+    void memberChanged();
+    void itemTypeChanged();
+    void optimistChanged();
+    void valueChanged();
+    void compareChanged();
+    void popUpTextChanged();
 
 signals:
 

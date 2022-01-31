@@ -1,15 +1,14 @@
 #include "enumeratorwidget.h"
 
-EnumeratorWidget::EnumeratorWidget(QString name, ComponentType type, QWidget *parent) : QWidget(parent)
+EnumeratorWidget::EnumeratorWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent)
+    : QWidget(parent), id(id), name(name), type(type), model(model)
 {
-    this->type = type;
 
     vboxlayout = new QVBoxLayout(this);
     vboxlayout->setAlignment(Qt::Alignment(Qt::AlignmentFlag::AlignTop));
 
     memberLayout = new QVBoxLayout();
 
-    this->name = name;
     nameLabel = new QLabel(name);
     parentClassLabel = new QLabel(componentTypeNameStrings[type]);
     QHBoxLayout* nameLayout = new QHBoxLayout();
@@ -73,7 +72,7 @@ EnumeratorWidget::EnumeratorWidget(QString name, ComponentType type, QWidget *pa
 }
 
 void EnumeratorWidget::onAddNewMemberClicked(){
-    MemberWidget* member = new MemberWidget();
+    MemberWidget* member = new MemberWidget(model->createMember(this->id));
     memberLayout->addWidget(member);
     members.push_back(member);
 }

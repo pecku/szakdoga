@@ -26,6 +26,9 @@ private:
     QLineEdit* nameLineEdit;
     QComboBox* componentTypeSelect;
 
+private slots:
+    void wantToAccept();
+
 signals:
 
 };

@@ -7,13 +7,13 @@
 #include <QTextEdit>
 #include <QPushButton>
 #include "memberwidget.h"
-#include "modelkit.h"
+#include "model.h"
 
 class EnumeratorWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit EnumeratorWidget(QString name, ComponentType type, QWidget *parent = nullptr);
+    explicit EnumeratorWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);
 
     QMap<QString,QString> getMembers();
     QMap<MethodType,QString> getData();
@@ -21,8 +21,10 @@ public:
     ComponentType getType(){return type;}
 
 private:
+    const int id;
     QString name;
     ComponentType type;
+    Model* model;
 
     QLabel* nameLabel;
     QLabel* parentClassLabel;

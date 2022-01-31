@@ -25,8 +25,25 @@ CreateComponentDialog::CreateComponentDialog() : QDialog()
     hboxlayout->addWidget(okButton);
     hboxlayout->addWidget(cancelButton);
 
-    connect(okButton, SIGNAL(clicked()), this, SLOT(accept()));
+    connect(okButton, SIGNAL(clicked()), this, SLOT(wantToAccept()));
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
+}
+
+void CreateComponentDialog::wantToAccept(){
+    bool acceptable = true;
+    nameLineEdit->setStyleSheet("");
+    componentTypeSelect->setStyleSheet("");
+    if(nameLineEdit->text() == ""){
+        nameLineEdit->setStyleSheet("border:2px solid red;");
+        acceptable = false;
+    }
+    if(componentTypeSelect->currentIndex() < 0){
+        componentTypeSelect->setStyleSheet("border:2px solid red;");
+        acceptable = false;
+    }
+    if(acceptable){
+        accept();
+    }
 }
 
 void CreateComponentDialog::clear(){

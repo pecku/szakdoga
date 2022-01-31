@@ -2,18 +2,29 @@
 #define POPUPTEXTEDIT_H
 
 #include <QTextBrowser>
+#include <textinputdialog.h>
+#include "modelkit.h"
 
-class MyTextEdit : public QTextBrowser
+class PopUpTextEdit : public QTextBrowser
 {
     Q_OBJECT
 public:
-    MyTextEdit(){}
+    PopUpTextEdit(MethodType methodType);
+
+    MethodType getMethodType(){return methodType;}
 
 protected:
-    void focusInEvent(QFocusEvent *e) override {emit gotFocus();}
+    void focusInEvent(QFocusEvent *e) override;
+
+private:
+    MethodType methodType;
+    TextInputDialog* inputDialog;
+
+private slots:
+    void getTextFromInputDialog();
 
 signals:
-    void gotFocus();
+    void textChanged();
 };
 
 #endif // POPUPTEXTEDIT_H

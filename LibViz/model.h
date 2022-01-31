@@ -12,8 +12,8 @@ public:
 
     QString generateSource();
     int createComponent(QString name, ComponentType type);
-    int createMember(int componentID, QString name, QString value);
-    void modifyMember(int componentID, int memberID, QString name, QString value);
+    int createMember(int componentID);
+    void modifyMember(int componentID, int memberID, QString type, QString name);
 
     void setItem(int componentID, QString item){components[componentID]->setItem(item);}
     void setValue(int componentID, QString value){components[componentID]->setValue(value);}
@@ -22,13 +22,11 @@ public:
     void setEnumerator(int componentID, QString enumeratorName){components[componentID]->setEnumerator(enumeratorName);}
     void setMethod(int componentID, MethodType methodType, QString methodBody){components[componentID]->setMethod(methodType,methodBody);}
 
-    void clear(){components.clear();}
-
 private:
     QMap<int,Component*> components;
     int lastID;
 
-    int newID(){return ++lastID;}
+    int newID() {return ++lastID;}
 
 signals:
 

@@ -16,7 +16,9 @@ SOURCES += \
     memberwidget.cpp \
     model.cpp \
     modelkit.cpp \
-    procedurewidget.cpp
+    popuptextedit.cpp \
+    procedurewidget.cpp \
+    textinputdialog.cpp
 
 HEADERS += \
     createcomponentdialog.h \
@@ -26,7 +28,8 @@ HEADERS += \
     model.h \
     modelkit.h \
     popuptextedit.h \
-    procedurewidget.h
+    procedurewidget.h \
+    textinputdialog.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

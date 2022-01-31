@@ -37,7 +37,7 @@ static const QMap<MethodType,QString> methodHeaderStrings = {
 struct Member{
     QString type;
     QString name;
-    Member(){}
+    Member(){type = ""; name = "";}
     Member(QString type, QString name) : type(type), name(name){}
 };
 
@@ -63,7 +63,8 @@ public:
     void setCompare(QString compare){this->compare = compare;}
     void setEnumerator(QString enumeratorName){this->enor = enumeratorName;}
     void setMethod(MethodType methodType, QString methodBody){methods[methodType] = methodBody;}
-    void setMember(int id, QString type, QString name){members[id] = Member(type,name);}
+    void setMember(int id, QString type, QString name){members[id].type = type; members[id].name = name;}
+    void createMember(int id){members[id] = Member();}
 };
 
 #endif // MODELKIT_H
