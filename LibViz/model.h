@@ -14,6 +14,7 @@ public:
     int createComponent(QString name, ComponentType type);
     int createMember(int componentID);
     void modifyMember(int componentID, int memberID, QString type, QString name);
+    void deleteMember(int componentID, int memberID);
 
     void setItem(int componentID, QString item){components[componentID]->setItem(item);}
     void setValue(int componentID, QString value){components[componentID]->setValue(value);}

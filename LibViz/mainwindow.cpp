@@ -32,10 +32,16 @@ void MainWindow::createComponent(){
         ProcedureWidget* procedure = new ProcedureWidget(model->createComponent(name, componentType),name,componentType,model);
         toolBox->addItem(procedure,name);
         procedureWidgets.push_back(procedure);
+        foreach(EnumeratorWidget* enorw, enumeratorWidgets){
+            procedure->addEnumeratorChoice(enorw->getName());
+        }
     }else{
         EnumeratorWidget* enumerator = new EnumeratorWidget(model->createComponent(name, componentType),name,componentType,model);
         toolBox->addItem(enumerator,name);
         enumeratorWidgets.push_back(enumerator);
+        foreach(ProcedureWidget* procw, procedureWidgets){
+            procw->addEnumeratorChoice(name);
+        }
     }
 
 }

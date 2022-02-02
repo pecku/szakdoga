@@ -2,45 +2,26 @@
 #define PROCEDUREWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QVBoxLayout>
 #include <QPushButton>
 #include <QComboBox>
 #include <QCheckBox>
 #include <QRadioButton>
-#include "memberwidget.h"
-#include "model.h"
-#include "popuptextedit.h"
+#include "componentwidget.h"
 
-class ProcedureWidget : public QWidget
+class ProcedureWidget : public ComponentWidget
 {
     Q_OBJECT
 public:
     explicit ProcedureWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);
 
-    void setName(QString name){nameLabel->setText(name);}
-    QMap<MethodType,QString> getData();
-    QMap<QString,QString> getMembers();
-    QString getName(){return name;}
-    ComponentType getType(){return type;}
+    void addEnumeratorChoice(QString enumeratorName);
 
 private:
-    const int id;
-    QString name;
-    ComponentType type;
-    Model* model;
+    void initSegments();
 
-    QLabel* nameLabel;
-    QLabel* parentClassLabel;    
-    QVector<MemberWidget*> members;
-    QVBoxLayout* memberLayout;
-    QLabel* itemTypeLabel;
-    QLineEdit* itemTypeLineEdit;
+    //enumerator
     QLabel* enorLabel;
     QComboBox* enorComboBox;
-    QLabel* destructorLabel;
-    PopUpTextEdit* destructorTextEdit;
-    QGridLayout* gridlayout;
 
     //optimist
     QLabel* optimistLabel;
@@ -79,16 +60,10 @@ private:
     QLabel* whileCondLabel;
     PopUpTextEdit* whileCondTextEdit;
 
-    QVBoxLayout* vboxlayout;
-
 private slots:
-    void onAddNewMemberClicked();
-    void memberChanged();
-    void itemTypeChanged();
     void optimistChanged();
     void valueChanged();
     void compareChanged();
-    void popUpTextChanged();
 
 signals:
 

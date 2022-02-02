@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QLineEdit>
+#include <QPushButton>
 #include <QHBoxLayout>
 
 class MemberWidget : public QWidget
@@ -19,10 +20,12 @@ private:
     const int id;
     QLineEdit* type;
     QLineEdit* name;
+    QPushButton* deleteButton;
     QHBoxLayout* hboxlayout;
 
 signals:
     void edited();
+    void deleteMe();
 };
 
 #endif // MEMBERWIDGET_H

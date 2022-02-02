@@ -21,6 +21,11 @@ void Model::modifyMember(int componentID, int memberID, QString type, QString na
     components[componentID]->setMember(memberID, type, name);
 }
 
+void Model::deleteMember(int componentID, int memberID){
+    components[componentID]->deleteMember(memberID);
+}
+
+
 QString Model::generateSource(){
     QString source;
     QTextStream ts(&source);

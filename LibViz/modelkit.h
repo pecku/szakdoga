@@ -65,6 +65,7 @@ public:
     void setMethod(MethodType methodType, QString methodBody){methods[methodType] = methodBody;}
     void setMember(int id, QString type, QString name){members[id].type = type; members[id].name = name;}
     void createMember(int id){members[id] = Member();}
+    void deleteMember(int id){members.remove(id);}
 };
 
 #endif // MODELKIT_H
