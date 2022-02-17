@@ -6,11 +6,29 @@
 #include <QToolBox>
 #include <QTextBrowser>
 #include <QMenuBar>
+#include <QListView>
+#include <QStringListModel>
 
 #include "procedurewidget.h"
 #include "enumeratorwidget.h"
 #include "createcomponentdialog.h"
 #include "model.h"
+
+class MyStringListModel : public QStringListModel{
+    Q_OBJECT
+
+public:
+    MyStringListModel(QWidget *parent = nullptr) : QStringListModel(parent){}
+
+    Qt::ItemFlags flags(const QModelIndex& ind) const override {
+        if(ind.row() < 0){
+            return Qt::ItemFlags({Qt::ItemIsDragEnabled,Qt::ItemIsEditable,Qt::ItemIsEnabled,
+                                  Qt::ItemIsSelectable,Qt::ItemNeverHasChildren,Qt::ItemIsDropEnabled});
+        }
+        return Qt::ItemFlags({Qt::ItemIsDragEnabled,Qt::ItemIsEditable,Qt::ItemIsEnabled,
+                              Qt::ItemIsSelectable,Qt::ItemNeverHasChildren});
+    }
+};
 
 class MainWindow : public QMainWindow
 {
@@ -26,11 +44,14 @@ private:
     QMenuBar* menuBar;
     QSplitter* centralSplitter;
     QToolBox* toolBox;
+    QListView* listView;
     QTextBrowser* sourceTextBrowser;
     QVector<ProcedureWidget*> procedureWidgets;
     QVector<EnumeratorWidget*> enumeratorWidgets;
 
     void initMenuBar();
+
+    void asd();
 
 private slots:
     void showCreateComponentDialog();

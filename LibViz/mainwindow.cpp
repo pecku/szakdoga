@@ -18,7 +18,15 @@ MainWindow::MainWindow(QWidget *parent)
     centralSplitter->addWidget(toolBox);
     toolBox->resize(width()/3,0);
 
-    centralSplitter->addWidget(new QTextEdit());
+    listView = new QListView();
+    listView->setDragEnabled(true);
+    listView->setDropIndicatorShown(true);
+    listView->setAcceptDrops(true);
+    listView->setDefaultDropAction(Qt::MoveAction);
+    listView->setModel(new MyStringListModel());
+    listView->setStyleSheet("QListView::item {height:40px;border:2px solid gray;border-radius:5px;font-weight:bolder;} QListView::item::selected {color:black;}");
+    centralSplitter->addWidget(listView);
+
     sourceTextBrowser = new QTextBrowser();
     centralSplitter->addWidget(sourceTextBrowser);
 
@@ -35,6 +43,8 @@ void MainWindow::createComponent(){
         foreach(EnumeratorWidget* enorw, enumeratorWidgets){
             procedure->addEnumeratorChoice(enorw->getName());
         }
+        listView->model()->insertRow(listView->model()->rowCount());
+        listView->model()->setData(listView->model()->index(listView->model()->rowCount()-1,0), name);
     }else{
         EnumeratorWidget* enumerator = new EnumeratorWidget(model->createComponent(name, componentType),name,componentType,model);
         toolBox->addItem(enumerator,name);
@@ -43,7 +53,6 @@ void MainWindow::createComponent(){
             procw->addEnumeratorChoice(name);
         }
     }
-
 }
 
 void MainWindow::initMenuBar(){

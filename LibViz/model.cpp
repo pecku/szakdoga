@@ -30,7 +30,7 @@ QString Model::generateSource(){
     QString source;
     QTextStream ts(&source);
     foreach(Component* component, components){
-        ts << Qt::endl << component->getSource();
+        ts << component->getSource() << Qt::endl << Qt::endl;
     }
     return source;
 }

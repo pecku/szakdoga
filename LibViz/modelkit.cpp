@@ -7,7 +7,7 @@ Component::Component(QString name, ComponentType type) : name(name), type(type){
 QString Component::getSource(){
     QString source;
     QTextStream ts(&source);
-    ts << Qt::endl << "class " << name << " : public " << componentTypeNameStrings[type] << "<" << item << ">";
+    ts << "class " << name << " : public " << componentTypeNameStrings[type] << "<" << item << ">";
     ts << Qt::endl << "{";
     ts << Qt::endl << "private:";
     foreach(Member member, members){
@@ -24,5 +24,18 @@ QString Component::getSource(){
         ts << Qt::endl << "\t" << "}";
     }
     ts << Qt::endl << "}";
+
     return source;
 }
+
+
+/*
+QString format =
+"class %s : public %s<%s>{\n\
+protected:\n\
+    %s %s;\n\
+    %s %s;\n\
+}\
+";
+return QString::asprintf(format.toStdString().c_str(),name.toStdString().c_str(),componentTypeNameStrings[type].toStdString().c_str(),item.toStdString().c_str(),"asd","asd1","asd2","asd3");
+*/
