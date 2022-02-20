@@ -5,10 +5,14 @@ MainWindow::MainWindow(QWidget *parent)
 {
     resize(1000,700);
 
+    model = new Model();
+    connect(model, SIGNAL(haveCompileOutput()), this, SLOT(showCompileOutput()));
+
     createComponentDialog = new CreateComponentDialog();
     connect(createComponentDialog,SIGNAL(accepted()),this,SLOT(createComponent()));
 
-    model = new Model();
+    settingsDialog = new SettingsDialog();
+    connect(settingsDialog,SIGNAL(accepted()),this,SLOT(updateSettings()));
 
     centralSplitter = new QSplitter(Qt::Horizontal);
     centralSplitter->setContentsMargins(4,4,4,4);
@@ -29,6 +33,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     sourceTextBrowser = new QTextBrowser();
     centralSplitter->addWidget(sourceTextBrowser);
+
+    compileOutputBrowser = new QTextBrowser();
+    centralSplitter->addWidget(compileOutputBrowser);
 
     initMenuBar();
 }
@@ -70,6 +77,18 @@ void MainWindow::initMenuBar(){
     QAction* generateAction = new QAction("Generate Source");
     generateMenu->addAction(generateAction);
     connect(generateAction,SIGNAL(triggered()),this,SLOT(generateSource()));
+
+    QMenu* buildMenu = new QMenu("Build");
+    menuBar->addMenu(buildMenu);
+    QAction* compileAction = new QAction("Compile Source");
+    buildMenu->addAction(compileAction);
+    connect(compileAction,SIGNAL(triggered()),this,SLOT(modelCompile()));
+
+    QMenu* settingsMenu = new QMenu("Settings");
+    menuBar->addMenu(settingsMenu);
+    QAction* settingsAction = new QAction("Settings");
+    settingsMenu->addAction(settingsAction);
+    connect(settingsAction,SIGNAL(triggered()),this,SLOT(showSettingsDialog()));
 }
 
 void MainWindow::generateSource(){
@@ -79,6 +98,23 @@ void MainWindow::generateSource(){
 void MainWindow::showCreateComponentDialog(){
     createComponentDialog->clear();
     createComponentDialog->exec();
+}
+
+void MainWindow::showSettingsDialog(){
+    settingsDialog->exec();
+}
+
+void MainWindow::updateSettings(){
+    model->setCompilerPath(settingsDialog->getCompilerPath());
+    model->setCompilerArguments(settingsDialog->getArguments());
+}
+
+void MainWindow::modelCompile(){
+    model->compile();
+}
+
+void MainWindow::showCompileOutput(){
+    compileOutputBrowser->setPlainText(model->getCompileOutput());
 }
 
 MainWindow::~MainWindow()

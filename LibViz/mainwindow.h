@@ -12,6 +12,7 @@
 #include "procedurewidget.h"
 #include "enumeratorwidget.h"
 #include "createcomponentdialog.h"
+#include "settingsdialog.h"
 #include "model.h"
 
 class MyStringListModel : public QStringListModel{
@@ -41,11 +42,13 @@ public:
 private:
     Model* model;
     CreateComponentDialog* createComponentDialog;
+    SettingsDialog* settingsDialog;
     QMenuBar* menuBar;
     QSplitter* centralSplitter;
     QToolBox* toolBox;
     QListView* listView;
     QTextBrowser* sourceTextBrowser;
+    QTextBrowser* compileOutputBrowser;
     QVector<ProcedureWidget*> procedureWidgets;
     QVector<EnumeratorWidget*> enumeratorWidgets;
 
@@ -56,6 +59,10 @@ private:
 private slots:
     void showCreateComponentDialog();
     void createComponent();
+    void showSettingsDialog();
+    void updateSettings();
     void generateSource();
+    void modelCompile();
+    void showCompileOutput();
 };
 #endif // MAINWINDOW_H

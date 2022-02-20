@@ -19,6 +19,7 @@ SOURCES += \
     modelkit.cpp \
     popuptextedit.cpp \
     procedurewidget.cpp \
+    settingsdialog.cpp \
     textinputdialog.cpp
 
 HEADERS += \
@@ -31,6 +32,7 @@ HEADERS += \
     modelkit.h \
     popuptextedit.h \
     procedurewidget.h \
+    settingsdialog.h \
     textinputdialog.h
 
 # Default rules for deployment.

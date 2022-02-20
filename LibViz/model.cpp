@@ -3,6 +3,10 @@
 Model::Model(QObject *parent) : QObject(parent)
 {
     lastID = 0;
+
+    loadConfig();
+
+    compileProcess = new QProcess(this);
 }
 
 int Model::createComponent(QString name, ComponentType type){
@@ -25,7 +29,6 @@ void Model::deleteMember(int componentID, int memberID){
     components[componentID]->deleteMember(memberID);
 }
 
-
 QString Model::generateSource(){
     QString source;
     QTextStream ts(&source);
@@ -33,4 +36,48 @@ QString Model::generateSource(){
         ts << component->getSource() << Qt::endl << Qt::endl;
     }
     return source;
+}
+
+void Model::compile(){
+    if(!compilerPathSet){
+        emit compilerPathNotSet();
+        return;
+    }
+
+    if(compileProcess->state() == QProcess::Running || compileProcess->state() == QProcess::Starting){
+        compileProcess->kill();
+    }
+
+    compileProcess->start(compilerPath, compilerArguments);
+
+    connect(compileProcess, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(compileFinished()));
+}
+
+void Model::compileFinished(){
+    QString output;
+
+    if(compileProcess->exitCode()){
+        output = QString(compileProcess->readAllStandardError());
+    }else{
+        output = QString(compileProcess->readAllStandardOutput());
+    }
+
+    compileOutput = output;
+
+    emit haveCompileOutput();
+}
+
+void Model::setCompilerPath(QString path){
+    compilerPath = path;
+    compilerPathSet = true;
+}
+
+void Model::setCompilerArguments(QString args){
+    compilerArguments = args.split(" ");
+}
+
+
+void Model::loadConfig(){
+    //TODO
+    compilerPathSet = true;
 }

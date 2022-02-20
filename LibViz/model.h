@@ -2,6 +2,7 @@
 #define MODEL_H
 
 #include <QObject>
+#include <QProcess>
 #include "modelkit.h"
 
 class Model : public QObject
@@ -23,14 +24,31 @@ public:
     void setEnumerator(int componentID, QString enumeratorName){components[componentID]->setEnumerator(enumeratorName);}
     void setMethod(int componentID, MethodType methodType, QString methodBody){components[componentID]->setMethod(methodType,methodBody);}
 
+    void setCompilerPath(QString path);
+    void setCompilerArguments(QString path);
+
+    QString getCompileOutput(){return compileOutput;}
+
 private:
     QMap<int,Component*> components;
     int lastID;
+    QString compilerPath;
+    QStringList compilerArguments;
+    bool compilerPathSet;
+    QProcess* compileProcess;
+    QString compileOutput;
 
     int newID() {return ++lastID;}
+    void loadConfig();
+
+public: void compile();
 
 signals:
+    void compilerPathNotSet();
+    void haveCompileOutput();
 
+private slots:
+    void compileFinished();
 };
 
 #endif // MODEL_H
