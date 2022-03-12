@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QProcess>
 #include "modelkit.h"
+#include "dataaccess.h"
 
 class Model : public QObject
 {
@@ -27,6 +28,10 @@ public:
     void setCompilerPath(QString path);
     void setCompilerArguments(QString path);
 
+    void run();
+    void compile();
+    void stopCompile();
+
     QString getCompileOutput(){return compileOutput;}
 
 private:
@@ -37,15 +42,15 @@ private:
     bool compilerPathSet;
     QProcess* compileProcess;
     QString compileOutput;
+    DataAccess dataAccess;
 
     int newID() {return ++lastID;}
     void loadConfig();
 
-public: void compile();
-
 signals:
     void compilerPathNotSet();
     void haveCompileOutput();
+    void compileProcessEnded();
 
 private slots:
     void compileFinished();

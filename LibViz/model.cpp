@@ -35,36 +35,54 @@ QString Model::generateSource(){
     foreach(Component* component, components){
         ts << component->getSource() << Qt::endl << Qt::endl;
     }
+
+    dataAccess.writeSource(source);
+
     return source;
+}
+
+#include <QDebug>
+void Model::run(){
+    compile();
+    compileProcess->waitForFinished();
+    qDebug()<<"run";
 }
 
 void Model::compile(){
     if(!compilerPathSet){
         emit compilerPathNotSet();
+        emit compileProcessEnded();
         return;
     }
 
-    if(compileProcess->state() == QProcess::Running || compileProcess->state() == QProcess::Starting){
-        compileProcess->kill();
-    }
+    compileProcess->kill();
+    compileProcess = new QProcess();
 
     compileProcess->start(compilerPath, compilerArguments);
 
     connect(compileProcess, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(compileFinished()));
+    connect(compileProcess, SIGNAL(errorOccurred(QProcess::ProcessError)), this, SLOT(compileFinished()));
+}
+
+void Model::stopCompile(){
+    compileProcess->kill();
+    compileProcess = new QProcess();
+    if(compileProcess->state() == QProcess::NotRunning){
+        emit compileProcessEnded();
+    }
 }
 
 void Model::compileFinished(){
     QString output;
 
-    if(compileProcess->exitCode()){
-        output = QString(compileProcess->readAllStandardError());
-    }else{
-        output = QString(compileProcess->readAllStandardOutput());
-    }
+    output = QString(compileProcess->readAllStandardError());
+    if(!output.size()) output = compileProcess->errorString();
+    if(!output.size()) output = QString(compileProcess->readAllStandardOutput());
 
     compileOutput = output;
 
     emit haveCompileOutput();
+    emit compileProcessEnded();
 }
 
 void Model::setCompilerPath(QString path){
@@ -79,5 +97,5 @@ void Model::setCompilerArguments(QString args){
 
 void Model::loadConfig(){
     //TODO
-    compilerPathSet = true;
+    compilerPathSet = false;
 }

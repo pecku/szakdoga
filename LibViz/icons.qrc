@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/stop_button.svg</file>
+        <file>icons/build_button.svg</file>
+        <file>icons/run_button.svg</file>
+    </qresource>
+</RCC>

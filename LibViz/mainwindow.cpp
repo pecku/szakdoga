@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     model = new Model();
     connect(model, SIGNAL(haveCompileOutput()), this, SLOT(showCompileOutput()));
+    connect(model, SIGNAL(compileProcessEnded()), this, SLOT(allowCompile()));
+    connect(model, SIGNAL(compilerPathNotSet()), this, SLOT(showCompilerPathWarning()));
 
     createComponentDialog = new CreateComponentDialog();
     connect(createComponentDialog,SIGNAL(accepted()),this,SLOT(createComponent()));
@@ -17,6 +19,9 @@ MainWindow::MainWindow(QWidget *parent)
     centralSplitter = new QSplitter(Qt::Horizontal);
     centralSplitter->setContentsMargins(4,4,4,4);
     setCentralWidget(centralSplitter);
+
+    buildSplitter = new QSplitter(Qt::Vertical);
+    buildSplitter->setContentsMargins(4,4,4,4);
 
     toolBox = new QToolBox();
     centralSplitter->addWidget(toolBox);
@@ -31,13 +36,8 @@ MainWindow::MainWindow(QWidget *parent)
     listView->setStyleSheet("QListView::item {height:40px;border:2px solid gray;border-radius:5px;font-weight:bolder;} QListView::item::selected {color:black;}");
     centralSplitter->addWidget(listView);
 
-    sourceTextBrowser = new QTextBrowser();
-    centralSplitter->addWidget(sourceTextBrowser);
-
-    compileOutputBrowser = new QTextBrowser();
-    centralSplitter->addWidget(compileOutputBrowser);
-
     initMenuBar();
+    initBuildToolBar();
 }
 
 void MainWindow::createComponent(){
@@ -80,15 +80,40 @@ void MainWindow::initMenuBar(){
 
     QMenu* buildMenu = new QMenu("Build");
     menuBar->addMenu(buildMenu);
-    QAction* compileAction = new QAction("Compile Source");
-    buildMenu->addAction(compileAction);
-    connect(compileAction,SIGNAL(triggered()),this,SLOT(modelCompile()));
+    runAction = new QAction(QIcon(":/icons/run_button.svg"),"Run");
+    buildMenu->addAction(runAction);
+    buildAction = new QAction(QIcon(":/icons/build_button.svg"),"Build");
+    buildMenu->addAction(buildAction);
+    stopCompileAction = new QAction(QIcon(":/icons/stop_button.svg"),"Stop compile");
+    buildMenu->addAction(stopCompileAction);
+    stopCompileAction->setDisabled(true);
+    connect(runAction,SIGNAL(triggered()),this,SLOT(modelRun()));
+    connect(buildAction,SIGNAL(triggered()),this,SLOT(modelCompile()));
+    connect(stopCompileAction,SIGNAL(triggered()),this,SLOT(modelStopCompile()));
 
     QMenu* settingsMenu = new QMenu("Settings");
     menuBar->addMenu(settingsMenu);
     QAction* settingsAction = new QAction("Settings");
     settingsMenu->addAction(settingsAction);
     connect(settingsAction,SIGNAL(triggered()),this,SLOT(showSettingsDialog()));
+}
+
+void MainWindow::initBuildToolBar(){
+    sourceTextBrowser = new QTextBrowser();
+    compileOutputBrowser = new QTextBrowser();
+
+    buildToolBar = new QToolBar();
+    buildToolBar->setToolButtonStyle(Qt::ToolButtonIconOnly);
+
+    buildToolBar->addAction(runAction);
+    buildToolBar->addAction(buildAction);
+    buildToolBar->addAction(stopCompileAction);
+
+    buildSplitter->addWidget(sourceTextBrowser);
+    buildSplitter->addWidget(buildToolBar);
+    buildSplitter->addWidget(compileOutputBrowser);
+
+    centralSplitter->addWidget(buildSplitter);
 }
 
 void MainWindow::generateSource(){
@@ -109,12 +134,36 @@ void MainWindow::updateSettings(){
     model->setCompilerArguments(settingsDialog->getArguments());
 }
 
+void MainWindow::modelRun(){
+    runAction->setDisabled(true);
+    buildAction->setDisabled(true);
+    stopCompileAction->setEnabled(true);
+    model->run();
+}
+
 void MainWindow::modelCompile(){
+    runAction->setDisabled(true);
+    buildAction->setDisabled(true);
+    stopCompileAction->setEnabled(true);
     model->compile();
+}
+
+void MainWindow::modelStopCompile(){
+    model->stopCompile();
 }
 
 void MainWindow::showCompileOutput(){
     compileOutputBrowser->setPlainText(model->getCompileOutput());
+}
+
+void MainWindow::allowCompile(){
+    runAction->setEnabled(true);
+    buildAction->setEnabled(true);
+    stopCompileAction->setDisabled(true);
+}
+
+void MainWindow::showCompilerPathWarning(){
+    compileOutputBrowser->setPlainText("Compiler path not set! Please go to the Settings menu and configure the compiler.");
 }
 
 MainWindow::~MainWindow()

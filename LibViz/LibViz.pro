@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     componentwidget.cpp \
     createcomponentdialog.cpp \
+    dataaccess.cpp \
     enumeratorwidget.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
 HEADERS += \
     componentwidget.h \
     createcomponentdialog.h \
+    dataaccess.h \
     enumeratorwidget.h \
     mainwindow.h \
     memberwidget.h \
@@ -39,3 +41,6 @@ HEADERS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    icons.qrc

@@ -8,6 +8,7 @@
 #include <QMenuBar>
 #include <QListView>
 #include <QStringListModel>
+#include <QToolBar>
 
 #include "procedurewidget.h"
 #include "enumeratorwidget.h"
@@ -45,6 +46,8 @@ private:
     SettingsDialog* settingsDialog;
     QMenuBar* menuBar;
     QSplitter* centralSplitter;
+    QSplitter* buildSplitter;
+    QToolBar* buildToolBar;
     QToolBox* toolBox;
     QListView* listView;
     QTextBrowser* sourceTextBrowser;
@@ -52,7 +55,12 @@ private:
     QVector<ProcedureWidget*> procedureWidgets;
     QVector<EnumeratorWidget*> enumeratorWidgets;
 
+    QAction* runAction;
+    QAction* buildAction;
+    QAction* stopCompileAction;
+
     void initMenuBar();
+    void initBuildToolBar();
 
     void asd();
 
@@ -62,7 +70,11 @@ private slots:
     void showSettingsDialog();
     void updateSettings();
     void generateSource();
+    void modelRun();
     void modelCompile();
+    void modelStopCompile();
     void showCompileOutput();
+    void allowCompile();
+    void showCompilerPathWarning();
 };
 #endif // MAINWINDOW_H
