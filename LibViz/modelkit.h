@@ -22,7 +22,7 @@ static const QMap<ComponentType,QString> componentTypeNameStrings = {
 };
 
 static const QMap<MethodType,QString> methodHeaderStrings = {
-    {DESTRUCTOR, "destructor()"},
+    {DESTRUCTOR, "()"},
     {NEUTRAL, "neutral()"},
     {ADD, "add()"},
     {FUNC, "func()"},
@@ -42,6 +42,7 @@ struct Member{
 };
 
 class Component{
+    friend class Main;
 private:
     QString name;
     ComponentType type;
@@ -66,6 +67,13 @@ public:
     void setMember(int id, QString type, QString name){members[id].type = type; members[id].name = name;}
     void createMember(int id){members[id] = Member();}
     void deleteMember(int id){members.remove(id);}
+};
+
+class Main{
+private:
+    QMap<int, Component*> components;
+public:
+    QString getSource();
 };
 
 #endif // MODELKIT_H
