@@ -8,6 +8,7 @@
 #include <QMenuBar>
 #include <QListWidget>
 #include <QToolBar>
+#include <QMessageBox>
 
 #include "procedurewidget.h"
 #include "enumeratorwidget.h"
@@ -65,6 +66,7 @@ private:
 private slots:
     void showCreateComponentDialog();
     void createComponent();
+    void deleteComponent();
     void createCodeBlock();
     void showSettingsDialog();
     void updateSettings();

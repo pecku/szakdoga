@@ -26,14 +26,14 @@ void MainWindow::createComponent(){
     QString name = createComponentDialog->getName();
     ComponentType componentType = (ComponentType)createComponentDialog->getComponent().toInt();
     if(componentType == COUNTING || componentType == LINSEARCH || componentType == MAXSEARCH || componentType == SELECTION || componentType == SUMMATION){
-        ProcedureWidget* procedure = new ProcedureWidget(model->createComponent(name, componentType),name,componentType,model);
+        int id = model->createComponent(name, componentType);
+        ProcedureWidget* procedure = new ProcedureWidget(id,name,componentType,model);
         toolBox->addItem(procedure,name);
         procedureWidgets.push_back(procedure);
         foreach(EnumeratorWidget* enorw, enumeratorWidgets){
             procedure->addEnumeratorChoice(enorw->getName());
         }
-        listView->model()->insertRow(listView->model()->rowCount());
-        listView->model()->setData(listView->model()->index(listView->model()->rowCount()-1,0), name);
+        new QListWidgetItem(name,listWidget,id);
     }else{
         EnumeratorWidget* enumerator = new EnumeratorWidget(model->createComponent(name, componentType),name,componentType,model);
         toolBox->addItem(enumerator,name);
@@ -42,6 +42,36 @@ void MainWindow::createComponent(){
             procw->addEnumeratorChoice(name);
         }
     }
+}
+
+void MainWindow::deleteComponent(){
+    ComponentWidget* component = qobject_cast<ComponentWidget*>(toolBox->currentWidget());
+    if(component == nullptr) return;
+
+    QMessageBox msg(QMessageBox::Icon::Question, "Delete Component", "Sure you want to delete " + component->getName() + "?", QMessageBox::Ok | QMessageBox::Cancel, this);
+    msg.setDefaultButton(QMessageBox::Cancel);
+    int msg_res = msg.exec();
+
+    if(msg_res != QMessageBox::Ok) return;
+
+    int id = component->getID();
+    toolBox->removeItem(toolBox->currentIndex());
+    procedureWidgets.removeAll(component);
+    procedureWidgets.squeeze();
+    enumeratorWidgets.removeAll(component);
+    enumeratorWidgets.squeeze();
+    model->deleteComponent(id);
+
+    QListWidgetItem* item = nullptr;
+    for(int i = 0; i < listWidget->count(); i++){
+        if(listWidget->item(i)->type() == id){
+            item = listWidget->item(i);
+            break;
+        }
+    }
+    listWidget->takeItem(listWidget->row(item));
+
+    //TODO delete enumerator from procedure list
 }
 
 void MainWindow::createCodeBlock(){
@@ -93,6 +123,7 @@ void MainWindow::initMenuBar(){
     menuBar->addMenu(createMenu);
     createMenu->addAction(createComponentAction);
     createMenu->addAction(createCodeBlockAction);
+    createMenu->addAction(deleteComponentAction);
 
     QMenu* generateMenu = new QMenu("Generate");
     menuBar->addMenu(generateMenu);

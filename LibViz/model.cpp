@@ -31,6 +31,10 @@ void Model::modifyMember(int componentID, int memberID, QString type, QString na
     components[componentID]->setMember(memberID, type, name);
 }
 
+void Model::deleteComponent(int componentID){
+    components.remove(componentID);
+}
+
 void Model::deleteCodeBlock(int codeBlockID){
     codeblocks.remove(codeBlockID);
 }

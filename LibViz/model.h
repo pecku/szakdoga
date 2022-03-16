@@ -19,6 +19,7 @@ public:
 
     void modifyMember(int componentID, int memberID, QString type, QString name);
 
+    void deleteComponent(int componentID);
     void deleteCodeBlock(int codeBlockID);
     void deleteMember(int componentID, int memberID);
 
