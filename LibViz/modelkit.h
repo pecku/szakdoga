@@ -69,11 +69,12 @@ public:
     void deleteMember(int id){members.remove(id);}
 };
 
-class Main{
+class CodeBlock{
 private:
-    QMap<int, Component*> components;
+    QString code = "";
 public:
-    QString getSource();
+    QString getSource(){return code;}
+    void setCode(QString code){this->code = code;}
 };
 
 #endif // MODELKIT_H

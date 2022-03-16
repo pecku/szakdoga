@@ -15,6 +15,12 @@ int Model::createComponent(QString name, ComponentType type){
     return componentID;
 }
 
+int Model::createCodeBlock(){
+    int codeBlockID = newID();
+    codeblocks.insert(codeBlockID, new CodeBlock());
+    return codeBlockID;
+}
+
 int Model::createMember(int componentID){
     int memberID = newID();
     components[componentID]->createMember(memberID);
@@ -23,6 +29,10 @@ int Model::createMember(int componentID){
 
 void Model::modifyMember(int componentID, int memberID, QString type, QString name){
     components[componentID]->setMember(memberID, type, name);
+}
+
+void Model::deleteCodeBlock(int codeBlockID){
+    codeblocks.remove(codeBlockID);
 }
 
 void Model::deleteMember(int componentID, int memberID){

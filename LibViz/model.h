@@ -14,8 +14,10 @@ public:
 
     QString generateSource();
     int createComponent(QString name, ComponentType type);
+    int createCodeBlock();
     int createMember(int componentID);
     void modifyMember(int componentID, int memberID, QString type, QString name);
+    void deleteCodeBlock(int codeBlockID);
     void deleteMember(int componentID, int memberID);
 
     void setItem(int componentID, QString item){components[componentID]->setItem(item);}
@@ -24,6 +26,8 @@ public:
     void setCompare(int componentID, QString compare){components[componentID]->setCompare(compare);}
     void setEnumerator(int componentID, QString enumeratorName){components[componentID]->setEnumerator(enumeratorName);}
     void setMethod(int componentID, MethodType methodType, QString methodBody){components[componentID]->setMethod(methodType,methodBody);}
+
+    void setCode(int codeBlockID, QString code){codeblocks[codeBlockID]->setCode(code);}
 
     void setCompilerPath(QString path);
     void setCompilerArguments(QString path);
@@ -36,6 +40,7 @@ public:
 
 private:
     QMap<int,Component*> components;
+    QMap<int,CodeBlock*> codeblocks;
     int lastID;
     QString compilerPath;
     QStringList compilerArguments;

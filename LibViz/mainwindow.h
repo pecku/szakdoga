@@ -67,6 +67,7 @@ private:
 private slots:
     void showCreateComponentDialog();
     void createComponent();
+    void createCodeBlock();
     void showSettingsDialog();
     void updateSettings();
     void generateSource();

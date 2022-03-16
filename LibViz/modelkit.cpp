@@ -52,20 +52,3 @@ QString Component::getSource(){
 
     return source;
 }
-
-QString Main::getSource(){
-    QString source;
-    QTextStream ts(&source);
-
-    ts << "int main(){";
-
-    foreach(Component* component, components){
-        ts << "component = new component;";
-        ts << "component->addEnumerator(" << component->enor << ");";
-        ts << "component->run();";
-    }
-
-    ts << Qt::endl << "}";
-
-    return source;
-}

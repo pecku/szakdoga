@@ -62,6 +62,12 @@ void MainWindow::createComponent(){
     }
 }
 
+void MainWindow::createCodeBlock(){
+    int id = model->createCodeBlock();
+    QListWidgetItem* item = new QListWidgetItem("",listWidget,id);
+    item->setFlags(item->flags() | Qt::ItemIsEditable);
+    connect(listWidget,SIGNAL(itemChanged(QListWidgetItem*)),this,SLOT(listItemChanged(QListWidgetItem*)));
+}
 void MainWindow::initMenuBar(){
     menuBar = new QMenuBar();
     setMenuBar(menuBar);
