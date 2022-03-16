@@ -16,7 +16,9 @@ public:
     int createComponent(QString name, ComponentType type);
     int createCodeBlock();
     int createMember(int componentID);
+
     void modifyMember(int componentID, int memberID, QString type, QString name);
+
     void deleteCodeBlock(int codeBlockID);
     void deleteMember(int componentID, int memberID);
 
@@ -32,6 +34,8 @@ public:
     void setCompilerPath(QString path);
     void setCompilerArguments(QString path);
 
+    void setMainIdOrder(QVector<int> ids){mainIdOrder = ids;}
+
     void run();
     void compile();
     void stopCompile();
@@ -41,6 +45,7 @@ public:
 private:
     QMap<int,Component*> components;
     QMap<int,CodeBlock*> codeblocks;
+    QVector<int> mainIdOrder;
     int lastID;
     QString compilerPath;
     QStringList compilerArguments;
@@ -51,6 +56,7 @@ private:
 
     int newID() {return ++lastID;}
     void loadConfig();
+    QString generateMainSource();
 
 signals:
     void compilerPathNotSet();

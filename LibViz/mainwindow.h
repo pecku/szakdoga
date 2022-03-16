@@ -6,8 +6,7 @@
 #include <QToolBox>
 #include <QTextBrowser>
 #include <QMenuBar>
-#include <QListView>
-#include <QStringListModel>
+#include <QListWidget>
 #include <QToolBar>
 
 #include "procedurewidget.h"
@@ -15,22 +14,6 @@
 #include "createcomponentdialog.h"
 #include "settingsdialog.h"
 #include "model.h"
-
-class MyStringListModel : public QStringListModel{
-    Q_OBJECT
-
-public:
-    MyStringListModel(QWidget *parent = nullptr) : QStringListModel(parent){}
-
-    Qt::ItemFlags flags(const QModelIndex& ind) const override {
-        if(ind.row() < 0){
-            return Qt::ItemFlags({Qt::ItemIsDragEnabled,Qt::ItemIsEditable,Qt::ItemIsEnabled,
-                                  Qt::ItemIsSelectable,Qt::ItemNeverHasChildren,Qt::ItemIsDropEnabled});
-        }
-        return Qt::ItemFlags({Qt::ItemIsDragEnabled,Qt::ItemIsEditable,Qt::ItemIsEnabled,
-                              Qt::ItemIsSelectable,Qt::ItemNeverHasChildren});
-    }
-};
 
 class MainWindow : public QMainWindow
 {
@@ -42,27 +25,42 @@ public:
 
 private:
     Model* model;
+
     CreateComponentDialog* createComponentDialog;
     SettingsDialog* settingsDialog;
+
     QMenuBar* menuBar;
+
     QSplitter* centralSplitter;
+    QWidget* componentEditorWidget;
+    QVBoxLayout* componentEditorLayout;
     QSplitter* buildSplitter;
+
+    QToolBar* componentEditorToolBar;
     QToolBar* buildToolBar;
     QToolBox* toolBox;
-    QListView* listView;
+    QListWidget* listWidget;
     QTextBrowser* sourceTextBrowser;
     QTextBrowser* compileOutputBrowser;
+
     QVector<ProcedureWidget*> procedureWidgets;
     QVector<EnumeratorWidget*> enumeratorWidgets;
 
+    QAction* createComponentAction;
+    QAction* deleteComponentAction;
+    QAction* createCodeBlockAction;
+    QAction* generateAction;
     QAction* runAction;
     QAction* buildAction;
     QAction* stopCompileAction;
+    QAction* settingsAction;
 
+    void initDialogs();
+    void initActions();
     void initMenuBar();
-    void initBuildToolBar();
-
-    void asd();
+    void initComponentEditorSegment();
+    void initListSegment();
+    void initSourceSegment();
 
 private slots:
     void showCreateComponentDialog();
@@ -77,5 +75,6 @@ private slots:
     void showCompileOutput();
     void allowCompile();
     void showCompilerPathWarning();
+    void listItemChanged(QListWidgetItem* item);
 };
 #endif // MAINWINDOW_H

@@ -10,34 +10,16 @@ MainWindow::MainWindow(QWidget *parent)
     connect(model, SIGNAL(compileProcessEnded()), this, SLOT(allowCompile()));
     connect(model, SIGNAL(compilerPathNotSet()), this, SLOT(showCompilerPathWarning()));
 
-    createComponentDialog = new CreateComponentDialog();
-    connect(createComponentDialog,SIGNAL(accepted()),this,SLOT(createComponent()));
-
-    settingsDialog = new SettingsDialog();
-    connect(settingsDialog,SIGNAL(accepted()),this,SLOT(updateSettings()));
-
     centralSplitter = new QSplitter(Qt::Horizontal);
     centralSplitter->setContentsMargins(4,4,4,4);
     setCentralWidget(centralSplitter);
 
-    buildSplitter = new QSplitter(Qt::Vertical);
-    buildSplitter->setContentsMargins(4,4,4,4);
-
-    toolBox = new QToolBox();
-    centralSplitter->addWidget(toolBox);
-    toolBox->resize(width()/3,0);
-
-    listView = new QListView();
-    listView->setDragEnabled(true);
-    listView->setDropIndicatorShown(true);
-    listView->setAcceptDrops(true);
-    listView->setDefaultDropAction(Qt::MoveAction);
-    listView->setModel(new MyStringListModel());
-    listView->setStyleSheet("QListView::item {height:40px;border:2px solid gray;border-radius:5px;font-weight:bolder;} QListView::item::selected {color:black;}");
-    centralSplitter->addWidget(listView);
-
+    initDialogs();
+    initActions();
     initMenuBar();
-    initBuildToolBar();
+    initComponentEditorSegment();
+    initListSegment();
+    initSourceSegment();
 }
 
 void MainWindow::createComponent(){
@@ -68,49 +50,106 @@ void MainWindow::createCodeBlock(){
     item->setFlags(item->flags() | Qt::ItemIsEditable);
     connect(listWidget,SIGNAL(itemChanged(QListWidgetItem*)),this,SLOT(listItemChanged(QListWidgetItem*)));
 }
+
+void MainWindow::listItemChanged(QListWidgetItem* item){
+    model->setCode(item->type(), item->text());
+}
+
+void MainWindow::initDialogs(){
+    createComponentDialog = new CreateComponentDialog();
+    connect(createComponentDialog,SIGNAL(accepted()),this,SLOT(createComponent()));
+
+    settingsDialog = new SettingsDialog();
+    connect(settingsDialog,SIGNAL(accepted()),this,SLOT(updateSettings()));
+}
+
+void MainWindow::initActions(){
+    createComponentAction = new QAction(QIcon(":/icons/new_button.svg"),"Create Component");
+    deleteComponentAction = new QAction(QIcon(":/icons/delete_button.svg"), "Delete Selected Component");
+    createCodeBlockAction = new QAction(QIcon(":/icons/plus_button.svg"),"Create Code Block");
+    generateAction = new QAction(QIcon(":/icons/generate_button.svg"),"Generate Source");
+    runAction = new QAction(QIcon(":/icons/run_button.svg"),"Run");
+    buildAction = new QAction(QIcon(":/icons/build_button.svg"),"Build");
+    stopCompileAction = new QAction(QIcon(":/icons/stop_button.svg"),"Stop compile");
+    settingsAction = new QAction(QIcon(":/icons/settings_button.svg"),"Settings");
+
+    stopCompileAction->setDisabled(true);
+
+    connect(createComponentAction,SIGNAL(triggered()),this,SLOT(showCreateComponentDialog()));
+    connect(deleteComponentAction,SIGNAL(triggered()),this,SLOT(deleteComponent()));
+    connect(createCodeBlockAction,SIGNAL(triggered()),this,SLOT(createCodeBlock()));
+    connect(generateAction,SIGNAL(triggered()),this,SLOT(generateSource()));
+    connect(runAction,SIGNAL(triggered()),this,SLOT(modelRun()));
+    connect(buildAction,SIGNAL(triggered()),this,SLOT(modelCompile()));
+    connect(stopCompileAction,SIGNAL(triggered()),this,SLOT(modelStopCompile()));
+    connect(settingsAction,SIGNAL(triggered()),this,SLOT(showSettingsDialog()));
+}
+
 void MainWindow::initMenuBar(){
     menuBar = new QMenuBar();
     setMenuBar(menuBar);
 
     QMenu* createMenu = new QMenu("Create");
     menuBar->addMenu(createMenu);
-    QAction* createComponentAction = new QAction("Create Component");
     createMenu->addAction(createComponentAction);
-    connect(createComponentAction,SIGNAL(triggered()),this,SLOT(showCreateComponentDialog()));
+    createMenu->addAction(createCodeBlockAction);
 
     QMenu* generateMenu = new QMenu("Generate");
     menuBar->addMenu(generateMenu);
-    QAction* generateAction = new QAction("Generate Source");
     generateMenu->addAction(generateAction);
-    connect(generateAction,SIGNAL(triggered()),this,SLOT(generateSource()));
 
     QMenu* buildMenu = new QMenu("Build");
     menuBar->addMenu(buildMenu);
-    runAction = new QAction(QIcon(":/icons/run_button.svg"),"Run");
     buildMenu->addAction(runAction);
-    buildAction = new QAction(QIcon(":/icons/build_button.svg"),"Build");
     buildMenu->addAction(buildAction);
-    stopCompileAction = new QAction(QIcon(":/icons/stop_button.svg"),"Stop compile");
     buildMenu->addAction(stopCompileAction);
-    stopCompileAction->setDisabled(true);
-    connect(runAction,SIGNAL(triggered()),this,SLOT(modelRun()));
-    connect(buildAction,SIGNAL(triggered()),this,SLOT(modelCompile()));
-    connect(stopCompileAction,SIGNAL(triggered()),this,SLOT(modelStopCompile()));
 
     QMenu* settingsMenu = new QMenu("Settings");
     menuBar->addMenu(settingsMenu);
-    QAction* settingsAction = new QAction("Settings");
     settingsMenu->addAction(settingsAction);
-    connect(settingsAction,SIGNAL(triggered()),this,SLOT(showSettingsDialog()));
 }
 
-void MainWindow::initBuildToolBar(){
+void MainWindow::initComponentEditorSegment(){
+    componentEditorWidget = new QWidget();
+    componentEditorLayout = new QVBoxLayout();
+    componentEditorToolBar = new QToolBar();
+    componentEditorToolBar->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    QLabel* componentEditorLabel = new QLabel("Component Editor");
+    componentEditorLabel->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Preferred);
+    componentEditorToolBar->addWidget(componentEditorLabel);
+    toolBox = new QToolBox();
+    componentEditorLayout->addWidget(componentEditorToolBar);
+    componentEditorLayout->addWidget(toolBox);
+    componentEditorWidget->setLayout(componentEditorLayout);
+    centralSplitter->addWidget(componentEditorWidget);
+    componentEditorWidget->resize(width()/3,0);
+
+    componentEditorToolBar->addAction(createComponentAction);
+    componentEditorToolBar->addAction(deleteComponentAction);
+}
+
+void MainWindow::initListSegment(){
+    listWidget = new QListWidget();
+    listWidget->setDragEnabled(true);
+    listWidget->setDropIndicatorShown(true);
+    listWidget->setAcceptDrops(true);
+    listWidget->setDefaultDropAction(Qt::MoveAction);
+    listWidget->setStyleSheet("QListWidget::item {height:40px;border:2px solid gray;border-radius:5px;font-weight:bolder;} QListWidget::item::selected {color:black;}");
+    listWidget->setWordWrap(true);
+    centralSplitter->addWidget(listWidget);
+}
+
+void MainWindow::initSourceSegment(){
+    buildSplitter = new QSplitter(Qt::Vertical);
+
     sourceTextBrowser = new QTextBrowser();
     compileOutputBrowser = new QTextBrowser();
 
     buildToolBar = new QToolBar();
     buildToolBar->setToolButtonStyle(Qt::ToolButtonIconOnly);
 
+    buildToolBar->addAction(generateAction);
+    buildToolBar->addSeparator();
     buildToolBar->addAction(runAction);
     buildToolBar->addAction(buildAction);
     buildToolBar->addAction(stopCompileAction);
@@ -123,6 +162,25 @@ void MainWindow::initBuildToolBar(){
 }
 
 void MainWindow::generateSource(){
+    bool allgood = true;
+
+    foreach(ProcedureWidget* pw, procedureWidgets){
+        allgood = allgood && pw->checkRequired();
+    }
+    foreach(EnumeratorWidget* ew, enumeratorWidgets){
+        allgood = allgood && ew->checkRequired();
+    }
+
+    if(!allgood){
+        sourceTextBrowser->setText("Missing required fields! Please check your components!");
+        return;
+    }
+
+    QVector<int> ids;
+    for(int i = 0; i < listWidget->count(); i++){
+        ids.push_back(listWidget->item(i)->type());
+    }
+    model->setMainIdOrder(ids);
     sourceTextBrowser->setText(model->generateSource());
 }
 

@@ -42,16 +42,41 @@ void Model::deleteMember(int componentID, int memberID){
 QString Model::generateSource(){
     QString source;
     QTextStream ts(&source);
+
+    ts << "#include <iostream>" << Qt::endl << Qt::endl;
+
     foreach(Component* component, components){
         ts << component->getSource() << Qt::endl << Qt::endl;
     }
+
+    ts << generateMainSource();
 
     dataAccess.writeSource(source);
 
     return source;
 }
 
-#include <QDebug>
+QString Model::generateMainSource(){
+    QString source;
+    QTextStream ts(&source);
+
+    ts << "int main(){" << Qt::endl;
+
+    foreach(int id, mainIdOrder){
+        ts << "\t";
+        if(components.contains(id)){
+            ts << id;
+        }else{
+            ts << codeblocks[id]->getSource();
+        }
+        ts << ";" << Qt::endl;
+    }
+
+    ts << "}" << Qt::endl;
+
+    return source;
+}
+
 void Model::run(){
     compile();
     compileProcess->waitForFinished();
