@@ -16,6 +16,9 @@ public:
 
     QString getName(){return name;}
     ComponentType getType(){return type;}
+    int getID(){return id;}
+
+    virtual bool checkRequired() = 0;
 
 private:
     QString name;
@@ -24,10 +27,6 @@ private:
     QLabel* nameLabel;
     QLabel* parentClassLabel;
     QVBoxLayout* memberLayout;
-    QLabel* itemTypeLabel;
-    QLineEdit* itemTypeLineEdit;
-    QLabel* destructorLabel;
-    PopUpTextEdit* destructorTextEdit;
 
     void initSegments();
 
@@ -37,6 +36,11 @@ protected:
     Model* model;
     QGridLayout* gridlayout;
     QVBoxLayout* vboxlayout;
+
+    QLabel* itemTypeLabel;
+    QLineEdit* itemTypeLineEdit;
+    QLabel* destructorLabel;
+    PopUpTextEdit* destructorTextEdit;
 
 private slots:
     void onAddNewMemberClicked();

@@ -108,6 +108,64 @@ void ProcedureWidget::initSegments(){
     connect(whileCondTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
 }
 
+bool ProcedureWidget::checkRequired(){
+    bool allgood = true;
+    itemTypeLineEdit->setStyleSheet("");
+    if(itemTypeLineEdit->text() == ""){
+        itemTypeLineEdit->setStyleSheet("border:2px solid red;");
+        allgood = false;
+    }
+    enorComboBox->setStyleSheet("");
+    if(enorComboBox->currentIndex() < 0){
+        enorComboBox->setStyleSheet("border:2px solid red;");
+        allgood = false;
+    }
+    if(valueLineEdit != nullptr ){
+        valueLineEdit->setStyleSheet("");
+        if(valueLineEdit->text() == ""){
+            valueLineEdit->setStyleSheet("border:2px solid red;");
+            allgood = false;
+        }
+    }
+    if(neutralTextEdit != nullptr ){
+        neutralTextEdit->setStyleSheet("");
+        if(neutralTextEdit->toPlainText() == ""){
+            neutralTextEdit->setStyleSheet("border:2px solid red;");
+            allgood = false;
+        }
+    }
+    if(addTextEdit != nullptr){
+        addTextEdit->setStyleSheet("");
+        if(addTextEdit->toPlainText() == ""){
+            addTextEdit->setStyleSheet("border:2px solid red;");
+            allgood = false;
+        }
+    }
+    if(funcTextEdit != nullptr){
+        funcTextEdit->setStyleSheet("");
+        if(funcTextEdit->toPlainText() == ""){
+            funcTextEdit->setStyleSheet("border:2px solid red;");
+            allgood = false;
+        }
+    }
+    if(condTextEdit != nullptr){
+        condTextEdit->setStyleSheet("");
+        if(type == LINSEARCH && condTextEdit->toPlainText() == ""){
+            condTextEdit->setStyleSheet("border:2px solid red;");
+            allgood = false;
+        }
+    }
+    if(type == DEFAULT){
+        firstTextEdit->setStyleSheet("");
+        if(firstTextEdit->toPlainText() == ""){
+            firstTextEdit->setStyleSheet("border:2px solid red;");
+            allgood = false;
+        }
+    }
+
+    return allgood;
+}
+
 void ProcedureWidget::optimistChanged(){
     model->setOptimist(this->id,qobject_cast<QCheckBox*>(sender())->isChecked());
 }

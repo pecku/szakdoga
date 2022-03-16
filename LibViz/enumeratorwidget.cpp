@@ -46,3 +46,39 @@ void EnumeratorWidget::initSegments(){
         connect(currentTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
     }
 }
+
+bool EnumeratorWidget::checkRequired(){
+    itemTypeLineEdit->setStyleSheet("");
+
+    bool allgood = true;
+
+    if(itemTypeLineEdit->text() == ""){
+        itemTypeLineEdit->setStyleSheet("border:2px solid red;");
+        allgood = false;
+    }
+    if(type == DEFAULT){
+        firstTextEdit->setStyleSheet("");
+        nextTextEdit->setStyleSheet("");
+        endTextEdit->setStyleSheet("");
+        currentTextEdit->setStyleSheet("");
+
+        if(firstTextEdit->toPlainText() == ""){
+            firstTextEdit->setStyleSheet("border:2px solid red;");
+            allgood = false;
+        }
+        if(nextTextEdit->toPlainText() == ""){
+            nextTextEdit->setStyleSheet("border:2px solid red;");
+            allgood = false;
+        }
+        if(endTextEdit->toPlainText() == ""){
+            endTextEdit->setStyleSheet("border:2px solid red;");
+            allgood = false;
+        }
+        if(currentTextEdit->toPlainText() == ""){
+            currentTextEdit->setStyleSheet("border:2px solid red;");
+            allgood = false;
+        }
+    }
+
+    return allgood;
+}

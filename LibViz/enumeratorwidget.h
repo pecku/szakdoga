@@ -10,6 +10,8 @@ class EnumeratorWidget : public ComponentWidget
 public:
     explicit EnumeratorWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);
 
+    bool checkRequired();
+
 private:
     void initSegments();
 

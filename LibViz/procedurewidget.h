@@ -15,6 +15,7 @@ public:
     explicit ProcedureWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);
 
     void addEnumeratorChoice(QString enumeratorName);
+    bool checkRequired();
 
 private:
     void initSegments();
