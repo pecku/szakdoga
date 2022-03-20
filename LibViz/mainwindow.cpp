@@ -160,6 +160,15 @@ void MainWindow::initComponentEditorSegment(){
 }
 
 void MainWindow::initListSegment(){
+    listSegmentWidget = new QWidget();
+    listSegmentLayout = new QVBoxLayout();
+    listSegmentLayout->setSpacing(0);
+    listSegmentLayout->setContentsMargins(0,0,0,0);
+    listSegmentToolBar = new QToolBar();
+    QLabel* listSegmentLabel = new QLabel("Main List");
+    listSegmentLabel->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Preferred);
+    listSegmentToolBar->addWidget(listSegmentLabel);
+
     listWidget = new QListWidget();
     listWidget->setDragEnabled(true);
     listWidget->setDropIndicatorShown(true);
@@ -167,7 +176,16 @@ void MainWindow::initListSegment(){
     listWidget->setDefaultDropAction(Qt::MoveAction);
     listWidget->setStyleSheet("QListWidget::item {height:40px;border:2px solid gray;border-radius:5px;font-weight:bolder;} QListWidget::item::selected {color:black;}");
     listWidget->setWordWrap(true);
-    centralSplitter->addWidget(listWidget);
+
+    listSegmentLayout->addWidget(listSegmentToolBar);
+    listSegmentLayout->addWidget(listWidget);
+    listSegmentWidget->setLayout(listSegmentLayout);
+    centralSplitter->addWidget(listSegmentWidget);
+
+    listSegmentToolBar->addAction(createCodeBlockAction);
+    listSegmentToolBar->addAction(deleteListItemAction);
+
+    connect(listWidget,SIGNAL(itemSelectionChanged()),this,SLOT(changeSelectedComponent()));
 }
 
 void MainWindow::initSourceSegment(){

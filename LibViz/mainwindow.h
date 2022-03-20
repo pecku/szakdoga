@@ -35,9 +35,12 @@ private:
     QSplitter* centralSplitter;
     QWidget* componentEditorWidget;
     QVBoxLayout* componentEditorLayout;
+    QWidget* listSegmentWidget;
+    QVBoxLayout* listSegmentLayout;
     QSplitter* buildSplitter;
 
     QToolBar* componentEditorToolBar;
+    QToolBar* listSegmentToolBar;
     QToolBar* buildToolBar;
     QToolBox* toolBox;
     QListWidget* listWidget;
