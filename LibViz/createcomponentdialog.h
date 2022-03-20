@@ -7,7 +7,8 @@
 #include <QVBoxLayout>
 #include <QLineEdit>
 #include <QComboBox>
-#include "modelkit.h"
+#include <QLabel>
+#include "model.h"
 
 enum CreateComponentDialogMode{PROCEDURE,ENUMERATOR};
 
@@ -15,16 +16,18 @@ class CreateComponentDialog : public QDialog
 {
     Q_OBJECT
 public:
-    explicit CreateComponentDialog();
+    explicit CreateComponentDialog(Model* model);
     QString getName(){return nameLineEdit->text();}
     QVariant getComponent(){return componentTypeSelect->currentData();}
     void clear();
 
 private:
+    Model* model;
     QPushButton* okButton;
     QPushButton* cancelButton;
     QLineEdit* nameLineEdit;
     QComboBox* componentTypeSelect;
+    QLabel* errorLabel;
 
 private slots:
     void wantToAccept();

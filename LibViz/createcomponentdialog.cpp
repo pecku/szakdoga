@@ -1,6 +1,6 @@
 #include "createcomponentdialog.h"
 
-CreateComponentDialog::CreateComponentDialog() : QDialog()
+CreateComponentDialog::CreateComponentDialog(Model* model) : QDialog(), model(model)
 {
     okButton = new QPushButton("ok");
     cancelButton = new QPushButton("cancel");
@@ -11,6 +11,10 @@ CreateComponentDialog::CreateComponentDialog() : QDialog()
     componentTypeSelect = new QComboBox();
     componentTypeSelect->setPlaceholderText("type");
 
+    errorLabel = new QLabel();
+    errorLabel->setStyleSheet("color:red;");
+    errorLabel->hide();
+
     foreach(ComponentType componentType, componentTypeNameStrings.keys()){
         componentTypeSelect->addItem(componentTypeNameStrings[componentType],componentType);
     }
@@ -20,6 +24,7 @@ CreateComponentDialog::CreateComponentDialog() : QDialog()
 
     vboxlayout->addWidget(nameLineEdit);
     vboxlayout->addWidget(componentTypeSelect);
+    vboxlayout->addWidget(errorLabel);
     vboxlayout->addLayout(hboxlayout);
 
     hboxlayout->addWidget(okButton);
@@ -31,14 +36,25 @@ CreateComponentDialog::CreateComponentDialog() : QDialog()
 
 void CreateComponentDialog::wantToAccept(){
     bool acceptable = true;
+    errorLabel->hide();
     nameLineEdit->setStyleSheet("");
     componentTypeSelect->setStyleSheet("");
     if(nameLineEdit->text() == ""){
         nameLineEdit->setStyleSheet("border:2px solid red;");
+        errorLabel->setText("Please provide a name.");
+        errorLabel->setHidden(false);
         acceptable = false;
     }
     if(componentTypeSelect->currentIndex() < 0){
         componentTypeSelect->setStyleSheet("border:2px solid red;");
+        errorLabel->setText("Please provide a type.");
+        errorLabel->setHidden(false);
+        acceptable = false;
+    }
+    if(model->isComponentNameUsed(nameLineEdit->text())){
+        nameLineEdit->setStyleSheet("border:2px solid red;");
+        errorLabel->setText("The given name is already in use!");
+        errorLabel->setHidden(false);
         acceptable = false;
     }
     if(acceptable){
@@ -49,4 +65,7 @@ void CreateComponentDialog::wantToAccept(){
 void CreateComponentDialog::clear(){
     nameLineEdit->clear();
     componentTypeSelect->setCurrentIndex(-1);
+    errorLabel->hide();
+    nameLineEdit->setStyleSheet("");
+    componentTypeSelect->setStyleSheet("");
 }
