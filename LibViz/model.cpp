@@ -15,6 +15,15 @@ int Model::createComponent(QString name, ComponentType type){
     return componentID;
 }
 
+bool Model::isComponentNameUsed(QString name){
+    foreach(Component* component, components){
+        if(component->getName() == name){
+            return true;
+        }
+    }
+    return false;
+}
+
 bool Model::isObjectNameUsed(QString objectName){
     foreach(Component* component, components){
         if(component->getObjectName() == objectName){
@@ -146,6 +155,10 @@ void Model::setCompilerArguments(QString args){
 void Model::loadConfig(){
     //TODO
     compilerPathSet = false;
+void Model::setEnumerator(int componentID, int enumeratorID){
+    components[componentID]->setEnumerator(enumeratorID, components[enumeratorID]->getObjectName());
+}
+
 void Model::setObjectName(int componentID, QString objectName){
     Component* component = components[componentID];
     component->setObjectName(objectName);

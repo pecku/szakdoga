@@ -52,6 +52,7 @@ private:
 
     QAction* createComponentAction;
     QAction* deleteComponentAction;
+    QAction* deleteListItemAction;
     QAction* createCodeBlockAction;
     QAction* generateAction;
     QAction* runAction;
@@ -70,6 +71,7 @@ private slots:
     void showCreateComponentDialog();
     void createComponent();
     void deleteComponent();
+    void deleteListItem();
     void createCodeBlock();
     void showSettingsDialog();
     void updateSettings();
@@ -81,5 +83,6 @@ private slots:
     void allowCompile();
     void showCompilerPathWarning();
     void listItemChanged(QListWidgetItem* item);
+    void changeSelectedComponent();
 };
 #endif // MAINWINDOW_H

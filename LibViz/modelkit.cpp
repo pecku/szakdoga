@@ -1,7 +1,7 @@
 #include "modelkit.h"
 
 Component::Component(QString name, ComponentType type) : name(name), type(type){
-
+    enumeratorID = -1;
 }
 
 QString Component::getSource(){
@@ -51,4 +51,12 @@ QString Component::getSource(){
     ts << Qt::endl << "}";
 
     return source;
+}
+void Component::setEnumerator(int enumeratorID, QString enumeratorObjectName){
+    if(this->enumeratorID == -1){
+        this->enumeratorID = enumeratorID;
+        this->enumeratorObjectName = enumeratorObjectName;
+    }else if(this->enumeratorID == enumeratorID){
+        this->enumeratorObjectName = enumeratorObjectName;
+    }
 }

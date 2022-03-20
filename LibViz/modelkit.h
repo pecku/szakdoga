@@ -48,7 +48,7 @@ private:
     QString objectName;
     ComponentType type;
     QString item;
-    QString enor;
+    int enumeratorID;
     QString enumeratorObjectName;
     bool optimist;
     QString value;
@@ -60,13 +60,15 @@ public:
 
     QString getSource();
     QString getObjectName(){return objectName;}
+    QString getName(){return name;}
+    ComponentType getType(){return type;}
 
     void setObjectName(QString objectName){this->objectName = objectName;}
     void setItem(QString item){this->item = item;}
     void setValue(QString value){this->value = value;}
     void setOptimist(bool optimist){this->optimist = optimist;}
     void setCompare(QString compare){this->compare = compare;}
-    void setEnumerator(QString enumeratorName){this->enor = enumeratorName;}
+    void setEnumerator(int enumeratorID, QString enumeratorObjectName);
     void setMethod(MethodType methodType, QString methodBody){methods[methodType] = methodBody;}
     void setMember(int id, QString type, QString name){members[id].type = type; members[id].name = name;}
     void createMember(int id){members[id] = Member();}

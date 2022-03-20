@@ -14,7 +14,8 @@ class ProcedureWidget : public ComponentWidget
 public:
     explicit ProcedureWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);
 
-    void addEnumeratorChoice(QString enumeratorName);
+    void addEnumeratorChoice(QString enumeratorName, int enumeratorID);
+    void removeEnumeratorChouce(int enumeratorID);
     bool checkRequired();
 
 private:
@@ -62,6 +63,7 @@ private:
     PopUpTextEdit* whileCondTextEdit;
 
 private slots:
+    void enorChanged(int index);
     void optimistChanged();
     void valueChanged();
     void compareChanged();

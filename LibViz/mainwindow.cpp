@@ -31,15 +31,16 @@ void MainWindow::createComponent(){
         toolBox->addItem(procedure,name);
         procedureWidgets.push_back(procedure);
         foreach(EnumeratorWidget* enorw, enumeratorWidgets){
-            procedure->addEnumeratorChoice(enorw->getName());
+            procedure->addEnumeratorChoice(enorw->getName(), enorw->getID());
         }
-        new QListWidgetItem(name,listWidget,id);
+        (new QListWidgetItem(name,listWidget,id))->setData(Qt::UserRole,"component");
     }else{
-        EnumeratorWidget* enumerator = new EnumeratorWidget(model->createComponent(name, componentType),name,componentType,model);
+        int id = model->createComponent(name, componentType);
+        EnumeratorWidget* enumerator = new EnumeratorWidget(id,name,componentType,model);
         toolBox->addItem(enumerator,name);
         enumeratorWidgets.push_back(enumerator);
         foreach(ProcedureWidget* procw, procedureWidgets){
-            procw->addEnumeratorChoice(name);
+            procw->addEnumeratorChoice(name, id);
         }
     }
 }
@@ -71,22 +72,45 @@ void MainWindow::deleteComponent(){
     }
     listWidget->takeItem(listWidget->row(item));
 
-    //TODO delete enumerator from procedure list
+    ComponentType ct = component->getType();
+    if(ct == DEFAULT || ct == ARRAY || ct == INTERVAL || ct == STRINGSTREAM || ct == SEQINFILE){
+        foreach(ProcedureWidget* pw, procedureWidgets){
+            pw->removeEnumeratorChouce(id);
+        }
+    }
+}
+
+void MainWindow::deleteListItem(){
+    QListWidgetItem* currentItem = listWidget->currentItem();
+    if(currentItem->data(Qt::UserRole).toString() == "component"){
+        deleteComponent();
+    }else{
+        QMessageBox msg(QMessageBox::Icon::Question, "Delete Code Block", "Sure you want to delete the selected code block?", QMessageBox::Ok | QMessageBox::Cancel, this);
+        msg.setDefaultButton(QMessageBox::Cancel);
+        int msg_res = msg.exec();
+
+        if(msg_res != QMessageBox::Ok) return;
+
+        model->deleteCodeBlock(listWidget->currentItem()->type());
+        listWidget->takeItem(listWidget->currentRow());
+    }
 }
 
 void MainWindow::createCodeBlock(){
     int id = model->createCodeBlock();
     QListWidgetItem* item = new QListWidgetItem("",listWidget,id);
+    item->setData(Qt::UserRole, "codeblock");
     item->setFlags(item->flags() | Qt::ItemIsEditable);
     connect(listWidget,SIGNAL(itemChanged(QListWidgetItem*)),this,SLOT(listItemChanged(QListWidgetItem*)));
 }
 
 void MainWindow::listItemChanged(QListWidgetItem* item){
+    if(item->data(Qt::UserRole).toString() != "codeblock") return;
     model->setCode(item->type(), item->text());
 }
 
 void MainWindow::initDialogs(){
-    createComponentDialog = new CreateComponentDialog();
+    createComponentDialog = new CreateComponentDialog(model);
     connect(createComponentDialog,SIGNAL(accepted()),this,SLOT(createComponent()));
 
     settingsDialog = new SettingsDialog();
@@ -96,6 +120,7 @@ void MainWindow::initDialogs(){
 void MainWindow::initActions(){
     createComponentAction = new QAction(QIcon(":/icons/new_button.svg"),"Create Component");
     deleteComponentAction = new QAction(QIcon(":/icons/delete_button.svg"), "Delete Selected Component");
+    deleteListItemAction = new QAction(QIcon(":/icons/delete_button.svg"), "Delete Selected List Item");
     createCodeBlockAction = new QAction(QIcon(":/icons/plus_button.svg"),"Create Code Block");
     generateAction = new QAction(QIcon(":/icons/generate_button.svg"),"Generate Source");
     runAction = new QAction(QIcon(":/icons/run_button.svg"),"Run");
@@ -107,6 +132,7 @@ void MainWindow::initActions(){
 
     connect(createComponentAction,SIGNAL(triggered()),this,SLOT(showCreateComponentDialog()));
     connect(deleteComponentAction,SIGNAL(triggered()),this,SLOT(deleteComponent()));
+    connect(deleteListItemAction,SIGNAL(triggered()),this,SLOT(deleteListItem()));
     connect(createCodeBlockAction,SIGNAL(triggered()),this,SLOT(createCodeBlock()));
     connect(generateAction,SIGNAL(triggered()),this,SLOT(generateSource()));
     connect(runAction,SIGNAL(triggered()),this,SLOT(modelRun()));
@@ -143,11 +169,14 @@ void MainWindow::initMenuBar(){
 void MainWindow::initComponentEditorSegment(){
     componentEditorWidget = new QWidget();
     componentEditorLayout = new QVBoxLayout();
+    componentEditorLayout->setSpacing(0);
+    componentEditorLayout->setContentsMargins(0,0,0,0);
     componentEditorToolBar = new QToolBar();
     componentEditorToolBar->setToolButtonStyle(Qt::ToolButtonIconOnly);
     QLabel* componentEditorLabel = new QLabel("Component Editor");
     componentEditorLabel->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Preferred);
     componentEditorToolBar->addWidget(componentEditorLabel);
+
     toolBox = new QToolBox();
     componentEditorLayout->addWidget(componentEditorToolBar);
     componentEditorLayout->addWidget(toolBox);
@@ -277,6 +306,20 @@ void MainWindow::allowCompile(){
 
 void MainWindow::showCompilerPathWarning(){
     compileOutputBrowser->setPlainText("Compiler path not set! Please go to the Settings menu and configure the compiler.");
+}
+
+void MainWindow::changeSelectedComponent(){
+    ProcedureWidget* widget = nullptr;
+    int id = listWidget->currentItem()->type();
+    foreach(ProcedureWidget* pw, procedureWidgets){
+        if(pw->getID() == id){
+            widget = pw;
+            break;
+        }
+    }
+    if(widget != nullptr){
+        toolBox->setCurrentIndex(toolBox->indexOf(widget));
+    }
 }
 
 MainWindow::~MainWindow()

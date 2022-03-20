@@ -163,6 +163,11 @@ bool ProcedureWidget::checkRequired(){
     return allgood;
 }
 
+void ProcedureWidget::enorChanged(int index){
+    if(index < 0) return;
+    model->setEnumerator(this->id,enorComboBox->itemData(index).toInt());
+}
+
 void ProcedureWidget::optimistChanged(){
     model->setOptimist(this->id,qobject_cast<QCheckBox*>(sender())->isChecked());
 }
@@ -175,6 +180,15 @@ void ProcedureWidget::compareChanged(){
     model->setCompare(this->id,qobject_cast<QRadioButton*>(sender())->isChecked()?"Greater":"Less");
 }
 
-void ProcedureWidget::addEnumeratorChoice(QString enumeratorName){
-    enorComboBox->addItem(enumeratorName);
+void ProcedureWidget::addEnumeratorChoice(QString enumeratorName, int enumeratorID){
+    enorComboBox->addItem(enumeratorName,enumeratorID);
+}
+
+void ProcedureWidget::removeEnumeratorChouce(int enumeratorID){
+    for(int i = 0; i < enorComboBox->count(); i++){
+        if(enorComboBox->itemData(i).toInt() == enumeratorID){
+            enorComboBox->removeItem(i);
+            break;
+        }
+    }
 }
