@@ -52,6 +52,27 @@ QString Component::getSource(){
 
     return source;
 }
+
+QString Component::getSourceForObjectCreation(){
+    QString source;
+    QTextStream ts(&source);
+
+    ts << name << " " << objectName << ";";
+
+    return source;
+}
+
+
+QString Component::getSourceForMain(){
+    QString source;
+    QTextStream ts(&source);
+
+    ts << objectName << ".addEnumerator(" << enumeratorObjectName << ");" << Qt::endl;
+    ts << "\t" << objectName << ".run();" << Qt::endl;
+
+    return source;
+}
+
 void Component::setEnumerator(int enumeratorID, QString enumeratorObjectName){
     if(this->enumeratorID == -1){
         this->enumeratorID = enumeratorID;

@@ -84,14 +84,18 @@ QString Model::generateMainSource(){
 
     ts << "int main(){" << Qt::endl;
 
+    foreach(Component* component, components){
+        ts << "\t" << component->getSourceForObjectCreation() << Qt::endl;
+    }
+
     foreach(int id, mainIdOrder){
         ts << "\t";
         if(components.contains(id)){
-            ts << id;
+            ts << components[id]->getSourceForMain();
         }else{
             ts << codeblocks[id]->getSource();
-        }
-        ts << ";" << Qt::endl;
+            ts << ";" << Qt::endl;
+        }        
     }
 
     ts << "}" << Qt::endl;

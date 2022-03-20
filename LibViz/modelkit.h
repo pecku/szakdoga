@@ -59,6 +59,8 @@ public:
     Component(QString name, ComponentType type);
 
     QString getSource();
+    QString getSourceForMain();
+    QString getSourceForObjectCreation();
     QString getObjectName(){return objectName;}
     QString getName(){return name;}
     ComponentType getType(){return type;}
