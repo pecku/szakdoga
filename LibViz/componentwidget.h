@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QWhatsThis>
 #include "memberwidget.h"
 #include "model.h"
 #include "popuptextedit.h"
@@ -22,6 +23,7 @@ public:
 
 private:
     QString name;
+    bool objectNameApproved;
     QVector<MemberWidget*> members;
 
     QLabel* nameLabel;
@@ -37,14 +39,19 @@ protected:
     QGridLayout* gridlayout;
     QVBoxLayout* vboxlayout;
 
+    QLabel* objectNameLabel;
+    QLineEdit* objectNameLineEdit;
     QLabel* itemTypeLabel;
     QLineEdit* itemTypeLineEdit;
     QLabel* destructorLabel;
     PopUpTextEdit* destructorTextEdit;
 
+    bool checkRequiredBase();
+
 private slots:
     void onAddNewMemberClicked();
     void memberChanged();
+    void objectNameChanged();
     void itemTypeChanged();
     void deleteMember();
     void popUpTextChanged();

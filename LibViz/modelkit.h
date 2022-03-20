@@ -45,9 +45,11 @@ class Component{
     friend class Main;
 private:
     QString name;
+    QString objectName;
     ComponentType type;
     QString item;
     QString enor;
+    QString enumeratorObjectName;
     bool optimist;
     QString value;
     QString compare;
@@ -57,7 +59,9 @@ public:
     Component(QString name, ComponentType type);
 
     QString getSource();
+    QString getObjectName(){return objectName;}
 
+    void setObjectName(QString objectName){this->objectName = objectName;}
     void setItem(QString item){this->item = item;}
     void setValue(QString value){this->value = value;}
     void setOptimist(bool optimist){this->optimist = optimist;}

@@ -19,43 +19,36 @@ void EnumeratorWidget::initSegments(){
     if(type != SEQINFILE){
         firstLabel = new QLabel("First:");
         firstTextEdit = new PopUpTextEdit(FIRST);
-        gridlayout->addWidget(firstLabel,1,0);
-        gridlayout->addWidget(firstTextEdit,1,1);
+        gridlayout->addWidget(firstLabel,2,0);
+        gridlayout->addWidget(firstTextEdit,2,1);
 
         connect(firstTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
 
         nextLabel = new QLabel("Next:");
         nextTextEdit = new PopUpTextEdit(NEXT);
-        gridlayout->addWidget(nextLabel,2,0);
-        gridlayout->addWidget(nextTextEdit,2,1);
+        gridlayout->addWidget(nextLabel,3,0);
+        gridlayout->addWidget(nextTextEdit,3,1);
 
         connect(nextTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
 
         endLabel = new QLabel("End:");
         endTextEdit = new PopUpTextEdit(END);
-        gridlayout->addWidget(endLabel,3,0);
-        gridlayout->addWidget(endTextEdit,3,1);
+        gridlayout->addWidget(endLabel,4,0);
+        gridlayout->addWidget(endTextEdit,4,1);
 
         connect(endTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
 
         currentLabel = new QLabel("Current:");
         currentTextEdit = new PopUpTextEdit(CURRENT);
-        gridlayout->addWidget(currentLabel,4,0);
-        gridlayout->addWidget(currentTextEdit,4,1);
+        gridlayout->addWidget(currentLabel,5,0);
+        gridlayout->addWidget(currentTextEdit,5,1);
 
         connect(currentTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
     }
 }
 
 bool EnumeratorWidget::checkRequired(){
-    itemTypeLineEdit->setStyleSheet("");
-
-    bool allgood = true;
-
-    if(itemTypeLineEdit->text() == ""){
-        itemTypeLineEdit->setStyleSheet("border:2px solid red;");
-        allgood = false;
-    }
+    bool allgood = checkRequiredBase();
     if(type == DEFAULT){
         firstTextEdit->setStyleSheet("");
         nextTextEdit->setStyleSheet("");

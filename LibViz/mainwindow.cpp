@@ -196,10 +196,10 @@ void MainWindow::generateSource(){
     bool allgood = true;
 
     foreach(ProcedureWidget* pw, procedureWidgets){
-        allgood = allgood && pw->checkRequired();
+        allgood = pw->checkRequired() && allgood;
     }
     foreach(EnumeratorWidget* ew, enumeratorWidgets){
-        allgood = allgood && ew->checkRequired();
+        allgood = ew->checkRequired() && allgood;
     }
 
     if(!allgood){

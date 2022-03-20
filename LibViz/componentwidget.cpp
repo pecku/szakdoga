@@ -3,6 +3,8 @@
 ComponentWidget::ComponentWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent)
     :  QWidget(parent), name(name), type(type), id(id), model(model)
 {
+    objectNameApproved = false;
+
     vboxlayout = new QVBoxLayout(this);
     vboxlayout->setAlignment(Qt::Alignment(Qt::AlignmentFlag::AlignTop));
 
@@ -25,10 +27,17 @@ ComponentWidget::ComponentWidget(int id, QString name, ComponentType type, Model
 
     gridlayout = new QGridLayout();
 
+    objectNameLabel = new QLabel("Object name:");
+    objectNameLineEdit = new QLineEdit();
+    gridlayout->addWidget(objectNameLabel,0,0);
+    gridlayout->addWidget(objectNameLineEdit,0,1);
+
+    connect(objectNameLineEdit,SIGNAL(editingFinished()),this,SLOT(objectNameChanged()));
+
     itemTypeLabel = new QLabel("Item type:");
     itemTypeLineEdit = new QLineEdit();
-    gridlayout->addWidget(itemTypeLabel,0,0);
-    gridlayout->addWidget(itemTypeLineEdit,0,1);
+    gridlayout->addWidget(itemTypeLabel,1,0);
+    gridlayout->addWidget(itemTypeLineEdit,1,1);
 
     connect(itemTypeLineEdit,SIGNAL(editingFinished()),this,SLOT(itemTypeChanged()));
 
@@ -40,6 +49,21 @@ ComponentWidget::ComponentWidget(int id, QString name, ComponentType type, Model
     connect(destructorTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
 
     vboxlayout->addLayout(gridlayout);
+}
+
+bool ComponentWidget::checkRequiredBase(){
+    bool allgood = true;
+    objectNameLineEdit->setStyleSheet("");
+    if(objectNameLineEdit->text() == "" || !objectNameApproved){
+        objectNameLineEdit->setStyleSheet("border:2px solid red;");
+        allgood = false;
+    }
+    itemTypeLineEdit->setStyleSheet("");
+    if(itemTypeLineEdit->text() == ""){
+        itemTypeLineEdit->setStyleSheet("border:2px solid red;");
+        allgood = false;
+    }
+    return allgood;
 }
 
 void ComponentWidget::onAddNewMemberClicked(){
@@ -61,6 +85,21 @@ void ComponentWidget::deleteMember(){
 void ComponentWidget::memberChanged(){
     MemberWidget* member = qobject_cast<MemberWidget*>(sender());
     model->modifyMember(this->id, member->getID(), member->getType(), member->getName());
+}
+
+void ComponentWidget::objectNameChanged(){
+    QString objectName = objectNameLineEdit->text();
+    objectNameLineEdit->setStyleSheet("");
+    objectNameLineEdit->setToolTip("");
+    if(model->isObjectNameUsed(objectName) || model->isComponentNameUsed(objectName)){
+        objectNameLineEdit->setStyleSheet("border:2px solid red;");
+        objectNameLineEdit->setToolTip("Object name already in use!");
+        QWhatsThis::showText(mapToGlobal(objectNameLineEdit->pos()+QPoint(0,objectNameLineEdit->height())), "Object name already in use!");
+        objectNameApproved = false;
+    }else{
+        model->setObjectName(this->id,objectNameLineEdit->text());
+        objectNameApproved = true;
+    }
 }
 
 void ComponentWidget::itemTypeChanged(){

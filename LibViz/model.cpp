@@ -15,6 +15,15 @@ int Model::createComponent(QString name, ComponentType type){
     return componentID;
 }
 
+bool Model::isObjectNameUsed(QString objectName){
+    foreach(Component* component, components){
+        if(component->getObjectName() == objectName){
+            return true;
+        }
+    }
+    return false;
+}
+
 int Model::createCodeBlock(){
     int codeBlockID = newID();
     codeblocks.insert(codeBlockID, new CodeBlock());
@@ -137,4 +146,13 @@ void Model::setCompilerArguments(QString args){
 void Model::loadConfig(){
     //TODO
     compilerPathSet = false;
+void Model::setObjectName(int componentID, QString objectName){
+    Component* component = components[componentID];
+    component->setObjectName(objectName);
+
+    if(component->getType() == DEFAULT || component->getType() == ARRAY || component->getType() == INTERVAL || component->getType() == STRINGSTREAM || component->getType() == SEQINFILE){
+        foreach(Component* c, components){
+            c->setEnumerator(componentID, objectName);
+        }
+    }
 }

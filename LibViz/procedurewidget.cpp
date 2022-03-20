@@ -11,8 +11,10 @@ void ProcedureWidget::initSegments(){
     enorComboBox = new QComboBox();
     enorComboBox->setPlaceholderText("No enumerator");
     enorComboBox->setCurrentIndex(-1);
-    gridlayout->addWidget(enorLabel,1,0);
-    gridlayout->addWidget(enorComboBox,1,1);
+    gridlayout->addWidget(enorLabel,2,0);
+    gridlayout->addWidget(enorComboBox,2,1);
+
+    connect(enorComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(enorChanged(int)));
 
     optimistLabel = nullptr;
     optimistCheckBox = nullptr;
@@ -31,8 +33,8 @@ void ProcedureWidget::initSegments(){
     if(type == LINSEARCH){
         optimistLabel = new QLabel("Optimist:");
         optimistCheckBox = new QCheckBox();
-        gridlayout->addWidget(optimistLabel,2,0);
-        gridlayout->addWidget(optimistCheckBox,2,1);
+        gridlayout->addWidget(optimistLabel,3,0);
+        gridlayout->addWidget(optimistCheckBox,3,1);
 
         connect(optimistCheckBox,SIGNAL(stateChanged(int)),this,SLOT(optimistChanged()));
     }
@@ -40,8 +42,8 @@ void ProcedureWidget::initSegments(){
     if(type == MAXSEARCH || type == SUMMATION){
         valueLabel = new QLabel("Value:");
         valueLineEdit = new QLineEdit();
-        gridlayout->addWidget(valueLabel,3,0);
-        gridlayout->addWidget(valueLineEdit,3,1);
+        gridlayout->addWidget(valueLabel,4,0);
+        gridlayout->addWidget(valueLineEdit,4,1);
 
         connect(valueLineEdit,SIGNAL(editingFinished()),this,SLOT(valueChanged()));
     }
@@ -54,8 +56,8 @@ void ProcedureWidget::initSegments(){
         compareLayout->addWidget(greaterRadioButton);
         compareLayout->addWidget(lessRadioButton);
         compareLayout->addSpacerItem(new QSpacerItem(maximumWidth(),0,QSizePolicy::Maximum));
-        gridlayout->addWidget(compareLabel,4,0);
-        gridlayout->addLayout(compareLayout,4,1);
+        gridlayout->addWidget(compareLabel,5,0);
+        gridlayout->addLayout(compareLayout,5,1);
 
         connect(greaterRadioButton,SIGNAL(toggled(bool)),this,SLOT(compareChanged()));
         greaterRadioButton->setChecked(true);
@@ -64,8 +66,8 @@ void ProcedureWidget::initSegments(){
     if(type == MAXSEARCH || type == SUMMATION){
         funcLabel = new QLabel("Func:");
         funcTextEdit = new PopUpTextEdit(FUNC);
-        gridlayout->addWidget(funcLabel,5,0);
-        gridlayout->addWidget(funcTextEdit,5,1);
+        gridlayout->addWidget(funcLabel,6,0);
+        gridlayout->addWidget(funcTextEdit,6,1);
 
         connect(funcTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
     }
@@ -73,48 +75,43 @@ void ProcedureWidget::initSegments(){
     if(type == SUMMATION){
         neutralLabel = new QLabel("Neutral:");
         neutralTextEdit = new PopUpTextEdit(NEUTRAL);
-        gridlayout->addWidget(neutralLabel,6,0);
-        gridlayout->addWidget(neutralTextEdit,6,1);
+        gridlayout->addWidget(neutralLabel,7,0);
+        gridlayout->addWidget(neutralTextEdit,7,1);
 
         connect(neutralTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
 
         addLabel = new QLabel("Add:");
         addTextEdit = new PopUpTextEdit(ADD);
-        gridlayout->addWidget(addLabel,7,0);
-        gridlayout->addWidget(addTextEdit,7,1);
+        gridlayout->addWidget(addLabel,8,0);
+        gridlayout->addWidget(addTextEdit,8,1);
 
         connect(addTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
     }
 
     condLabel = new QLabel("Condition:");
     condTextEdit = new PopUpTextEdit(COND);
-    gridlayout->addWidget(condLabel,8,0);
-    gridlayout->addWidget(condTextEdit,8,1);
+    gridlayout->addWidget(condLabel,9,0);
+    gridlayout->addWidget(condTextEdit,9,1);
 
     connect(condTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
 
     firstLabel = new QLabel("First:");
     firstTextEdit = new PopUpTextEdit(FIRST);
-    gridlayout->addWidget(firstLabel,9,0);
-    gridlayout->addWidget(firstTextEdit,9,1);
+    gridlayout->addWidget(firstLabel,10,0);
+    gridlayout->addWidget(firstTextEdit,10,1);
 
     connect(firstTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
 
     whileCondLabel = new QLabel("While Condition:");
     whileCondTextEdit = new PopUpTextEdit(WHILECOND);
-    gridlayout->addWidget(whileCondLabel,10,0);
-    gridlayout->addWidget(whileCondTextEdit,10,1);
+    gridlayout->addWidget(whileCondLabel,11,0);
+    gridlayout->addWidget(whileCondTextEdit,11,1);
 
     connect(whileCondTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
 }
 
 bool ProcedureWidget::checkRequired(){
-    bool allgood = true;
-    itemTypeLineEdit->setStyleSheet("");
-    if(itemTypeLineEdit->text() == ""){
-        itemTypeLineEdit->setStyleSheet("border:2px solid red;");
-        allgood = false;
-    }
+    bool allgood = checkRequiredBase();
     enorComboBox->setStyleSheet("");
     if(enorComboBox->currentIndex() < 0){
         enorComboBox->setStyleSheet("border:2px solid red;");

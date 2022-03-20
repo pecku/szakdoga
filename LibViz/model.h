@@ -17,12 +17,15 @@ public:
     int createCodeBlock();
     int createMember(int componentID);
 
+    bool isObjectNameUsed(QString objectName);
+
     void modifyMember(int componentID, int memberID, QString type, QString name);
 
     void deleteComponent(int componentID);
     void deleteCodeBlock(int codeBlockID);
     void deleteMember(int componentID, int memberID);
 
+    void setObjectName(int componentID, QString objectName);
     void setItem(int componentID, QString item){components[componentID]->setItem(item);}
     void setValue(int componentID, QString value){components[componentID]->setValue(value);}
     void setOptimist(int componentID, bool optimist){components[componentID]->setOptimist(optimist);}
