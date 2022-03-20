@@ -7,6 +7,8 @@ Model::Model(QObject *parent) : QObject(parent)
     loadConfig();
 
     compileProcess = new QProcess(this);
+    connect(compileProcess, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(compileFinished(int,QProcess::ExitStatus)));
+    connect(compileProcess, SIGNAL(errorOccurred(QProcess::ProcessError)), this, SLOT(compileError(QProcess::ProcessError)));
 }
 
 int Model::createComponent(QString name, ComponentType type){
@@ -106,43 +108,41 @@ QString Model::generateMainSource(){
 void Model::run(){
     compile();
     compileProcess->waitForFinished();
-    qDebug()<<"run";
+    compileProcess->start("./a.exe");
 }
 
 void Model::compile(){
     if(!compilerPathSet){
         emit compilerPathNotSet();
         emit compileProcessEnded();
-        return;
+    }else{
+        compileProcess->start(compilerPath, compilerArguments);
     }
-
-    compileProcess->kill();
-    compileProcess = new QProcess();
-
-    compileProcess->start(compilerPath, compilerArguments);
-
-    connect(compileProcess, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(compileFinished()));
-    connect(compileProcess, SIGNAL(errorOccurred(QProcess::ProcessError)), this, SLOT(compileFinished()));
 }
 
 void Model::stopCompile(){
     compileProcess->kill();
-    compileProcess = new QProcess();
-    if(compileProcess->state() == QProcess::NotRunning){
-        emit compileProcessEnded();
-    }
+    emit compileProcessEnded();
 }
 
-void Model::compileFinished(){
+void Model::compileFinished(int exitCode, QProcess::ExitStatus exitStatus){
+    (void)exitStatus;
+
     QString output;
 
-    output = QString(compileProcess->readAllStandardError());
-    if(!output.size()) output = compileProcess->errorString();
-    if(!output.size()) output = QString(compileProcess->readAllStandardOutput());
+    if(exitCode == 0){
+        output = QString(compileProcess->readAllStandardOutput());
+    }else{
+        output = QString(compileProcess->readAllStandardError());
+    }
 
-    compileOutput = output;
+    emit haveCompileOutput(output);
+    emit compileProcessEnded();
+}
 
-    emit haveCompileOutput();
+void Model::compileError(QProcess::ProcessError error){
+    (void)error;
+    emit haveCompileOutput(QString(compileProcess->readAllStandardError()));
     emit compileProcessEnded();
 }
 

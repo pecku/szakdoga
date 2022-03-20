@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     resize(1000,700);
 
     model = new Model();
-    connect(model, SIGNAL(haveCompileOutput()), this, SLOT(showCompileOutput()));
+    connect(model, SIGNAL(haveCompileOutput(QString)), this, SLOT(showCompileOutput(QString)));
     connect(model, SIGNAL(compileProcessEnded()), this, SLOT(allowCompile()));
     connect(model, SIGNAL(compilerPathNotSet()), this, SLOT(showCompilerPathWarning()));
 
@@ -114,6 +114,8 @@ void MainWindow::initDialogs(){
     connect(createComponentDialog,SIGNAL(accepted()),this,SLOT(createComponent()));
 
     settingsDialog = new SettingsDialog();
+    settingsDialog->setCompilerPath(model->getCompilerPath());
+    settingsDialog->setArguments(model->getCompilerArguments().join(" "));
     connect(settingsDialog,SIGNAL(accepted()),this,SLOT(updateSettings()));
 }
 
@@ -294,8 +296,8 @@ void MainWindow::modelStopCompile(){
     model->stopCompile();
 }
 
-void MainWindow::showCompileOutput(){
-    compileOutputBrowser->setPlainText(model->getCompileOutput());
+void MainWindow::showCompileOutput(QString output){
+    compileOutputBrowser->setPlainText(output);
 }
 
 void MainWindow::allowCompile(){

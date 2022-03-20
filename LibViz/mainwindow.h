@@ -79,7 +79,7 @@ private slots:
     void modelRun();
     void modelCompile();
     void modelStopCompile();
-    void showCompileOutput();
+    void showCompileOutput(QString output);
     void allowCompile();
     void showCompilerPathWarning();
     void listItemChanged(QListWidgetItem* item);

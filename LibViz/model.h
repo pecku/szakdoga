@@ -46,6 +46,8 @@ public:
     void stopCompile();
 
     QString getCompileOutput(){return compileOutput;}
+    QString getCompilerPath(){return compilerPath;}
+    QStringList getCompilerArguments(){return compilerArguments;}
 
 private:
     QMap<int,Component*> components;
@@ -65,11 +67,12 @@ private:
 
 signals:
     void compilerPathNotSet();
-    void haveCompileOutput();
+    void haveCompileOutput(QString output);
     void compileProcessEnded();
 
 private slots:
-    void compileFinished();
+    void compileFinished(int exitCode, QProcess::ExitStatus exitStatus);
+    void compileError(QProcess::ProcessError error);
 };
 
 #endif // MODEL_H

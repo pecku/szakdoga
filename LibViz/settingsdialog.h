@@ -13,6 +13,8 @@ public:
     explicit SettingsDialog();
     QString getCompilerPath(){return compilerPathLineEdit->text();}
     QString getArguments(){return argumentsLineEdit->text();}
+    void setCompilerPath(QString compilerPath){compilerPathLineEdit->setText(compilerPath);}
+    void setArguments(QString compilerArguments){argumentsLineEdit->setText(compilerArguments);}
 
 private:
     QPushButton* okButton;
