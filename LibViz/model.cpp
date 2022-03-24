@@ -17,9 +17,20 @@ int Model::createComponent(QString name, ComponentType type){
     return componentID;
 }
 
+int Model::createStruct(QString name){
+    int structID = newID();
+    structs.insert(structID, new Struct(name));
+    return structID;
+}
+
 bool Model::isComponentNameUsed(QString name){
     foreach(Component* component, components){
         if(component->getName() == name){
+            return true;
+        }
+    }
+    foreach(Struct* _struct, structs){
+        if(_struct->getName() == name){
             return true;
         }
     }
@@ -43,26 +54,46 @@ int Model::createCodeBlock(){
 
 int Model::createMember(int componentID){
     int memberID = newID();
-    components[componentID]->createMember(memberID);
+    if(components.contains(componentID)){
+        components[componentID]->createMember(memberID);
+    }else{
+        structs[componentID]->createMember(memberID);
+    }
     return memberID;
 }
 
 int Model::createCustomMethod(int componentID){
     int customMethodID = newID();
-    components[componentID]->createCustomMethod(customMethodID);
+    if(components.contains(componentID)){
+        components[componentID]->createCustomMethod(customMethodID);
+    }else{
+        structs[componentID]->createCustomMethod(customMethodID);
+    }
     return customMethodID;
 }
 
 void Model::modifyMember(int componentID, int memberID, QString type, QString name){
-    components[componentID]->setMember(memberID, type, name);
+    if(components.contains(componentID)){
+        components[componentID]->setMember(memberID, type, name);
+    }else{
+        structs[componentID]->setMember(memberID, type, name);
+    }
 }
 
 void Model::modifyCustomMethod(int componentID, int customMethodID, QString header, QString body){
-    components[componentID]->setCustomMethod(customMethodID, header, body);
+    if(components.contains(componentID)){
+        components[componentID]->setCustomMethod(customMethodID, header, body);
+    }else{
+        structs[componentID]->setCustomMethod(customMethodID, header, body);
+    }
 }
 
 void Model::deleteComponent(int componentID){
     components.remove(componentID);
+}
+
+void Model::deleteStruct(int structID){
+    structs.remove(structID);
 }
 
 void Model::deleteCodeBlock(int codeBlockID){
@@ -70,11 +101,19 @@ void Model::deleteCodeBlock(int codeBlockID){
 }
 
 void Model::deleteMember(int componentID, int memberID){
-    components[componentID]->deleteMember(memberID);
+    if(components.contains(componentID)){
+        components[componentID]->deleteMember(memberID);
+    }else{
+        structs[componentID]->deleteMember(memberID);
+    }
 }
 
 void Model::deleteCustomMethod(int componentID, int customMethodID){
-    components[componentID]->deleteCustomMethod(customMethodID);
+    if(components.contains(componentID)){
+        components[componentID]->deleteCustomMethod(customMethodID);
+    }else{
+        structs[componentID]->deleteCustomMethod(customMethodID);
+    }
 }
 
 QString Model::generateSource(){
@@ -85,6 +124,10 @@ QString Model::generateSource(){
 
     foreach(Component* component, components){
         ts << component->getSource() << Qt::endl << Qt::endl;
+    }
+
+    foreach(Struct* _struct, structs){
+        ts << _struct->getSource() << Qt::endl << Qt::endl;
     }
 
     ts << generateMainSource();

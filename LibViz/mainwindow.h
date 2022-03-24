@@ -12,6 +12,7 @@
 
 #include "procedurewidget.h"
 #include "enumeratorwidget.h"
+#include "structwidget.h"
 #include "createcomponentdialog.h"
 #include "settingsdialog.h"
 #include "model.h"
@@ -49,6 +50,7 @@ private:
 
     QVector<ProcedureWidget*> procedureWidgets;
     QVector<EnumeratorWidget*> enumeratorWidgets;
+    QVector<StructWidget*> structWidgets;
 
     QAction* createComponentAction;
     QAction* deleteComponentAction;

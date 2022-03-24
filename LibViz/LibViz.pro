@@ -22,6 +22,7 @@ SOURCES += \
     popuptextedit.cpp \
     procedurewidget.cpp \
     settingsdialog.cpp \
+    structwidget.cpp \
     textinputdialog.cpp
 
 HEADERS += \
@@ -37,6 +38,7 @@ HEADERS += \
     popuptextedit.h \
     procedurewidget.h \
     settingsdialog.h \
+    structwidget.h \
     textinputdialog.h
 
 # Default rules for deployment.

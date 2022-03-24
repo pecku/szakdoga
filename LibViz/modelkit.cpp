@@ -93,3 +93,28 @@ void Component::setEnumerator(int enumeratorID, QString enumeratorObjectName){
         this->enumeratorObjectName = enumeratorObjectName;
     }
 }
+
+QString Struct::getSource(){
+    QString source;
+    QTextStream ts(&source);
+
+    ts << "struct " << name ;
+    ts << Qt::endl << "{" << Qt::endl;
+
+    foreach(Member member, members){
+        ts << Qt::endl << "\t" << member.type << " " <<  member.name << ";";
+    }
+
+    foreach(CustomMethod customMethod, customMethods){
+        ts << Qt::endl << "\t" << customMethod.header << Qt::endl << "\t{";
+        QTextStream methodBodyStream(&customMethod.body);
+        while(!methodBodyStream.atEnd()){
+            ts << Qt::endl << "\t\t" << methodBodyStream.readLine();
+        }
+        ts << Qt::endl << "\t" << "}";
+    }
+
+    ts << Qt::endl << "}";
+
+    return source;
+}

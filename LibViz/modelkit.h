@@ -96,4 +96,23 @@ public:
     void setCode(QString code){this->code = code;}
 };
 
+class Struct{
+private:
+    QString name;
+    QMap<int,Member> members;
+    QMap<int,CustomMethod> customMethods;
+public:
+    Struct(QString name) : name(name){}
+
+    QString getSource();
+    QString getName(){return name;}
+
+    void setMember(int id, QString type, QString name){members[id].type = type; members[id].name = name;}
+    void createMember(int id){members[id] = Member();}
+    void deleteMember(int id){members.remove(id);}
+    void setCustomMethod(int id, QString header, QString body){customMethods[id].header = header; customMethods[id].body = body;}
+    void createCustomMethod(int id){customMethods[id] = CustomMethod();}
+    void deleteCustomMethod(int id){customMethods.remove(id);}
+};
+
 #endif // MODELKIT_H

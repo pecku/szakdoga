@@ -24,23 +24,30 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::createComponent(){
     QString name = createComponentDialog->getName();
-    ComponentType componentType = (ComponentType)createComponentDialog->getComponent().toInt();
-    if(componentType == COUNTING || componentType == LINSEARCH || componentType == MAXSEARCH || componentType == SELECTION || componentType == SUMMATION){
-        int id = model->createComponent(name, componentType);
-        ProcedureWidget* procedure = new ProcedureWidget(id,name,componentType,model);
-        toolBox->addItem(procedure,name);
-        procedureWidgets.push_back(procedure);
-        foreach(EnumeratorWidget* enorw, enumeratorWidgets){
-            procedure->addEnumeratorChoice(enorw->getName(), enorw->getID());
-        }
-        (new QListWidgetItem(name,listWidget,id))->setData(Qt::UserRole,"component");
+    if(createComponentDialog->getComponent() == -1){
+        int id = model->createStruct(name);
+        StructWidget* structWidget = new StructWidget(id,name,model);
+        toolBox->addItem(structWidget,name);
+        structWidgets.push_back(structWidget);
     }else{
-        int id = model->createComponent(name, componentType);
-        EnumeratorWidget* enumerator = new EnumeratorWidget(id,name,componentType,model);
-        toolBox->addItem(enumerator,name);
-        enumeratorWidgets.push_back(enumerator);
-        foreach(ProcedureWidget* procw, procedureWidgets){
-            procw->addEnumeratorChoice(name, id);
+        ComponentType componentType = (ComponentType)createComponentDialog->getComponent().toInt();
+        if(componentType == COUNTING || componentType == LINSEARCH || componentType == MAXSEARCH || componentType == SELECTION || componentType == SUMMATION){
+            int id = model->createComponent(name, componentType);
+            ProcedureWidget* procedure = new ProcedureWidget(id,name,componentType,model);
+            toolBox->addItem(procedure,name);
+            procedureWidgets.push_back(procedure);
+            foreach(EnumeratorWidget* enorw, enumeratorWidgets){
+                procedure->addEnumeratorChoice(enorw->getName(), enorw->getID());
+            }
+            (new QListWidgetItem(name,listWidget,id))->setData(Qt::UserRole,"component");
+        }else{
+            int id = model->createComponent(name, componentType);
+            EnumeratorWidget* enumerator = new EnumeratorWidget(id,name,componentType,model);
+            toolBox->addItem(enumerator,name);
+            enumeratorWidgets.push_back(enumerator);
+            foreach(ProcedureWidget* procw, procedureWidgets){
+                procw->addEnumeratorChoice(name, id);
+            }
         }
     }
 }

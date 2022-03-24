@@ -15,6 +15,7 @@ public:
     QString generateSource();
     int createComponent(QString name, ComponentType type);
     int createCodeBlock();
+    int createStruct(QString name);
     int createMember(int componentID);
     int createCustomMethod(int componentID);
 
@@ -26,6 +27,7 @@ public:
 
     void deleteComponent(int componentID);
     void deleteCodeBlock(int codeBlockID);
+    void deleteStruct(int structID);
     void deleteMember(int componentID, int memberID);
     void deleteCustomMethod(int componentID, int customMethodID);
 
@@ -55,6 +57,7 @@ public:
 private:
     QMap<int,Component*> components;
     QMap<int,CodeBlock*> codeblocks;
+    QMap<int,Struct*> structs;
     QVector<int> mainIdOrder;
     int lastID;
     QString compilerPath;

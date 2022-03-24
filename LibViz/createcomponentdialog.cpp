@@ -19,6 +19,8 @@ CreateComponentDialog::CreateComponentDialog(Model* model) : QDialog(), model(mo
         componentTypeSelect->addItem(componentTypeNameStrings[componentType],componentType);
     }
 
+    componentTypeSelect->addItem("Struct",-1);
+
     QVBoxLayout* vboxlayout = new QVBoxLayout(this);
     QHBoxLayout* hboxlayout = new QHBoxLayout();
 
