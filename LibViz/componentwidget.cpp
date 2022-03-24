@@ -9,6 +9,7 @@ ComponentWidget::ComponentWidget(int id, QString name, ComponentType type, Model
     vboxlayout->setAlignment(Qt::Alignment(Qt::AlignmentFlag::AlignTop));
 
     memberLayout = new QVBoxLayout();
+    customMethodLayout = new QVBoxLayout();
 
     nameLabel = new QLabel(name);
     parentClassLabel = new QLabel(componentTypeNameStrings[type]);
@@ -22,6 +23,9 @@ ComponentWidget::ComponentWidget(int id, QString name, ComponentType type, Model
     QPushButton* addnewmemberbutton = new QPushButton("Add new private member");
     connect(addnewmemberbutton,SIGNAL(clicked()),this,SLOT(onAddNewMemberClicked()));
     vboxlayout->addWidget(addnewmemberbutton);
+    QPushButton* addnewcustommethodbutton = new QPushButton("Add new method");
+    connect(addnewcustommethodbutton,SIGNAL(clicked()),this,SLOT(onAddNewMethodClicked()));
+    vboxlayout->addWidget(addnewcustommethodbutton);
 
     vboxlayout->addLayout(memberLayout);
 
@@ -49,6 +53,7 @@ ComponentWidget::ComponentWidget(int id, QString name, ComponentType type, Model
     connect(destructorTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
 
     vboxlayout->addLayout(gridlayout);
+    vboxlayout->addLayout(customMethodLayout);
 }
 
 bool ComponentWidget::checkRequiredBase(){
@@ -85,6 +90,27 @@ void ComponentWidget::deleteMember(){
 void ComponentWidget::memberChanged(){
     MemberWidget* member = qobject_cast<MemberWidget*>(sender());
     model->modifyMember(this->id, member->getID(), member->getType(), member->getName());
+}
+
+void ComponentWidget::onAddNewMethodClicked(){
+    CustomMethodWidget* customMethod = new CustomMethodWidget(model->createCustomMethod(this->id));
+    customMethodLayout->addWidget(customMethod);
+    customMethods.push_back(customMethod);
+    connect(customMethod,SIGNAL(edited()),this,SLOT(methodChanged()));
+    connect(customMethod,SIGNAL(deleteMe()),this,SLOT(deleteMethod()));
+}
+
+void ComponentWidget::deleteMethod(){
+    CustomMethodWidget* customMethod = qobject_cast<CustomMethodWidget*>(sender());
+    customMethods.removeAll(customMethod);
+    customMethodLayout->removeWidget(customMethod);
+    model->deleteCustomMethod(this->id, customMethod->getID());
+    delete customMethod;
+}
+
+void ComponentWidget::methodChanged(){
+    CustomMethodWidget* customMethod = qobject_cast<CustomMethodWidget*>(sender());
+    model->modifyCustomMethod(this->id, customMethod->getID(), customMethod->getHeader(), customMethod->getBody());
 }
 
 void ComponentWidget::objectNameChanged(){

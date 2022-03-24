@@ -16,15 +16,18 @@ public:
     int createComponent(QString name, ComponentType type);
     int createCodeBlock();
     int createMember(int componentID);
+    int createCustomMethod(int componentID);
 
     bool isComponentNameUsed(QString name);
     bool isObjectNameUsed(QString objectName);
 
     void modifyMember(int componentID, int memberID, QString type, QString name);
+    void modifyCustomMethod(int componentID, int customMethodID, QString header, QString body);
 
     void deleteComponent(int componentID);
     void deleteCodeBlock(int codeBlockID);
     void deleteMember(int componentID, int memberID);
+    void deleteCustomMethod(int componentID, int customMethodID);
 
     void setObjectName(int componentID, QString objectName);
     void setItem(int componentID, QString item){components[componentID]->setItem(item);}

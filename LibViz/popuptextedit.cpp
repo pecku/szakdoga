@@ -1,6 +1,6 @@
 #include "popuptextedit.h"
 
-PopUpTextEdit::PopUpTextEdit(MethodType methodType) : methodType(methodType){
+PopUpTextEdit::PopUpTextEdit(){
     inputDialog = new TextInputDialog();
     connect(inputDialog,SIGNAL(accepted()),this,SLOT(getTextFromInputDialog()));
 }

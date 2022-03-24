@@ -25,10 +25,22 @@ QString Component::getSource(){
 
     ts << Qt::endl << "{";
     ts << Qt::endl << "private:";
+
     foreach(Member member, members){
         ts << Qt::endl << "\t" << member.type << " " <<  member.name << ";";
     }
+
     ts << Qt::endl << "public:";
+
+    foreach(CustomMethod customMethod, customMethods){
+        ts << Qt::endl << "\t" << customMethod.header << Qt::endl << "\t{";
+        QTextStream methodBodyStream(&customMethod.body);
+        while(!methodBodyStream.atEnd()){
+            ts << Qt::endl << "\t\t" << methodBodyStream.readLine();
+        }
+        ts << Qt::endl << "\t" << "}";
+    }
+
     auto methodkeys = methods.keys();
     foreach(MethodType key, methodkeys){
         ts << Qt::endl << "\t";
@@ -67,7 +79,7 @@ QString Component::getSourceForMain(){
     QString source;
     QTextStream ts(&source);
 
-    ts << objectName << ".addEnumerator(" << enumeratorObjectName << ");" << Qt::endl;
+    ts << objectName << ".addEnumerator(&" << enumeratorObjectName << ");" << Qt::endl;
     ts << "\t" << objectName << ".run();" << Qt::endl;
 
     return source;

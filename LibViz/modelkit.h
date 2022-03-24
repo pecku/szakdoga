@@ -23,15 +23,15 @@ static const QMap<ComponentType,QString> componentTypeNameStrings = {
 
 static const QMap<MethodType,QString> methodHeaderStrings = {
     {DESTRUCTOR, "()"},
-    {NEUTRAL, "neutral()"},
-    {ADD, "add()"},
-    {FUNC, "func()"},
-    {COND, "bool cond()"},
+    {NEUTRAL, "neutral() const"},
+    {ADD, "add() const"},
+    {FUNC, "func() const"},
+    {COND, "bool cond() const"},
     {FIRST, "void first()"},
-    {WHILECOND, "bool whileCond()"},
+    {WHILECOND, "bool whileCond() const"},
     {NEXT, "void next()"},
-    {END, "bool end()"},
-    {CURRENT, "current()"}
+    {END, "bool end() const"},
+    {CURRENT, "current() const"}
 };
 
 struct Member{
@@ -39,6 +39,13 @@ struct Member{
     QString name;
     Member(){type = ""; name = "";}
     Member(QString type, QString name) : type(type), name(name){}
+};
+
+struct CustomMethod{
+    QString header;
+    QString body;
+    CustomMethod(){header = ""; body = "";}
+    CustomMethod(QString header, QString body) : header(header), body(body){}
 };
 
 class Component{
@@ -55,6 +62,7 @@ private:
     QString compare;
     QMap<MethodType,QString> methods;
     QMap<int,Member> members;
+    QMap<int,CustomMethod> customMethods;
 public:
     Component(QString name, ComponentType type);
 
@@ -75,6 +83,9 @@ public:
     void setMember(int id, QString type, QString name){members[id].type = type; members[id].name = name;}
     void createMember(int id){members[id] = Member();}
     void deleteMember(int id){members.remove(id);}
+    void setCustomMethod(int id, QString header, QString body){customMethods[id].header = header; customMethods[id].body = body;}
+    void createCustomMethod(int id){customMethods[id] = CustomMethod();}
+    void deleteCustomMethod(int id){customMethods.remove(id);}
 };
 
 class CodeBlock{

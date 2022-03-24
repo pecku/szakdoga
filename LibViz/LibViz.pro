@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     componentwidget.cpp \
     createcomponentdialog.cpp \
+    custommethodwidget.cpp \
     dataaccess.cpp \
     enumeratorwidget.cpp \
     main.cpp \
@@ -26,6 +27,7 @@ SOURCES += \
 HEADERS += \
     componentwidget.h \
     createcomponentdialog.h \
+    custommethodwidget.h \
     dataaccess.h \
     enumeratorwidget.h \
     mainwindow.h \

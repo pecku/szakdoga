@@ -47,8 +47,18 @@ int Model::createMember(int componentID){
     return memberID;
 }
 
+int Model::createCustomMethod(int componentID){
+    int customMethodID = newID();
+    components[componentID]->createCustomMethod(customMethodID);
+    return customMethodID;
+}
+
 void Model::modifyMember(int componentID, int memberID, QString type, QString name){
     components[componentID]->setMember(memberID, type, name);
+}
+
+void Model::modifyCustomMethod(int componentID, int customMethodID, QString header, QString body){
+    components[componentID]->setCustomMethod(customMethodID, header, body);
 }
 
 void Model::deleteComponent(int componentID){
@@ -61,6 +71,10 @@ void Model::deleteCodeBlock(int codeBlockID){
 
 void Model::deleteMember(int componentID, int memberID){
     components[componentID]->deleteMember(memberID);
+}
+
+void Model::deleteCustomMethod(int componentID, int customMethodID){
+    components[componentID]->deleteCustomMethod(customMethodID);
 }
 
 QString Model::generateSource(){

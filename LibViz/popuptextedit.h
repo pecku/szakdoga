@@ -9,7 +9,8 @@ class PopUpTextEdit : public QTextBrowser
 {
     Q_OBJECT
 public:
-    PopUpTextEdit(MethodType methodType);
+    PopUpTextEdit();
+    PopUpTextEdit(MethodType methodType) : PopUpTextEdit(){this->methodType=methodType;}
 
     MethodType getMethodType(){return methodType;}
 

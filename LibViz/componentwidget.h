@@ -6,6 +6,7 @@
 #include <QVBoxLayout>
 #include <QWhatsThis>
 #include "memberwidget.h"
+#include "custommethodwidget.h"
 #include "model.h"
 #include "popuptextedit.h"
 
@@ -25,10 +26,12 @@ private:
     QString name;
     bool objectNameApproved;
     QVector<MemberWidget*> members;
+    QVector<CustomMethodWidget*> customMethods;
 
     QLabel* nameLabel;
     QLabel* parentClassLabel;
     QVBoxLayout* memberLayout;
+    QVBoxLayout* customMethodLayout;
 
     void initSegments();
 
@@ -50,10 +53,13 @@ protected:
 
 private slots:
     void onAddNewMemberClicked();
+    void onAddNewMethodClicked();
     void memberChanged();
+    void methodChanged();
     void objectNameChanged();
     void itemTypeChanged();
     void deleteMember();
+    void deleteMethod();
     void popUpTextChanged();
 
 signals:
