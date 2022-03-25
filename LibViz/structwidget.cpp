@@ -9,7 +9,16 @@ StructWidget::StructWidget(int id, QString name, Model* model, QWidget *parent)
     memberLayout = new QVBoxLayout();
     customMethodLayout = new QVBoxLayout();
 
-    QPushButton* addnewmemberbutton = new QPushButton("Add new private member");
+    nameLabel = new QLabel(name);
+    structLabel = new QLabel("struct");
+    QHBoxLayout* nameLayout = new QHBoxLayout();
+    nameLayout->addWidget(nameLabel);
+    nameLayout->addSpacerItem(new QSpacerItem(maximumWidth(),0,QSizePolicy::Maximum));
+    nameLayout->addWidget(structLabel);
+
+    vboxlayout->addLayout(nameLayout);
+
+    QPushButton* addnewmemberbutton = new QPushButton("Add new member");
     connect(addnewmemberbutton,SIGNAL(clicked()),this,SLOT(onAddNewMemberClicked()));
     vboxlayout->addWidget(addnewmemberbutton);
     QPushButton* addnewcustommethodbutton = new QPushButton("Add new method");

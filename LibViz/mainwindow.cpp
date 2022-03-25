@@ -54,7 +54,26 @@ void MainWindow::createComponent(){
 
 void MainWindow::deleteComponent(){
     ComponentWidget* component = qobject_cast<ComponentWidget*>(toolBox->currentWidget());
-    if(component == nullptr) return;
+    if(component == nullptr){
+        StructWidget* structWidget = qobject_cast<StructWidget*>(toolBox->currentWidget());
+        if(structWidget == nullptr){
+            return;
+        }else{
+            QMessageBox msg(QMessageBox::Icon::Question, "Delete Struct", "Sure you want to delete " + structWidget->getName() + "?", QMessageBox::Ok | QMessageBox::Cancel, this);
+            msg.setDefaultButton(QMessageBox::Cancel);
+            int msg_res = msg.exec();
+
+            if(msg_res != QMessageBox::Ok) return;
+
+            int id = structWidget->getID();
+            toolBox->removeItem(toolBox->currentIndex());
+            structWidgets.removeAll(structWidget);
+            structWidgets.squeeze();
+            model->deleteStruct(id);
+
+            return;
+        }
+    }
 
     QMessageBox msg(QMessageBox::Icon::Question, "Delete Component", "Sure you want to delete " + component->getName() + "?", QMessageBox::Ok | QMessageBox::Cancel, this);
     msg.setDefaultButton(QMessageBox::Cancel);

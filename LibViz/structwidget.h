@@ -23,6 +23,7 @@ private:
     QVector<CustomMethodWidget*> customMethods;
 
     QLabel* nameLabel;
+    QLabel* structLabel;
     QVBoxLayout* memberLayout;
     QVBoxLayout* customMethodLayout;
 
