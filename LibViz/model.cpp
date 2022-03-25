@@ -88,6 +88,10 @@ void Model::modifyCustomMethod(int componentID, int customMethodID, QString head
     }
 }
 
+void Model::setMethod(int componentID, MethodType methodType, QString methodBody){
+    components[componentID]->setMethod(methodType,methodBody);
+}
+
 void Model::deleteComponent(int componentID){
     components.remove(componentID);
 }
@@ -120,14 +124,15 @@ QString Model::generateSource(){
     QString source;
     QTextStream ts(&source);
 
-    ts << "#include <iostream>" << Qt::endl << Qt::endl;
-
-    foreach(Component* component, components){
-        ts << component->getSource() << Qt::endl << Qt::endl;
-    }
+    ts << "#include <iostream>" << Qt::endl;
+    ts << "#include \"library.hpp\"" << Qt::endl << Qt::endl;
 
     foreach(Struct* _struct, structs){
-        ts << _struct->getSource() << Qt::endl << Qt::endl;
+        ts << replaceReference(_struct->getSource()) << ";" << Qt::endl << Qt::endl;
+    }
+
+    foreach(Component* component, components){
+        ts << replaceReference(component->getSource()) << ";" << Qt::endl << Qt::endl;
     }
 
     ts << generateMainSource();
@@ -229,4 +234,36 @@ void Model::setObjectName(int componentID, QString objectName){
             c->setEnumerator(componentID, objectName);
         }
     }
+}
+
+QString Model::replaceReference(QString codeString){
+    QString result;
+    QTextStream resultStream(&result);
+    QTextStream codeStringStream(&codeString);
+    while(!codeStringStream.atEnd()){
+        const QString currentLine = codeStringStream.readLine();
+        QString trimmed = currentLine.trimmed();
+        QString replaced;
+        if(trimmed.startsWith('%') && trimmed.endsWith('%')){
+            trimmed.remove('%');
+            replaced = getReferenceSource(trimmed);
+            if(replaced == ""){
+                replaced = currentLine;
+            }
+        }else{
+            replaced = currentLine;
+        }
+
+        resultStream << replaced << Qt::endl;
+    }
+    return result;
+}
+
+QString Model::getReferenceSource(QString objectName){
+    foreach(Component* component, components){
+        if(component->getObjectName() == objectName){
+            return "\t\t" + component->getSourceForObjectCreation() + "\n\t\t" + component->getSourceForMain();
+        }
+    }
+    return "";
 }

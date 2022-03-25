@@ -41,6 +41,8 @@ QString Component::getSource(){
         ts << Qt::endl << "\t" << "}";
     }
 
+    ts << Qt::endl << "protected:";
+
     auto methodkeys = methods.keys();
     foreach(MethodType key, methodkeys){
         ts << Qt::endl << "\t";
@@ -99,7 +101,7 @@ QString Struct::getSource(){
     QTextStream ts(&source);
 
     ts << "struct " << name ;
-    ts << Qt::endl << "{" << Qt::endl;
+    ts << Qt::endl << "{";
 
     foreach(Member member, members){
         ts << Qt::endl << "\t" << member.type << " " <<  member.name << ";";

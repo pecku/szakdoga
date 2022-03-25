@@ -37,7 +37,7 @@ public:
     void setOptimist(int componentID, bool optimist){components[componentID]->setOptimist(optimist);}
     void setCompare(int componentID, QString compare){components[componentID]->setCompare(compare);}
     void setEnumerator(int componentID, int enumeratorID);
-    void setMethod(int componentID, MethodType methodType, QString methodBody){components[componentID]->setMethod(methodType,methodBody);}
+    void setMethod(int componentID, MethodType methodType, QString methodBody);
 
     void setCode(int codeBlockID, QString code){codeblocks[codeBlockID]->setCode(code);}
 
@@ -53,6 +53,7 @@ public:
     QString getCompileOutput(){return compileOutput;}
     QString getCompilerPath(){return compilerPath;}
     QStringList getCompilerArguments(){return compilerArguments;}
+
 
 private:
     QMap<int,Component*> components;
@@ -70,6 +71,9 @@ private:
     int newID() {return ++lastID;}
     void loadConfig();
     QString generateMainSource();
+
+    QString replaceReference(QString codeString);
+    QString getReferenceSource(QString objectName);
 
 signals:
     void compilerPathNotSet();
