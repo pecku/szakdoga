@@ -21,17 +21,17 @@ static const QMap<ComponentType,QString> componentTypeNameStrings = {
     {SEQINFILE, "SeqInFileEnumerator"}
 };
 
-static const QMap<MethodType,QString> methodHeaderStrings = {
-    {DESTRUCTOR, "()"},
-    {NEUTRAL, "neutral() const"},
-    {ADD, "add() const"},
-    {FUNC, "func() const"},
-    {COND, "bool cond() const"},
-    {FIRST, "void first()"},
-    {WHILECOND, "bool whileCond() const"},
-    {NEXT, "void next()"},
-    {END, "bool end() const"},
-    {CURRENT, "current() const"}
+static const QMap<MethodType,QPair<QString,QString>> methodHeaderStrings = {
+    {DESTRUCTOR, QPair<QString,QString>("(",")")},
+    {NEUTRAL, QPair<QString,QString>("neutral(",") const")},
+    {ADD, QPair<QString,QString>("add(",") const")},
+    {FUNC, QPair<QString,QString>("func(",") const")},
+    {COND, QPair<QString,QString>("bool cond(",") const")},
+    {FIRST, QPair<QString,QString>("void first(",")")},
+    {WHILECOND, QPair<QString,QString>("bool whileCond(",") const")},
+    {NEXT, QPair<QString,QString>("void next(",")")},
+    {END, QPair<QString,QString>("bool end(",") const")},
+    {CURRENT, QPair<QString,QString>("current(",") const")}
 };
 
 struct Member{

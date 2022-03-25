@@ -55,7 +55,20 @@ QString Component::getSource(){
             ts << "~" << name;
         }
 
-        ts << methodHeaderStrings[key] << " override" << Qt::endl << "\t{";
+
+        ts << methodHeaderStrings[key].first;
+
+        if(key == FUNC || key == COND){
+            ts << "const " << item << "& e";
+        }else if(key == ADD){
+            ts << "const " << value << "& a, " << "const " << value << "& b";
+        }else if(key == WHILECOND){
+            ts << "const " << item << "& current";
+        }
+
+        ts << methodHeaderStrings[key].second << " override" << Qt::endl << "\t{";
+
+
         QTextStream methodBodyStream(&methods[key]);
         while(!methodBodyStream.atEnd()){
             ts << Qt::endl << "\t\t" << methodBodyStream.readLine();
