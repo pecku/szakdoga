@@ -107,6 +107,7 @@ void MainWindow::deleteComponent(){
 }
 
 void MainWindow::deleteListItem(){
+    if(listWidget->currentItem() == nullptr) return;
     QListWidgetItem* currentItem = listWidget->currentItem();
     if(currentItem->data(Qt::UserRole).toString() == "component"){
         deleteComponent();
@@ -131,7 +132,7 @@ void MainWindow::createCodeBlock(){
 }
 
 void MainWindow::listItemChanged(QListWidgetItem* item){
-    if(item->data(Qt::UserRole).toString() != "codeblock") return;
+    if(item->type() < 1 || item->data(Qt::UserRole).toString() != "codeblock") return;
     model->setCode(item->type(), item->text());
 }
 
@@ -337,6 +338,8 @@ void MainWindow::showCompilerPathWarning(){
 }
 
 void MainWindow::changeSelectedComponent(){
+    if(listWidget->currentItem() == nullptr) return;
+
     ProcedureWidget* widget = nullptr;
     int id = listWidget->currentItem()->type();
     foreach(ProcedureWidget* pw, procedureWidgets){

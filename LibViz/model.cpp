@@ -221,6 +221,8 @@ void Model::setCompilerArguments(QString args){
 void Model::loadConfig(){
     //TODO
     compilerPathSet = false;
+}
+
 void Model::setEnumerator(int componentID, int enumeratorID){
     components[componentID]->setEnumerator(enumeratorID, components[enumeratorID]->getObjectName());
 }
