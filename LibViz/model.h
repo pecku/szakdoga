@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QProcess>
+#include <QSettings>
 #include "modelkit.h"
 #include "dataaccess.h"
 
@@ -67,6 +68,7 @@ private:
     QProcess* compileProcess;
     QString compileOutput;
     DataAccess dataAccess;
+    QSettings* settings;
 
     int newID() {return ++lastID;}
     void loadConfig();

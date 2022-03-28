@@ -3,6 +3,7 @@
 Model::Model(QObject *parent) : QObject(parent)
 {
     lastID = 0;
+    settings = new QSettings(this);
 
     loadConfig();
 
@@ -157,8 +158,7 @@ QString Model::generateMainSource(){
         if(components.contains(id)){
             ts << components[id]->getSourceForMain();
         }else{
-            ts << codeblocks[id]->getSource();
-            ts << ";" << Qt::endl;
+            ts << codeblocks[id]->getSource() << Qt::endl;
         }        
     }
 
@@ -170,7 +170,12 @@ QString Model::generateMainSource(){
 void Model::run(){
     compile();
     compileProcess->waitForFinished();
+    #ifdef Q_OS_WIN
     compileProcess->start("./a.exe");
+    #endif
+    #ifdef Q_OS_LINUX
+    compileProcess->start("./a.out");
+    #endif
 }
 
 void Model::compile(){
@@ -210,17 +215,24 @@ void Model::compileError(QProcess::ProcessError error){
 
 void Model::setCompilerPath(QString path){
     compilerPath = path;
+    settings->setValue("CompilerPath",path);
     compilerPathSet = true;
 }
 
 void Model::setCompilerArguments(QString args){
     compilerArguments = args.split(" ");
+    settings->setValue("CompilerArguments",args);
 }
 
 
 void Model::loadConfig(){
-    //TODO
-    compilerPathSet = false;
+    compilerPath = settings->value("CompilerPath", "").toString();
+    compilerArguments = settings->value("CompilerArguments", "").toStringList();
+    if(compilerPath == ""){
+        compilerPathSet = false;
+    }else{
+        compilerPathSet = true;
+    }
 }
 
 void Model::setEnumerator(int componentID, int enumeratorID){
