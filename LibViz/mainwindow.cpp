@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(model, SIGNAL(haveCompileOutput(QString)), this, SLOT(showCompileOutput(QString)));
     connect(model, SIGNAL(compileProcessEnded()), this, SLOT(allowCompile()));
     connect(model, SIGNAL(compilerPathNotSet()), this, SLOT(showCompilerPathWarning()));
+    connect(model, SIGNAL(needProjectNameForSave()), this, SLOT(showProjectSaveDialog()));
+    connect(model, SIGNAL(needProjectNameForOpen()), this, SLOT(showProjectOpenDialog()));
 
     centralSplitter = new QSplitter(Qt::Horizontal);
     centralSplitter->setContentsMargins(4,4,4,4);
@@ -132,6 +134,11 @@ void MainWindow::createCodeBlock(){
 }
 
 void MainWindow::listItemChanged(QListWidgetItem* item){
+    QVector<int> ids;
+    for(int i = 0; i < listWidget->count(); i++){
+        ids.push_back(listWidget->item(i)->type());
+    }
+    model->setMainIdOrder(ids);
     if(item->type() < 1 || item->data(Qt::UserRole).toString() != "codeblock") return;
     model->setCode(item->type(), item->text());
 }
@@ -156,8 +163,12 @@ void MainWindow::initActions(){
     buildAction = new QAction(QIcon(":/icons/build_button.svg"),"Build");
     stopCompileAction = new QAction(QIcon(":/icons/stop_button.svg"),"Stop compile");
     settingsAction = new QAction(QIcon(":/icons/settings_button.svg"),"Settings");
+    newProjectAction = new QAction(QIcon(":/icons/new_project_button.svg"),"New Project");
+    loadProjectAction = new QAction(QIcon(":/icons/load_project_button.svg"),"Open Project");
+    saveProjectAction = new QAction(QIcon(":/icons/save_project_button.svg"),"Save Project");
 
     stopCompileAction->setDisabled(true);
+    saveProjectAction->setShortcut((QString)"Ctrl+S");
 
     connect(createComponentAction,SIGNAL(triggered()),this,SLOT(showCreateComponentDialog()));
     connect(deleteComponentAction,SIGNAL(triggered()),this,SLOT(deleteComponent()));
@@ -168,11 +179,20 @@ void MainWindow::initActions(){
     connect(buildAction,SIGNAL(triggered()),this,SLOT(modelCompile()));
     connect(stopCompileAction,SIGNAL(triggered()),this,SLOT(modelStopCompile()));
     connect(settingsAction,SIGNAL(triggered()),this,SLOT(showSettingsDialog()));
+    connect(newProjectAction,SIGNAL(triggered()),this,SLOT(newProject()));
+    connect(loadProjectAction,SIGNAL(triggered()),this,SLOT(loadProject()));
+    connect(saveProjectAction,SIGNAL(triggered()),this,SLOT(saveProject()));
 }
 
 void MainWindow::initMenuBar(){
     menuBar = new QMenuBar();
     setMenuBar(menuBar);
+
+    QMenu* fileMenu = new QMenu("File");
+    menuBar->addMenu(fileMenu);
+    fileMenu->addAction(newProjectAction);
+    fileMenu->addAction(loadProjectAction);
+    fileMenu->addAction(saveProjectAction);
 
     QMenu* createMenu = new QMenu("Create");
     menuBar->addMenu(createMenu);
@@ -351,6 +371,44 @@ void MainWindow::changeSelectedComponent(){
     if(widget != nullptr){
         toolBox->setCurrentIndex(toolBox->indexOf(widget));
     }
+}
+
+void MainWindow::newProject(){
+    model->newProject();
+}
+
+void MainWindow::saveProject(){
+    model->saveProject();
+}
+
+void MainWindow::loadProject(){
+    model->openProject();
+}
+
+void MainWindow::showProjectSaveDialog(){
+    QFileDialog fileDialog;
+    fileDialog.setAcceptMode(QFileDialog::AcceptSave);
+    fileDialog.setFileMode(QFileDialog::AnyFile);
+    fileDialog.setDefaultSuffix("lvpro");
+
+    QString file = fileDialog.getSaveFileName();
+
+    if(file == "") return;
+
+    model->setProject(file);
+}
+
+void MainWindow::showProjectOpenDialog(){
+    QFileDialog fileDialog;
+    fileDialog.setAcceptMode(QFileDialog::AcceptOpen);
+    fileDialog.setFileMode(QFileDialog::AnyFile);
+    fileDialog.setDefaultSuffix("lvpro");
+
+    QString file = fileDialog.getOpenFileName();
+
+    if(file == "") return;
+
+    model->setProject(file);
 }
 
 MainWindow::~MainWindow()

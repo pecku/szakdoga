@@ -3,6 +3,7 @@
 Model::Model(QObject *parent) : QObject(parent)
 {
     lastID = 0;
+    projectName = "";
     settings = new QSettings(this);
 
     loadConfig();
@@ -14,13 +15,13 @@ Model::Model(QObject *parent) : QObject(parent)
 
 int Model::createComponent(QString name, ComponentType type){
     int componentID = newID();
-    components.insert(componentID, new Component(name,type));
+    components.insert(componentID, new Component(name,type,componentID));
     return componentID;
 }
 
 int Model::createStruct(QString name){
     int structID = newID();
-    structs.insert(structID, new Struct(name));
+    structs.insert(structID, new Struct(name, structID));
     return structID;
 }
 
@@ -49,7 +50,7 @@ bool Model::isObjectNameUsed(QString objectName){
 
 int Model::createCodeBlock(){
     int codeBlockID = newID();
-    codeblocks.insert(codeBlockID, new CodeBlock());
+    codeblocks.insert(codeBlockID, new CodeBlock(codeBlockID));
     return codeBlockID;
 }
 
@@ -57,7 +58,7 @@ int Model::createMember(int componentID){
     int memberID = newID();
     if(components.contains(componentID)){
         components[componentID]->createMember(memberID);
-    }else{
+    }else if(structs.contains(componentID)){
         structs[componentID]->createMember(memberID);
     }
     return memberID;
@@ -67,7 +68,7 @@ int Model::createCustomMethod(int componentID){
     int customMethodID = newID();
     if(components.contains(componentID)){
         components[componentID]->createCustomMethod(customMethodID);
-    }else{
+    }else if(structs.contains(componentID)){
         structs[componentID]->createCustomMethod(customMethodID);
     }
     return customMethodID;
@@ -76,7 +77,7 @@ int Model::createCustomMethod(int componentID){
 void Model::modifyMember(int componentID, int memberID, QString type, QString name){
     if(components.contains(componentID)){
         components[componentID]->setMember(memberID, type, name);
-    }else{
+    }else if(structs.contains(componentID)){
         structs[componentID]->setMember(memberID, type, name);
     }
 }
@@ -84,7 +85,7 @@ void Model::modifyMember(int componentID, int memberID, QString type, QString na
 void Model::modifyCustomMethod(int componentID, int customMethodID, QString header, QString body){
     if(components.contains(componentID)){
         components[componentID]->setCustomMethod(customMethodID, header, body);
-    }else{
+    }else if(structs.contains(componentID)){
         structs[componentID]->setCustomMethod(customMethodID, header, body);
     }
 }
@@ -108,7 +109,7 @@ void Model::deleteCodeBlock(int codeBlockID){
 void Model::deleteMember(int componentID, int memberID){
     if(components.contains(componentID)){
         components[componentID]->deleteMember(memberID);
-    }else{
+    }else if(structs.contains(componentID)){
         structs[componentID]->deleteMember(memberID);
     }
 }
@@ -116,7 +117,7 @@ void Model::deleteMember(int componentID, int memberID){
 void Model::deleteCustomMethod(int componentID, int customMethodID){
     if(components.contains(componentID)){
         components[componentID]->deleteCustomMethod(customMethodID);
-    }else{
+    }else if(structs.contains(componentID)){
         structs[componentID]->deleteCustomMethod(customMethodID);
     }
 }
@@ -157,7 +158,7 @@ QString Model::generateMainSource(){
         ts << "\t";
         if(components.contains(id)){
             ts << components[id]->getSourceForMain();
-        }else{
+        }else if(codeblocks.contains(id)){
             ts << codeblocks[id]->getSource() << Qt::endl;
         }        
     }
@@ -280,4 +281,31 @@ QString Model::getReferenceSource(QString objectName){
         }
     }
     return "";
+}
+
+bool Model::saveProject(){
+    if(projectName == ""){
+        emit needProjectNameForSave();
+        if(projectName == "") return false;
+    }
+    return dataAccess.saveProject(SaveData(projectName,components,codeblocks,structs,mainIdOrder,lastID));
+}
+
+bool Model::newProject(){
+    emit needProjectNameForSave();
+    if(projectName == "") return false;
+    return true;
+}
+
+void Model::openProject(){
+    emit needProjectNameForOpen();
+    if(projectName == "") return;
+    SaveData loadData = dataAccess.loadProject(projectName);
+    components = loadData.components;
+    codeblocks.clear();
+    codeblocks = loadData.codeblocks;
+    structs = loadData.structs;
+    mainIdOrder = loadData.mainIdOrder;
+    lastID = loadData.lastID;
+    emit projectLoaded(loadData);
 }

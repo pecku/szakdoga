@@ -55,8 +55,13 @@ public:
     QString getCompilerPath(){return compilerPath;}
     QStringList getCompilerArguments(){return compilerArguments;}
 
+    bool newProject();
+    bool saveProject();
+    void setProject(QString file){projectName = file;}
+    void openProject();
 
 private:
+    QString projectName;
     QMap<int,Component*> components;
     QMap<int,CodeBlock*> codeblocks;
     QMap<int,Struct*> structs;
@@ -81,6 +86,9 @@ signals:
     void compilerPathNotSet();
     void haveCompileOutput(QString output);
     void compileProcessEnded();
+    void needProjectNameForSave();
+    void needProjectNameForOpen();
+    void projectLoaded(const SaveData& data);
 
 private slots:
     void compileFinished(int exitCode, QProcess::ExitStatus exitStatus);

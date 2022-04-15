@@ -9,6 +9,7 @@
 #include <QListWidget>
 #include <QToolBar>
 #include <QMessageBox>
+#include <QFileDialog>
 
 #include "procedurewidget.h"
 #include "enumeratorwidget.h"
@@ -61,6 +62,9 @@ private:
     QAction* buildAction;
     QAction* stopCompileAction;
     QAction* settingsAction;
+    QAction* newProjectAction;
+    QAction* saveProjectAction;
+    QAction* loadProjectAction;
 
     void initDialogs();
     void initActions();
@@ -86,5 +90,10 @@ private slots:
     void showCompilerPathWarning();
     void listItemChanged(QListWidgetItem* item);
     void changeSelectedComponent();
+    void newProject();
+    void loadProject();
+    void saveProject();
+    void showProjectSaveDialog();
+    void showProjectOpenDialog();
 };
 #endif // MAINWINDOW_H

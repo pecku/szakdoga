@@ -34,24 +34,67 @@ static const QMap<MethodType,QPair<QString,QString>> methodHeaderStrings = {
     {CURRENT, QPair<QString,QString>("current(",") const")}
 };
 
+static const QMap<MethodType,QString> methodTypeStrings = {
+    {DESTRUCTOR, "destructor"},
+    {NEUTRAL, "neutral"},
+    {ADD, "add"},
+    {FUNC, "func"},
+    {COND, "cond"},
+    {FIRST, "first"},
+    {WHILECOND, "whilecond"},
+    {NEXT, "next"},
+    {END, "end"},
+    {CURRENT, "current"}
+};
+
+static const QMap<QString,MethodType> methodTypeFromString = {
+    {methodTypeStrings[DESTRUCTOR], DESTRUCTOR},
+    {methodTypeStrings[NEUTRAL], NEUTRAL},
+    {methodTypeStrings[ADD], ADD},
+    {methodTypeStrings[FUNC], FUNC},
+    {methodTypeStrings[COND], COND},
+    {methodTypeStrings[FIRST], FIRST},
+    {methodTypeStrings[WHILECOND], WHILECOND},
+    {methodTypeStrings[NEXT], NEXT},
+    {methodTypeStrings[END], END},
+    {methodTypeStrings[CURRENT], CURRENT}
+};
+
+static const QMap<QString,ComponentType> componentTypeFromString = {
+    {componentTypeNameStrings[COUNTING], COUNTING},
+    {componentTypeNameStrings[LINSEARCH], LINSEARCH},
+    {componentTypeNameStrings[MAXSEARCH], MAXSEARCH},
+    {componentTypeNameStrings[SELECTION], SELECTION},
+    {componentTypeNameStrings[SUMMATION], SUMMATION},
+    {componentTypeNameStrings[DEFAULT], DEFAULT},
+    {componentTypeNameStrings[ARRAY], ARRAY},
+    {componentTypeNameStrings[INTERVAL], INTERVAL},
+    {componentTypeNameStrings[STRINGSTREAM], STRINGSTREAM},
+    {componentTypeNameStrings[SEQINFILE], SEQINFILE}
+};
+
 struct Member{
+    int id;
     QString type;
     QString name;
-    Member(){type = ""; name = "";}
+    Member(){}
+    Member(int id) : id(id), type(""), name(""){}
     Member(QString type, QString name) : type(type), name(name){}
 };
 
 struct CustomMethod{
     QString header;
     QString body;
-    CustomMethod(){header = ""; body = "";}
+    int id;
+    CustomMethod(){}
+    CustomMethod(int id) : header(""), body(""), id(id) {}
     CustomMethod(QString header, QString body) : header(header), body(body){}
 };
 
 class Component{
-    friend class Main;
 private:
     QString name;
+    int id;
     QString objectName;
     ComponentType type;
     QString item;
@@ -64,14 +107,24 @@ private:
     QMap<int,Member> members;
     QMap<int,CustomMethod> customMethods;
 public:
-    Component(QString name, ComponentType type);
+    Component(QString name, ComponentType type, int id);
 
-    QString getSource();
-    QString getSourceForMain();
-    QString getSourceForObjectCreation();
-    QString getObjectName(){return objectName;}
-    QString getName(){return name;}
-    ComponentType getType(){return type;}
+    QString getSource() const;
+    QString getSourceForMain() const;
+    QString getSourceForObjectCreation() const;
+    QString getName() const {return name;}
+    int getID() const {return id;}
+    QString getObjectName() const {return objectName;}
+    ComponentType getType() const {return type;}
+    QString getItem() const {return item;}
+    int getEnumeratorID() const {return enumeratorID;}
+    QString getEnumeratorObjectName() const {return enumeratorObjectName;}
+    bool getOptimist() const {return optimist;}
+    QString getValue() const {return value;}
+    QString getCompare() const {return compare;}
+    QMap<MethodType,QString> getMethods() const {return methods;}
+    QMap<int,Member> getMembers() const {return members;}
+    QMap<int,CustomMethod> getCustomMethods() const {return customMethods;}
 
     void setObjectName(QString objectName){this->objectName = objectName;}
     void setItem(QString item){this->item = item;}
@@ -81,38 +134,67 @@ public:
     void setEnumerator(int enumeratorID, QString enumeratorObjectName);
     void setMethod(MethodType methodType, QString methodBody){methods[methodType] = methodBody;}
     void setMember(int id, QString type, QString name){members[id].type = type; members[id].name = name;}
-    void createMember(int id){members[id] = Member();}
+    void createMember(int id){members[id] = Member(id);}
     void deleteMember(int id){members.remove(id);}
     void setCustomMethod(int id, QString header, QString body){customMethods[id].header = header; customMethods[id].body = body;}
-    void createCustomMethod(int id){customMethods[id] = CustomMethod();}
+    void createCustomMethod(int id){customMethods[id] = CustomMethod(id);}
     void deleteCustomMethod(int id){customMethods.remove(id);}
+    void setMethods(QMap<MethodType,QString> methods){this->methods = methods;}
+    void setMembers(QMap<int,Member> members){this->members = members;}
+    void setCustomMethods(QMap<int,CustomMethod> customMethods){this->customMethods = customMethods;}
 };
 
 class CodeBlock{
 private:
+    int id;
     QString code = "";
 public:
+    CodeBlock(int id) : id(id){}
+
     QString getSource(){return code;}
+    int getID() const {return id;}
+    QString getCode(){return code;}
+
     void setCode(QString code){this->code = code;}
 };
 
 class Struct{
 private:
     QString name;
+    int id;
     QMap<int,Member> members;
     QMap<int,CustomMethod> customMethods;
 public:
-    Struct(QString name) : name(name){}
+    Struct(QString name, int id) : name(name), id(id){}
 
     QString getSource();
     QString getName(){return name;}
+    int getID() const {return id;}
+    QMap<int,Member> getMembers() const {return members;}
+    QMap<int,CustomMethod> getCustomMethods() const {return customMethods;}
 
     void setMember(int id, QString type, QString name){members[id].type = type; members[id].name = name;}
-    void createMember(int id){members[id] = Member();}
+    void createMember(int id){members[id] = Member(id);}
     void deleteMember(int id){members.remove(id);}
     void setCustomMethod(int id, QString header, QString body){customMethods[id].header = header; customMethods[id].body = body;}
-    void createCustomMethod(int id){customMethods[id] = CustomMethod();}
+    void createCustomMethod(int id){customMethods[id] = CustomMethod(id);}
     void deleteCustomMethod(int id){customMethods.remove(id);}
+    void setMembers(QMap<int,Member> members){this->members = members;}
+    void setCustomMethods(QMap<int,CustomMethod> customMethods){this->customMethods = customMethods;}
+};
+
+struct SaveData{
+    QString projectName;
+    QMap<int,Component*> components;
+    QMap<int,CodeBlock*> codeblocks;
+    QMap<int,Struct*> structs;
+    QVector<int> mainIdOrder;
+    int lastID;
+    SaveData(const QString projectName, const QMap<int,Component*> components,
+             const QMap<int,CodeBlock*> codeblocks, const QMap<int,Struct*> structs, const QVector<int> mainIdOrder,
+             const int lastID)
+             : projectName(projectName), components(components),
+               codeblocks(codeblocks), structs(structs), mainIdOrder(mainIdOrder), lastID(lastID){}
 };
 
 #endif // MODELKIT_H

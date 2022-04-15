@@ -1,10 +1,10 @@
 #include "modelkit.h"
 
-Component::Component(QString name, ComponentType type) : name(name), type(type){
+Component::Component(QString name, ComponentType type, int id) : name(name), id(id), type(type){
     enumeratorID = -1;
 }
 
-QString Component::getSource(){
+QString Component::getSource() const{
     QString source;
     QTextStream ts(&source);
 
@@ -68,8 +68,8 @@ QString Component::getSource(){
 
         ts << methodHeaderStrings[key].second << " override" << Qt::endl << "\t{";
 
-
-        QTextStream methodBodyStream(&methods[key]);
+        QString methodBody = methods[key];
+        QTextStream methodBodyStream(&methodBody);
         while(!methodBodyStream.atEnd()){
             ts << Qt::endl << "\t\t" << methodBodyStream.readLine();
         }
@@ -80,7 +80,7 @@ QString Component::getSource(){
     return source;
 }
 
-QString Component::getSourceForObjectCreation(){
+QString Component::getSourceForObjectCreation() const{
     QString source;
     QTextStream ts(&source);
 
@@ -90,7 +90,7 @@ QString Component::getSourceForObjectCreation(){
 }
 
 
-QString Component::getSourceForMain(){
+QString Component::getSourceForMain() const{
     QString source;
     QTextStream ts(&source);
 
