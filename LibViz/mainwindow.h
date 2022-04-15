@@ -95,5 +95,6 @@ private slots:
     void saveProject();
     void showProjectSaveDialog();
     void showProjectOpenDialog();
+    void refresh(const SaveData& data);
 };
 #endif // MAINWINDOW_H

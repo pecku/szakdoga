@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(model, SIGNAL(compilerPathNotSet()), this, SLOT(showCompilerPathWarning()));
     connect(model, SIGNAL(needProjectNameForSave()), this, SLOT(showProjectSaveDialog()));
     connect(model, SIGNAL(needProjectNameForOpen()), this, SLOT(showProjectOpenDialog()));
+    connect(model, SIGNAL(projectLoaded(SaveData)), this, SLOT(refresh(SaveData)));
 
     centralSplitter = new QSplitter(Qt::Horizontal);
     centralSplitter->setContentsMargins(4,4,4,4);
@@ -409,6 +410,27 @@ void MainWindow::showProjectOpenDialog(){
     if(file == "") return;
 
     model->setProject(file);
+}
+
+void MainWindow::refresh(const SaveData& data){
+    Component component = *(data.components[1]);
+    ComponentType componentType = component.getType();
+    if(componentType == COUNTING || componentType == LINSEARCH || componentType == MAXSEARCH || componentType == SELECTION || componentType == SUMMATION){
+        ProcedureWidget* procedure = new ProcedureWidget(component, model, this);
+        toolBox->setCurrentIndex(toolBox->addItem(procedure,component.getName()));
+        procedureWidgets.push_back(procedure);
+        foreach(EnumeratorWidget* enorw, enumeratorWidgets){
+            procedure->addEnumeratorChoice(enorw->getName(), enorw->getID());
+        }
+        (new QListWidgetItem(component.getName(),listWidget,component.getID()))->setData(Qt::UserRole,"component");
+    }else{
+        EnumeratorWidget* enumerator = new EnumeratorWidget(component, model, this);
+        toolBox->setCurrentIndex(toolBox->addItem(enumerator,component.getName()));
+        enumeratorWidgets.push_back(enumerator);
+        foreach(ProcedureWidget* procw, procedureWidgets){
+            procw->addEnumeratorChoice(component.getName(), component.getID());
+        }
+    }
 }
 
 MainWindow::~MainWindow()

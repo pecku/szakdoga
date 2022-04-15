@@ -6,6 +6,25 @@ ProcedureWidget::ProcedureWidget(int id, QString name, ComponentType type, Model
     initSegments();
 }
 
+ProcedureWidget::ProcedureWidget(const Component& component, Model* model, QWidget *parent) : ProcedureWidget(component.getID(),component.getName(),component.getType(),model,parent)
+{
+    QMap<MethodType,QString> methods = component.getMethods();
+    enorComboBox->setCurrentText(component.getEnumeratorObjectName());
+    objectNameLineEdit->setText(component.getObjectName());
+    itemTypeLineEdit->setText(component.getItem());
+    if(optimistCheckBox != nullptr) optimistCheckBox->setChecked(component.getOptimist());
+    if(valueLineEdit != nullptr) valueLineEdit->setText(component.getValue());
+    if(greaterRadioButton != nullptr) greaterRadioButton->setChecked(component.getCompare() == "Greater");
+    if(lessRadioButton != nullptr) lessRadioButton->setChecked(component.getCompare() == "Less");
+    if(neutralTextEdit != nullptr) neutralTextEdit->setText(methods[NEUTRAL]);
+    if(addTextEdit != nullptr) addTextEdit->setText(methods[NEUTRAL]);
+    if(funcTextEdit != nullptr) funcTextEdit->setText(methods[NEUTRAL]);
+    if(condTextEdit != nullptr) condTextEdit->setText(methods[NEUTRAL]);
+    if(firstTextEdit != nullptr) firstTextEdit->setText(methods[NEUTRAL]);
+    if(whileCondTextEdit != nullptr) whileCondTextEdit->setText(methods[NEUTRAL]);
+    if(destructorTextEdit != nullptr) destructorTextEdit->setText(methods[NEUTRAL]);
+}
+
 void ProcedureWidget::initSegments(){
     enorLabel = new QLabel("Enumerator:");
     enorComboBox = new QComboBox();

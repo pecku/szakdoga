@@ -6,6 +6,11 @@ EnumeratorWidget::EnumeratorWidget(int id, QString name, ComponentType type, Mod
     initSegments();
 }
 
+EnumeratorWidget::EnumeratorWidget(const Component& component, Model* model, QWidget *parent) : EnumeratorWidget(component.getID(),component.getName(),component.getType(),model,parent)
+{
+
+}
+
 void EnumeratorWidget::initSegments(){
     firstLabel = nullptr;
     firstTextEdit = nullptr;

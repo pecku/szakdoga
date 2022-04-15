@@ -9,6 +9,7 @@ class EnumeratorWidget : public ComponentWidget
     Q_OBJECT
 public:
     explicit EnumeratorWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);
+    EnumeratorWidget(const Component& component, Model* model, QWidget *parent = nullptr);
 
     bool checkRequired();
 

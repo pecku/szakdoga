@@ -13,6 +13,7 @@ class ProcedureWidget : public ComponentWidget
     Q_OBJECT
 public:
     explicit ProcedureWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);
+    ProcedureWidget(const Component& component, Model* model, QWidget *parent = nullptr);
 
     void addEnumeratorChoice(QString enumeratorName, int enumeratorID);
     void removeEnumeratorChouce(int enumeratorID);
