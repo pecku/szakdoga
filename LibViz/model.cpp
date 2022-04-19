@@ -48,6 +48,10 @@ bool Model::isObjectNameUsed(QString objectName){
     return false;
 }
 
+QString Model::getEnumeratorNameById(int enumeratorID){
+    return components[enumeratorID]->getName();
+}
+
 int Model::createCodeBlock(){
     int codeBlockID = newID();
     codeblocks.insert(codeBlockID, new CodeBlock(codeBlockID));
@@ -292,8 +296,15 @@ bool Model::saveProject(){
 }
 
 bool Model::newProject(){
+    QString previousProjectName = projectName;
     emit needProjectNameForSave();
-    if(projectName == "") return false;
+    if(projectName == "" || previousProjectName == projectName) return false;
+    components.clear();
+    codeblocks.clear();
+    structs.clear();
+    mainIdOrder.clear();
+    lastID = 0;
+    emit cleared();
     return true;
 }
 
@@ -302,7 +313,6 @@ void Model::openProject(){
     if(projectName == "") return;
     SaveData loadData = dataAccess.loadProject(projectName);
     components = loadData.components;
-    codeblocks.clear();
     codeblocks = loadData.codeblocks;
     structs = loadData.structs;
     mainIdOrder = loadData.mainIdOrder;

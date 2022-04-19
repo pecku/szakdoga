@@ -16,11 +16,13 @@ public:
     ProcedureWidget(const Component& component, Model* model, QWidget *parent = nullptr);
 
     void addEnumeratorChoice(QString enumeratorName, int enumeratorID);
-    void removeEnumeratorChouce(int enumeratorID);
+    void removeEnumeratorChoice(int enumeratorID);
+    void selectEnumerator(QString enumeratorName);
     bool checkRequired();
 
 private:
     void initSegments();
+    void connectSignals();
 
     //enumerator
     QLabel* enorLabel;

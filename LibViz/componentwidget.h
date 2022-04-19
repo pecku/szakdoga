@@ -50,6 +50,7 @@ protected:
     PopUpTextEdit* destructorTextEdit;
 
     bool checkRequiredBase();
+    void connectSignals();
 
 private slots:
     void onAddNewMemberClicked();

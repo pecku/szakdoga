@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(model, SIGNAL(needProjectNameForSave()), this, SLOT(showProjectSaveDialog()));
     connect(model, SIGNAL(needProjectNameForOpen()), this, SLOT(showProjectOpenDialog()));
     connect(model, SIGNAL(projectLoaded(SaveData)), this, SLOT(refresh(SaveData)));
+    connect(model, SIGNAL(cleared()), this, SLOT(clear()));
 
     centralSplitter = new QSplitter(Qt::Horizontal);
     centralSplitter->setContentsMargins(4,4,4,4);
@@ -104,7 +105,7 @@ void MainWindow::deleteComponent(){
     ComponentType ct = component->getType();
     if(ct == DEFAULT || ct == ARRAY || ct == INTERVAL || ct == STRINGSTREAM || ct == SEQINFILE){
         foreach(ProcedureWidget* pw, procedureWidgets){
-            pw->removeEnumeratorChouce(id);
+            pw->removeEnumeratorChoice(id);
         }
     }
 }
@@ -413,24 +414,38 @@ void MainWindow::showProjectOpenDialog(){
 }
 
 void MainWindow::refresh(const SaveData& data){
-    Component component = *(data.components[1]);
-    ComponentType componentType = component.getType();
-    if(componentType == COUNTING || componentType == LINSEARCH || componentType == MAXSEARCH || componentType == SELECTION || componentType == SUMMATION){
-        ProcedureWidget* procedure = new ProcedureWidget(component, model, this);
-        toolBox->setCurrentIndex(toolBox->addItem(procedure,component.getName()));
-        procedureWidgets.push_back(procedure);
-        foreach(EnumeratorWidget* enorw, enumeratorWidgets){
-            procedure->addEnumeratorChoice(enorw->getName(), enorw->getID());
-        }
-        (new QListWidgetItem(component.getName(),listWidget,component.getID()))->setData(Qt::UserRole,"component");
-    }else{
-        EnumeratorWidget* enumerator = new EnumeratorWidget(component, model, this);
-        toolBox->setCurrentIndex(toolBox->addItem(enumerator,component.getName()));
-        enumeratorWidgets.push_back(enumerator);
-        foreach(ProcedureWidget* procw, procedureWidgets){
-            procw->addEnumeratorChoice(component.getName(), component.getID());
+    clear();
+    foreach(const Component* component, data.components){
+        ComponentType componentType = component->getType();
+        if(componentType == COUNTING || componentType == LINSEARCH || componentType == MAXSEARCH || componentType == SELECTION || componentType == SUMMATION){
+            ProcedureWidget* procedure = new ProcedureWidget(*component, model, this);
+            toolBox->addItem(procedure,component->getName());
+            procedureWidgets.push_back(procedure);
+            (new QListWidgetItem(component->getName(),listWidget,component->getID()))->setData(Qt::UserRole,"component");
+        }else{
+            EnumeratorWidget* enumerator = new EnumeratorWidget(*component, model, this);
+            toolBox->addItem(enumerator,component->getName());
+            enumeratorWidgets.push_back(enumerator);
         }
     }
+    foreach(ProcedureWidget* procw, procedureWidgets){
+        foreach(EnumeratorWidget* enorw, enumeratorWidgets){
+            procw->addEnumeratorChoice(enorw->getName(), enorw->getID());
+        }
+    }
+}
+
+void MainWindow::clear(){
+    while(toolBox->count()){
+        toolBox->removeItem(toolBox->currentIndex());
+    }
+    listWidget->clear();
+    sourceTextBrowser->clear();
+    compileOutputBrowser->clear();
+
+    procedureWidgets.clear();
+    enumeratorWidgets.clear();
+    structWidgets.clear();
 }
 
 MainWindow::~MainWindow()

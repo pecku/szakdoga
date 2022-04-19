@@ -4,12 +4,18 @@ ProcedureWidget::ProcedureWidget(int id, QString name, ComponentType type, Model
     :  ComponentWidget(id,name,type,model,parent)
 {
     initSegments();
+    connectSignals();
 }
 
-ProcedureWidget::ProcedureWidget(const Component& component, Model* model, QWidget *parent) : ProcedureWidget(component.getID(),component.getName(),component.getType(),model,parent)
+ProcedureWidget::ProcedureWidget(const Component& component, Model* model, QWidget *parent) : ComponentWidget(component.getID(),component.getName(),component.getType(),model,parent)
 {
+    initSegments();
+
     QMap<MethodType,QString> methods = component.getMethods();
-    enorComboBox->setCurrentText(component.getEnumeratorObjectName());
+
+    QString enumeratorName = model->getEnumeratorNameById(component.getEnumeratorID());
+    enorComboBox->addItem(enumeratorName,component.getEnumeratorID());
+    enorComboBox->setCurrentText(enumeratorName);
     objectNameLineEdit->setText(component.getObjectName());
     itemTypeLineEdit->setText(component.getItem());
     if(optimistCheckBox != nullptr) optimistCheckBox->setChecked(component.getOptimist());
@@ -17,12 +23,14 @@ ProcedureWidget::ProcedureWidget(const Component& component, Model* model, QWidg
     if(greaterRadioButton != nullptr) greaterRadioButton->setChecked(component.getCompare() == "Greater");
     if(lessRadioButton != nullptr) lessRadioButton->setChecked(component.getCompare() == "Less");
     if(neutralTextEdit != nullptr) neutralTextEdit->setText(methods[NEUTRAL]);
-    if(addTextEdit != nullptr) addTextEdit->setText(methods[NEUTRAL]);
-    if(funcTextEdit != nullptr) funcTextEdit->setText(methods[NEUTRAL]);
-    if(condTextEdit != nullptr) condTextEdit->setText(methods[NEUTRAL]);
-    if(firstTextEdit != nullptr) firstTextEdit->setText(methods[NEUTRAL]);
-    if(whileCondTextEdit != nullptr) whileCondTextEdit->setText(methods[NEUTRAL]);
-    if(destructorTextEdit != nullptr) destructorTextEdit->setText(methods[NEUTRAL]);
+    if(addTextEdit != nullptr) addTextEdit->setText(methods[ADD]);
+    if(funcTextEdit != nullptr) funcTextEdit->setText(methods[FUNC]);
+    if(condTextEdit != nullptr) condTextEdit->setText(methods[COND]);
+    if(firstTextEdit != nullptr) firstTextEdit->setText(methods[FIRST]);
+    if(whileCondTextEdit != nullptr) whileCondTextEdit->setText(methods[WHILECOND]);
+    if(destructorTextEdit != nullptr) destructorTextEdit->setText(methods[DESTRUCTOR]);
+
+    connectSignals();
 }
 
 void ProcedureWidget::initSegments(){
@@ -32,8 +40,6 @@ void ProcedureWidget::initSegments(){
     enorComboBox->setCurrentIndex(-1);
     gridlayout->addWidget(enorLabel,2,0);
     gridlayout->addWidget(enorComboBox,2,1);
-
-    connect(enorComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(enorChanged(int)));
 
     optimistLabel = nullptr;
     optimistCheckBox = nullptr;
@@ -54,8 +60,6 @@ void ProcedureWidget::initSegments(){
         optimistCheckBox = new QCheckBox();
         gridlayout->addWidget(optimistLabel,3,0);
         gridlayout->addWidget(optimistCheckBox,3,1);
-
-        connect(optimistCheckBox,SIGNAL(stateChanged(int)),this,SLOT(optimistChanged()));
     }
 
     if(type == MAXSEARCH || type == SUMMATION){
@@ -63,8 +67,6 @@ void ProcedureWidget::initSegments(){
         valueLineEdit = new QLineEdit();
         gridlayout->addWidget(valueLabel,4,0);
         gridlayout->addWidget(valueLineEdit,4,1);
-
-        connect(valueLineEdit,SIGNAL(editingFinished()),this,SLOT(valueChanged()));
     }
 
     if(type == MAXSEARCH){
@@ -77,8 +79,6 @@ void ProcedureWidget::initSegments(){
         compareLayout->addSpacerItem(new QSpacerItem(maximumWidth(),0,QSizePolicy::Maximum));
         gridlayout->addWidget(compareLabel,5,0);
         gridlayout->addLayout(compareLayout,5,1);
-
-        connect(greaterRadioButton,SIGNAL(toggled(bool)),this,SLOT(compareChanged()));
         greaterRadioButton->setChecked(true);
     }
 
@@ -87,8 +87,6 @@ void ProcedureWidget::initSegments(){
         funcTextEdit = new PopUpTextEdit(FUNC);
         gridlayout->addWidget(funcLabel,6,0);
         gridlayout->addWidget(funcTextEdit,6,1);
-
-        connect(funcTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
     }
 
     if(type == SUMMATION){
@@ -97,14 +95,10 @@ void ProcedureWidget::initSegments(){
         gridlayout->addWidget(neutralLabel,7,0);
         gridlayout->addWidget(neutralTextEdit,7,1);
 
-        connect(neutralTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
-
         addLabel = new QLabel("Add:");
         addTextEdit = new PopUpTextEdit(ADD);
         gridlayout->addWidget(addLabel,8,0);
         gridlayout->addWidget(addTextEdit,8,1);
-
-        connect(addTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
     }
 
     condLabel = new QLabel("Condition:");
@@ -112,21 +106,30 @@ void ProcedureWidget::initSegments(){
     gridlayout->addWidget(condLabel,9,0);
     gridlayout->addWidget(condTextEdit,9,1);
 
-    connect(condTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
-
     firstLabel = new QLabel("First:");
     firstTextEdit = new PopUpTextEdit(FIRST);
     gridlayout->addWidget(firstLabel,10,0);
     gridlayout->addWidget(firstTextEdit,10,1);
 
-    connect(firstTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
-
     whileCondLabel = new QLabel("While Condition:");
     whileCondTextEdit = new PopUpTextEdit(WHILECOND);
     gridlayout->addWidget(whileCondLabel,11,0);
     gridlayout->addWidget(whileCondTextEdit,11,1);
+}
 
-    connect(whileCondTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
+void ProcedureWidget::connectSignals(){
+    connect(enorComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(enorChanged(int)));
+    if(optimistCheckBox != nullptr) connect(optimistCheckBox,SIGNAL(stateChanged(int)),this,SLOT(optimistChanged()));
+    if(valueLineEdit != nullptr) connect(valueLineEdit,SIGNAL(editingFinished()),this,SLOT(valueChanged()));
+    if(greaterRadioButton != nullptr) connect(greaterRadioButton,SIGNAL(toggled(bool)),this,SLOT(compareChanged()));
+    if(neutralTextEdit != nullptr) connect(neutralTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
+    if(addTextEdit != nullptr) connect(addTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
+    if(funcTextEdit != nullptr) connect(funcTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
+    if(condTextEdit != nullptr) connect(condTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
+    if(firstTextEdit != nullptr) connect(firstTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
+    if(whileCondTextEdit != nullptr) connect(whileCondTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
+
+    ComponentWidget::connectSignals();
 }
 
 bool ProcedureWidget::checkRequired(){
@@ -200,10 +203,12 @@ void ProcedureWidget::compareChanged(){
 }
 
 void ProcedureWidget::addEnumeratorChoice(QString enumeratorName, int enumeratorID){
-    enorComboBox->addItem(enumeratorName,enumeratorID);
+    if(enorComboBox->findText(enumeratorName) == -1){
+        enorComboBox->addItem(enumeratorName,enumeratorID);
+    }
 }
 
-void ProcedureWidget::removeEnumeratorChouce(int enumeratorID){
+void ProcedureWidget::removeEnumeratorChoice(int enumeratorID){
     for(int i = 0; i < enorComboBox->count(); i++){
         if(enorComboBox->itemData(i).toInt() == enumeratorID){
             enorComboBox->removeItem(i);

@@ -8,7 +8,7 @@ PopUpTextEdit::PopUpTextEdit(){
 void PopUpTextEdit::focusInEvent(QFocusEvent *e) {
     (void)e;
     clearFocus();
-    inputDialog->exec();
+    inputDialog->exec(this->toPlainText());
 }
 
 void PopUpTextEdit::getTextFromInputDialog(){

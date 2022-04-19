@@ -13,11 +13,13 @@ class TextInputDialog : public QDialog
 public:
     explicit TextInputDialog();
     QString getText(){return textEdit->toPlainText();}
+    void exec(QString text){textEdit->setText(text); exec();}
 
 private:
     QTextEdit* textEdit;
     QPushButton* saveButton;
     QPushButton* cancelButton;
+    using QDialog::exec;
 };
 
 #endif // TEXTINPUTDIALOG_H

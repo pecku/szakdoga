@@ -4,11 +4,23 @@ EnumeratorWidget::EnumeratorWidget(int id, QString name, ComponentType type, Mod
     : ComponentWidget(id,name,type,model,parent)
 {
     initSegments();
+    connectSignals();
 }
 
-EnumeratorWidget::EnumeratorWidget(const Component& component, Model* model, QWidget *parent) : EnumeratorWidget(component.getID(),component.getName(),component.getType(),model,parent)
+EnumeratorWidget::EnumeratorWidget(const Component& component, Model* model, QWidget *parent) : ComponentWidget(component.getID(),component.getName(),component.getType(),model,parent)
 {
+    initSegments();
 
+    QMap<MethodType,QString> methods = component.getMethods();
+    objectNameLineEdit->setText(component.getObjectName());
+    itemTypeLineEdit->setText(component.getItem());
+    if(firstTextEdit != nullptr) firstTextEdit->setText(methods[FIRST]);
+    if(nextTextEdit != nullptr) nextTextEdit->setText(methods[NEXT]);
+    if(endTextEdit != nullptr) endTextEdit->setText(methods[END]);
+    if(currentTextEdit != nullptr) currentTextEdit->setText(methods[CURRENT]);
+    if(destructorTextEdit != nullptr) destructorTextEdit->setText(methods[DESTRUCTOR]);
+
+    connectSignals();
 }
 
 void EnumeratorWidget::initSegments(){
@@ -27,29 +39,30 @@ void EnumeratorWidget::initSegments(){
         gridlayout->addWidget(firstLabel,2,0);
         gridlayout->addWidget(firstTextEdit,2,1);
 
-        connect(firstTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
-
         nextLabel = new QLabel("Next:");
         nextTextEdit = new PopUpTextEdit(NEXT);
         gridlayout->addWidget(nextLabel,3,0);
         gridlayout->addWidget(nextTextEdit,3,1);
-
-        connect(nextTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
 
         endLabel = new QLabel("End:");
         endTextEdit = new PopUpTextEdit(END);
         gridlayout->addWidget(endLabel,4,0);
         gridlayout->addWidget(endTextEdit,4,1);
 
-        connect(endTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
-
         currentLabel = new QLabel("Current:");
         currentTextEdit = new PopUpTextEdit(CURRENT);
         gridlayout->addWidget(currentLabel,5,0);
         gridlayout->addWidget(currentTextEdit,5,1);
-
-        connect(currentTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
     }
+}
+
+void EnumeratorWidget::connectSignals(){
+    if(firstTextEdit != nullptr) connect(firstTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
+    if(nextTextEdit != nullptr) connect(nextTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
+    if(endTextEdit != nullptr) connect(endTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
+    if(currentTextEdit != nullptr) connect(currentTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
+
+    ComponentWidget::connectSignals();
 }
 
 bool EnumeratorWidget::checkRequired(){

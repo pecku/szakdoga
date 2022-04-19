@@ -22,6 +22,7 @@ public:
 
     bool isComponentNameUsed(QString name);
     bool isObjectNameUsed(QString objectName);
+    QString getEnumeratorNameById(int enumeratorID);
 
     void modifyMember(int componentID, int memberID, QString type, QString name);
     void modifyCustomMethod(int componentID, int customMethodID, QString header, QString body);
@@ -89,6 +90,7 @@ signals:
     void needProjectNameForSave();
     void needProjectNameForOpen();
     void projectLoaded(const SaveData& data);
+    void cleared();
 
 private slots:
     void compileFinished(int exitCode, QProcess::ExitStatus exitStatus);

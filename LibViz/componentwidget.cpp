@@ -3,7 +3,7 @@
 ComponentWidget::ComponentWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent)
     :  QWidget(parent), name(name), type(type), id(id), model(model)
 {
-    objectNameApproved = false;
+    objectNameApproved = true;
 
     vboxlayout = new QVBoxLayout(this);
     vboxlayout->setAlignment(Qt::Alignment(Qt::AlignmentFlag::AlignTop));
@@ -36,24 +36,24 @@ ComponentWidget::ComponentWidget(int id, QString name, ComponentType type, Model
     gridlayout->addWidget(objectNameLabel,0,0);
     gridlayout->addWidget(objectNameLineEdit,0,1);
 
-    connect(objectNameLineEdit,SIGNAL(editingFinished()),this,SLOT(objectNameChanged()));
-
     itemTypeLabel = new QLabel("Item type:");
     itemTypeLineEdit = new QLineEdit();
     gridlayout->addWidget(itemTypeLabel,1,0);
     gridlayout->addWidget(itemTypeLineEdit,1,1);
-
-    connect(itemTypeLineEdit,SIGNAL(editingFinished()),this,SLOT(itemTypeChanged()));
 
     destructorLabel = new QLabel("Destructor:");
     destructorTextEdit = new PopUpTextEdit(DESTRUCTOR);
     gridlayout->addWidget(destructorLabel,100,0);
     gridlayout->addWidget(destructorTextEdit,100,1);
 
-    connect(destructorTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
-
     vboxlayout->addLayout(gridlayout);
     vboxlayout->addLayout(customMethodLayout);
+}
+
+void ComponentWidget::connectSignals(){
+    connect(objectNameLineEdit,SIGNAL(editingFinished()),this,SLOT(objectNameChanged()));
+    connect(itemTypeLineEdit,SIGNAL(editingFinished()),this,SLOT(itemTypeChanged()));
+    connect(destructorTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
 }
 
 bool ComponentWidget::checkRequiredBase(){

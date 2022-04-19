@@ -15,6 +15,7 @@ public:
 
 private:
     void initSegments();
+    void connectSignals();
 
     //void first()
     QLabel* firstLabel;

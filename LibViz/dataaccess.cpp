@@ -59,10 +59,11 @@ bool DataAccess::saveProject(SaveData data){
                         }
                     xmlWriter.writeEndElement();
                     xmlWriter.writeStartElement("methods");
-                        for(QKeyValueIterator<const MethodType&,QString&,QMap<MethodType,QString>::iterator> kvIterator = component->getMethods().keyValueBegin(); kvIterator != component->getMethods().keyValueEnd(); kvIterator++){
+                        QMap<MethodType,QString> methods = component->getMethods();
+                        foreach(const MethodType key, methods.keys()){
                             xmlWriter.writeStartElement("method");
-                                xmlWriter.writeTextElement("type", methodTypeStrings[(*kvIterator).first]);
-                                xmlWriter.writeTextElement("body", (*kvIterator).second);
+                                xmlWriter.writeTextElement("type", methodTypeStrings[key]);
+                                xmlWriter.writeTextElement("body", methods[key]);
                             xmlWriter.writeEndElement();
                         }
                     xmlWriter.writeEndElement();
