@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#define APP_NAME "LibViz"
+
 #include <QMainWindow>
 #include <QSplitter>
 #include <QToolBox>

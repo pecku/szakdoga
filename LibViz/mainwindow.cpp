@@ -423,6 +423,7 @@ void MainWindow::showProjectOpenDialog(){
 
 void MainWindow::refresh(const SaveData& data){
     clear();
+    setWindowTitle((QString)APP_NAME + " - " + data.projectName);
     foreach(const Component* component, data.components){
         ComponentType componentType = component->getType();
         if(componentType == COUNTING || componentType == LINSEARCH || componentType == MAXSEARCH || componentType == SELECTION || componentType == SUMMATION){
