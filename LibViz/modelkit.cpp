@@ -27,25 +27,25 @@ QString Component::getSource() const{
     ts << Qt::endl << "private:";
 
     foreach(Member member, members){
-        ts << Qt::endl << "\t" << member.type << " " <<  member.name << ";";
+        ts << Qt::endl << "    " << member.type << " " <<  member.name << ";";
     }
 
     ts << Qt::endl << "public:";
 
     foreach(CustomMethod customMethod, customMethods){
-        ts << Qt::endl << "\t" << customMethod.header << Qt::endl << "\t{";
+        ts << Qt::endl << "    " << customMethod.header << Qt::endl << "    {";
         QTextStream methodBodyStream(&customMethod.body);
         while(!methodBodyStream.atEnd()){
-            ts << Qt::endl << "\t\t" << methodBodyStream.readLine();
+            ts << Qt::endl << "        " << methodBodyStream.readLine();
         }
-        ts << Qt::endl << "\t" << "}";
+        ts << Qt::endl << "    " << "}";
     }
 
     ts << Qt::endl << "protected:";
 
     auto methodkeys = methods.keys();
     foreach(MethodType key, methodkeys){
-        ts << Qt::endl << "\t";
+        ts << Qt::endl << "    ";
 
         if(key == NEUTRAL || key == ADD || key == FUNC){
             ts << value << " ";
@@ -66,14 +66,14 @@ QString Component::getSource() const{
             ts << "const " << item << "& current";
         }
 
-        ts << methodHeaderStrings[key].second << " override" << Qt::endl << "\t{";
+        ts << methodHeaderStrings[key].second << " override" << Qt::endl << "    {";
 
         QString methodBody = methods[key];
         QTextStream methodBodyStream(&methodBody);
         while(!methodBodyStream.atEnd()){
-            ts << Qt::endl << "\t\t" << methodBodyStream.readLine();
+            ts << Qt::endl << "        " << methodBodyStream.readLine();
         }
-        ts << Qt::endl << "\t" << "}";
+        ts << Qt::endl << "    " << "}";
     }
     ts << Qt::endl << "}";
 
@@ -91,11 +91,15 @@ QString Component::getSourceForObjectCreation() const{
 
 
 QString Component::getSourceForMain() const{
+    if(type == DEFAULT || type == ARRAY || type == INTERVAL || type == STRINGSTREAM || type == SEQINFILE){
+        return "";
+    }
+
     QString source;
     QTextStream ts(&source);
 
     ts << objectName << ".addEnumerator(&" << enumeratorObjectName << ");" << Qt::endl;
-    ts << "\t" << objectName << ".run();" << Qt::endl;
+    ts << objectName << ".run();" << Qt::endl;
 
     return source;
 }
@@ -117,16 +121,16 @@ QString Struct::getSource(){
     ts << Qt::endl << "{";
 
     foreach(Member member, members){
-        ts << Qt::endl << "\t" << member.type << " " <<  member.name << ";";
+        ts << Qt::endl << "    " << member.type << " " <<  member.name << ";";
     }
 
     foreach(CustomMethod customMethod, customMethods){
-        ts << Qt::endl << "\t" << customMethod.header << Qt::endl << "\t{";
+        ts << Qt::endl << "    " << customMethod.header << Qt::endl << "    {";
         QTextStream methodBodyStream(&customMethod.body);
         while(!methodBodyStream.atEnd()){
-            ts << Qt::endl << "\t\t" << methodBodyStream.readLine();
+            ts << Qt::endl << "        " << methodBodyStream.readLine();
         }
-        ts << Qt::endl << "\t" << "}";
+        ts << Qt::endl << "    " << "}";
     }
 
     ts << Qt::endl << "}";

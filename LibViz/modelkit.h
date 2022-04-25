@@ -168,7 +168,7 @@ public:
     Struct(QString name, int id) : name(name), id(id){}
 
     QString getSource();
-    QString getName(){return name;}
+    QString getName() const {return name;}
     int getID() const {return id;}
     QMap<int,Member> getMembers() const {return members;}
     QMap<int,CustomMethod> getCustomMethods() const {return customMethods;}

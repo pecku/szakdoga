@@ -5,7 +5,7 @@ DataAccess::DataAccess()
 
 }
 
-bool DataAccess::writeSource(/*QString projectName,*/ QString source){
+bool DataAccess::writeSource(QString source){
     QFile file("main.cpp");
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         return false;

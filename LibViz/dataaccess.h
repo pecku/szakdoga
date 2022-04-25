@@ -15,7 +15,7 @@ class DataAccess
 public:
     DataAccess();
 
-    bool writeSource(/*QString projectName,*/ QString source);
+    bool writeSource(QString source);
     bool saveProject(SaveData data);
     SaveData loadProject(QString projectName);
 };

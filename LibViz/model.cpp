@@ -49,6 +49,7 @@ bool Model::isObjectNameUsed(QString objectName){
 }
 
 QString Model::getEnumeratorNameById(int enumeratorID){
+    if(enumeratorID < 0) return nullptr;
     return components[enumeratorID]->getName();
 }
 
@@ -155,19 +156,22 @@ QString Model::generateMainSource(){
     ts << "int main(){" << Qt::endl;
 
     foreach(Component* component, components){
-        ts << "\t" << component->getSourceForObjectCreation() << Qt::endl;
+        ts << "    " << component->getSourceForObjectCreation() << Qt::endl;
     }
 
     foreach(int id, mainIdOrder){
-        ts << "\t";
         if(components.contains(id)){
-            ts << components[id]->getSourceForMain();
+            QString ms = components[id]->getSourceForMain();
+            QTextStream codeStringStream(&ms);
+            while(!codeStringStream.atEnd()){
+                ts << Qt::endl << "    " + codeStringStream.readLine();
+            }
         }else if(codeblocks.contains(id)){
-            ts << codeblocks[id]->getSource() << Qt::endl;
+            ts << Qt::endl << "    " << codeblocks[id]->getSource();
         }        
     }
 
-    ts << "}" << Qt::endl;
+    ts << Qt::endl << "}" << Qt::endl;
 
     return source;
 }
@@ -281,7 +285,15 @@ QString Model::replaceReference(QString codeString){
 QString Model::getReferenceSource(QString objectName){
     foreach(Component* component, components){
         if(component->getObjectName() == objectName){
-            return "\t\t" + component->getSourceForObjectCreation() + "\n\t\t" + component->getSourceForMain();
+            QString result;
+            QTextStream resultStream(&result);
+            QString ms = component->getSourceForMain();
+            QTextStream codeStringStream(&ms);
+            resultStream << "        " + component->getSourceForObjectCreation();
+            while(!codeStringStream.atEnd()){
+                resultStream << Qt::endl << "        " + codeStringStream.readLine();
+            }
+            return result;
         }
     }
     return "";

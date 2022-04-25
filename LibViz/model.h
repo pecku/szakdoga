@@ -56,6 +56,8 @@ public:
     QString getCompilerPath(){return compilerPath;}
     QStringList getCompilerArguments(){return compilerArguments;}
 
+    QString getProjectName(){return projectName;}
+
     bool newProject();
     bool saveProject();
     void setProject(QString file){projectName = file;}
