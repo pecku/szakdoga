@@ -10,16 +10,16 @@ class MemberWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit MemberWidget(int id, QWidget *parent = nullptr);
+    explicit MemberWidget(const int id, QString type = "", QString name = "", QWidget *parent = nullptr);
 
-    QString getType(){return type->text();}
-    QString getName(){return name->text();}
+    QString getType(){return typeLineEdit->text();}
+    QString getName(){return nameLineEdit->text();}
     int getID(){return id;}
 
 private:
     const int id;
-    QLineEdit* type;
-    QLineEdit* name;
+    QLineEdit* typeLineEdit;
+    QLineEdit* nameLineEdit;
     QPushButton* deleteButton;
     QHBoxLayout* hboxlayout;
 

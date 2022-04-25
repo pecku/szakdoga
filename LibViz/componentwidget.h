@@ -51,6 +51,10 @@ protected:
 
     bool checkRequiredBase();
     void connectSignals();
+    void createMember(int id, QString type = "", QString name = "");
+    void createCustomMethod(int id, QString header = "", QString body = "");
+    void createMembers(QMap<int,Member> members);
+    void createCustomMethods(QMap<int,CustomMethod> customMethods);
 
 private slots:
     void onAddNewMemberClicked();

@@ -29,8 +29,18 @@ StructWidget::StructWidget(int id, QString name, Model* model, QWidget *parent)
     vboxlayout->addLayout(customMethodLayout);
 }
 
+StructWidget::StructWidget(const Struct& _struct, Model* model, QWidget *parent) : StructWidget(_struct.getID(), _struct.getName(), model, parent)
+{
+    createMembers(_struct.getMembers());
+    createCustomMethods(_struct.getCustomMethods());
+}
+
 void StructWidget::onAddNewMemberClicked(){
-    MemberWidget* member = new MemberWidget(model->createMember(this->id));
+    createMember(model->createMember(this->id));
+}
+
+void StructWidget::createMember(int id, QString type, QString name){
+    MemberWidget* member = new MemberWidget(id, type, name);
     memberLayout->addWidget(member);
     members.push_back(member);
     connect(member,SIGNAL(edited()),this,SLOT(memberChanged()));
@@ -51,11 +61,27 @@ void StructWidget::memberChanged(){
 }
 
 void StructWidget::onAddNewMethodClicked(){
-    CustomMethodWidget* customMethod = new CustomMethodWidget(model->createCustomMethod(this->id));
+    createCustomMethod(model->createCustomMethod(this->id));
+}
+
+void StructWidget::createCustomMethod(int id, QString header, QString body){
+    CustomMethodWidget* customMethod = new CustomMethodWidget(id, header, body);
     customMethodLayout->addWidget(customMethod);
     customMethods.push_back(customMethod);
     connect(customMethod,SIGNAL(edited()),this,SLOT(methodChanged()));
     connect(customMethod,SIGNAL(deleteMe()),this,SLOT(deleteMethod()));
+}
+
+void StructWidget::createMembers(QMap<int, Member> members){
+    foreach(Member member, members){
+        createMember(member.id, member.type, member.name);
+    }
+}
+
+void StructWidget::createCustomMethods(QMap<int, CustomMethod> customMethods){
+    foreach(CustomMethod customMethod, customMethods){
+        createCustomMethod(customMethod.id, customMethod.header, customMethod.body);
+    }
 }
 
 void StructWidget::deleteMethod(){

@@ -11,16 +11,16 @@ class CustomMethodWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit CustomMethodWidget(int id, QWidget *parent = nullptr);
+    explicit CustomMethodWidget(int id, QString header = "", QString body = "", QWidget *parent = nullptr);
 
-    QString getHeader(){return header->text();}
-    QString getBody(){return body->toPlainText();}
+    QString getHeader(){return headerLineEdit->text();}
+    QString getBody(){return bodyPopUpTextEdit->toPlainText();}
     int getID(){return id;}
 
 private:
     const int id;
-    QLineEdit* header;
-    PopUpTextEdit* body;
+    QLineEdit* headerLineEdit;
+    PopUpTextEdit* bodyPopUpTextEdit;
     QPushButton* deleteButton;
     QVBoxLayout* hboxlayout;
 

@@ -442,6 +442,11 @@ void MainWindow::refresh(const SaveData& data){
             procw->addEnumeratorChoice(enorw->getName(), enorw->getID());
         }
     }
+    foreach(const Struct* _struct, data.structs){
+        StructWidget* structWidget = new StructWidget(*_struct, model, this);
+        toolBox->addItem(structWidget,_struct->getName());
+        structWidgets.push_back(structWidget);
+    }
 }
 
 void MainWindow::clear(){

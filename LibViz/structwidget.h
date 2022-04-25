@@ -13,6 +13,7 @@ class StructWidget : public QWidget
     Q_OBJECT
 public:
     explicit StructWidget(int id, QString name, Model* model, QWidget *parent = nullptr);
+    StructWidget(const Struct& _struct, Model* model, QWidget *parent = nullptr);
 
     QString getName(){return name;}
     int getID(){return id;}
@@ -28,6 +29,10 @@ private:
     QVBoxLayout* customMethodLayout;
 
     void initSegments();
+    void createMember(int id, QString type = "", QString name = "");
+    void createCustomMethod(int id, QString header = "", QString body = "");
+    void createMembers(QMap<int,Member> members);
+    void createCustomMethods(QMap<int,CustomMethod> customMethods);
 
 protected:
     const int id;

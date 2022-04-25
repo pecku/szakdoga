@@ -20,6 +20,9 @@ EnumeratorWidget::EnumeratorWidget(const Component& component, Model* model, QWi
     if(currentTextEdit != nullptr) currentTextEdit->setText(methods[CURRENT]);
     if(destructorTextEdit != nullptr) destructorTextEdit->setText(methods[DESTRUCTOR]);
 
+    createMembers(component.getMembers());
+    createCustomMethods(component.getCustomMethods());
+
     connectSignals();
 }
 

@@ -14,8 +14,10 @@ ProcedureWidget::ProcedureWidget(const Component& component, Model* model, QWidg
     QMap<MethodType,QString> methods = component.getMethods();
 
     QString enumeratorName = model->getEnumeratorNameById(component.getEnumeratorID());
-    enorComboBox->addItem(enumeratorName,component.getEnumeratorID());
-    enorComboBox->setCurrentText(enumeratorName);
+    if(enumeratorName != nullptr){
+        enorComboBox->addItem(enumeratorName,component.getEnumeratorID());
+        enorComboBox->setCurrentText(enumeratorName);
+    }
     objectNameLineEdit->setText(component.getObjectName());
     itemTypeLineEdit->setText(component.getItem());
     if(optimistCheckBox != nullptr) optimistCheckBox->setChecked(component.getOptimist());
@@ -29,6 +31,9 @@ ProcedureWidget::ProcedureWidget(const Component& component, Model* model, QWidg
     if(firstTextEdit != nullptr) firstTextEdit->setText(methods[FIRST]);
     if(whileCondTextEdit != nullptr) whileCondTextEdit->setText(methods[WHILECOND]);
     if(destructorTextEdit != nullptr) destructorTextEdit->setText(methods[DESTRUCTOR]);
+
+    createMembers(component.getMembers());
+    createCustomMethods(component.getCustomMethods());
 
     connectSignals();
 }

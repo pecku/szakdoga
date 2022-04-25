@@ -72,7 +72,11 @@ bool ComponentWidget::checkRequiredBase(){
 }
 
 void ComponentWidget::onAddNewMemberClicked(){
-    MemberWidget* member = new MemberWidget(model->createMember(this->id));
+    createMember(model->createMember(this->id));
+}
+
+void ComponentWidget::createMember(int id, QString type, QString name){
+    MemberWidget* member = new MemberWidget(id, type, name);
     memberLayout->addWidget(member);
     members.push_back(member);
     connect(member,SIGNAL(edited()),this,SLOT(memberChanged()));
@@ -93,7 +97,11 @@ void ComponentWidget::memberChanged(){
 }
 
 void ComponentWidget::onAddNewMethodClicked(){
-    CustomMethodWidget* customMethod = new CustomMethodWidget(model->createCustomMethod(this->id));
+    createCustomMethod(model->createCustomMethod(this->id));
+}
+
+void ComponentWidget::createCustomMethod(int id, QString header, QString body){
+    CustomMethodWidget* customMethod = new CustomMethodWidget(id, header, body);
     customMethodLayout->addWidget(customMethod);
     customMethods.push_back(customMethod);
     connect(customMethod,SIGNAL(edited()),this,SLOT(methodChanged()));
@@ -106,6 +114,18 @@ void ComponentWidget::deleteMethod(){
     customMethodLayout->removeWidget(customMethod);
     model->deleteCustomMethod(this->id, customMethod->getID());
     delete customMethod;
+}
+
+void ComponentWidget::createMembers(QMap<int, Member> members){
+    foreach(Member member, members){
+        createMember(member.id, member.type, member.name);
+    }
+}
+
+void ComponentWidget::createCustomMethods(QMap<int, CustomMethod> customMethods){
+    foreach(CustomMethod customMethod, customMethods){
+        createCustomMethod(customMethod.id, customMethod.header, customMethod.body);
+    }
 }
 
 void ComponentWidget::methodChanged(){
