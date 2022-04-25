@@ -6,10 +6,10 @@ SettingsDialog::SettingsDialog()
     cancelButton = new QPushButton("cancel");
 
     compilerPathLineEdit = new QLineEdit();
-    compilerPathLineEdit->setPlaceholderText("Compiler path");
+    compilerPathLineEdit->setPlaceholderText("g++ path");
 
     argumentsLineEdit = new QLineEdit();
-    argumentsLineEdit->setPlaceholderText("Compiler arguments");
+    argumentsLineEdit->setPlaceholderText("g++ arguments");
 
     QVBoxLayout* vboxlayout = new QVBoxLayout(this);
     QHBoxLayout* hboxlayout = new QHBoxLayout();
