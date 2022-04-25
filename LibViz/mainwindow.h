@@ -10,6 +10,7 @@
 #include <QToolBar>
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QCloseEvent>
 
 #include "procedurewidget.h"
 #include "enumeratorwidget.h"
@@ -25,6 +26,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
 
 private:
     Model* model;
@@ -72,6 +76,7 @@ private:
     void initComponentEditorSegment();
     void initListSegment();
     void initSourceSegment();
+    bool showDiscardWarning();
 
 private slots:
     void showCreateComponentDialog();

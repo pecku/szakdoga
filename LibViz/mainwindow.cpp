@@ -376,15 +376,23 @@ void MainWindow::changeSelectedComponent(){
 }
 
 void MainWindow::newProject(){
-    model->newProject();
+    if(showDiscardWarning()){
+        if(model->newProject()){
+            setWindowTitle((QString)APP_NAME + " - " + model->getProjectName());
+        }
+    }
 }
 
 void MainWindow::saveProject(){
-    model->saveProject();
+    if(model->saveProject()){
+        setWindowTitle((QString)APP_NAME + " - " + model->getProjectName());
+    }
 }
 
 void MainWindow::loadProject(){
-    model->openProject();
+    if(showDiscardWarning()){
+        model->openProject();
+    }
 }
 
 void MainWindow::showProjectSaveDialog(){
@@ -447,6 +455,25 @@ void MainWindow::clear(){
     enumeratorWidgets.clear();
     structWidgets.clear();
 }
+
+bool MainWindow::showDiscardWarning(){
+    QMessageBox msg(QMessageBox::Icon::Question, "Discard changes", "Unsaved changes might be lost!\nDo you want to continue?", QMessageBox::Yes | QMessageBox::No, this);
+    msg.setDefaultButton(QMessageBox::No);
+    int msg_res = msg.exec();
+
+    if(msg_res != QMessageBox::Yes) return false;
+    else return true;
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if(showDiscardWarning()){
+        QMainWindow::closeEvent(event);
+    }else{
+        event->ignore();
+    }
+}
+
 
 MainWindow::~MainWindow()
 {
