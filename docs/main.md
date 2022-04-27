@@ -175,7 +175,7 @@ A nézet felépítése a X-as ábrán látható. Bal oldalt az általunk létreh
 
 > given-when-then
 
-![Használati esetek](../diagram/docs/Use-case.svg)
+![Használati esetek](../diagram/docs/Use-Case.svg)
 
 ## Architektúra
 
@@ -190,13 +190,13 @@ Az alkalmazás háromrétegű nézet-modell-perzisztencia architektúrával lett
 > részletes uml-ek külön-külön az osztályokról
 
 A következő ábrán látható a nézetet alkotó osztályok kapcsolata.
-![Nézet kapcsolatok uml](../diagram/docs/view-relations.svg)
+![Nézet kapcsolatok uml](../diagram/docs/View-relations.svg)
 
 ## Modell
 
 > részletes uml-ek külön-külön az osztályokra
 
-![Modell kapcsolatok uml](../diagram/docs/model-relations.svg)
+![Modell kapcsolatok uml](../diagram/docs/Model-relations.svg)
 
 ### Modell adattagok és metódusok
 
