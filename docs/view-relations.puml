@@ -1,0 +1,65 @@
+@startuml View-relations
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+'skinparam groupInheritance 2
+skinparam linetype ortho
+hide circle
+hide enum methods
+hide enum members
+hide class methods
+hide class members
+
+class Model
+class Component
+enum ComponentType
+enum MethodType
+class MainWindow extends QMainWindow
+class ComponentWidget extends QWidget
+class EnumeratorWidget extends ComponentWidget
+class ProcedureWidget extends ComponentWidget
+class StructWidget extends QWidget
+enum CreateComponentDialogMode
+class CreateComponentDialog extends QDialog
+class CustomMethodWidget extends QWidget
+class MemberWidget extends QWidget
+class PopUpTextEdit extends QTextBrowser
+class SettingsDialog extends QDialog
+class TextInputDialog extends QDialog
+
+MainWindow .down.> Model
+MainWindow .up.> CreateComponentDialog
+MainWindow .up.> SettingsDialog
+MainWindow .up.> TextInputDialog
+MainWindow .down.> EnumeratorWidget
+MainWindow .down.> ProcedureWidget
+MainWindow .down.> StructWidget
+
+ComponentWidget .up.> MemberWidget
+ComponentWidget .left.> CustomMethodWidget
+ComponentWidget .up.> Model
+ComponentWidget .up.> ComponentType
+ComponentWidget .down.> PopUpTextEdit
+
+EnumeratorWidget ..> PopUpTextEdit
+EnumeratorWidget ..> Model
+EnumeratorWidget ..> ComponentType
+EnumeratorWidget .up.> Component
+
+ProcedureWidget ...> PopUpTextEdit
+ProcedureWidget ..> Model
+ProcedureWidget ..> ComponentType
+ProcedureWidget .up.> Component
+
+StructWidget ..> MemberWidget
+StructWidget ..> CustomMethodWidget
+StructWidget ..> Model
+
+CustomMethodWidget ..> PopUpTextEdit
+
+PopUpTextEdit ..> MethodType
+
+CreateComponentDialog .up.> CreateComponentDialogMode
+CreateComponentDialog ..> Model
+
+@enduml

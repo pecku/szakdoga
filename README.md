@@ -1,1 +1,3 @@
-# szakdoga
+# Szakdolgozat
+
+[Dokumentáció](./docs/main.md)

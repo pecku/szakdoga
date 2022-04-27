@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="2099px" preserveAspectRatio="none" style="width:3578px;height:2099px;background:#FFFFFF;" version="1.1" viewBox="0 0 3578 2099" width="3578px" zoomAndPan="magnify"><defs><filter height="300%" id="fmyas3wst6ur5" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[7e20e022571e30ec1001cf6eabd7f3e2]
+class Model--><rect codeLine="9" fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="41.0938" id="Model" style="stroke:#383838;stroke-width:1.5;" width="39" x="1949.5" y="1878"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="33" x="1952.5" y="1895.457">Model</text><line style="stroke:#383838;stroke-width:1.5;" x1="1950.5" x2="1987.5" y1="1903.0938" y2="1903.0938"/><line style="stroke:#383838;stroke-width:1.5;" x1="1950.5" x2="1987.5" y1="1911.0938" y2="1911.0938"/><!--MD5=[4e13963c9dc916a21a8436ef39422b32]
+class Component--><rect codeLine="10" fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="41.0938" id="Component" style="stroke:#383838;stroke-width:1.5;" width="71" x="594.5" y="1878"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="65" x="597.5" y="1895.457">Component</text><line style="stroke:#383838;stroke-width:1.5;" x1="595.5" x2="664.5" y1="1903.0938" y2="1903.0938"/><line style="stroke:#383838;stroke-width:1.5;" x1="595.5" x2="664.5" y1="1911.0938" y2="1911.0938"/><!--MD5=[6aab0676cf34802cefb399a4f3777211]
+class ComponentType--><rect codeLine="11" fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="33.0938" id="ComponentType" style="stroke:#383838;stroke-width:1.5;" width="97" x="230.5" y="1882"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="91" x="233.5" y="1899.457">ComponentType</text><line style="stroke:#383838;stroke-width:1.5;" x1="231.5" x2="326.5" y1="1907.0938" y2="1907.0938"/><!--MD5=[5e67de1afa87a34c5cf044797ba6a12f]
+class MethodType--><rect codeLine="12" fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="33.0938" id="MethodType" style="stroke:#383838;stroke-width:1.5;" width="72" x="1153" y="2052"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="66" x="1156" y="2069.457">MethodType</text><line style="stroke:#383838;stroke-width:1.5;" x1="1154" x2="1224" y1="2077.0938" y2="2077.0938"/><!--MD5=[e6c809820d88acc3564faeb20394ab9d]
+class MainWindow--><rect codeLine="14" fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="944.4297" id="MainWindow" style="stroke:#383838;stroke-width:1.5;" width="258" x="2516" y="801"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="70" x="2610" y="818.457">MainWindow</text><line style="stroke:#383838;stroke-width:1.5;" x1="2517" x2="2773" y1="826.0938" y2="826.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="73" x="2522" y="841.5127">-model : Model*</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="246" x="2522" y="855.3486">-createComponentDialog : CreateComponentDialog*</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="152" x="2522" y="869.1846">-settingsDialog : SettingsDialog*</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="111" x="2522" y="883.0205">-menuBar : QMenuBar*</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="118" x="2522" y="896.8564">-QSplitter* centralSplitter</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="165" x="2522" y="910.6924">-QWidget* componentEditorWidget</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="192" x="2522" y="924.5283">-QVBoxLayout* componentEditorLayout</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="140" x="2522" y="938.3643">-QWidget* listSegmentWidget</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="167" x="2522" y="952.2002">-QVBoxLayout* listSegmentLayout</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="107" x="2522" y="966.0361">-QSplitter* buildSplitter</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="173" x="2522" y="979.8721">-QToolBar* componentEditorToolBar</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="148" x="2522" y="993.708">-QToolBar* listSegmentToolBar</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="115" x="2522" y="1007.5439">-QToolBar* buildToolBar</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="94" x="2522" y="1021.3799">-QToolBox* toolBox</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="115" x="2522" y="1035.2158">-QListWidget* listWidget</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="181" x="2522" y="1049.0518">-QTextBrowser* sourceTextBrowser</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="194" x="2522" y="1062.8877">-QTextBrowser* compileOutputBrowser</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="236" x="2522" y="1076.7236">-QVector&lt;ProcedureWidget*&gt; procedureWidgets</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="246" x="2522" y="1090.5596">-QVector&lt;EnumeratorWidget*&gt; enumeratorWidgets</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="193" x="2522" y="1104.3955">-QVector&lt;StructWidget*&gt; structWidgets</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="166" x="2522" y="1118.2314">-QAction* createComponentAction</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="164" x="2522" y="1132.0674">-QAction* deleteComponentAction</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="146" x="2522" y="1145.9033">-QAction* deleteListItemAction</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="163" x="2522" y="1159.7393">-QAction* createCodeBlockAction</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="124" x="2522" y="1173.5752">-QAction* generateAction</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="97" x="2522" y="1187.4111">-QAction* runAction</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="103" x="2522" y="1201.2471">-QAction* buildAction</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="139" x="2522" y="1215.083">-QAction* stopCompileAction</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="119" x="2522" y="1228.9189">-QAction* settingsAction</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="136" x="2522" y="1242.7549">-QAction* newProjectAction</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="138" x="2522" y="1256.5908">-QAction* saveProjectAction</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="134" x="2522" y="1270.4268">-QAction* loadProjectAction</text><line style="stroke:#383838;stroke-width:1.0;" x1="2517" x2="2773" y1="1276.8438" y2="1276.8438"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="196" x="2522" y="1292.2627">+MainWindow(QWidget *parent = nullptr)</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="82" x="2522" y="1306.0986">+~MainWindow()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="83" x="2522" y="1319.9346">-void initDialogs()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="85" x="2522" y="1333.7705">-void initActions()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="91" x="2522" y="1347.6064">-void initMenuBar()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="171" x="2522" y="1361.4424">-void initComponentEditorSegment()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="107" x="2522" y="1375.2783">-void initListSegment()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="125" x="2522" y="1389.1143">-void initSourceSegment()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="140" x="2522" y="1402.9502">-bool showDiscardWarning()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="178" x="2522" y="1434.6221">-void showCreateComponentDialog()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="120" x="2522" y="1448.458">-void createComponent()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="118" x="2522" y="1462.2939">-void deleteComponent()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="100" x="2522" y="1476.1299">-void deleteListItem()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="117" x="2522" y="1489.9658">-void createCodeBlock()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="131" x="2522" y="1503.8018">-void showSettingsDialog()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="107" x="2522" y="1517.6377">-void updateSettings()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="113" x="2522" y="1531.4736">-void generateSource()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="82" x="2522" y="1545.3096">-void modelRun()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="100" x="2522" y="1559.1455">-void modelCompile()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="122" x="2522" y="1572.9814">-void modelStopCompile()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="201" x="2522" y="1586.8174">-void showCompileOutput(QString output)</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="98" x="2522" y="1600.6533">-void allowCompile()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="165" x="2522" y="1614.4893">-void showCompilerPathWarning()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="213" x="2522" y="1628.3252">-void listItemChanged(QListWidgetItem* item)</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="167" x="2522" y="1642.1611">-void changeSelectedComponent()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="90" x="2522" y="1655.9971">-void newProject()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="88" x="2522" y="1669.833">-void loadProject()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="92" x="2522" y="1683.6689">-void saveProject()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="150" x="2522" y="1697.5049">-void showProjectSaveDialog()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="151" x="2522" y="1711.3408">-void showProjectOpenDialog()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="179" x="2522" y="1725.1768">-void refresh(const SaveData&amp; data)</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="59" x="2522" y="1739.0127">-void clear()</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2517" x2="2621.5" y1="1416.2852" y2="1416.2852"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="47" x="2621.5" y="1420.2861">&lt;&lt;slots&gt;&gt;</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2668.5" x2="2773" y1="1416.2852" y2="1416.2852"/><!--MD5=[16d025dde850bca9df54fb6533f05466]
+class QMainWindow--><rect fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="41.0938" id="QMainWindow" style="stroke:#383838;stroke-width:1.5;" width="85" x="3077.5" y="414"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="79" x="3080.5" y="431.457">QMainWindow</text><line style="stroke:#383838;stroke-width:1.5;" x1="3078.5" x2="3161.5" y1="439.0938" y2="439.0938"/><line style="stroke:#383838;stroke-width:1.5;" x1="3078.5" x2="3161.5" y1="447.0938" y2="447.0938"/><!--MD5=[f58047955ca932e7663149215b1c52bc]
+class ComponentWidget--><rect codeLine="84" fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="613.4199" id="ComponentWidget" style="stroke:#383838;stroke-width:1.5;" width="548" x="1005" y="128"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="103" x="1227.5" y="145.457">ComponentWidget</text><line style="stroke:#383838;stroke-width:1.5;" x1="1006" x2="1552" y1="153.0938" y2="153.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="72" x="1011" y="168.5127">-QString name;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="134" x="1011" y="182.3486">-bool objectNameApproved;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="182" x="1011" y="196.1846">-QVector&lt;MemberWidget*&gt; members;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="247" x="1011" y="210.0205">-QVector&lt;CustomMethodWidget*&gt; customMethods;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="100" x="1011" y="223.8564">-QLabel* nameLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="132" x="1011" y="237.6924">-QLabel* parentClassLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="153" x="1011" y="251.5283">-QVBoxLayout* memberLayout;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="185" x="1011" y="265.3643">-QVBoxLayout* customMethodLayout;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="111" x="1011" y="279.2002">#ComponentType type;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="61" x="1011" y="293.0361">#const int id;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="72" x="1011" y="306.8721">#Model* model;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="124" x="1011" y="320.708">#QGridLayout* gridlayout;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="137" x="1011" y="334.5439">#QVBoxLayout* vboxlayout;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="132" x="1011" y="348.3799">#QLabel* objectNameLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="154" x="1011" y="362.2158">#QLineEdit* objectNameLineEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="119" x="1011" y="376.0518">#QLabel* itemTypeLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="141" x="1011" y="389.8877">#QLineEdit* itemTypeLineEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="126" x="1011" y="403.7236">#QLabel* destructorLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="173" x="1011" y="417.5596">#PopUpTextEdit* destructorTextEdit;</text><line style="stroke:#383838;stroke-width:1.0;" x1="1006" x2="1552" y1="423.9766" y2="423.9766"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="99" x="1011" y="439.3955">-void initSegments();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="137" x="1011" y="453.2314">#bool checkRequiredBase();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="114" x="1011" y="467.0674">#void connectSignals();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="199" x="1011" y="481.4297">#void createMember(int id, QString type =</text><text fill="#000000" font-family="monospace" font-size="11" lengthAdjust="spacing" textLength="112" x="1213" y="480.5435">, QString name =</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="7" x="1332" y="481.4297">);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="245" x="1011" y="495.792">#void createCustomMethod(int id, QString header =</text><text fill="#000000" font-family="monospace" font-size="11" lengthAdjust="spacing" textLength="112" x="1259" y="494.9058">, QString body =</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="7" x="1378" y="495.792">);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="254" x="1011" y="509.6279">#void createMembers(QMap&lt;int,Member&gt; members);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="352" x="1011" y="523.4639">#void createCustomMethods(QMap&lt;int,CustomMethod&gt; customMethods);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="536" x="1011" y="537.2998">+explicit ComponentWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="164" x="1011" y="551.1357">+QString getName(){return name;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="198" x="1011" y="564.9717">+ComponentType getType(){return type;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="103" x="1011" y="578.8076">+int getID(){return id;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="162" x="1011" y="592.6436">+virtual bool checkRequired() = 0;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="165" x="1011" y="624.3154">-void onAddNewMemberClicked();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="162" x="1011" y="638.1514">-void onAddNewMethodClicked();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="119" x="1011" y="651.9873">-void memberChanged();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="116" x="1011" y="665.8232">-void methodChanged();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="137" x="1011" y="679.6592">-void objectNameChanged();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="124" x="1011" y="693.4951">-void itemTypeChanged();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="105" x="1011" y="707.3311">-void deleteMember();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="102" x="1011" y="721.167">-void deleteMethod();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="133" x="1011" y="735.0029">-void popUpTextChanged();</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1006" x2="1255.5" y1="605.9785" y2="605.9785"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="47" x="1255.5" y="609.9795">&lt;&lt;slots&gt;&gt;</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1302.5" x2="1552" y1="605.9785" y2="605.9785"/><!--MD5=[3e3f16721f1fb369e45a968cb01568b2]
+class QWidget--><rect fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="41.0938" id="QWidget" style="stroke:#383838;stroke-width:1.5;" width="53" x="1660.5" y="17"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="47" x="1663.5" y="34.457">QWidget</text><line style="stroke:#383838;stroke-width:1.5;" x1="1661.5" x2="1712.5" y1="42.0938" y2="42.0938"/><line style="stroke:#383838;stroke-width:1.5;" x1="1661.5" x2="1712.5" y1="50.0938" y2="50.0938"/><!--MD5=[b4861235fb43946fca968df7550cce16]
+class EnumeratorWidget--><rect codeLine="130" fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="220.9609" id="EnumeratorWidget" style="stroke:#383838;stroke-width:1.5;" width="549" x="586.5" y="1162.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="103" x="809.5" y="1179.957">EnumeratorWidget</text><line style="stroke:#383838;stroke-width:1.5;" x1="587.5" x2="1134.5" y1="1187.5938" y2="1187.5938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="93" x="592.5" y="1203.0127">-QLabel* firstLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="140" x="592.5" y="1216.8486">-PopUpTextEdit* firstTextEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="95" x="592.5" y="1230.6846">-QLabel* nextLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="142" x="592.5" y="1244.5205">-PopUpTextEdit* nextTextEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="92" x="592.5" y="1258.3564">-QLabel* endLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="139" x="592.5" y="1272.1924">-PopUpTextEdit* endTextEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="109" x="592.5" y="1286.0283">-QLabel* currentLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="156" x="592.5" y="1299.8643">-PopUpTextEdit* currentTextEdit;</text><line style="stroke:#383838;stroke-width:1.5;" x1="587.5" x2="1134.5" y1="1306.2813" y2="1306.2813"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="99" x="592.5" y="1321.7002">-void initSegments();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="112" x="592.5" y="1335.5361">-void connectSignals();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="537" x="592.5" y="1349.3721">+explicit EnumeratorWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="447" x="592.5" y="1363.208">+EnumeratorWidget(const Component&amp; component, Model* model, QWidget *parent = nullptr);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="112" x="592.5" y="1377.0439">+bool checkRequired();</text><!--MD5=[19895920c69ec76813175a1b7946b91d]
+class ProcedureWidget--><rect codeLine="148" fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="515.5156" id="ProcedureWidget" style="stroke:#383838;stroke-width:1.5;" width="544" x="7" y="1015"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="95" x="231.5" y="1032.457">ProcedureWidget</text><line style="stroke:#383838;stroke-width:1.5;" x1="8" x2="550" y1="1040.0938" y2="1040.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="99" x="13" y="1055.5127">-void initSegments();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="112" x="13" y="1069.3486">-void connectSignals();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="96" x="13" y="1083.1846">-QLabel* enorLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="148" x="13" y="1097.0205">-QComboBox* enorComboBox;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="110" x="13" y="1110.8564">-QLabel* optimistLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="156" x="13" y="1124.6924">-QCheckBox* optimistCheckBox;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="100" x="13" y="1138.5283">-QLabel* valueLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="122" x="13" y="1152.3643">-QLineEdit* valueLineEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="116" x="13" y="1166.2002">-QLabel* compareLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="173" x="13" y="1180.0361">-QRadioButton* greaterRadioButton;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="158" x="13" y="1193.8721">-QRadioButton* lessRadioButton;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="107" x="13" y="1207.708">-QLabel* neutralLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="154" x="13" y="1221.5439">-PopUpTextEdit* neutralTextEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="92" x="13" y="1235.3799">-QLabel* addLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="139" x="13" y="1249.2158">-PopUpTextEdit* addTextEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="96" x="13" y="1263.0518">-QLabel* funcLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="143" x="13" y="1276.8877">-PopUpTextEdit* funcTextEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="98" x="13" y="1290.7236">-QLabel* condLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="145" x="13" y="1304.5596">-PopUpTextEdit* condTextEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="93" x="13" y="1318.3955">-QLabel* firstLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="140" x="13" y="1332.2314">-PopUpTextEdit* firstTextEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="125" x="13" y="1346.0674">-QLabel* whileCondLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="172" x="13" y="1359.9033">-PopUpTextEdit* whileCondTextEdit;</text><line style="stroke:#383838;stroke-width:1.0;" x1="8" x2="550" y1="1366.3203" y2="1366.3203"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="532" x="13" y="1381.7393">+explicit ProcedureWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="442" x="13" y="1395.5752">+ProcedureWidget(const Component&amp; component, Model* model, QWidget *parent = nullptr);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="351" x="13" y="1409.4111">+void addEnumeratorChoice(QString enumeratorName, int enumeratorID);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="242" x="13" y="1423.2471">+void removeEnumeratorChoice(int enumeratorID);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="245" x="13" y="1437.083">+void selectEnumerator(QString enumeratorName);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="112" x="13" y="1450.9189">+bool checkRequired();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="139" x="13" y="1482.5908">void enorChanged(int index);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="113" x="13" y="1496.4268">void optimistChanged();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="103" x="13" y="1510.2627">void valueChanged();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="119" x="13" y="1524.0986">void compareChanged();</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="8" x2="255.5" y1="1464.2539" y2="1464.2539"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="47" x="255.5" y="1468.2549">&lt;&lt;slots&gt;&gt;</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="302.5" x2="550" y1="1464.2539" y2="1464.2539"/><!--MD5=[c055dc62cfc6e068c11faf7cfd55b804]
+class StructWidget--><rect codeLine="187" fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="419.7168" id="StructWidget" style="stroke:#383838;stroke-width:1.5;" width="415" x="1775.5" y="224.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="69" x="1948.5" y="241.957">StructWidget</text><line style="stroke:#383838;stroke-width:1.5;" x1="1776.5" x2="2189.5" y1="249.5938" y2="249.5938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="72" x="1781.5" y="265.0127">-QString name;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="182" x="1781.5" y="278.8486">-QVector&lt;MemberWidget*&gt; members;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="247" x="1781.5" y="292.6846">-QVector&lt;CustomMethodWidget*&gt; customMethods;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="100" x="1781.5" y="306.5205">-QLabel* nameLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="102" x="1781.5" y="320.3564">-QLabel* structLabel;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="153" x="1781.5" y="334.1924">-QVBoxLayout* memberLayout;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="185" x="1781.5" y="348.0283">-QVBoxLayout* customMethodLayout;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="61" x="1781.5" y="361.8643">#const int id;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="72" x="1781.5" y="375.7002">#Model* model;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="124" x="1781.5" y="389.5361">#QGridLayout* gridlayout;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="137" x="1781.5" y="403.3721">#QVBoxLayout* vboxlayout;</text><line style="stroke:#383838;stroke-width:1.0;" x1="1776.5" x2="2189.5" y1="409.7891" y2="409.7891"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="403" x="1781.5" y="425.208">+explicit StructWidget(int id, QString name, Model* model, QWidget *parent = nullptr);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="377" x="1781.5" y="439.0439">+StructWidget(const Struct&amp; _struct, Model* model, QWidget *parent = nullptr);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="164" x="1781.5" y="452.8799">+QString getName(){return name;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="103" x="1781.5" y="466.7158">+int getID(){return id;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="99" x="1781.5" y="480.5518">-void initSegments();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="197" x="1781.5" y="494.9141">-void createMember(int id, QString type =</text><text fill="#000000" font-family="monospace" font-size="11" lengthAdjust="spacing" textLength="112" x="1981.5" y="494.0278">, QString name =</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="7" x="2100.5" y="494.9141">);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="243" x="1781.5" y="509.2764">-void createCustomMethod(int id, QString header =</text><text fill="#000000" font-family="monospace" font-size="11" lengthAdjust="spacing" textLength="112" x="2027.5" y="508.3901">, QString body =</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="7" x="2146.5" y="509.2764">);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="252" x="1781.5" y="523.1123">-void createMembers(QMap&lt;int,Member&gt; members);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="350" x="1781.5" y="536.9482">-void createCustomMethods(QMap&lt;int,CustomMethod&gt; customMethods);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="161" x="1781.5" y="568.6201">void onAddNewMemberClicked();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="158" x="1781.5" y="582.4561">void onAddNewMethodClicked();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="115" x="1781.5" y="596.292">void memberChanged();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="112" x="1781.5" y="610.1279">void methodChanged();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="101" x="1781.5" y="623.9639">void deleteMember();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="98" x="1781.5" y="637.7998">void deleteMethod();</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1776.5" x2="1959.5" y1="550.2832" y2="550.2832"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="47" x="1959.5" y="554.2842">&lt;&lt;slots&gt;&gt;</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2006.5" x2="2189.5" y1="550.2832" y2="550.2832"/><!--MD5=[fa9a82ae8c1b63f1f84381e680a24038]
+class CreateComponentDialogMode--><rect codeLine="219" fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="60.7656" id="CreateComponentDialogMode" style="stroke:#383838;stroke-width:1.5;" width="174" x="3294" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="168" x="3297" y="24.457">CreateComponentDialogMode</text><line style="stroke:#383838;stroke-width:1.5;" x1="3295" x2="3467" y1="32.0938" y2="32.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="61" x="3300" y="47.5127">PROCEDURE</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="70" x="3300" y="61.3486">ENUMERATOR</text><!--MD5=[7b1947a7f64ca8bf6dcdc0e017552af5]
+class CreateComponentDialog--><rect codeLine="224" fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="211.125" id="CreateComponentDialog" style="stroke:#383838;stroke-width:1.5;" width="366" x="3198" y="329"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="138" x="3312" y="346.457">CreateComponentDialog</text><line style="stroke:#383838;stroke-width:1.5;" x1="3199" x2="3563" y1="354.0938" y2="354.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="70" x="3204" y="369.5127">-Model* model;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="119" x="3204" y="383.3486">-QPushButton* okButton;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="140" x="3204" y="397.1846">-QPushButton* cancelButton;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="122" x="3204" y="411.0205">-QLineEdit* nameLineEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="181" x="3204" y="424.8564">-QComboBox* componentTypeSelect;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="98" x="3204" y="438.6924">-QLabel* errorLabel;</text><line style="stroke:#383838;stroke-width:1.0;" x1="3199" x2="3563" y1="445.1094" y2="445.1094"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="231" x="3204" y="460.5283">+explicit CreateComponentDialog(Model* model);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="237" x="3204" y="474.3643">+QString getName(){return nameLineEdit-&gt;text();}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="354" x="3204" y="488.2002">+QVariant getComponent(){return componentTypeSelect-&gt;currentData();}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="64" x="3204" y="502.0361">+void clear();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="110" x="3204" y="533.708">-void wantToAccept();</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="3199" x2="3357.5" y1="515.3711" y2="515.3711"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="47" x="3357.5" y="519.3721">&lt;&lt;slots&gt;&gt;</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="3404.5" x2="3563" y1="515.3711" y2="515.3711"/><!--MD5=[a8b6f7b9cc2471bf66c01f6545239df2]
+class QDialog--><rect fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="41.0938" id="QDialog" style="stroke:#383838;stroke-width:1.5;" width="51" x="2873.5" y="17"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="45" x="2876.5" y="34.457">QDialog</text><line style="stroke:#383838;stroke-width:1.5;" x1="2874.5" x2="2923.5" y1="42.0938" y2="42.0938"/><line style="stroke:#383838;stroke-width:1.5;" x1="2874.5" x2="2923.5" y1="50.0938" y2="50.0938"/><!--MD5=[6a1abfe6dd0d473320e85a990c0164e5]
+class CustomMethodWidget--><rect codeLine="241" fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="211.6514" id="CustomMethodWidget" style="stroke:#383838;stroke-width:1.5;" width="527" x="1432.5" y="1167"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="122" x="1635" y="1184.457">CustomMethodWidget</text><line style="stroke:#383838;stroke-width:1.5;" x1="1433.5" x2="1958.5" y1="1192.0938" y2="1192.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="59" x="1438.5" y="1207.5127">-const int id;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="130" x="1438.5" y="1221.3486">-QLineEdit* headerLineEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="176" x="1438.5" y="1235.1846">-PopUpTextEdit* bodyPopUpTextEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="137" x="1438.5" y="1249.0205">-QPushButton* deleteButton;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="135" x="1438.5" y="1262.8564">-QVBoxLayout* hboxlayout;</text><line style="stroke:#383838;stroke-width:1.0;" x1="1433.5" x2="1958.5" y1="1269.2734" y2="1269.2734"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="260" x="1438.5" y="1285.2188">+explicit CustomMethodWidget(int id, QString header =</text><text fill="#000000" font-family="monospace" font-size="11" lengthAdjust="spacing" textLength="112" x="1701.5" y="1284.3325">, QString body =</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="133" x="1820.5" y="1285.2188">, QWidget *parent = nullptr);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="216" x="1438.5" y="1299.0547">+QString getHeader(){return header-&gt;text();}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="230" x="1438.5" y="1312.8906">+QString getBody(){return body-&gt;toPlainText();}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="103" x="1438.5" y="1326.7266">+int getID(){return id;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="69" x="1438.5" y="1358.3984">+void edited();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="83" x="1438.5" y="1372.2344">+void deleteMe();</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1433.5" x2="1667" y1="1340.0615" y2="1340.0615"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="58" x="1667" y="1344.0625">&lt;&lt;signals&gt;&gt;</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1725" x2="1958.5" y1="1340.0615" y2="1340.0615"/><!--MD5=[71f6580fdafe28d9aae059c51bb2b49d]
+class MemberWidget--><rect codeLine="258" fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="224.9609" id="MemberWidget" style="stroke:#383838;stroke-width:1.5;" width="415" x="1994.5" y="1160.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="83" x="2160.5" y="1177.957">MemberWidget</text><line style="stroke:#383838;stroke-width:1.5;" x1="1995.5" x2="2408.5" y1="1185.5938" y2="1185.5938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="59" x="2000.5" y="1201.0127">-const int id;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="117" x="2000.5" y="1214.8486">-QLineEdit* typeLineEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="122" x="2000.5" y="1228.6846">-QLineEdit* nameLineEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="137" x="2000.5" y="1242.5205">-QPushButton* deleteButton;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="134" x="2000.5" y="1256.3564">-QHBoxLayout* hboxlayout;</text><line style="stroke:#383838;stroke-width:1.0;" x1="1995.5" x2="2408.5" y1="1262.7734" y2="1262.7734"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="302" x="2000.5" y="1278.1924">+explicit MemberWidget(const int id, QWidget *parent = nullptr);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="403" x="2000.5" y="1292.0283">+MemberWidget(const int id, QString type, QString name, QWidget *parent = nullptr);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="229" x="2000.5" y="1305.8643">+QString getType(){return typeLineEdit-&gt;text();}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="237" x="2000.5" y="1319.7002">+QString getName(){return nameLineEdit-&gt;text();}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="103" x="2000.5" y="1333.5361">+int getID(){return id;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="63" x="2000.5" y="1365.208">void edited();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="2000.5" y="1379.0439">void deleteMe();</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1995.5" x2="2173" y1="1346.8711" y2="1346.8711"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="58" x="2173" y="1350.8721">&lt;&lt;signals&gt;&gt;</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2231" x2="2408.5" y1="1346.8711" y2="1346.8711"/><!--MD5=[18aad03fe2332498c99797cb204150dc]
+class PopUpTextEdit--><rect codeLine="276" fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="187.4531" id="PopUpTextEdit" style="stroke:#383838;stroke-width:1.5;" width="464" x="957" y="1805"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="81" x="1148.5" y="1822.457">PopUpTextEdit</text><line style="stroke:#383838;stroke-width:1.5;" x1="958" x2="1420" y1="1830.0938" y2="1830.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="128" x="963" y="1845.5127">-MethodType methodType;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="139" x="963" y="1859.3486">-TextInputDialog* inputDialog;</text><line style="stroke:#383838;stroke-width:1.0;" x1="958" x2="1420" y1="1865.7656" y2="1865.7656"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="86" x="963" y="1881.1846">+PopUpTextEdit();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="452" x="963" y="1895.0205">+PopUpTextEdit(MethodType methodType) : PopUpTextEdit(){this-&gt;methodType=methodType;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="252" x="963" y="1908.8564">+MethodType getMethodType(){return methodType;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="224" x="963" y="1922.6924">#void focusInEvent(QFocusEvent *e) override;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="150" x="963" y="1954.3643">-void getTextFromInputDialog();</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="958" x2="1165.5" y1="1936.0273" y2="1936.0273"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="47" x="1165.5" y="1940.0283">&lt;&lt;slots&gt;&gt;</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1212.5" x2="1420" y1="1936.0273" y2="1936.0273"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="101" x="963" y="1986.0361">+void textChanged();</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="958" x2="1160" y1="1967.6992" y2="1967.6992"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="58" x="1160" y="1971.7002">&lt;&lt;signals&gt;&gt;</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1218" x2="1420" y1="1967.6992" y2="1967.6992"/><!--MD5=[7583fb819684849796d116cdb629f5b2]
+class QTextBrowser--><rect fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="41.0938" id="QTextBrowser" style="stroke:#383838;stroke-width:1.5;" width="83" x="1242.5" y="1252.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="77" x="1245.5" y="1269.957">QTextBrowser</text><line style="stroke:#383838;stroke-width:1.5;" x1="1243.5" x2="1324.5" y1="1277.5938" y2="1277.5938"/><line style="stroke:#383838;stroke-width:1.5;" x1="1243.5" x2="1324.5" y1="1285.5938" y2="1285.5938"/><!--MD5=[e8c7ddfe88f5b7de1e94ae70608261c6]
+class SettingsDialog--><rect codeLine="291" fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="165.6172" id="SettingsDialog" style="stroke:#383838;stroke-width:1.5;" width="495" x="2225.5" y="351.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="81" x="2432.5" y="368.957">SettingsDialog</text><line style="stroke:#383838;stroke-width:1.5;" x1="2226.5" x2="2719.5" y1="376.5938" y2="376.5938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="119" x="2231.5" y="392.0127">-QPushButton* okButton;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="140" x="2231.5" y="405.8486">-QPushButton* cancelButton;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="157" x="2231.5" y="419.6846">-QLineEdit* compilerPathLineEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="147" x="2231.5" y="433.5205">-QLineEdit* argumentsLineEdit;</text><line style="stroke:#383838;stroke-width:1.5;" x1="2226.5" x2="2719.5" y1="439.9375" y2="439.9375"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="121" x="2231.5" y="455.3564">+explicit SettingsDialog();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="307" x="2231.5" y="469.1924">+QString getCompilerPath(){return compilerPathLineEdit-&gt;text();}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="288" x="2231.5" y="483.0283">+QString getArguments(){return argumentsLineEdit-&gt;text();}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="438" x="2231.5" y="496.8643">+void setCompilerPath(QString compilerPath){compilerPathLineEdit-&gt;setText(compilerPath);}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="483" x="2231.5" y="510.7002">+void setArguments(QString compilerArguments){argumentsLineEdit-&gt;setText(compilerArguments);}</text><!--MD5=[17cc9e66f029763309f308f68e07198f]
+class TextInputDialog--><rect codeLine="305" fill="#F8F8F8" filter="url(#fmyas3wst6ur5)" height="137.9453" id="TextInputDialog" style="stroke:#383838;stroke-width:1.5;" width="286" x="2756" y="365.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="85" x="2856.5" y="382.957">TextInputDialog</text><line style="stroke:#383838;stroke-width:1.5;" x1="2757" x2="3041" y1="390.5938" y2="390.5938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="95" x="2762" y="406.0127">-QTextEdit* textEdit;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="132" x="2762" y="419.8486">-QPushButton* saveButton;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="140" x="2762" y="433.6846">-QPushButton* cancelButton;</text><line style="stroke:#383838;stroke-width:1.0;" x1="2757" x2="3041" y1="440.1016" y2="440.1016"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="103" x="2762" y="455.5205">-using QDialog::exec;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="126" x="2762" y="469.3564">+explicit TextInputDialog();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="237" x="2762" y="483.1924">+QString getText(){return textEdit-&gt;toPlainText();}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="274" x="2762" y="497.0283">+void exec(QString text){textEdit-&gt;setText(text); exec();}</text><!--MD5=[6d49110face5b86f7a663104a5736814]
+reverse link QMainWindow to MainWindow--><path d="M3120,475.23 C3120,475.23 3120,1273 3120,1273 C3120,1273 2914.83,1273 2774.17,1273 " fill="none" id="QMainWindow-backto-MainWindow" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="3113,475.23,3120,455.23,3127,475.23,3113,475.23" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[2d7b86d4e08437b6f8b6989d7de24a74]
+reverse link QWidget to ComponentWidget--><path d="M1678.17,78.08 C1678.17,78.08 1678.17,177 1678.17,177 C1678.17,177 1622.76,177 1553.24,177 " fill="none" id="QWidget-backto-ComponentWidget" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="1671.17,78.08,1678.17,58.08,1685.17,78.08,1671.17,78.08" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[34ebeea314c456451037da4aafe084b9]
+reverse link ComponentWidget to EnumeratorWidget--><path d="M1070.25,761.07 C1070.25,761.07 1070.25,1162.28 1070.25,1162.28 " fill="none" id="ComponentWidget-backto-EnumeratorWidget" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="1063.25,761.07,1070.25,741.07,1077.25,761.07,1063.25,761.07" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[379fac347f92e70643ca31d24c827d86]
+reverse link ComponentWidget to ProcedureWidget--><path d="M1037.62,761.44 C1037.62,761.44 1037.62,1052 1037.62,1052 C1037.62,1052 768.64,1052 551.01,1052 " fill="none" id="ComponentWidget-backto-ProcedureWidget" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="1030.63,761.44,1037.62,741.44,1044.63,761.44,1030.63,761.44" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[6b233fea2abc10f2b80f710d665c53c5]
+reverse link QWidget to StructWidget--><path d="M1733.53,45 C1733.53,45 1983,45 1983,45 C1983,45 1983,132.38 1983,224.36 " fill="none" id="QWidget-backto-StructWidget" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="1733.53,52,1713.53,45,1733.53,38,1733.53,52" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[60b447b95c2f3875892fe7c6671524bc]
+reverse link QDialog to CreateComponentDialog--><path d="M2911.75,78.36 C2911.75,78.36 2911.75,341 2911.75,341 C2911.75,341 3066.21,341 3197.9,341 " fill="none" id="QDialog-backto-CreateComponentDialog" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="2904.75,78.36,2911.75,58.36,2918.75,78.36,2904.75,78.36" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[85d9c446e8d801270e176e8e7c56a77a]
+reverse link QWidget to CustomMethodWidget--><path d="M1695.83,78.17 C1695.83,78.17 1695.83,1166.95 1695.83,1166.95 " fill="none" id="QWidget-backto-CustomMethodWidget" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="1688.83,78.17,1695.83,58.17,1702.83,78.17,1688.83,78.17" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[17d386f4a327e27d9e0f3cc8a28f2a38]
+reverse link QWidget to MemberWidget--><path d="M1733.55,31 C1733.55,31 2208,31 2208,31 C2208,31 2208,854.37 2208,1160.32 " fill="none" id="QWidget-backto-MemberWidget" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="1733.55,38,1713.55,31,1733.55,24,1733.55,38" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[6c17df220d7be6dd642bc610d416876d]
+reverse link QTextBrowser to PopUpTextEdit--><path d="M1284,1313.81 C1284,1313.81 1284,1804.98 1284,1804.98 " fill="none" id="QTextBrowser-backto-PopUpTextEdit" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="1277,1313.81,1284,1293.81,1291,1313.81,1277,1313.81" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[603a310196e6d1108837be865414ace1]
+reverse link QDialog to SettingsDialog--><path d="M2886.25,78.1 C2886.25,78.1 2886.25,359 2886.25,359 C2886.25,359 2808.56,359 2720.55,359 " fill="none" id="QDialog-backto-SettingsDialog" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="2879.25,78.1,2886.25,58.1,2893.25,78.1,2879.25,78.1" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[50f159fcf968291c655e880f21ede70d]
+reverse link QDialog to TextInputDialog--><path d="M2899,78.01 C2899,78.01 2899,365.13 2899,365.13 " fill="none" id="QDialog-backto-TextInputDialog" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="2892,78.01,2899,58.01,2906,78.01,2892,78.01" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[b8ee51d777f823bcef2e7bb294934903]
+link MainWindow to Model--><path codeLine="317" d="M2515.84,1674 C2322.75,1674 1981.25,1674 1981.25,1674 C1981.25,1674 1981.25,1872.78 1981.25,1872.78 " fill="none" id="MainWindow-to-Model" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="1981.25,1877.78,1985.25,1868.78,1981.25,1872.78,1977.25,1868.78,1981.25,1877.78" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[83350e7c95cd9639efe2ee5fca5da3c5]
+reverse link CreateComponentDialog to MainWindow--><path codeLine="318" d="M3192.91,529 C3192.91,529 2768,529 2768,529 C2768,529 2768,653.57 2768,800.76 " fill="none" id="CreateComponentDialog-backto-MainWindow" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="3197.91,529,3188.91,525,3192.91,529,3188.91,533,3197.91,529" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[13a0dcdb6a8ec141d783addfaaaaba3d]
+reverse link SettingsDialog to MainWindow--><path codeLine="319" d="M2652.33,522.58 C2652.33,522.58 2652.33,800.85 2652.33,800.85 " fill="none" id="SettingsDialog-backto-MainWindow" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="2652.33,517.58,2648.33,526.58,2652.33,522.58,2656.33,526.58,2652.33,517.58" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[33132b3214e16b3242fa8a8651f22fb4]
+reverse link TextInputDialog to MainWindow--><path codeLine="320" d="M2762,508.83 C2762,508.83 2762,800.97 2762,800.97 " fill="none" id="TextInputDialog-backto-MainWindow" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="2762,503.83,2758,512.83,2762,508.83,2766,512.83,2762,503.83" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[127fd22c2832b15181e05a2b3ab7c4e6]
+reverse link EnumeratorWidget to MainWindow--><path codeLine="321" d="M1102.88,1157.35 C1102.88,1157.35 1102.88,1125 1102.88,1125 C1102.88,1125 2144.92,1125 2515.84,1125 " fill="none" id="EnumeratorWidget-backto-MainWindow" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="1102.88,1162.35,1106.88,1153.35,1102.88,1157.35,1098.88,1153.35,1102.88,1162.35" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[2b71b8a49933fec834208729a0154ea8]
+reverse link ProcedureWidget to MainWindow--><path codeLine="322" d="M556.28,1088 C556.28,1088 2515.91,1088 2515.91,1088 " fill="none" id="ProcedureWidget-backto-MainWindow" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="551.28,1088,560.28,1092,556.28,1088,560.28,1084,551.28,1088" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[b135fbf78f44518038037fa61916370c]
+reverse link StructWidget to MainWindow--><path codeLine="323" d="M2195.73,593 C2195.73,593 2584.17,593 2584.17,593 C2584.17,593 2584.17,684.68 2584.17,800.72 " fill="none" id="StructWidget-backto-MainWindow" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="2190.73,593,2199.73,597,2195.73,593,2199.73,589,2190.73,593" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[d86bf1042b44be275a3dbe4544e86518]
+link ComponentWidget to MemberWidget--><path codeLine="325" d="M1553.19,677 C1778.18,677 2059.83,677 2059.83,677 C2059.83,677 2059.83,1155.2 2059.83,1155.2 " fill="none" id="ComponentWidget-to-MemberWidget" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="2059.83,1160.2,2063.83,1151.2,2059.83,1155.2,2055.83,1151.2,2059.83,1160.2" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[5ff814c32167cb7ce9cd4854790298b8]
+link ComponentWidget to CustomMethodWidget--><path codeLine="326" d="M1492.75,741.07 C1492.75,741.07 1492.75,1161.84 1492.75,1161.84 " fill="none" id="ComponentWidget-to-CustomMethodWidget" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="1492.75,1166.84,1496.75,1157.84,1492.75,1161.84,1488.75,1157.84,1492.75,1166.84" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[95545237650de2abd00db514eedbb9c3]
+link ComponentWidget to Model--><path codeLine="327" d="M1553.29,709 C1744.97,709 1966.75,709 1966.75,709 C1966.75,709 1966.75,1872.85 1966.75,1872.85 " fill="none" id="ComponentWidget-to-Model" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="1966.75,1877.85,1970.75,1868.85,1966.75,1872.85,1962.75,1868.85,1966.75,1877.85" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[80749c7e6dbf0797a61ff3376df970e1]
+link ComponentWidget to ComponentType--><path codeLine="328" d="M1171.17,741.13 C1171.17,1087.34 1171.17,1603 1171.17,1603 C1171.17,1603 295.17,1603 295.17,1603 C295.17,1603 295.17,1876.77 295.17,1876.77 " fill="none" id="ComponentWidget-to-ComponentType" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="295.17,1881.77,299.17,1872.77,295.17,1876.77,291.17,1872.77,295.17,1881.77" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[610233e3f84856aa9c4898fef5186d85]
+link ComponentWidget to PopUpTextEdit--><path codeLine="329" d="M1206.83,741.4 C1206.83,741.4 1206.83,1799.76 1206.83,1799.76 " fill="none" id="ComponentWidget-to-PopUpTextEdit" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="1206.83,1804.76,1210.83,1795.76,1206.83,1799.76,1202.83,1795.76,1206.83,1804.76" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[ddfebd2233d3953511f9772bda0eb57f]
+link EnumeratorWidget to PopUpTextEdit--><path codeLine="331" d="M1046.25,1383.75 C1046.25,1383.75 1046.25,1799.64 1046.25,1799.64 " fill="none" id="EnumeratorWidget-to-PopUpTextEdit" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="1046.25,1804.64,1050.25,1795.64,1046.25,1799.64,1042.25,1795.64,1046.25,1804.64" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[984f664af98fe3d86bae745499fb90ae]
+link EnumeratorWidget to Model--><path codeLine="332" d="M1135.59,1322 C1279.73,1322 1426.75,1322 1426.75,1322 C1426.75,1322 1426.75,1899 1426.75,1899 C1426.75,1899 1944.38,1899 1944.38,1899 " fill="none" id="EnumeratorWidget-to-Model" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="1949.38,1899,1940.38,1895,1944.38,1899,1940.38,1903,1949.38,1899" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[1c2cc3423d6a0e0fec5a9bf2b08e7233]
+link EnumeratorWidget to ComponentType--><path codeLine="333" d="M590.5,1383.83 C590.5,1563.64 590.5,1899 590.5,1899 C590.5,1899 332.67,1899 332.67,1899 " fill="none" id="EnumeratorWidget-to-ComponentType" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="327.67,1899,336.67,1903,332.67,1899,336.67,1895,327.67,1899" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[e58a9df641919e94764c1e093e4bcae8]
+link EnumeratorWidget to Component--><path codeLine="334" d="M641.83,1383.75 C641.83,1383.75 641.83,1872.95 641.83,1872.95 " fill="none" id="EnumeratorWidget-to-Component" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="641.83,1877.95,645.83,1868.95,641.83,1872.95,637.83,1868.95,641.83,1877.95" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[89f9da81a9c505e8c95caebace3e6721]
+link ProcedureWidget to PopUpTextEdit--><path codeLine="336" d="M439.25,1531.28 C439.25,1681.71 439.25,1842 439.25,1842 C439.25,1842 951.91,1842 951.91,1842 " fill="none" id="ProcedureWidget-to-PopUpTextEdit" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="956.91,1842,947.91,1838,951.91,1842,947.91,1846,956.91,1842" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[51209f3c7051961e0f298700bf7d5424]
+link ProcedureWidget to Model--><path codeLine="337" d="M551.46,1434 C1026.09,1434 1954.5,1434 1954.5,1434 C1954.5,1434 1954.5,1872.94 1954.5,1872.94 " fill="none" id="ProcedureWidget-to-Model" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="1954.5,1877.94,1958.5,1868.94,1954.5,1872.94,1950.5,1868.94,1954.5,1877.94" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[9bd724a02a928c84e54ee6985787149b]
+link ProcedureWidget to ComponentType--><path codeLine="338" d="M262.83,1531.03 C262.83,1531.03 262.83,1876.95 262.83,1876.95 " fill="none" id="ProcedureWidget-to-ComponentType" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="262.83,1881.95,266.83,1872.95,262.83,1876.95,258.83,1872.95,262.83,1881.95" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[fc9e6c674a31578163ffd062a96ed7ea]
+link ProcedureWidget to Component--><path codeLine="339" d="M551.16,1483 C590.59,1483 618.17,1483 618.17,1483 C618.17,1483 618.17,1872.9 618.17,1872.9 " fill="none" id="ProcedureWidget-to-Component" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="618.17,1877.9,622.17,1868.9,618.17,1872.9,614.17,1868.9,618.17,1877.9" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[0eaae73735081f5f420c8d87fb4d5c94]
+link StructWidget to MemberWidget--><path codeLine="341" d="M2125.17,644.74 C2125.17,644.74 2125.17,1155.28 2125.17,1155.28 " fill="none" id="StructWidget-to-MemberWidget" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="2125.17,1160.28,2129.17,1151.28,2125.17,1155.28,2121.17,1151.28,2125.17,1160.28" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[e7e2708f677d82d6bc5ca249de511546]
+link StructWidget to CustomMethodWidget--><path codeLine="342" d="M1867.5,644.74 C1867.5,644.74 1867.5,1161.94 1867.5,1161.94 " fill="none" id="StructWidget-to-CustomMethodWidget" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="1867.5,1166.94,1871.5,1157.94,1867.5,1161.94,1863.5,1157.94,1867.5,1166.94" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[6e053acd2cadf4c9afebd14607074a59]
+link StructWidget to Model--><path codeLine="343" d="M1974,644.64 C1974,644.64 1974,1872.61 1974,1872.61 " fill="none" id="StructWidget-to-Model" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="1974,1877.61,1978,1868.61,1974,1872.61,1970,1868.61,1974,1877.61" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[510e1150fd7b6952c14242844b40fa29]
+link CustomMethodWidget to PopUpTextEdit--><path codeLine="345" d="M1432.45,1351 C1397.38,1351 1373.25,1351 1373.25,1351 C1373.25,1351 1373.25,1799.69 1373.25,1799.69 " fill="none" id="CustomMethodWidget-to-PopUpTextEdit" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="1373.25,1804.69,1377.25,1795.69,1373.25,1799.69,1369.25,1795.69,1373.25,1804.69" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[d7919d4de2b80de491e2be07900c8e44]
+link PopUpTextEdit to MethodType--><path codeLine="347" d="M1189,1992.45 C1189,1992.45 1189,2046.74 1189,2046.74 " fill="none" id="PopUpTextEdit-to-MethodType" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="1189,2051.74,1193,2042.74,1189,2046.74,1185,2042.74,1189,2051.74" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[2f8e46b73aa64b5bb6272c6a3e0262bb]
+reverse link CreateComponentDialogMode to CreateComponentDialog--><path codeLine="349" d="M3381,73.32 C3381,73.32 3381,328.86 3381,328.86 " fill="none" id="CreateComponentDialogMode-backto-CreateComponentDialog" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="3381,68.32,3377,77.32,3381,73.32,3385,77.32,3381,68.32" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[ea4d495c351d0e2156f8372de4749e90]
+link CreateComponentDialog to Model--><path codeLine="350" d="M3381,540.12 C3381,876.22 3381,1899 3381,1899 C3381,1899 1993.69,1899 1993.69,1899 " fill="none" id="CreateComponentDialog-to-Model" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="1988.69,1899,1997.69,1903,1993.69,1899,1997.69,1895,1988.69,1899" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[274c09809c997f7424ed05fcb965f4e4]
+@startuml View
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+'skinparam groupInheritance 2
+skinparam linetype ortho
+hide circle
+hide enum methods
+
+class Model
+class Component
+enum ComponentType
+enum MethodType
+
+class MainWindow extends QMainWindow
+{
+    - model : Model*
+    - createComponentDialog : CreateComponentDialog*
+    - settingsDialog : SettingsDialog*
+    - menuBar : QMenuBar*
+    - QSplitter* centralSplitter
+    - QWidget* componentEditorWidget
+    - QVBoxLayout* componentEditorLayout
+    - QWidget* listSegmentWidget
+    - QVBoxLayout* listSegmentLayout
+    - QSplitter* buildSplitter
+    - QToolBar* componentEditorToolBar
+    - QToolBar* listSegmentToolBar
+    - QToolBar* buildToolBar
+    - QToolBox* toolBox
+    - QListWidget* listWidget
+    - QTextBrowser* sourceTextBrowser
+    - QTextBrowser* compileOutputBrowser
+    - QVector<ProcedureWidget*> procedureWidgets
+    - QVector<EnumeratorWidget*> enumeratorWidgets
+    - QVector<StructWidget*> structWidgets
+    - QAction* createComponentAction
+    - QAction* deleteComponentAction
+    - QAction* deleteListItemAction
+    - QAction* createCodeBlockAction
+    - QAction* generateAction
+    - QAction* runAction
+    - QAction* buildAction
+    - QAction* stopCompileAction
+    - QAction* settingsAction
+    - QAction* newProjectAction
+    - QAction* saveProjectAction
+    - QAction* loadProjectAction
+- -
+    + MainWindow(QWidget *parent = nullptr)
+    + ~MainWindow()
+    - void initDialogs()
+    - void initActions()
+    - void initMenuBar()
+    - void initComponentEditorSegment()
+    - void initListSegment()
+    - void initSourceSegment()
+    - bool showDiscardWarning()
+.. <<slots>> ..
+    - void showCreateComponentDialog()
+    - void createComponent()
+    - void deleteComponent()
+    - void deleteListItem()
+    - void createCodeBlock()
+    - void showSettingsDialog()
+    - void updateSettings()
+    - void generateSource()
+    - void modelRun()
+    - void modelCompile()
+    - void modelStopCompile()
+    - void showCompileOutput(QString output)
+    - void allowCompile()
+    - void showCompilerPathWarning()
+    - void listItemChanged(QListWidgetItem* item)
+    - void changeSelectedComponent()
+    - void newProject()
+    - void loadProject()
+    - void saveProject()
+    - void showProjectSaveDialog()
+    - void showProjectOpenDialog()
+    - void refresh(const SaveData& data)
+    - void clear()
+}
+
+class ComponentWidget extends QWidget
+{
+    - QString name;
+    - bool objectNameApproved;
+    - QVector<MemberWidget*> members;
+    - QVector<CustomMethodWidget*> customMethods;
+    - QLabel* nameLabel;
+    - QLabel* parentClassLabel;
+    - QVBoxLayout* memberLayout;
+    - QVBoxLayout* customMethodLayout;
+    # ComponentType type;
+    # const int id;
+    # Model* model;
+    # QGridLayout* gridlayout;
+    # QVBoxLayout* vboxlayout;
+    # QLabel* objectNameLabel;
+    # QLineEdit* objectNameLineEdit;
+    # QLabel* itemTypeLabel;
+    # QLineEdit* itemTypeLineEdit;
+    # QLabel* destructorLabel;
+    # PopUpTextEdit* destructorTextEdit;
+- -
+    - void initSegments();
+    # bool checkRequiredBase();
+    # void connectSignals();
+    # void createMember(int id, QString type = "", QString name = "");
+    # void createCustomMethod(int id, QString header = "", QString body = "");
+    # void createMembers(QMap<int,Member> members);
+    # void createCustomMethods(QMap<int,CustomMethod> customMethods);
+    + explicit ComponentWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);
+    + QString getName(){return name;}
+    + ComponentType getType(){return type;}
+    + int getID(){return id;}
+    + virtual bool checkRequired() = 0;
+.. <<slots>> ..
+    - void onAddNewMemberClicked();
+    - void onAddNewMethodClicked();
+    - void memberChanged();
+    - void methodChanged();
+    - void objectNameChanged();
+    - void itemTypeChanged();
+    - void deleteMember();
+    - void deleteMethod();
+    - void popUpTextChanged();
+}
+
+class EnumeratorWidget extends ComponentWidget
+{
+    - void initSegments();
+    - void connectSignals();
+    - QLabel* firstLabel;
+    - PopUpTextEdit* firstTextEdit;
+    - QLabel* nextLabel;
+    - PopUpTextEdit* nextTextEdit;
+    - QLabel* endLabel;
+    - PopUpTextEdit* endTextEdit;
+    - QLabel* currentLabel;
+    - PopUpTextEdit* currentTextEdit;
+
+    + explicit EnumeratorWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);
+    + EnumeratorWidget(const Component& component, Model* model, QWidget *parent = nullptr);
+    + bool checkRequired();
+}
+
+class ProcedureWidget extends ComponentWidget
+{
+    - void initSegments();
+    - void connectSignals();
+    - QLabel* enorLabel;
+    - QComboBox* enorComboBox;
+    - QLabel* optimistLabel;
+    - QCheckBox* optimistCheckBox;
+    - QLabel* valueLabel;
+    - QLineEdit* valueLineEdit;
+    - QLabel* compareLabel;
+    - QRadioButton* greaterRadioButton;
+    - QRadioButton* lessRadioButton;
+    - QLabel* neutralLabel;
+    - PopUpTextEdit* neutralTextEdit;
+    - QLabel* addLabel;
+    - PopUpTextEdit* addTextEdit;
+    - QLabel* funcLabel;
+    - PopUpTextEdit* funcTextEdit;
+    - QLabel* condLabel;
+    - PopUpTextEdit* condTextEdit;
+    - QLabel* firstLabel;
+    - PopUpTextEdit* firstTextEdit;
+    - QLabel* whileCondLabel;
+    - PopUpTextEdit* whileCondTextEdit;
+- -
+    + explicit ProcedureWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);
+    + ProcedureWidget(const Component& component, Model* model, QWidget *parent = nullptr);
+    + void addEnumeratorChoice(QString enumeratorName, int enumeratorID);
+    + void removeEnumeratorChoice(int enumeratorID);
+    + void selectEnumerator(QString enumeratorName);
+    + bool checkRequired();
+.. <<slots>> ..
+    void enorChanged(int index);
+    void optimistChanged();
+    void valueChanged();
+    void compareChanged();
+}
+
+class StructWidget extends QWidget
+{
+    - QString name;
+    - QVector<MemberWidget*> members;
+    - QVector<CustomMethodWidget*> customMethods;
+    - QLabel* nameLabel;
+    - QLabel* structLabel;
+    - QVBoxLayout* memberLayout;
+    - QVBoxLayout* customMethodLayout;
+    # const int id;
+    # Model* model;
+    # QGridLayout* gridlayout;
+    # QVBoxLayout* vboxlayout;
+- -
+    + explicit StructWidget(int id, QString name, Model* model, QWidget *parent = nullptr);
+    + StructWidget(const Struct& _struct, Model* model, QWidget *parent = nullptr);
+    + QString getName(){return name;}
+    + int getID(){return id;}
+    - void initSegments();
+    - void createMember(int id, QString type = "", QString name = "");
+    - void createCustomMethod(int id, QString header = "", QString body = "");
+    - void createMembers(QMap<int,Member> members);
+    - void createCustomMethods(QMap<int,CustomMethod> customMethods);
+.. <<slots>> ..
+    void onAddNewMemberClicked();
+    void onAddNewMethodClicked();
+    void memberChanged();
+    void methodChanged();
+    void deleteMember();
+    void deleteMethod();
+}
+
+enum CreateComponentDialogMode{
+    PROCEDURE
+    ENUMERATOR
+}
+
+class CreateComponentDialog extends QDialog
+{
+    - Model* model;
+    - QPushButton* okButton;
+    - QPushButton* cancelButton;
+    - QLineEdit* nameLineEdit;
+    - QComboBox* componentTypeSelect;
+    - QLabel* errorLabel;
+- -
+    + explicit CreateComponentDialog(Model* model);
+    + QString getName(){return nameLineEdit->text();}
+    + QVariant getComponent(){return componentTypeSelect->currentData();}
+    + void clear();    
+.. <<slots>> ..
+    - void wantToAccept();
+}
+
+class CustomMethodWidget extends QWidget
+{
+    - const int id;
+    - QLineEdit* headerLineEdit;
+    - PopUpTextEdit* bodyPopUpTextEdit;
+    - QPushButton* deleteButton;
+    - QVBoxLayout* hboxlayout;
+- -
+    + explicit CustomMethodWidget(int id, QString header = "", QString body = "", QWidget *parent = nullptr);
+    + QString getHeader(){return header->text();}
+    + QString getBody(){return body->toPlainText();}
+    + int getID(){return id;}
+.. <<signals>> ..
+    + void edited();
+    + void deleteMe();
+}
+
+class MemberWidget extends QWidget
+{
+    - const int id;
+    - QLineEdit* typeLineEdit;
+    - QLineEdit* nameLineEdit;
+    - QPushButton* deleteButton;
+    - QHBoxLayout* hboxlayout;
+- -
+    + explicit MemberWidget(const int id, QWidget *parent = nullptr);
+    + MemberWidget(const int id, QString type, QString name, QWidget *parent = nullptr);
+    + QString getType(){return typeLineEdit->text();}
+    + QString getName(){return nameLineEdit->text();}
+    + int getID(){return id;}
+.. <<signals>> ..
+    void edited();
+    void deleteMe();
+}
+
+class PopUpTextEdit extends QTextBrowser
+{
+    - MethodType methodType;
+    - TextInputDialog* inputDialog;
+- -
+    + PopUpTextEdit();
+    + PopUpTextEdit(MethodType methodType) : PopUpTextEdit(){this->methodType=methodType;}
+    + MethodType getMethodType(){return methodType;}
+    # void focusInEvent(QFocusEvent *e) override;
+.. <<slots>> ..
+    - void getTextFromInputDialog();
+.. <<signals>> ..
+    + void textChanged();
+}
+
+class SettingsDialog extends QDialog
+{
+    - QPushButton* okButton;
+    - QPushButton* cancelButton;
+    - QLineEdit* compilerPathLineEdit;
+    - QLineEdit* argumentsLineEdit;
+
+    + explicit SettingsDialog();
+    + QString getCompilerPath(){return compilerPathLineEdit->text();}
+    + QString getArguments(){return argumentsLineEdit->text();}
+    + void setCompilerPath(QString compilerPath){compilerPathLineEdit->setText(compilerPath);}
+    + void setArguments(QString compilerArguments){argumentsLineEdit->setText(compilerArguments);}
+}
+
+class TextInputDialog extends QDialog
+{
+    - QTextEdit* textEdit;
+    - QPushButton* saveButton;
+    - QPushButton* cancelButton;
+- -
+    - using QDialog::exec;
+    + explicit TextInputDialog();
+    + QString getText(){return textEdit->toPlainText();}
+    + void exec(QString text){textEdit->setText(text); exec();}
+}
+
+MainWindow ..> Model
+MainWindow .up.> CreateComponentDialog
+MainWindow .up.> SettingsDialog
+MainWindow .up.> TextInputDialog
+MainWindow .left.> EnumeratorWidget
+MainWindow .left.> ProcedureWidget
+MainWindow .left.> StructWidget
+
+ComponentWidget ..> MemberWidget
+ComponentWidget ..> CustomMethodWidget
+ComponentWidget ..> Model
+ComponentWidget ..> ComponentType
+ComponentWidget ..> PopUpTextEdit
+
+EnumeratorWidget ..> PopUpTextEdit
+EnumeratorWidget ..> Model
+EnumeratorWidget ..> ComponentType
+EnumeratorWidget ..> Component
+
+ProcedureWidget ..> PopUpTextEdit
+ProcedureWidget ..> Model
+ProcedureWidget ..> ComponentType
+ProcedureWidget ..> Component
+
+StructWidget ..> MemberWidget
+StructWidget ..> CustomMethodWidget
+StructWidget ..> Model
+
+CustomMethodWidget ..> PopUpTextEdit
+
+PopUpTextEdit ..> MethodType
+
+CreateComponentDialog .up.> CreateComponentDialogMode
+CreateComponentDialog ..> Model
+
+@enduml
+
+@startuml View
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+skinparam linetype ortho
+hide circle
+hide enum methods
+
+class Model
+class Component
+enum ComponentType
+enum MethodType
+
+class MainWindow extends QMainWindow
+{
+    - model : Model*
+    - createComponentDialog : CreateComponentDialog*
+    - settingsDialog : SettingsDialog*
+    - menuBar : QMenuBar*
+    - QSplitter* centralSplitter
+    - QWidget* componentEditorWidget
+    - QVBoxLayout* componentEditorLayout
+    - QWidget* listSegmentWidget
+    - QVBoxLayout* listSegmentLayout
+    - QSplitter* buildSplitter
+    - QToolBar* componentEditorToolBar
+    - QToolBar* listSegmentToolBar
+    - QToolBar* buildToolBar
+    - QToolBox* toolBox
+    - QListWidget* listWidget
+    - QTextBrowser* sourceTextBrowser
+    - QTextBrowser* compileOutputBrowser
+    - QVector<ProcedureWidget*> procedureWidgets
+    - QVector<EnumeratorWidget*> enumeratorWidgets
+    - QVector<StructWidget*> structWidgets
+    - QAction* createComponentAction
+    - QAction* deleteComponentAction
+    - QAction* deleteListItemAction
+    - QAction* createCodeBlockAction
+    - QAction* generateAction
+    - QAction* runAction
+    - QAction* buildAction
+    - QAction* stopCompileAction
+    - QAction* settingsAction
+    - QAction* newProjectAction
+    - QAction* saveProjectAction
+    - QAction* loadProjectAction
+- -
+    + MainWindow(QWidget *parent = nullptr)
+    + ~MainWindow()
+    - void initDialogs()
+    - void initActions()
+    - void initMenuBar()
+    - void initComponentEditorSegment()
+    - void initListSegment()
+    - void initSourceSegment()
+    - bool showDiscardWarning()
+.. <<slots>> ..
+    - void showCreateComponentDialog()
+    - void createComponent()
+    - void deleteComponent()
+    - void deleteListItem()
+    - void createCodeBlock()
+    - void showSettingsDialog()
+    - void updateSettings()
+    - void generateSource()
+    - void modelRun()
+    - void modelCompile()
+    - void modelStopCompile()
+    - void showCompileOutput(QString output)
+    - void allowCompile()
+    - void showCompilerPathWarning()
+    - void listItemChanged(QListWidgetItem* item)
+    - void changeSelectedComponent()
+    - void newProject()
+    - void loadProject()
+    - void saveProject()
+    - void showProjectSaveDialog()
+    - void showProjectOpenDialog()
+    - void refresh(const SaveData& data)
+    - void clear()
+}
+
+class ComponentWidget extends QWidget
+{
+    - QString name;
+    - bool objectNameApproved;
+    - QVector<MemberWidget*> members;
+    - QVector<CustomMethodWidget*> customMethods;
+    - QLabel* nameLabel;
+    - QLabel* parentClassLabel;
+    - QVBoxLayout* memberLayout;
+    - QVBoxLayout* customMethodLayout;
+    # ComponentType type;
+    # const int id;
+    # Model* model;
+    # QGridLayout* gridlayout;
+    # QVBoxLayout* vboxlayout;
+    # QLabel* objectNameLabel;
+    # QLineEdit* objectNameLineEdit;
+    # QLabel* itemTypeLabel;
+    # QLineEdit* itemTypeLineEdit;
+    # QLabel* destructorLabel;
+    # PopUpTextEdit* destructorTextEdit;
+- -
+    - void initSegments();
+    # bool checkRequiredBase();
+    # void connectSignals();
+    # void createMember(int id, QString type = "", QString name = "");
+    # void createCustomMethod(int id, QString header = "", QString body = "");
+    # void createMembers(QMap<int,Member> members);
+    # void createCustomMethods(QMap<int,CustomMethod> customMethods);
+    + explicit ComponentWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);
+    + QString getName(){return name;}
+    + ComponentType getType(){return type;}
+    + int getID(){return id;}
+    + virtual bool checkRequired() = 0;
+.. <<slots>> ..
+    - void onAddNewMemberClicked();
+    - void onAddNewMethodClicked();
+    - void memberChanged();
+    - void methodChanged();
+    - void objectNameChanged();
+    - void itemTypeChanged();
+    - void deleteMember();
+    - void deleteMethod();
+    - void popUpTextChanged();
+}
+
+class EnumeratorWidget extends ComponentWidget
+{
+    - void initSegments();
+    - void connectSignals();
+    - QLabel* firstLabel;
+    - PopUpTextEdit* firstTextEdit;
+    - QLabel* nextLabel;
+    - PopUpTextEdit* nextTextEdit;
+    - QLabel* endLabel;
+    - PopUpTextEdit* endTextEdit;
+    - QLabel* currentLabel;
+    - PopUpTextEdit* currentTextEdit;
+
+    + explicit EnumeratorWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);
+    + EnumeratorWidget(const Component& component, Model* model, QWidget *parent = nullptr);
+    + bool checkRequired();
+}
+
+class ProcedureWidget extends ComponentWidget
+{
+    - void initSegments();
+    - void connectSignals();
+    - QLabel* enorLabel;
+    - QComboBox* enorComboBox;
+    - QLabel* optimistLabel;
+    - QCheckBox* optimistCheckBox;
+    - QLabel* valueLabel;
+    - QLineEdit* valueLineEdit;
+    - QLabel* compareLabel;
+    - QRadioButton* greaterRadioButton;
+    - QRadioButton* lessRadioButton;
+    - QLabel* neutralLabel;
+    - PopUpTextEdit* neutralTextEdit;
+    - QLabel* addLabel;
+    - PopUpTextEdit* addTextEdit;
+    - QLabel* funcLabel;
+    - PopUpTextEdit* funcTextEdit;
+    - QLabel* condLabel;
+    - PopUpTextEdit* condTextEdit;
+    - QLabel* firstLabel;
+    - PopUpTextEdit* firstTextEdit;
+    - QLabel* whileCondLabel;
+    - PopUpTextEdit* whileCondTextEdit;
+- -
+    + explicit ProcedureWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);
+    + ProcedureWidget(const Component& component, Model* model, QWidget *parent = nullptr);
+    + void addEnumeratorChoice(QString enumeratorName, int enumeratorID);
+    + void removeEnumeratorChoice(int enumeratorID);
+    + void selectEnumerator(QString enumeratorName);
+    + bool checkRequired();
+.. <<slots>> ..
+    void enorChanged(int index);
+    void optimistChanged();
+    void valueChanged();
+    void compareChanged();
+}
+
+class StructWidget extends QWidget
+{
+    - QString name;
+    - QVector<MemberWidget*> members;
+    - QVector<CustomMethodWidget*> customMethods;
+    - QLabel* nameLabel;
+    - QLabel* structLabel;
+    - QVBoxLayout* memberLayout;
+    - QVBoxLayout* customMethodLayout;
+    # const int id;
+    # Model* model;
+    # QGridLayout* gridlayout;
+    # QVBoxLayout* vboxlayout;
+- -
+    + explicit StructWidget(int id, QString name, Model* model, QWidget *parent = nullptr);
+    + StructWidget(const Struct& _struct, Model* model, QWidget *parent = nullptr);
+    + QString getName(){return name;}
+    + int getID(){return id;}
+    - void initSegments();
+    - void createMember(int id, QString type = "", QString name = "");
+    - void createCustomMethod(int id, QString header = "", QString body = "");
+    - void createMembers(QMap<int,Member> members);
+    - void createCustomMethods(QMap<int,CustomMethod> customMethods);
+.. <<slots>> ..
+    void onAddNewMemberClicked();
+    void onAddNewMethodClicked();
+    void memberChanged();
+    void methodChanged();
+    void deleteMember();
+    void deleteMethod();
+}
+
+enum CreateComponentDialogMode{
+    PROCEDURE
+    ENUMERATOR
+}
+
+class CreateComponentDialog extends QDialog
+{
+    - Model* model;
+    - QPushButton* okButton;
+    - QPushButton* cancelButton;
+    - QLineEdit* nameLineEdit;
+    - QComboBox* componentTypeSelect;
+    - QLabel* errorLabel;
+- -
+    + explicit CreateComponentDialog(Model* model);
+    + QString getName(){return nameLineEdit->text();}
+    + QVariant getComponent(){return componentTypeSelect->currentData();}
+    + void clear();    
+.. <<slots>> ..
+    - void wantToAccept();
+}
+
+class CustomMethodWidget extends QWidget
+{
+    - const int id;
+    - QLineEdit* headerLineEdit;
+    - PopUpTextEdit* bodyPopUpTextEdit;
+    - QPushButton* deleteButton;
+    - QVBoxLayout* hboxlayout;
+- -
+    + explicit CustomMethodWidget(int id, QString header = "", QString body = "", QWidget *parent = nullptr);
+    + QString getHeader(){return header->text();}
+    + QString getBody(){return body->toPlainText();}
+    + int getID(){return id;}
+.. <<signals>> ..
+    + void edited();
+    + void deleteMe();
+}
+
+class MemberWidget extends QWidget
+{
+    - const int id;
+    - QLineEdit* typeLineEdit;
+    - QLineEdit* nameLineEdit;
+    - QPushButton* deleteButton;
+    - QHBoxLayout* hboxlayout;
+- -
+    + explicit MemberWidget(const int id, QWidget *parent = nullptr);
+    + MemberWidget(const int id, QString type, QString name, QWidget *parent = nullptr);
+    + QString getType(){return typeLineEdit->text();}
+    + QString getName(){return nameLineEdit->text();}
+    + int getID(){return id;}
+.. <<signals>> ..
+    void edited();
+    void deleteMe();
+}
+
+class PopUpTextEdit extends QTextBrowser
+{
+    - MethodType methodType;
+    - TextInputDialog* inputDialog;
+- -
+    + PopUpTextEdit();
+    + PopUpTextEdit(MethodType methodType) : PopUpTextEdit(){this->methodType=methodType;}
+    + MethodType getMethodType(){return methodType;}
+    # void focusInEvent(QFocusEvent *e) override;
+.. <<slots>> ..
+    - void getTextFromInputDialog();
+.. <<signals>> ..
+    + void textChanged();
+}
+
+class SettingsDialog extends QDialog
+{
+    - QPushButton* okButton;
+    - QPushButton* cancelButton;
+    - QLineEdit* compilerPathLineEdit;
+    - QLineEdit* argumentsLineEdit;
+
+    + explicit SettingsDialog();
+    + QString getCompilerPath(){return compilerPathLineEdit->text();}
+    + QString getArguments(){return argumentsLineEdit->text();}
+    + void setCompilerPath(QString compilerPath){compilerPathLineEdit->setText(compilerPath);}
+    + void setArguments(QString compilerArguments){argumentsLineEdit->setText(compilerArguments);}
+}
+
+class TextInputDialog extends QDialog
+{
+    - QTextEdit* textEdit;
+    - QPushButton* saveButton;
+    - QPushButton* cancelButton;
+- -
+    - using QDialog::exec;
+    + explicit TextInputDialog();
+    + QString getText(){return textEdit->toPlainText();}
+    + void exec(QString text){textEdit->setText(text); exec();}
+}
+
+MainWindow ..> Model
+MainWindow .up.> CreateComponentDialog
+MainWindow .up.> SettingsDialog
+MainWindow .up.> TextInputDialog
+MainWindow .left.> EnumeratorWidget
+MainWindow .left.> ProcedureWidget
+MainWindow .left.> StructWidget
+
+ComponentWidget ..> MemberWidget
+ComponentWidget ..> CustomMethodWidget
+ComponentWidget ..> Model
+ComponentWidget ..> ComponentType
+ComponentWidget ..> PopUpTextEdit
+
+EnumeratorWidget ..> PopUpTextEdit
+EnumeratorWidget ..> Model
+EnumeratorWidget ..> ComponentType
+EnumeratorWidget ..> Component
+
+ProcedureWidget ..> PopUpTextEdit
+ProcedureWidget ..> Model
+ProcedureWidget ..> ComponentType
+ProcedureWidget ..> Component
+
+StructWidget ..> MemberWidget
+StructWidget ..> CustomMethodWidget
+StructWidget ..> Model
+
+CustomMethodWidget ..> PopUpTextEdit
+
+PopUpTextEdit ..> MethodType
+
+CreateComponentDialog .up.> CreateComponentDialogMode
+CreateComponentDialog ..> Model
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>

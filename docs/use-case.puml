@@ -1,0 +1,57 @@
+@startuml Use-Case
+
+skinparam Monochrome true
+
+actor :Felhasználó: as user
+
+rectangle Projektkezelés {
+    (Új projekt létrehozása) as new_project
+    (Projekt mentése) as save_project
+    (Projekt betöltése) as load_project
+}
+
+rectangle Komponensek {
+    (Új komponens létrehozása) as new_component
+    (Komponens adatainak módosítása) as modify_component
+    (Új adattag hozzáadása egy komponenshez) as add_member
+    (Új metódus hozzáadása egy komponenshez) as add_method
+}
+
+rectangle "Main List" {
+    (Új kódblokk hozzáadása) as add_codeblock
+    (Kódblokk módosítása) as modify_codeblock
+    (Listaelem törlése) as delete_list_item
+}
+
+rectangle Forráskód {
+    (Forrás legenerálása) as generate_source
+    (Forrás fordítása) as compile_source
+    (Program futtatása) as run_program
+    (Program futásának megállítása) as stop_program
+}
+
+left to right direction
+user -up- new_project
+user -up- save_project
+user -up- load_project
+user -up- new_component
+user -up- modify_component
+user -up- add_member
+user -up- add_method
+user -- add_codeblock
+user -- modify_codeblock
+user -- delete_list_item
+user -- generate_source
+user -- compile_source
+user -- run_program
+user -- stop_program
+
+new_project .left.> save_project : <<include>>
+new_component <.left. modify_component : <<extend>>
+modify_component <.left. add_member : <<extend>>
+modify_component <.left. add_method : <<extend>>
+modify_codeblock .left.> add_codeblock : <<extend>>
+compile_source .left.> generate_source : <<include>>
+run_program .left.> compile_source : <<include>>
+
+@enduml

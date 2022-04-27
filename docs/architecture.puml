@@ -1,0 +1,15 @@
+@startuml Architecture
+
+skinparam Monochrome true
+skinparam linetype ortho
+hide circle
+hide class methods
+hide class members
+
+class Nézet
+
+Nézet *-- Modell
+Modell *-- Perzisztencia
+
+
+@enduml

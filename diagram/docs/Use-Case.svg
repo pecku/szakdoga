@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="724px" preserveAspectRatio="none" style="width:860px;height:724px;background:#FFFFFF;" version="1.1" viewBox="0 0 860 724" width="860px" zoomAndPan="magnify"><defs><filter height="300%" id="f11etole2w65j0" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[463807448abbd857e079b8d33eefbd21]
+cluster Projektkezelés--><rect fill="#FFFFFF" filter="url(#f11etole2w65j0)" height="250" style="stroke:#000000;stroke-width:1.5;" width="210" x="141" y="13"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="104" x="194" y="29.5332">Projektkezelés</text><!--MD5=[b1efc82414bfb9d2901f5c16edbc31cb]
+cluster Komponensek--><rect fill="#FFFFFF" filter="url(#f11etole2w65j0)" height="425" style="stroke:#000000;stroke-width:1.5;" width="338" x="77" y="287"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="101" x="195.5" y="303.5332">Komponensek</text><!--MD5=[33a566adeebfbf3dc06723b980248ccd]
+cluster Main List--><rect fill="#FFFFFF" filter="url(#f11etole2w65j0)" height="259" style="stroke:#000000;stroke-width:1.5;" width="223" x="605" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="63" x="685" y="23.5332">Main List</text><!--MD5=[34151a8abcd97a1edf9c3e03079a8257]
+cluster Forráskód--><rect fill="#FFFFFF" filter="url(#f11etole2w65j0)" height="356" style="stroke:#000000;stroke-width:1.5;" width="263" x="585" y="290"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="72" x="680.5" y="306.5332">Forráskód</text><ellipse cx="246.105" cy="69.221" fill="#F8F8F8" filter="url(#f11etole2w65j0)" rx="89.105" ry="20.221" style="stroke:#383838;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="136" x="178.105" y="72.9495">Új projekt létrehozása</text><ellipse cx="246.2256" cy="158.9451" fill="#F8F8F8" filter="url(#f11etole2w65j0)" rx="75.2256" ry="17.4451" style="stroke:#383838;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="192.2256" y="163.4617">Projekt mentése</text><ellipse cx="246.2363" cy="229.2473" fill="#F8F8F8" filter="url(#f11etole2w65j0)" rx="76.7363" ry="17.7473" style="stroke:#383838;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="106" x="190.7006" y="233.6555">Projekt betöltése</text><ellipse cx="245.7928" cy="345.8586" fill="#F8F8F8" filter="url(#f11etole2w65j0)" rx="102.2928" ry="22.8586" style="stroke:#383838;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="162.7928" y="349.5871">Új komponens létrehozása</text><ellipse cx="246.1716" cy="449.0343" fill="#F8F8F8" filter="url(#f11etole2w65j0)" rx="125.6716" ry="27.5343" style="stroke:#383838;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="217" x="137.6716" y="452.7628">Komponens adatainak módosítása</text><ellipse cx="246.2356" cy="561.9471" fill="#F8F8F8" filter="url(#f11etole2w65j0)" rx="150.2356" ry="32.4471" style="stroke:#383838;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="269" x="111.7356" y="565.6756">Új adattag hozzáadása egy komponenshez</text><ellipse cx="246.101" cy="663.0202" fill="#F8F8F8" filter="url(#f11etole2w65j0)" rx="153.101" ry="33.0202" style="stroke:#383838;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="275" x="108.601" y="666.7487">Új metódus hozzáadása egy komponenshez</text><ellipse cx="716.63" cy="65.026" fill="#F8F8F8" filter="url(#f11etole2w65j0)" rx="95.63" ry="21.526" style="stroke:#383838;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="151" x="641.13" y="68.7545">Új kódblokk hozzáadása</text><ellipse cx="716.7471" cy="159.0494" fill="#F8F8F8" filter="url(#f11etole2w65j0)" rx="88.2471" ry="20.0494" style="stroke:#383838;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134" x="649.7471" y="162.7779">Kódblokk módosítása</text><ellipse cx="716.6203" cy="231.8241" fill="#F8F8F8" filter="url(#f11etole2w65j0)" rx="77.1203" ry="17.8241" style="stroke:#383838;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107" x="660.7783" y="236.1856">Listaelem törlése</text><ellipse cx="716.6926" cy="346.0385" fill="#F8F8F8" filter="url(#f11etole2w65j0)" rx="85.6926" ry="19.5385" style="stroke:#383838;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="652.6926" y="349.767">Forrás legenerálása</text><ellipse cx="716.3525" cy="435.8705" fill="#F8F8F8" filter="url(#f11etole2w65j0)" rx="74.8525" ry="17.3705" style="stroke:#383838;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101" x="662.8525" y="440.3871">Forrás fordítása</text><ellipse cx="716.4775" cy="524.7955" fill="#F8F8F8" filter="url(#f11etole2w65j0)" rx="79.4775" ry="18.2955" style="stroke:#383838;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113" x="658.756" y="528.8709">Program futtatása</text><ellipse cx="716.4736" cy="603.9947" fill="#F8F8F8" filter="url(#f11etole2w65j0)" rx="115.4736" ry="25.4947" style="stroke:#383838;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="195" x="618.9736" y="607.7232">Program futásának megállítása</text><!--MD5=[8fc3522a43f8c7199df5e09e5bb0188e]
+entity user--><ellipse cx="500" cy="314" fill="#F8F8F8" filter="url(#f11etole2w65j0)" rx="8" ry="8" style="stroke:#383838;stroke-width:1.5;"/><path d="M500,322 L500,349 M487,330 L513,330 M500,349 L487,364 M500,349 L513,364 " fill="none" filter="url(#f11etole2w65j0)" style="stroke:#383838;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="462" y="384.0332">Felhasználó</text><!--MD5=[0b5b92e0741101991617066d5970242e]
+link new_project to user--><path d="M326.58,77.79 C360.08,85.22 397.19,98.88 423,124 C472.77,172.45 489.96,254.84 495.89,304.46 " fill="none" id="new_project-user" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[9b7949d4183358dc2b17085558016767]
+link save_project to user--><path d="M321.12,159.24 C355.1,162.76 394.14,171.99 423,194 C458.54,221.11 478.63,269.37 489.11,304.25 " fill="none" id="save_project-user" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[084cf34c9ffea55c206955772cdf3df1]
+link load_project to user--><path d="M283.34,244.39 C319.12,259.71 375.2,284.17 423,307 C435.71,313.07 449.46,320.01 461.71,326.33 " fill="none" id="load_project-user" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[373348e35eec5b0bd88d50eeadd0193d]
+link new_component to user--><path d="M348.77,346 C388.66,346 431.91,346 461.72,346 " fill="none" id="new_component-user" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[921da6a8b9a6a5e671d75f0ab4bbe6c5]
+link modify_component to user--><path d="M317.69,426.24 C350.18,415.13 388.98,400.95 423,386 C435.83,380.36 449.49,373.47 461.63,367.01 " fill="none" id="modify_component-user" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[14281d50282c881ad816c873fdd1db0d]
+link add_member to user--><path d="M346.3,537.83 C373.45,527.66 401.33,513.5 423,494 C454.78,465.41 475.22,420.41 486.8,387.53 " fill="none" id="add_member-user" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[eb2ccce961f37235fe51dd387f8498e2]
+link add_method to user--><path d="M371.7,644.13 C390.73,636.66 408.74,626.31 423,612 C483.51,551.27 496.58,445.9 498.96,387.68 " fill="none" id="add_method-user" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[9c968b199d5d01d1890339a185558ca6]
+link user to add_codeblock--><path d="M504.69,304.15 C511.17,254.48 528.91,171.99 577,121 C595.6,101.28 622.09,88.33 646.93,79.91 " fill="none" id="user-add_codeblock" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[eaacfcfa42c8fd6b1be123782b9bcf28]
+link user to modify_codeblock--><path d="M511.81,304.33 C522.74,270.34 542.99,223.58 577,196 C594.2,182.05 616.19,173.32 637.54,167.88 " fill="none" id="user-modify_codeblock" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[5b3bc34736159aeee360ec2618520bb1]
+link user to delete_list_item--><path d="M538.36,326.14 C579.77,304.13 645.81,269.04 684.47,248.49 " fill="none" id="user-delete_list_item" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[0380d5ac10dcfeb5418525362c8c47dd]
+link user to generate_source--><path d="M538.36,346 C563.93,346 598.88,346 630.98,346 " fill="none" id="user-generate_source" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[32da9c2d9c3bebf67e2dcda44daa9640]
+link user to compile_source--><path d="M538.19,364.91 C550.45,370.93 564.21,377.45 577,383 C609.36,397.04 646.75,411.23 674.52,421.39 " fill="none" id="user-compile_source" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[c2b4b2d4118c2a7f1e1e7ab515f7f02f]
+link user to run_program--><path d="M517.86,387.72 C530.6,414.66 550.44,448.72 577,471 C600.53,490.74 632.11,503.8 659.17,512.12 " fill="none" id="user-run_program" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[9ea2362fc56d6401e2b2c14b543af876]
+link user to stop_program--><path d="M504.66,387.54 C511.11,435.77 528.78,514.62 577,561 C589.97,573.48 606.5,582.34 623.59,588.64 " fill="none" id="user-stop_program" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[8cd4bff9fe2349415334376716076119]
+reverse link save_project to new_project--><path d="M246,136.1 C246,121.65 246,103.17 246,89.26 " fill="none" id="save_project-backto-new_project" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="246,141.22,250,132.22,246,136.22,242,132.22,246,141.22" style="stroke:#383838;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="55" x="206.5" y="120.7451">«include»</text><!--MD5=[8274493f4cb634113da24aca16e046ee]
+link modify_component to new_component--><path d="M246,421.4 C246,406.86 246,389.05 246,374.39 " fill="none" id="modify_component-to-new_component" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="246,369.15,242,378.15,246,374.15,250,378.15,246,369.15" style="stroke:#383838;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="53" x="207.5" y="400.7451">«extend»</text><!--MD5=[46a7acf0c3504be74190cc238f728e28]
+link add_member to modify_component--><path d="M246,529.32 C246,514.45 246,496.9 246,482 " fill="none" id="add_member-to-modify_component" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="246,476.64,242,485.64,246,481.64,250,485.64,246,476.64" style="stroke:#383838;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="53" x="207.5" y="508.4951">«extend»</text><!--MD5=[a091f8058cfb2f4d6db54b98fea5558e]
+link add_method to modify_component--><path d="M126.02,642.26 C105.61,635 85.66,625.21 69,612 C49.04,596.18 47.43,586.64 41,562 C27.48,510.18 82.19,481.77 138.48,466.4 " fill="none" id="add_method-to-modify_component" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="143.58,465.04,133.8538,463.4904,138.7484,466.3265,135.9123,471.2211,143.58,465.04" style="stroke:#383838;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="53" x="7" y="558.4951">«extend»</text><!--MD5=[9520a4349e9445937594d0e3b37d78f7]
+reverse link add_codeblock to modify_codeblock--><path d="M716.5,91.97 C716.5,106.82 716.5,124.95 716.5,138.6 " fill="none" id="add_codeblock-backto-modify_codeblock" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="716.5,86.67,712.5,95.67,716.5,91.67,720.5,95.67,716.5,86.67" style="stroke:#383838;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="53" x="678" y="118.2451">«extend»</text><!--MD5=[a935ca5183b5db66aedfb18d87b45814]
+reverse link generate_source to compile_source--><path d="M716.5,370.96 C716.5,385.97 716.5,404.71 716.5,418.22 " fill="none" id="generate_source-backto-compile_source" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="716.5,365.62,712.5,374.62,716.5,370.62,720.5,374.62,716.5,365.62" style="stroke:#383838;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="55" x="677" y="397.4951">«include»</text><!--MD5=[b7407050374ca4adc73502e9087be6bc]
+reverse link compile_source to run_program--><path d="M716.5,458.83 C716.5,473.5 716.5,492.31 716.5,506.13 " fill="none" id="compile_source-backto-run_program" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="716.5,453.64,712.5,462.64,716.5,458.64,720.5,462.64,716.5,453.64" style="stroke:#383838;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="55" x="677" y="485.4951">«include»</text><!--MD5=[9c92bada45583944bb1cfad9f0281b0b]
+@startuml Use-Case
+
+skinparam Monochrome true
+
+actor :Felhasználó: as user
+
+rectangle Projektkezelés {
+    (Új projekt létrehozása) as new_project
+    (Projekt mentése) as save_project
+    (Projekt betöltése) as load_project
+}
+
+rectangle Komponensek {
+    (Új komponens létrehozása) as new_component
+    (Komponens adatainak módosítása) as modify_component
+    (Új adattag hozzáadása egy komponenshez) as add_member
+    (Új metódus hozzáadása egy komponenshez) as add_method
+}
+
+rectangle "Main List" {
+    (Új kódblokk hozzáadása) as add_codeblock
+    (Kódblokk módosítása) as modify_codeblock
+    (Listaelem törlése) as delete_list_item
+}
+
+rectangle Forráskód {
+    (Forrás legenerálása) as generate_source
+    (Forrás fordítása) as compile_source
+    (Program futtatása) as run_program
+    (Program futásának megállítása) as stop_program
+}
+
+left to right direction
+user -up- new_project
+user -up- save_project
+user -up- load_project
+user -up- new_component
+user -up- modify_component
+user -up- add_member
+user -up- add_method
+user - - add_codeblock
+user - - modify_codeblock
+user - - delete_list_item
+user - - generate_source
+user - - compile_source
+user - - run_program
+user - - stop_program
+
+new_project .left.> save_project : <<include>>
+new_component <.left. modify_component : <<extend>>
+modify_component <.left. add_member : <<extend>>
+modify_component <.left. add_method : <<extend>>
+modify_codeblock .left.> add_codeblock : <<extend>>
+compile_source .left.> generate_source : <<include>>
+run_program .left.> compile_source : <<include>>
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>

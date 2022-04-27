@@ -1,0 +1,41 @@
+@startuml Model-relations
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+'skinparam groupInheritance 2
+skinparam linetype ortho
+hide circle
+hide enum methods
+hide enum members
+hide class methods
+hide class members
+
+class Model
+enum ComponentType
+enum MethodType
+class Member
+class CustomMethod
+class Component
+class CodeBlock
+class Struct
+class SaveData
+
+Model ..> Component
+Model ..> CodeBlock
+Model ..> Struct
+Model ..> DataAccess
+Model ..> ComponentType
+Model ..> MethodType
+Model ..> SaveData
+
+Component ..> ComponentType
+Component .up.> MethodType
+Component ..> CustomMethod
+Component ..> Member
+
+' layout helper lines
+CodeBlock .[hidden].> Struct
+Struct .[hidden].> SaveData
+SaveData .[hidden].> DataAccess
+
+@enduml

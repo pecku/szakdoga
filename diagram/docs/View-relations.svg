@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="811px" preserveAspectRatio="none" style="width:755px;height:811px;background:#FFFFFF;" version="1.1" viewBox="0 0 755 811" width="755px" zoomAndPan="magnify"><defs><filter height="300%" id="f7470pm5cfkus" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[7e20e022571e30ec1001cf6eabd7f3e2]
+class Model--><rect codeLine="12" fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="Model" style="stroke:#383838;stroke-width:1.5;" width="39" x="403" y="347"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="33" x="406" y="364.457">Model</text><!--MD5=[4e13963c9dc916a21a8436ef39422b32]
+class Component--><rect codeLine="13" fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="Component" style="stroke:#383838;stroke-width:1.5;" width="71" x="220" y="432"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="65" x="223" y="449.457">Component</text><!--MD5=[6aab0676cf34802cefb399a4f3777211]
+class ComponentType--><rect codeLine="14" fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="ComponentType" style="stroke:#383838;stroke-width:1.5;" width="97" x="323" y="602"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="91" x="326" y="619.457">ComponentType</text><!--MD5=[5e67de1afa87a34c5cf044797ba6a12f]
+class MethodType--><rect codeLine="15" fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="MethodType" style="stroke:#383838;stroke-width:1.5;" width="72" x="437.5" y="772"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="66" x="440.5" y="789.457">MethodType</text><!--MD5=[e6c809820d88acc3564faeb20394ab9d]
+class MainWindow--><rect codeLine="16" fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="MainWindow" style="stroke:#383838;stroke-width:1.5;" width="76" x="256.5" y="177"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="70" x="259.5" y="194.457">MainWindow</text><!--MD5=[16d025dde850bca9df54fb6533f05466]
+class QMainWindow--><rect fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="QMainWindow" style="stroke:#383838;stroke-width:1.5;" width="85" x="129" y="92"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="79" x="132" y="109.457">QMainWindow</text><!--MD5=[f58047955ca932e7663149215b1c52bc]
+class ComponentWidget--><rect codeLine="17" fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="ComponentWidget" style="stroke:#383838;stroke-width:1.5;" width="109" x="632" y="432"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="103" x="635" y="449.457">ComponentWidget</text><!--MD5=[3e3f16721f1fb369e45a968cb01568b2]
+class QWidget--><rect fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="QWidget" style="stroke:#383838;stroke-width:1.5;" width="53" x="629" y="177"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="47" x="632" y="194.457">QWidget</text><!--MD5=[b4861235fb43946fca968df7550cce16]
+class EnumeratorWidget--><rect codeLine="18" fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="EnumeratorWidget" style="stroke:#383838;stroke-width:1.5;" width="109" x="144" y="517"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="103" x="147" y="534.457">EnumeratorWidget</text><!--MD5=[19895920c69ec76813175a1b7946b91d]
+class ProcedureWidget--><rect codeLine="19" fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="ProcedureWidget" style="stroke:#383838;stroke-width:1.5;" width="101" x="343" y="517"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="95" x="346" y="534.457">ProcedureWidget</text><!--MD5=[c055dc62cfc6e068c11faf7cfd55b804]
+class StructWidget--><rect codeLine="20" fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="StructWidget" style="stroke:#383838;stroke-width:1.5;" width="75" x="490" y="262"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="69" x="493" y="279.457">StructWidget</text><!--MD5=[fa9a82ae8c1b63f1f84381e680a24038]
+class CreateComponentDialogMode--><rect codeLine="21" fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="CreateComponentDialogMode" style="stroke:#383838;stroke-width:1.5;" width="174" x="360.5" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="168" x="363.5" y="24.457">CreateComponentDialogMode</text><!--MD5=[7b1947a7f64ca8bf6dcdc0e017552af5]
+class CreateComponentDialog--><rect codeLine="22" fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="CreateComponentDialog" style="stroke:#383838;stroke-width:1.5;" width="144" x="375.5" y="92"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="138" x="378.5" y="109.457">CreateComponentDialog</text><!--MD5=[a8b6f7b9cc2471bf66c01f6545239df2]
+class QDialog--><rect fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="QDialog" style="stroke:#383838;stroke-width:1.5;" width="51" x="269" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="45" x="272" y="24.457">QDialog</text><!--MD5=[6a1abfe6dd0d473320e85a990c0164e5]
+class CustomMethodWidget--><rect codeLine="23" fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="CustomMethodWidget" style="stroke:#383838;stroke-width:1.5;" width="128" x="468.5" y="432"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="122" x="471.5" y="449.457">CustomMethodWidget</text><!--MD5=[71f6580fdafe28d9aae059c51bb2b49d]
+class MemberWidget--><rect codeLine="24" fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="MemberWidget" style="stroke:#383838;stroke-width:1.5;" width="89" x="649" y="347"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="83" x="652" y="364.457">MemberWidget</text><!--MD5=[18aad03fe2332498c99797cb204150dc]
+class PopUpTextEdit--><rect codeLine="25" fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="PopUpTextEdit" style="stroke:#383838;stroke-width:1.5;" width="87" x="430" y="687"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="81" x="433" y="704.457">PopUpTextEdit</text><!--MD5=[7583fb819684849796d116cdb629f5b2]
+class QTextBrowser--><rect fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="QTextBrowser" style="stroke:#383838;stroke-width:1.5;" width="83" x="205" y="602"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="77" x="208" y="619.457">QTextBrowser</text><!--MD5=[e8c7ddfe88f5b7de1e94ae70608261c6]
+class SettingsDialog--><rect codeLine="26" fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="SettingsDialog" style="stroke:#383838;stroke-width:1.5;" width="87" x="7" y="92"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="81" x="10" y="109.457">SettingsDialog</text><!--MD5=[17cc9e66f029763309f308f68e07198f]
+class TextInputDialog--><rect codeLine="27" fill="#F8F8F8" filter="url(#f7470pm5cfkus)" height="25.0938" id="TextInputDialog" style="stroke:#383838;stroke-width:1.5;" width="91" x="249" y="92"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="85" x="252" y="109.457">TextInputDialog</text><!--MD5=[6d49110face5b86f7a663104a5736814]
+reverse link QMainWindow to MainWindow--><path d="M190.67,137.23 C190.67,137.23 190.67,186 190.67,186 C190.67,186 226.79,186 256.43,186 " fill="none" id="QMainWindow-backto-MainWindow" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="183.67,137.23,190.67,117.23,197.67,137.23,183.67,137.23" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[2d7b86d4e08437b6f8b6989d7de24a74]
+reverse link QWidget to ComponentWidget--><path d="M644.75,222.15 C644.75,222.15 644.75,431.78 644.75,431.78 " fill="none" id="QWidget-backto-ComponentWidget" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="637.75,222.15,644.75,202.15,651.75,222.15,637.75,222.15" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[34ebeea314c456451037da4aafe084b9]
+reverse link ComponentWidget to EnumeratorWidget--><path d="M653.8,477.02 C653.8,477.02 653.8,487 653.8,487 C653.8,487 242,487 242,487 C242,487 242,504.44 242,516.98 " fill="none" id="ComponentWidget-backto-EnumeratorWidget" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="646.8,477.02,653.8,457.02,660.8,477.02,646.8,477.02" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[379fac347f92e70643ca31d24c827d86]
+reverse link ComponentWidget to ProcedureWidget--><path d="M675.6,477.12 C675.6,477.12 675.6,530 675.6,530 C675.6,530 525.48,530 444.26,530 " fill="none" id="ComponentWidget-backto-ProcedureWidget" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="668.6,477.12,675.6,457.12,682.6,477.12,668.6,477.12" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[6b233fea2abc10f2b80f710d665c53c5]
+reverse link QWidget to StructWidget--><path d="M640.5,222.23 C640.5,222.23 640.5,271 640.5,271 C640.5,271 598,271 565.13,271 " fill="none" id="QWidget-backto-StructWidget" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="633.5,222.23,640.5,202.23,647.5,222.23,633.5,222.23" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[60b447b95c2f3875892fe7c6671524bc]
+reverse link QDialog to CreateComponentDialog--><path d="M340.08,20 C340.08,20 348.83,20 348.83,20 C348.83,20 348.83,105 348.83,105 C348.83,105 360.23,105 375.27,105 " fill="none" id="QDialog-backto-CreateComponentDialog" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="340.08,27,320.08,20,340.08,13,340.08,27" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[85d9c446e8d801270e176e8e7c56a77a]
+reverse link QWidget to CustomMethodWidget--><path d="M608.94,186 C608.94,186 580.75,186 580.75,186 C580.75,186 580.75,379.52 580.75,431.68 " fill="none" id="QWidget-backto-CustomMethodWidget" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="608.94,179,628.94,186,608.94,193,608.94,179" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[17d386f4a327e27d9e0f3cc8a28f2a38]
+reverse link QWidget to MemberWidget--><path d="M671,222 C671,222 671,346.98 671,346.98 " fill="none" id="QWidget-backto-MemberWidget" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="664,222,671,202,678,222,664,222" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[6c17df220d7be6dd642bc610d416876d]
+reverse link QTextBrowser to PopUpTextEdit--><path d="M246.5,647.23 C246.5,647.23 246.5,696 246.5,696 C246.5,696 363.77,696 429.73,696 " fill="none" id="QTextBrowser-backto-PopUpTextEdit" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="239.5,647.23,246.5,627.23,253.5,647.23,239.5,647.23" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[603a310196e6d1108837be865414ace1]
+reverse link QDialog to SettingsDialog--><path d="M248.85,20 C248.85,20 50.5,20 50.5,20 C50.5,20 50.5,68.03 50.5,91.67 " fill="none" id="QDialog-backto-SettingsDialog" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="248.85,13,268.85,20,248.85,27,248.85,13" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[50f159fcf968291c655e880f21ede70d]
+reverse link QDialog to TextInputDialog--><path d="M294.5,52.04 C294.5,52.04 294.5,91.91 294.5,91.91 " fill="none" id="QDialog-backto-TextInputDialog" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="287.5,52.04,294.5,32.04,301.5,52.04,287.5,52.04" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[b8ee51d777f823bcef2e7bb294934903]
+link MainWindow to Model--><path codeLine="29" d="M328.7,202.01 C328.7,240.74 328.7,356 328.7,356 C328.7,356 397.61,356 397.61,356 " fill="none" id="MainWindow-to-Model" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="402.61,356,393.61,352,397.61,356,393.61,360,402.61,356" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[83350e7c95cd9639efe2ee5fca5da3c5]
+reverse link CreateComponentDialog to MainWindow--><path codeLine="30" d="M389.25,122.32 C389.25,122.32 389.25,194 389.25,194 C389.25,194 359.06,194 332.77,194 " fill="none" id="CreateComponentDialog-backto-MainWindow" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="389.25,117.32,385.25,126.32,389.25,122.32,393.25,126.32,389.25,117.32" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[13a0dcdb6a8ec141d783addfaaaaba3d]
+reverse link SettingsDialog to MainWindow--><path codeLine="31" d="M50.5,122.32 C50.5,122.32 50.5,194 50.5,194 C50.5,194 187.75,194 256.38,194 " fill="none" id="SettingsDialog-backto-MainWindow" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="50.5,117.32,46.5,126.32,50.5,122.32,54.5,126.32,50.5,117.32" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[33132b3214e16b3242fa8a8651f22fb4]
+reverse link TextInputDialog to MainWindow--><path codeLine="32" d="M294.5,122.04 C294.5,122.04 294.5,176.91 294.5,176.91 " fill="none" id="TextInputDialog-backto-MainWindow" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="294.5,117.04,290.5,126.04,294.5,122.04,298.5,126.04,294.5,117.04" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[29a9eb650b1655526f67941fa544b5b8]
+link MainWindow to EnumeratorWidget--><path codeLine="33" d="M307,202.02 C307,263.45 307,530 307,530 C307,530 258.07,530 258.07,530 " fill="none" id="MainWindow-to-EnumeratorWidget" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="253.07,530,262.07,534,258.07,530,262.07,526,253.07,530" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[72f8f74b4f3652bb6dae19cc4b847ac5]
+link MainWindow to ProcedureWidget--><path codeLine="34" d="M326.8,202.2 C326.8,263.3 326.8,524 326.8,524 C326.8,524 337.95,524 337.95,524 " fill="none" id="MainWindow-to-ProcedureWidget" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="342.95,524,333.95,520,337.95,524,333.95,528,342.95,524" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[51a5501a982bdf843961b4421ddf3146]
+link MainWindow to StructWidget--><path codeLine="35" d="M330.6,202.23 C330.6,225.16 330.6,271 330.6,271 C330.6,271 484.54,271 484.54,271 " fill="none" id="MainWindow-to-StructWidget" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="489.54,271,480.54,267,484.54,271,480.54,275,489.54,271" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[5136b91c23001576eaf0286f8fc8d2b8]
+reverse link MemberWidget to ComponentWidget--><path codeLine="37" d="M693.5,377.04 C693.5,377.04 693.5,431.91 693.5,431.91 " fill="none" id="MemberWidget-backto-ComponentWidget" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="693.5,372.04,689.5,381.04,693.5,377.04,697.5,381.04,693.5,372.04" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[3ed8f6dc00b0eca26338314ff191b4e3]
+reverse link CustomMethodWidget to ComponentWidget--><path codeLine="38" d="M601.92,445 C601.92,445 631.62,445 631.62,445 " fill="none" id="CustomMethodWidget-backto-ComponentWidget" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="596.92,445,605.92,449,601.92,445,605.92,441,596.92,445" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[2bc4fa8d0ed6dd83215bbd6b73d09383]
+reverse link Model to ComponentWidget--><path codeLine="39" d="M447.23,360 C447.23,360 636.25,360 636.25,360 C636.25,360 636.25,408.03 636.25,431.67 " fill="none" id="Model-backto-ComponentWidget" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="442.23,360,451.23,364,447.23,360,451.23,356,442.23,360" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[8e765c8472f12027ea28a83da8ac6a99]
+reverse link ComponentType to ComponentWidget--><path codeLine="40" d="M425.29,615 C425.29,615 697.4,615 697.4,615 C697.4,615 697.4,496.41 697.4,457.04 " fill="none" id="ComponentType-backto-ComponentWidget" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="420.29,615,429.29,619,425.29,615,429.29,611,420.29,615" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[610233e3f84856aa9c4898fef5186d85]
+link ComponentWidget to PopUpTextEdit--><path codeLine="41" d="M719.2,457.17 C719.2,508.72 719.2,700 719.2,700 C719.2,700 522.14,700 522.14,700 " fill="none" id="ComponentWidget-to-PopUpTextEdit" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="517.14,700,526.14,704,522.14,700,526.14,696,517.14,700" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[ddfebd2233d3953511f9772bda0eb57f]
+link EnumeratorWidget to PopUpTextEdit--><path codeLine="43" d="M174.5,542.05 C174.5,582.06 174.5,704 174.5,704 C174.5,704 424.7,704 424.7,704 " fill="none" id="EnumeratorWidget-to-PopUpTextEdit" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="429.7,704,420.7,700,424.7,704,420.7,708,429.7,704" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[984f664af98fe3d86bae745499fb90ae]
+link EnumeratorWidget to Model--><path codeLine="44" d="M167.33,516.79 C167.33,478.03 167.33,364 167.33,364 C167.33,364 397.9,364 397.9,364 " fill="none" id="EnumeratorWidget-to-Model" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="402.9,364,393.9,360,397.9,364,393.9,368,402.9,364" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[1c2cc3423d6a0e0fec5a9bf2b08e7233]
+link EnumeratorWidget to ComponentType--><path codeLine="45" d="M253.21,536 C287.37,536 324.9,536 324.9,536 C324.9,536 324.9,596.89 324.9,596.89 " fill="none" id="EnumeratorWidget-to-ComponentType" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="324.9,601.89,328.9,592.89,324.9,596.89,320.9,592.89,324.9,601.89" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[44c7468bbfa4f5f02df02bbb52b1aa13]
+reverse link Component to EnumeratorWidget--><path codeLine="46" d="M231,462.04 C231,462.04 231,516.91 231,516.91 " fill="none" id="Component-backto-EnumeratorWidget" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="231,457.04,227,466.04,231,462.04,235,466.04,231,457.04" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[89f9da81a9c505e8c95caebace3e6721]
+link ProcedureWidget to PopUpTextEdit--><path codeLine="48" d="M437,542 C437,542 437,681.98 437,681.98 " fill="none" id="ProcedureWidget-to-PopUpTextEdit" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="437,686.98,441,677.98,437,681.98,433,677.98,437,686.98" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[51209f3c7051961e0f298700bf7d5424]
+link ProcedureWidget to Model--><path codeLine="49" d="M422.5,517 C422.5,517 422.5,377.02 422.5,377.02 " fill="none" id="ProcedureWidget-to-Model" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="422.5,372.02,418.5,381.02,422.5,377.02,426.5,381.02,422.5,372.02" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[9bd724a02a928c84e54ee6985787149b]
+link ProcedureWidget to ComponentType--><path codeLine="50" d="M381.5,542.04 C381.5,542.04 381.5,596.91 381.5,596.91 " fill="none" id="ProcedureWidget-to-ComponentType" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="381.5,601.91,385.5,592.91,381.5,596.91,377.5,592.91,381.5,601.91" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[39b70af06529a96b2a5f22019233c011]
+reverse link Component to ProcedureWidget--><path codeLine="51" d="M296.02,445 C296.02,445 354.67,445 354.67,445 C354.67,445 354.67,493.03 354.67,516.67 " fill="none" id="Component-backto-ProcedureWidget" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="291.02,445,300.02,449,296.02,445,300.02,441,291.02,445" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[0eaae73735081f5f420c8d87fb4d5c94]
+link StructWidget to MemberWidget--><path codeLine="53" d="M565.11,279 C604.29,279 660,279 660,279 C660,279 660,341.92 660,341.92 " fill="none" id="StructWidget-to-MemberWidget" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="660,346.92,664,337.92,660,341.92,656,337.92,660,346.92" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[e7e2708f677d82d6bc5ca249de511546]
+link StructWidget to CustomMethodWidget--><path codeLine="54" d="M527.5,287 C527.5,287 527.5,426.98 527.5,426.98 " fill="none" id="StructWidget-to-CustomMethodWidget" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="527.5,431.98,531.5,422.98,527.5,426.98,523.5,422.98,527.5,431.98" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[6e053acd2cadf4c9afebd14607074a59]
+link StructWidget to Model--><path codeLine="55" d="M489.98,279 C462.14,279 429,279 429,279 C429,279 429,341.92 429,341.92 " fill="none" id="StructWidget-to-Model" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="429,346.92,433,337.92,429,341.92,425,337.92,429,346.92" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[510e1150fd7b6952c14242844b40fa29]
+link CustomMethodWidget to PopUpTextEdit--><path codeLine="57" d="M492.75,457.15 C492.75,457.15 492.75,681.78 492.75,681.78 " fill="none" id="CustomMethodWidget-to-PopUpTextEdit" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="492.75,686.78,496.75,677.78,492.75,681.78,488.75,677.78,492.75,686.78" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[d7919d4de2b80de491e2be07900c8e44]
+link PopUpTextEdit to MethodType--><path codeLine="59" d="M473.5,712.04 C473.5,712.04 473.5,766.91 473.5,766.91 " fill="none" id="PopUpTextEdit-to-MethodType" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="473.5,771.91,477.5,762.91,473.5,766.91,469.5,762.91,473.5,771.91" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[2f8e46b73aa64b5bb6272c6a3e0262bb]
+reverse link CreateComponentDialogMode to CreateComponentDialog--><path codeLine="61" d="M447.5,37.04 C447.5,37.04 447.5,91.91 447.5,91.91 " fill="none" id="CreateComponentDialogMode-backto-CreateComponentDialog" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="447.5,32.04,443.5,41.04,447.5,37.04,451.5,41.04,447.5,32.04" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[ea4d495c351d0e2156f8372de4749e90]
+link CreateComponentDialog to Model--><path codeLine="62" d="M416,117.15 C416,117.15 416,341.78 416,341.78 " fill="none" id="CreateComponentDialog-to-Model" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="416,346.78,420,337.78,416,341.78,412,337.78,416,346.78" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[f93566150704364b8d75aae19e1ccba1]
+@startuml View-relations
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+'skinparam groupInheritance 2
+skinparam linetype ortho
+hide circle
+hide enum methods
+hide enum members
+hide class methods
+hide class members
+
+class Model
+class Component
+enum ComponentType
+enum MethodType
+class MainWindow extends QMainWindow
+class ComponentWidget extends QWidget
+class EnumeratorWidget extends ComponentWidget
+class ProcedureWidget extends ComponentWidget
+class StructWidget extends QWidget
+enum CreateComponentDialogMode
+class CreateComponentDialog extends QDialog
+class CustomMethodWidget extends QWidget
+class MemberWidget extends QWidget
+class PopUpTextEdit extends QTextBrowser
+class SettingsDialog extends QDialog
+class TextInputDialog extends QDialog
+
+MainWindow .down.> Model
+MainWindow .up.> CreateComponentDialog
+MainWindow .up.> SettingsDialog
+MainWindow .up.> TextInputDialog
+MainWindow .down.> EnumeratorWidget
+MainWindow .down.> ProcedureWidget
+MainWindow .down.> StructWidget
+
+ComponentWidget .up.> MemberWidget
+ComponentWidget .left.> CustomMethodWidget
+ComponentWidget .up.> Model
+ComponentWidget .up.> ComponentType
+ComponentWidget .down.> PopUpTextEdit
+
+EnumeratorWidget ..> PopUpTextEdit
+EnumeratorWidget ..> Model
+EnumeratorWidget ..> ComponentType
+EnumeratorWidget .up.> Component
+
+ProcedureWidget ...> PopUpTextEdit
+ProcedureWidget ..> Model
+ProcedureWidget ..> ComponentType
+ProcedureWidget .up.> Component
+
+StructWidget ..> MemberWidget
+StructWidget ..> CustomMethodWidget
+StructWidget ..> Model
+
+CustomMethodWidget ..> PopUpTextEdit
+
+PopUpTextEdit ..> MethodType
+
+CreateComponentDialog .up.> CreateComponentDialogMode
+CreateComponentDialog ..> Model
+
+@enduml
+
+@startuml View-relations
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+skinparam linetype ortho
+hide circle
+hide enum methods
+hide enum members
+hide class methods
+hide class members
+
+class Model
+class Component
+enum ComponentType
+enum MethodType
+class MainWindow extends QMainWindow
+class ComponentWidget extends QWidget
+class EnumeratorWidget extends ComponentWidget
+class ProcedureWidget extends ComponentWidget
+class StructWidget extends QWidget
+enum CreateComponentDialogMode
+class CreateComponentDialog extends QDialog
+class CustomMethodWidget extends QWidget
+class MemberWidget extends QWidget
+class PopUpTextEdit extends QTextBrowser
+class SettingsDialog extends QDialog
+class TextInputDialog extends QDialog
+
+MainWindow .down.> Model
+MainWindow .up.> CreateComponentDialog
+MainWindow .up.> SettingsDialog
+MainWindow .up.> TextInputDialog
+MainWindow .down.> EnumeratorWidget
+MainWindow .down.> ProcedureWidget
+MainWindow .down.> StructWidget
+
+ComponentWidget .up.> MemberWidget
+ComponentWidget .left.> CustomMethodWidget
+ComponentWidget .up.> Model
+ComponentWidget .up.> ComponentType
+ComponentWidget .down.> PopUpTextEdit
+
+EnumeratorWidget ..> PopUpTextEdit
+EnumeratorWidget ..> Model
+EnumeratorWidget ..> ComponentType
+EnumeratorWidget .up.> Component
+
+ProcedureWidget ...> PopUpTextEdit
+ProcedureWidget ..> Model
+ProcedureWidget ..> ComponentType
+ProcedureWidget .up.> Component
+
+StructWidget ..> MemberWidget
+StructWidget ..> CustomMethodWidget
+StructWidget ..> Model
+
+CustomMethodWidget ..> PopUpTextEdit
+
+PopUpTextEdit ..> MethodType
+
+CreateComponentDialog .up.> CreateComponentDialogMode
+CreateComponentDialog ..> Model
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>
