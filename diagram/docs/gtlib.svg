@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="212px" preserveAspectRatio="none" style="width:831px;height:212px;background:#FFFFFF;" version="1.1" viewBox="0 0 831 212" width="831px" zoomAndPan="magnify"><defs><filter height="300%" id="f1lccvw221tejx" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[df3fc242ef91a47d9d4eb0969d2a8168]
+class Procedure--><rect codeLine="10" fill="#F8F8F8" filter="url(#f1lccvw221tejx)" height="23.9688" id="Procedure" style="stroke:#383838;stroke-width:1.5;" width="71" x="170.5" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="65" x="173.5" y="23.1387">Procedure</text><!--MD5=[3787884da870b7cc2169c546b8860673]
+class Enumerator--><rect codeLine="11" fill="#F8F8F8" filter="url(#f1lccvw221tejx)" height="23.9688" id="Enumerator" style="stroke:#383838;stroke-width:1.5;" width="80" x="590" y="91"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="593" y="107.1387">Enumerator</text><!--MD5=[fc996f42d6f5ce5c303f43b6555ec2d6]
+class MaxSearch--><rect codeLine="12" fill="#F8F8F8" filter="url(#f1lccvw221tejx)" height="23.9688" id="MaxSearch" style="stroke:#383838;stroke-width:1.5;" width="74" x="7" y="91"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="68" x="10" y="107.1387">MaxSearch</text><!--MD5=[d5668132fd864e3fad1515144baa1a17]
+class Selection--><rect codeLine="13" fill="#F8F8F8" filter="url(#f1lccvw221tejx)" height="23.9688" id="Selection" style="stroke:#383838;stroke-width:1.5;" width="64" x="227" y="91"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="58" x="230" y="107.1387">Selection</text><!--MD5=[ed461201aa0da2c9938abd9035f5f332]
+class SeqInFileEnumerator--><rect codeLine="14" fill="#F8F8F8" filter="url(#f1lccvw221tejx)" height="23.9688" id="SeqInFileEnumerator" style="stroke:#383838;stroke-width:1.5;" width="136" x="562" y="175"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="130" x="565" y="191.1387">SeqInFileEnumerator</text><!--MD5=[b2a49dd6d841d9beca6050ef959337e6]
+class StringStreamEnumerator--><rect codeLine="15" fill="#F8F8F8" filter="url(#f1lccvw221tejx)" height="23.9688" id="StringStreamEnumerator" style="stroke:#383838;stroke-width:1.5;" width="162" x="549" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="156" x="552" y="23.1387">StringStreamEnumerator</text><!--MD5=[1ccf9eb3ebbd1059d752d5f8ab533cad]
+class Summation--><rect codeLine="16" fill="#F8F8F8" filter="url(#f1lccvw221tejx)" height="23.9688" id="Summation" style="stroke:#383838;stroke-width:1.5;" width="76" x="116" y="91"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="70" x="119" y="107.1387">Summation</text><!--MD5=[518009cefbe244078bd485b68638d2da]
+class LinSearch--><rect codeLine="17" fill="#F8F8F8" filter="url(#f1lccvw221tejx)" height="23.9688" id="LinSearch" style="stroke:#383838;stroke-width:1.5;" width="67" x="326.5" y="91"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="61" x="329.5" y="107.1387">LinSearch</text><!--MD5=[5a5e7d15a9fc862b1c40d8aa730732b5]
+class IntervalEnumerator--><rect codeLine="18" fill="#F8F8F8" filter="url(#f1lccvw221tejx)" height="23.9688" id="IntervalEnumerator" style="stroke:#383838;stroke-width:1.5;" width="126" x="429" y="91"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="120" x="432" y="107.1387">IntervalEnumerator</text><!--MD5=[a28a46c2d624d17cffac9d08f5809116]
+class ArrayEnumerator--><rect codeLine="19" fill="#F8F8F8" filter="url(#f1lccvw221tejx)" height="23.9688" id="ArrayEnumerator" style="stroke:#383838;stroke-width:1.5;" width="112" x="705" y="91"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="106" x="708" y="107.1387">ArrayEnumerator</text><!--MD5=[71dd90fc4185c81adfb4232373fdd18f]
+class Counting--><rect codeLine="20" fill="#F8F8F8" filter="url(#f1lccvw221tejx)" height="23.9688" id="Counting" style="stroke:#383838;stroke-width:1.5;" width="62" x="123" y="175"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="56" x="126" y="191.1387">Counting</text><!--MD5=[ef7605406cf7eec9be2187d5021f766f]
+class Greater--><rect codeLine="21" fill="#F8F8F8" filter="url(#f1lccvw221tejx)" height="23.9688" id="Greater" style="stroke:#383838;stroke-width:1.5;" width="54" x="17" y="175"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="48" x="20" y="191.1387">Greater</text><!--MD5=[675170be7ede1839f7087515df7a1054]
+class Less--><rect codeLine="22" fill="#F8F8F8" filter="url(#f1lccvw221tejx)" height="23.9688" id="Less" style="stroke:#383838;stroke-width:1.5;" width="34" x="27" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="28" x="30" y="23.1387">Less</text><!--MD5=[1d91ae6aba95316fbd6e22f283b7d833]
+reverse link Procedure to MaxSearch--><path codeLine="24" d="M150.18,19 C150.18,19 71,19 71,19 C71,19 71,67.74 71,90.96 " fill="none" id="Procedure-backto-MaxSearch" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="150.18,12,170.18,19,150.18,26,150.18,12" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[1b46d9a4aea5597f299d9c1f7fac2584]
+reverse link Procedure to Selection--><path codeLine="25" d="M234.25,51.04 C234.25,51.04 234.25,90.99 234.25,90.99 " fill="none" id="Procedure-backto-Selection" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="227.25,51.04,234.25,31.04,241.25,51.04,227.25,51.04" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[e95140a01b580a7344ab3a5552652773]
+reverse link Procedure to Summation--><path codeLine="26" d="M181.25,51.04 C181.25,51.04 181.25,90.99 181.25,90.99 " fill="none" id="Procedure-backto-Summation" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="174.25,51.04,181.25,31.04,188.25,51.04,174.25,51.04" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[acebdfe683417448ca40554e06d8856d]
+reverse link Procedure to LinSearch--><path codeLine="27" d="M261.72,19 C261.72,19 360,19 360,19 C360,19 360,67.74 360,90.96 " fill="none" id="Procedure-backto-LinSearch" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="261.72,26,241.72,19,261.72,12,261.72,26" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[254510b782971b5120009bdae8361ae1]
+reverse link Enumerator to SeqInFileEnumerator--><path codeLine="29" d="M630,135.04 C630,135.04 630,174.99 630,174.99 " fill="none" id="Enumerator-backto-SeqInFileEnumerator" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="623,135.04,630,115.04,637,135.04,623,135.04" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[563c939211c5433b4847f901208c2d86]
+link StringStreamEnumerator to Enumerator--><path codeLine="30" d="M630,31.04 C630,31.04 630,70.99 630,70.99 " fill="none" id="StringStreamEnumerator-to-Enumerator" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="637,70.99,630,90.99,623,70.99,637,70.99" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[7d819d03c096a9b3b5a09ee4c127e55b]
+link IntervalEnumerator to Enumerator--><path codeLine="31" d="M555.35,103 C555.35,103 569.91,103 569.91,103 " fill="none" id="IntervalEnumerator-to-Enumerator" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="569.91,96,589.91,103,569.91,110,569.91,96" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[b75473cb1ca59d3059d5b4bc79bc9d79]
+reverse link Enumerator to ArrayEnumerator--><path codeLine="32" d="M690.02,103 C690.02,103 704.83,103 704.83,103 " fill="none" id="Enumerator-backto-ArrayEnumerator" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="690.02,110,670.02,103,690.02,96,690.02,110" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[4ed7dc8e2991c417fd3cbda5e13ecda5]
+reverse link Summation to Counting--><path codeLine="34" d="M154,135.04 C154,135.04 154,174.99 154,174.99 " fill="none" id="Summation-backto-Counting" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="147,135.04,154,115.04,161,135.04,147,135.04" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[18cb812f4fedce823f21ab9212d892f6]
+link MaxSearch to Greater--><path codeLine="36" d="M44,115.04 C44,115.04 44,169.99 44,169.99 " fill="none" id="MaxSearch-to-Greater" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="44,174.99,48,165.99,44,169.99,40,165.99,44,174.99" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[87948a62596eb0d0b970149d0f9d03bf]
+reverse link Less to MaxSearch--><path codeLine="37" d="M44,36.04 C44,36.04 44,90.99 44,90.99 " fill="none" id="Less-backto-MaxSearch" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="44,31.04,40,40.04,44,36.04,48,40.04,44,31.04" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[fe9397e56a5c76b1589e1c3d76a075e5]
+@startuml gtlib
+
+skinparam Monochrome true
+skinparam linetype ortho
+hide circle
+hide enum methods
+hide enum members
+hide class methods
+hide class members
+
+class Procedure
+class Enumerator
+class MaxSearch
+class Selection
+class SeqInFileEnumerator
+class StringStreamEnumerator
+class Summation
+class LinSearch
+class IntervalEnumerator
+class ArrayEnumerator
+class Counting
+class Greater
+class Less
+
+MaxSearch -up-|> Procedure
+Selection -up-|> Procedure
+Summation -up-|> Procedure
+LinSearch -up-|> Procedure
+
+SeqInFileEnumerator -up-|> Enumerator
+StringStreamEnumerator -down-|> Enumerator
+IntervalEnumerator -right-|> Enumerator
+ArrayEnumerator -left-|> Enumerator
+
+Counting -up-|> Summation
+
+MaxSearch ..> Greater
+MaxSearch .up.> Less
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

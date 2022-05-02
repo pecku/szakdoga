@@ -1,0 +1,40 @@
+@startuml gtlib
+
+skinparam Monochrome true
+skinparam linetype ortho
+hide circle
+hide enum methods
+hide enum members
+hide class methods
+hide class members
+
+class Procedure
+class Enumerator
+class MaxSearch
+class Selection
+class SeqInFileEnumerator
+class StringStreamEnumerator
+class Summation
+class LinSearch
+class IntervalEnumerator
+class ArrayEnumerator
+class Counting
+class Greater
+class Less
+
+MaxSearch -up-|> Procedure
+Selection -up-|> Procedure
+Summation -up-|> Procedure
+LinSearch -up-|> Procedure
+
+SeqInFileEnumerator -up-|> Enumerator
+StringStreamEnumerator -down-|> Enumerator
+IntervalEnumerator -right-|> Enumerator
+ArrayEnumerator -left-|> Enumerator
+
+Counting -up-|> Summation
+
+MaxSearch ..> Greater
+MaxSearch .up.> Less
+
+@enduml

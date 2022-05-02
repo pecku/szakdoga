@@ -82,6 +82,23 @@ Mikor eljött az idő a szakdolgozati témaválasztásnak, sokat gondolkoztam, h
 
 Az alap terv az volt, hogy a könyvtár használatát mégtovább egyszerűsítsük és befogadhatóbbá tegyük azok számára, akik részben még csak ismerkednek a programozással. A felület tehát előre összeállított, minden fontos elemet tartalmazó komponenseket biztosít az átláthatóság kedvéért.
 
+## Osztály-sablon könyvtár
+
+Az osztály-sablon könyvtár a visszavezetéssel tervezett programok C++-beli megvalósítását támogatja. Ahhoz a programozási módszerhez illeszkedik, amely programozási tételekre vezeti vissza a megoldandó feladatot, és a megoldó programkódhoz a könyvtár elemeinek újrahasznosításával jut el. Ehhez egyrészt objektum-orientált technikákra (objektum összetétel, származtatás, virtuális metódusok felüldefiniálása), másrészt osztály-sablonok példányosítására van szükség. A könyvtárban alapvetően kétféle osztályt találunk. Egyfelől a különféle programozási tételeket általánosan leíró osztály-sablonokat, másfelől a nevezetes felsorolásokat definiáló osztály-sablonokat.
+
+Egy tipikus felhasználása a könyvtárnak a következő:
+1. Egy konkrét feladat megoldásához származtatunk egy osztályt a feladat megoldására alkalmas programozási tétel osztály-sablonjából,
+	1. megadva ezen osztály-sablon sablon-paramétereit (köztük a megoldáshoz felsorolandó elemek típusát: Item ),
+	2. felüldefiniálva az osztály-sablon bizonyos virtuális metódusait.
+2. Példányosítjuk a fenti osztályt, és ezzel létrehozunk egy tevékenység objektumot.
+3. Példányosítunk egy alkalmas felsoroló objektumot. Ennek osztályát vagy közvetlenül a könyvtárból vesszük, vagy magunk implementáljuk a könyvtár Enumerator interfészét megvalósítva a first() , next() , current() , end() metódusokat. Ügyelni kell arra, hogy a felsorolt elemek típusa egyezzen meg a programozási tétel által feldolgozott elemek típusával. (Ez az Item sablon-paraméter helyébe írt típus).
+4. Hozzákapcsoljuk a tevékenység objektumhoz ( addEnumerator() ) a felsoroló objektumot.
+5. A tevékenység objektumnak meghívjuk a run() metódusát, majd különféle getter-ekkel lekérdezzük a tevékenység eredményét.
+
+### Szerkezete
+
+![Osztály-sablon könyvtár szerkezete uml diagrammal](../diagram/docs/gtlib.svg)
+
 # Felhasználói dokumentáció
 
 ## Applikáció bemutatása
@@ -618,6 +635,17 @@ A `<data>` tag-en belül a `<codeblocks>` tag a kódblokkokat tartalmazza. A kó
 
 
 ## Signal-ok és Slot-ok
+
+| küldő | signal | fogadó | slot |
+|-------|--------|--------|------|
+| modell | compilerPathNotSet() | nézet:MainWindow | showCompilerPathWarning() |
+| modell | haveCompileOutput(QString) | nézet:MainWindow | showCompileOutput(QString) |
+| modell | compileProcessEnded() | nézet:MainWindow | allowCompile() |
+| modell | needProjectNameForSave() | nézet:MainWindow | showProjectSaveDialog() |
+| modell | needProjectNameForOpen() | nézet:MainWindow | showProjectOpenDialog() |
+| modell | projectLoaded(SaveData) | nézet:MainWindow | refresh(SaveData) |
+| modell | cleared() | nézet:MainWindow | clear() |
+
 
 ## Tesztelés
 
