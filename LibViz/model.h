@@ -33,6 +33,7 @@ public:
     void deleteMember(int componentID, int memberID);
     void deleteCustomMethod(int componentID, int customMethodID);
 
+    void setUseInMain(int componentID, bool useInMain){components[componentID]->setUseInMain(useInMain);}
     void setObjectName(int componentID, QString objectName);
     void setItem(int componentID, QString item){components[componentID]->setItem(item);}
     void setValue(int componentID, QString value){components[componentID]->setValue(value);}

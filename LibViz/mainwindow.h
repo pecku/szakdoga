@@ -84,6 +84,8 @@ private slots:
     void showCreateComponentDialog();
     void createComponent();
     void deleteComponent();
+    void addListItem(QString componentName, int componentID);
+    void deleteListItem(int id);
     void deleteListItem();
     void createCodeBlock();
     void showSettingsDialog();

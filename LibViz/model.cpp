@@ -156,15 +156,20 @@ QString Model::generateMainSource(){
     ts << "int main(){" << Qt::endl;
 
     foreach(Component* component, components){
-        ts << "    " << component->getSourceForObjectCreation() << Qt::endl;
+        if(component->getUseInMain()){
+            ts << "    " << component->getSourceForObjectCreation() << Qt::endl;
+        }
     }
 
     foreach(int id, mainIdOrder){
         if(components.contains(id)){
-            QString ms = components[id]->getSourceForMain();
-            QTextStream codeStringStream(&ms);
-            while(!codeStringStream.atEnd()){
-                ts << Qt::endl << "    " + codeStringStream.readLine();
+            Component* component = components[id];
+            if(component->getUseInMain()){
+                QString ms = component->getSourceForMain();
+                QTextStream codeStringStream(&ms);
+                while(!codeStringStream.atEnd()){
+                    ts << Qt::endl << "    " + codeStringStream.readLine();
+                }
             }
         }else if(codeblocks.contains(id)){
             ts << Qt::endl << "    " << codeblocks[id]->getSource();
@@ -192,6 +197,7 @@ void Model::compile(){
         emit compilerPathNotSet();
         emit compileProcessEnded();
     }else{
+        qDebug()<<compilerArguments;
         compileProcess->start(compilerPath, compilerArguments);
     }
 }
@@ -230,6 +236,8 @@ void Model::setCompilerPath(QString path){
 
 void Model::setCompilerArguments(QString args){
     compilerArguments = args.split(" ");
+    compilerArguments.prepend("main.cpp");
+    compilerArguments.removeAll("");
     settings->setValue("CompilerArguments",args);
 }
 
@@ -237,6 +245,8 @@ void Model::setCompilerArguments(QString args){
 void Model::loadConfig(){
     compilerPath = settings->value("CompilerPath", "").toString();
     compilerArguments = settings->value("CompilerArguments", "").toStringList();
+    compilerArguments.prepend("main.cpp");
+    compilerArguments.removeAll("");
     if(compilerPath == ""){
         compilerPathSet = false;
     }else{
@@ -279,7 +289,7 @@ QString Model::replaceReference(QString codeString){
 
         resultStream << replaced << Qt::endl;
     }
-    return result;
+    return result.trimmed();
 }
 
 QString Model::getReferenceSource(QString objectName){

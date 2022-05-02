@@ -24,6 +24,9 @@ private:
     void initSegments();
     void connectSignals();
 
+    QLabel* useInMainLabel;
+    QCheckBox* useInMainCheckBox;
+
     //enumerator
     QLabel* enorLabel;
     QComboBox* enorComboBox;
@@ -66,13 +69,15 @@ private:
     PopUpTextEdit* whileCondTextEdit;
 
 private slots:
+    void useInMainChanged();
     void enorChanged(int index);
     void optimistChanged();
     void valueChanged();
     void compareChanged();
 
 signals:
-
+    void useInMainChecked(QString componentName, int componentID);
+    void useInMainUnchecked(int componentID);
 };
 
 #endif // PROCEDUREWIDGET_H

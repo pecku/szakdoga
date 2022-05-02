@@ -38,12 +38,14 @@ void MainWindow::createComponent(){
         if(componentType == COUNTING || componentType == LINSEARCH || componentType == MAXSEARCH || componentType == SELECTION || componentType == SUMMATION){
             int id = model->createComponent(name, componentType);
             ProcedureWidget* procedure = new ProcedureWidget(id,name,componentType,model);
+            connect(procedure,SIGNAL(useInMainChecked(QString,int)),this,SLOT(addListItem(QString,int)));
+            connect(procedure,SIGNAL(useInMainUnchecked(int)),this,SLOT(deleteListItem(int)));
             toolBox->setCurrentIndex(toolBox->addItem(procedure,name));
             procedureWidgets.push_back(procedure);
             foreach(EnumeratorWidget* enorw, enumeratorWidgets){
                 procedure->addEnumeratorChoice(enorw->getName(), enorw->getID());
             }
-            (new QListWidgetItem(name,listWidget,id))->setData(Qt::UserRole,"component");
+            addListItem(name,id);
         }else{
             int id = model->createComponent(name, componentType);
             EnumeratorWidget* enumerator = new EnumeratorWidget(id,name,componentType,model);
@@ -93,6 +95,23 @@ void MainWindow::deleteComponent(){
     enumeratorWidgets.squeeze();
     model->deleteComponent(id);
 
+    deleteListItem(id);
+
+    ComponentType ct = component->getType();
+    if(ct == DEFAULT || ct == ARRAY || ct == INTERVAL || ct == STRINGSTREAM || ct == SEQINFILE){
+        foreach(ProcedureWidget* pw, procedureWidgets){
+            pw->removeEnumeratorChoice(id);
+        }
+    }
+}
+
+void MainWindow::addListItem(QString componentName, int componentID){
+    QListWidgetItem* listItem = new QListWidgetItem(componentName,listWidget,componentID);
+    listItem->setData(Qt::UserRole,"component");
+}
+
+void MainWindow::deleteListItem(int id){
+    listWidget->clearSelection();
     QListWidgetItem* item = nullptr;
     for(int i = 0; i < listWidget->count(); i++){
         if(listWidget->item(i)->type() == id){
@@ -101,13 +120,6 @@ void MainWindow::deleteComponent(){
         }
     }
     listWidget->takeItem(listWidget->row(item));
-
-    ComponentType ct = component->getType();
-    if(ct == DEFAULT || ct == ARRAY || ct == INTERVAL || ct == STRINGSTREAM || ct == SEQINFILE){
-        foreach(ProcedureWidget* pw, procedureWidgets){
-            pw->removeEnumeratorChoice(id);
-        }
-    }
 }
 
 void MainWindow::deleteListItem(){
@@ -265,7 +277,7 @@ void MainWindow::initListSegment(){
     listSegmentToolBar->addAction(createCodeBlockAction);
     listSegmentToolBar->addAction(deleteListItemAction);
 
-    connect(listWidget,SIGNAL(itemSelectionChanged()),this,SLOT(changeSelectedComponent()));
+    connect(listWidget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(changeSelectedComponent()));
 }
 
 void MainWindow::initSourceSegment(){
@@ -428,9 +440,13 @@ void MainWindow::refresh(const SaveData& data){
         ComponentType componentType = component->getType();
         if(componentType == COUNTING || componentType == LINSEARCH || componentType == MAXSEARCH || componentType == SELECTION || componentType == SUMMATION){
             ProcedureWidget* procedure = new ProcedureWidget(*component, model, this);
+            connect(procedure,SIGNAL(useInMainChecked(QString,int)),this,SLOT(addListItem(QString,int)));
+            connect(procedure,SIGNAL(useInMainUnchecked(int)),this,SLOT(deleteListItem(int)));
             toolBox->addItem(procedure,component->getName());
             procedureWidgets.push_back(procedure);
-            (new QListWidgetItem(component->getName(),listWidget,component->getID()))->setData(Qt::UserRole,"component");
+            if(component->getUseInMain()){
+                addListItem(component->getName(),component->getID());
+            }
         }else{
             EnumeratorWidget* enumerator = new EnumeratorWidget(*component, model, this);
             toolBox->addItem(enumerator,component->getName());

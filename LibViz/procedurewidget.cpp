@@ -20,6 +20,7 @@ ProcedureWidget::ProcedureWidget(const Component& component, Model* model, QWidg
     }
     objectNameLineEdit->setText(component.getObjectName());
     itemTypeLineEdit->setText(component.getItem());
+    useInMainCheckBox->setChecked(component.getUseInMain());
     if(optimistCheckBox != nullptr) optimistCheckBox->setChecked(component.getOptimist());
     if(valueLineEdit != nullptr) valueLineEdit->setText(component.getValue());
     if(greaterRadioButton != nullptr) greaterRadioButton->setChecked(component.getCompare() == "Greater");
@@ -39,12 +40,20 @@ ProcedureWidget::ProcedureWidget(const Component& component, Model* model, QWidg
 }
 
 void ProcedureWidget::initSegments(){
+    int gridlayoutIndex = 2;
+
+    useInMainLabel = new QLabel("Use in main:");
+    useInMainCheckBox = new QCheckBox();
+    useInMainCheckBox->setChecked(true);
+    gridlayout->addWidget(useInMainLabel,gridlayoutIndex,0);
+    gridlayout->addWidget(useInMainCheckBox,gridlayoutIndex,1);
+
     enorLabel = new QLabel("Enumerator:");
     enorComboBox = new QComboBox();
     enorComboBox->setPlaceholderText("No enumerator");
     enorComboBox->setCurrentIndex(-1);
-    gridlayout->addWidget(enorLabel,2,0);
-    gridlayout->addWidget(enorComboBox,2,1);
+    gridlayout->addWidget(enorLabel,++gridlayoutIndex,0);
+    gridlayout->addWidget(enorComboBox,gridlayoutIndex,1);
 
     optimistLabel = nullptr;
     optimistCheckBox = nullptr;
@@ -63,15 +72,15 @@ void ProcedureWidget::initSegments(){
     if(type == LINSEARCH){
         optimistLabel = new QLabel("Optimist:");
         optimistCheckBox = new QCheckBox();
-        gridlayout->addWidget(optimistLabel,3,0);
-        gridlayout->addWidget(optimistCheckBox,3,1);
+        gridlayout->addWidget(optimistLabel,++gridlayoutIndex,0);
+        gridlayout->addWidget(optimistCheckBox,gridlayoutIndex,1);
     }
 
     if(type == MAXSEARCH || type == SUMMATION){
         valueLabel = new QLabel("Value:");
         valueLineEdit = new QLineEdit();
-        gridlayout->addWidget(valueLabel,4,0);
-        gridlayout->addWidget(valueLineEdit,4,1);
+        gridlayout->addWidget(valueLabel,++gridlayoutIndex,0);
+        gridlayout->addWidget(valueLineEdit,gridlayoutIndex,1);
     }
 
     if(type == MAXSEARCH){
@@ -82,47 +91,48 @@ void ProcedureWidget::initSegments(){
         compareLayout->addWidget(greaterRadioButton);
         compareLayout->addWidget(lessRadioButton);
         compareLayout->addSpacerItem(new QSpacerItem(maximumWidth(),0,QSizePolicy::Maximum));
-        gridlayout->addWidget(compareLabel,5,0);
-        gridlayout->addLayout(compareLayout,5,1);
+        gridlayout->addWidget(compareLabel,++gridlayoutIndex,0);
+        gridlayout->addLayout(compareLayout,gridlayoutIndex,1);
         greaterRadioButton->setChecked(true);
     }
 
     if(type == MAXSEARCH || type == SUMMATION){
         funcLabel = new QLabel("Func:");
         funcTextEdit = new PopUpTextEdit(FUNC);
-        gridlayout->addWidget(funcLabel,6,0);
-        gridlayout->addWidget(funcTextEdit,6,1);
+        gridlayout->addWidget(funcLabel,++gridlayoutIndex,0);
+        gridlayout->addWidget(funcTextEdit,gridlayoutIndex,1);
     }
 
     if(type == SUMMATION){
         neutralLabel = new QLabel("Neutral:");
         neutralTextEdit = new PopUpTextEdit(NEUTRAL);
-        gridlayout->addWidget(neutralLabel,7,0);
-        gridlayout->addWidget(neutralTextEdit,7,1);
+        gridlayout->addWidget(neutralLabel,++gridlayoutIndex,0);
+        gridlayout->addWidget(neutralTextEdit,gridlayoutIndex,1);
 
         addLabel = new QLabel("Add:");
         addTextEdit = new PopUpTextEdit(ADD);
-        gridlayout->addWidget(addLabel,8,0);
-        gridlayout->addWidget(addTextEdit,8,1);
+        gridlayout->addWidget(addLabel,++gridlayoutIndex,0);
+        gridlayout->addWidget(addTextEdit,gridlayoutIndex,1);
     }
 
     condLabel = new QLabel("Condition:");
     condTextEdit = new PopUpTextEdit(COND);
-    gridlayout->addWidget(condLabel,9,0);
-    gridlayout->addWidget(condTextEdit,9,1);
+    gridlayout->addWidget(condLabel,++gridlayoutIndex,0);
+    gridlayout->addWidget(condTextEdit,gridlayoutIndex,1);
 
     firstLabel = new QLabel("First:");
     firstTextEdit = new PopUpTextEdit(FIRST);
-    gridlayout->addWidget(firstLabel,10,0);
-    gridlayout->addWidget(firstTextEdit,10,1);
+    gridlayout->addWidget(firstLabel,++gridlayoutIndex,0);
+    gridlayout->addWidget(firstTextEdit,gridlayoutIndex,1);
 
     whileCondLabel = new QLabel("While Condition:");
     whileCondTextEdit = new PopUpTextEdit(WHILECOND);
-    gridlayout->addWidget(whileCondLabel,11,0);
-    gridlayout->addWidget(whileCondTextEdit,11,1);
+    gridlayout->addWidget(whileCondLabel,++gridlayoutIndex,0);
+    gridlayout->addWidget(whileCondTextEdit,gridlayoutIndex,1);
 }
 
 void ProcedureWidget::connectSignals(){
+    connect(useInMainCheckBox,SIGNAL(stateChanged(int)),this,SLOT(useInMainChanged()));
     connect(enorComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(enorChanged(int)));
     if(optimistCheckBox != nullptr) connect(optimistCheckBox,SIGNAL(stateChanged(int)),this,SLOT(optimistChanged()));
     if(valueLineEdit != nullptr) connect(valueLineEdit,SIGNAL(editingFinished()),this,SLOT(valueChanged()));
@@ -188,6 +198,16 @@ bool ProcedureWidget::checkRequired(){
     }
 
     return allgood;
+}
+
+void ProcedureWidget::useInMainChanged(){
+    bool checked = qobject_cast<QCheckBox*>(sender())->isChecked();
+    model->setUseInMain(this->id,checked);
+    if(checked){
+        emit useInMainChecked(getName(),this->id);
+    }else{
+        emit useInMainUnchecked(this->id);
+    }
 }
 
 void ProcedureWidget::enorChanged(int index){

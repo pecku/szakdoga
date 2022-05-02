@@ -2,6 +2,11 @@
 
 Component::Component(QString name, ComponentType type, int id) : name(name), id(id), type(type){
     enumeratorID = -1;
+    if(type == DEFAULT || type == ARRAY || type == INTERVAL || type == STRINGSTREAM || type == SEQINFILE){
+        useInMain = false;
+    }else{
+        useInMain = true;
+    }
 }
 
 QString Component::getSource() const{

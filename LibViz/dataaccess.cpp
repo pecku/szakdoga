@@ -2,7 +2,11 @@
 
 DataAccess::DataAccess()
 {
-
+    QFile file(":/library/library.hpp");
+    if (!file.open(QIODevice::ReadOnly))
+        return;
+    file.copy("library.hpp");
+    file.close();
 }
 
 bool DataAccess::writeSource(QString source){
@@ -12,6 +16,8 @@ bool DataAccess::writeSource(QString source){
 
     QTextStream out(&file);
     out << source;
+
+    file.close();
 
     return true;
 }
@@ -47,6 +53,7 @@ bool DataAccess::saveProject(SaveData data){
                     xmlWriter.writeTextElement("enumeratorID", QString::number(component->getEnumeratorID()));
                     xmlWriter.writeTextElement("enumeratorObjectName", component->getEnumeratorObjectName());
                     xmlWriter.writeTextElement("optimist", component->getOptimist() ? "true" : "false");
+                    xmlWriter.writeTextElement("useInMain", component->getUseInMain() ? "true" : "false");
                     xmlWriter.writeTextElement("value", component->getValue());
                     xmlWriter.writeTextElement("compare", component->getCompare());
                     xmlWriter.writeStartElement("members");
@@ -161,7 +168,8 @@ SaveData DataAccess::loadProject(QString projectName){
                                         QString item = "";
                                         int enumeratorID = 0;
                                         QString enumeratorObjectName = "";
-                                        bool optimist = "";
+                                        bool optimist = false;
+                                        bool useInMain = false;
                                         QString value = "";
                                         QString compare = "";
                                         QMap<MethodType,QString> methods;
@@ -201,6 +209,10 @@ SaveData DataAccess::loadProject(QString projectName){
                                                 if(xmlReader.name().toString() == "optimist"){
                                                     xmlReader.readNext();
                                                     optimist = xmlReader.text().toString() == "true" ? true : false;
+                                                }
+                                                if(xmlReader.name().toString() == "useInMain"){
+                                                    xmlReader.readNext();
+                                                    useInMain = xmlReader.text().toString() == "true" ? true : false;
                                                 }
                                                 if(xmlReader.name().toString() == "value"){
                                                     xmlReader.readNext();
@@ -357,6 +369,7 @@ SaveData DataAccess::loadProject(QString projectName){
                                             component->setItem(item);
                                             component->setEnumerator(enumeratorID,enumeratorObjectName);
                                             component->setOptimist(optimist);
+                                            component->setUseInMain(useInMain);
                                             component->setValue(value);
                                             component->setCompare(compare);
                                             component->setMethods(methods);

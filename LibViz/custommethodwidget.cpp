@@ -2,16 +2,23 @@
 
 CustomMethodWidget::CustomMethodWidget(const int id, QString header, QString body, QWidget *parent) : QWidget(parent), id(id)
 {
-    hboxlayout = new QVBoxLayout(this);
+    hboxlayout = new QHBoxLayout(this);
+    vboxlayout = new QVBoxLayout();
+    hboxlayout->addLayout(vboxlayout);
+
     headerLineEdit = new QLineEdit();
     headerLineEdit->setPlaceholderText("Method header");
     bodyPopUpTextEdit = new PopUpTextEdit();
     bodyPopUpTextEdit->setPlaceholderText("Method body");
+    vboxlayout->addWidget(headerLineEdit);
+    vboxlayout->addWidget(bodyPopUpTextEdit);
+
     deleteButton = new QPushButton("X");
-    hboxlayout->addWidget(headerLineEdit);
-    hboxlayout->addWidget(bodyPopUpTextEdit);
+    deleteButton->setFixedWidth(20);
+    deleteButton->setSizePolicy(QSizePolicy::Policy::Maximum, QSizePolicy::Policy::Minimum);
     hboxlayout->addWidget(deleteButton);
 
+    vboxlayout->setContentsMargins(0,0,0,0);
     hboxlayout->setContentsMargins(0,0,0,0);
 
     headerLineEdit->setText(header);

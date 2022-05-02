@@ -22,7 +22,8 @@ private:
     QLineEdit* headerLineEdit;
     PopUpTextEdit* bodyPopUpTextEdit;
     QPushButton* deleteButton;
-    QVBoxLayout* hboxlayout;
+    QHBoxLayout* hboxlayout;
+    QVBoxLayout* vboxlayout;
 
 signals:
     void edited();

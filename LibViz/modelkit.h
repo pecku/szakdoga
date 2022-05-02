@@ -95,6 +95,7 @@ class Component{
 private:
     QString name;
     int id;
+    bool useInMain;
     QString objectName;
     ComponentType type;
     QString item;
@@ -114,6 +115,7 @@ public:
     QString getSourceForObjectCreation() const;
     QString getName() const {return name;}
     int getID() const {return id;}
+    bool getUseInMain() const {return useInMain;}
     QString getObjectName() const {return objectName;}
     ComponentType getType() const {return type;}
     QString getItem() const {return item;}
@@ -126,6 +128,7 @@ public:
     QMap<int,Member> getMembers() const {return members;}
     QMap<int,CustomMethod> getCustomMethods() const {return customMethods;}
 
+    void setUseInMain(bool useInMain){this->useInMain = useInMain;}
     void setObjectName(QString objectName){this->objectName = objectName;}
     void setItem(QString item){this->item = item;}
     void setValue(QString value){this->value = value;}

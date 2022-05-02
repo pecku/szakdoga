@@ -11,5 +11,6 @@
         <file>icons/load_project_button.svg</file>
         <file>icons/new_project_button.svg</file>
         <file>icons/save_project_button.svg</file>
+        <file>library/library.hpp</file>
     </qresource>
 </RCC>
