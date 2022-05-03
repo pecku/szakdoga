@@ -2,13 +2,23 @@
 
 PopUpTextEdit::PopUpTextEdit(){
     inputDialog = new TextInputDialog();
+    customMethod = true;
     connect(inputDialog,SIGNAL(accepted()),this,SLOT(getTextFromInputDialog()));
+}
+
+PopUpTextEdit::PopUpTextEdit(MethodType methodType) : PopUpTextEdit(){
+    customMethod = false;
+    this->methodType=methodType;
 }
 
 void PopUpTextEdit::focusInEvent(QFocusEvent *e) {
     (void)e;
     clearFocus();
-    inputDialog->setWindowTitle(methodTypeStrings[methodType]);
+    if(customMethod){
+        inputDialog->setWindowTitle("method");
+    }else{
+        inputDialog->setWindowTitle(methodTypeStrings[methodType]);
+    }
     inputDialog->exec(this->toPlainText());
 }
 

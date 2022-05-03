@@ -2,6 +2,8 @@
 
 SettingsDialog::SettingsDialog()
 {
+    setWindowTitle("Settings");
+
     okButton = new QPushButton("ok");
     cancelButton = new QPushButton("cancel");
 

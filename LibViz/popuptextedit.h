@@ -10,7 +10,7 @@ class PopUpTextEdit : public QTextBrowser
     Q_OBJECT
 public:
     PopUpTextEdit();
-    PopUpTextEdit(MethodType methodType) : PopUpTextEdit(){this->methodType=methodType;}
+    PopUpTextEdit(MethodType methodType);
 
     MethodType getMethodType(){return methodType;}
 
@@ -18,6 +18,7 @@ protected:
     void focusInEvent(QFocusEvent *e) override;
 
 private:
+    bool customMethod;
     MethodType methodType;
     TextInputDialog* inputDialog;
 

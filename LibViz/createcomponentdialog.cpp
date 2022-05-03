@@ -2,6 +2,8 @@
 
 CreateComponentDialog::CreateComponentDialog(Model* model) : QDialog(), model(model)
 {
+    setWindowTitle("New component");
+
     okButton = new QPushButton("ok");
     cancelButton = new QPushButton("cancel");
 
