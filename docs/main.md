@@ -42,7 +42,8 @@ Az alkalmazás Qt Creator segítségével lesz megvalósítva C++ nyelven. Azér
 			3. [Egyéb segédobjektumok](#egyéb-segédobjektumok)
     7. [Perzisztencia](#perzisztencia)
 	8. [Signal-ok és Slot-ok](#signal-ok-és-slot-ok)
-	9. [Tesztelés](#tesztelés)
+	9. [Resources](#resources)
+	10. [Tesztelés](#tesztelés)
 		1. [Kézi tesztek](#kézi-tesztek)
 		2. [Automatikus tesztek](#automatikus-tesztek)
 4. [Összefoglalás](#összefoglalás)
@@ -139,17 +140,60 @@ Az ilyen módon történő telepítéssel kapcsolatban további információkat 
 
 ## Használat
 
-> használati lépések képekkel
-
 ### Kezdőlap
 
 Az alkalmazás indulásakor egyből egy üres projektben találjuk magunkat, amiben kezdődhet is a munka.
 
+A fő ablak három fontosabb szekcióra bontható, melyek a következők:
+- A `Component Editor` a saját osztályoknak biztosított hely. Itt hozhatunk létre új elemeket, valamint módosíthatjuk a meglévőket. 
+- A `Main List` a komponensek listáját tartalmazza. Itt állíthatjuk be, hogy a létrehozott komponensek milyen sorrendben fussanak a programunkban, valamint hozzáadhatunk további kódrészleteket is.
+- A jobb oldalon található szövegmezők és gombok a generált forráskód böngészését, a programunk fordítását és futtatását, és iméntiek kimenetének megtekintését teszik lehetővé.
+
+A menüsor a következőképpen épül fel:
+- A `File` menü tartalmazza a projektkezeléshez szükséges akciókat.
+- A `Create` menü tartalmazza a komponensek létrehozásához és törléséhez szükséges akciókat.
+- A `Generate` menü tartalmazza a forráskód generálással kapcsolatos akciókat.
+- A `Build` menü tartalmazza a forráskód fordításához és futtatásához szükséges akciókat.
+- A `Settings` menü tartalmazza a program beállításainak módosításához szükséges akciókat.
+
+![File menü](./use_pictures/file-menu.PNG)
+![Create menü](./use_pictures/create-menu.PNG)
+![Generate menü](./use_pictures/generate-menu.PNG)
+![Build menü](./use_pictures/build-menu.PNG)
+![Settings menü](./use_pictures/settings-menu.PNG)
+
 #### Component Editor
+
+##### Új komponens létrehozása
+
+Új komponenst a Component Editor szekció jobb felső sarkában található hozzáadás gomb vagy a Create menü új komponens akciójával hozhatunk létre.
+Egy komponens létrehozásához szükség van a nevének és a típusának megadásához.
+Ha nem adunk meg nevet, vagy az már használatban van egy másik objektum által, a program piros keretezéssel és hibaüzenettel jelzi. Ha nem választunk típust, szintén hibát kapunk. A komponens nem hozható létre, amíg nincsenek helyesen megadva ezek az adatok. A létrehozott komponensek között ezután a nevükre kattintva lehet váltogatni, hogy éppen melyiknek az adatai legyenek láthatóak.
+
+![Új komponens](./use_pictures/new-component-empty.PNG)
+![Új komponens hiba](./use_pictures/new-component-red.PNG)
+![Új komponens típusválasztó](./use_pictures/new-component-dropdown.PNG)
+
+##### Komponens szerkesztése
+
+Egy komponens egyszerűen a mezőinek a kitöltésével módosítható. A metódusok törzsének fenttartott szöveges mezők tartalma úgy szerkeszthető, ha abba belekantintunk, majd a felugró ablakban adjuk meg a kódot. Ezt elmentve a metódus törzsébe íródik a megadott tartalom.
+
+![Metódus szerkesztése](./use_pictures/edit-method.PNG)
+
+Új adattag hozzáadásához az ennek elnevezett gombra kell kattintanunk. Ekkor megjelenik két új beviteli mező, amelyekben az adattag típusát és nevét tudjuk megadni. A beviteli mezők melletti gombbal pedig lehetőség van az adattag törlésére is.
+
+![Adattag hozzáadása](./use_pictures/new-member.PNG)
+
+Új metódus hozzáadásához az ennek elnevezett gombra kell kattintanunk. Ekkor megjelenik két új beviteli mező, amelyekben az metódus fejlécét és törzsét tudjuk megadni. A beviteli mezők melletti gombbal pedig lehetőség van a metódus törlésére is.
+
+![Metódus hozzáadása](./use_pictures/new-method.PNG)
 
 #### Main List Editor
 
+Az általunk létrehozott osztályok közül a "main függvényben felhasználandónak" jelölt programozási tételeket megvalósító osztályok megjelennek a középen található listában. A listához további kódrészleteket lehet hozzáadni a felül található hozzáadás gomb segítségével. A kódblokkok dupla kattintás segítségével szerkeszthetőek. A listában található elemeket a rajta lenyomvatartott bal egérgombbal tudjuk húzgálva rendezni.
+
 #### Forráskód nézegető és fordítás, futtatás
+
 
 
 
@@ -204,16 +248,34 @@ Az alkalmazás háromrétegű nézet-modell-perzisztencia architektúrával lett
 
 ## Nézet
 
-> részletes uml-ek külön-külön az osztályokról
-
 A következő ábrán látható a nézetet alkotó osztályok kapcsolata.
 ![Nézet kapcsolatok uml](../diagram/docs/View-relations.svg)
 
+![MainWindow uml](../diagram/docs/MainWindow.svg)
+![ComponentWidget uml](../diagram/docs/ComponentWidget.svg)
+![EnumeratorWidget uml](../diagram/docs/EnumeratorWidget.svg)
+![ProcedureWidget uml](../diagram/docs/ProcedureWidget.svg)
+![CustomMethodWidget uml](../diagram/docs/CustomMethodWidget.svg)
+![MemberWidget uml](../diagram/docs/MemberWidget.svg)
+![PopUpTextEdit uml](../diagram/docs/PopUpTextEdit.svg)
+![SettingsDialog uml](../diagram/docs/SettingsDialog.svg)
+![TextInputDialog uml](../diagram/docs/TextInputDialog.svg)
+![CreateComponentDialog uml](../diagram/docs/CreateComponentDialog.svg)
+![CreateComponentDialogMode uml](../diagram/docs/CreateComponentDialogMode.svg)
+
 ## Modell
 
-> részletes uml-ek külön-külön az osztályokra
-
 ![Modell kapcsolatok uml](../diagram/docs/Model-relations.svg)
+
+![Model uml](../diagram/docs/Model.svg)
+![Component uml](../diagram/docs/Component.svg)
+![CodeBlock uml](../diagram/docs/CodeBlock.svg)
+![Struct uml](../diagram/docs/Struct.svg)
+![Member uml](../diagram/docs/Member.svg)
+![CustomMethod uml](../diagram/docs/CustomMethod.svg)
+![SaveData uml](../diagram/docs/SaveData.svg)
+![ComponentType uml](../diagram/docs/ComponentType.svg)
+![MethodType uml](../diagram/docs/MethodType.svg)
 
 ### Modell adattagok és metódusok
 
@@ -513,6 +575,9 @@ A projektfájl a következő struktúrával rendelkezik:
 				
 				<!-- bool optimist; -->
 				<optimist>ComponentOptimist</optimist>
+
+				<!-- bool useInMain; -->
+				<useInMain>ComponentUseInMain</useInMain>
 				
 				<!-- QString value; -->
 				<value>ComponentValue</value>
@@ -601,6 +666,7 @@ A `<data>` tag-en belül a `<components>` tag a komponenseket tartalmazza. A kom
 - Az `<enumeratorID>` tag a komponens által használt felsoroló azonosítóját tartalmazza.
 - Az `<enumeratorObjectName>` tag a komponens által használt felsoroló objektum nevét tartalmazza.
 - Az `<optimist>` tag azt tartalmazza, hogy az adott komponens optimista módban működik-e.
+- Az `<useInMain>` tag azt tartalmazza, hogy az adott komponens a `main` függvényben használva van-e.
 - A `<value>` tag a komponens `value` típusát tartalmazza.
 - A `<compare>` tag a komponens összehasonlítási módját tartalmazza.
 - A `<methods>` tag a komponens felülírt metódusait tartalmazza. A metódusok egy-egy `<method>` tag párba vannak és tartalmuk a következő:
@@ -636,16 +702,145 @@ A `<data>` tag-en belül a `<codeblocks>` tag a kódblokkokat tartalmazza. A kó
 
 ## Signal-ok és Slot-ok
 
-| küldő | signal | fogadó | slot |
-|-------|--------|--------|------|
-| modell | compilerPathNotSet() | nézet:MainWindow | showCompilerPathWarning() |
-| modell | haveCompileOutput(QString) | nézet:MainWindow | showCompileOutput(QString) |
-| modell | compileProcessEnded() | nézet:MainWindow | allowCompile() |
-| modell | needProjectNameForSave() | nézet:MainWindow | showProjectSaveDialog() |
-| modell | needProjectNameForOpen() | nézet:MainWindow | showProjectOpenDialog() |
-| modell | projectLoaded(SaveData) | nézet:MainWindow | refresh(SaveData) |
-| modell | cleared() | nézet:MainWindow | clear() |
+A következő táblázatok tartalmazzák a signal-slot kapcsolatokat. Minden táblázat előtt kiemelve szerepel az osztály, amely a signalok fogadója és amelynek a küldő objektumok az adattagjai.
 
+__ComponentWidget__
+| küldő | signal | slot |
+|-------|--------|------|
+| addnewmemberbutton | clicked() | onAddNewMemberClicked() |
+| addnewcustommethodbutton | clicked() | onAddNewMethodClicked() |
+| objectNameLineEdit | editingFinished() | objectNameChanged() |
+| itemTypeLineEdit | editingFinished() | itemTypeChanged() |
+| destructorTextEdit | textChanged() | popUpTextChanged() |
+| member | edited() | memberChanged() |
+| member | deleteMe() | deleteMember() |
+| customMethod | edited() | methodChanged() |
+| customMethod | deleteMe() | deleteMethod() |
+
+__CreateComponentDialog__
+| küldő | signal | slot |
+|-------|--------|------|
+| okButton | clicked() | wantToAccept() |
+| cancelButton | clicked() | reject() |
+
+__CustomMethodWidget__
+| küldő | signal | slot |
+|-------|--------|------|
+| headerLineEdit | editingFinished() | edited() |
+| bodyPopUpTextEdit | textChanged() | edited() |
+| deleteButton | clicked() | deleteMe() |
+
+__EnumeratorWidget__
+| küldő | signal | slot |
+|-------|--------|------|
+| firstTextEdit | textChanged() | popUpTextChanged() |
+| nextTextEdit | textChanged() | popUpTextChanged() |
+| endTextEdit | textChanged() | popUpTextChanged() |
+| currentTextEdit | textChanged() | popUpTextChanged() |
+
+__MainWindow__
+| küldő | signal | slot |
+|-------|--------|------|
+| model | haveCompileOutput(QString) | showCompileOutput(QString) |
+| model | compileProcessEnded() | allowCompile() |
+| model | compilerPathNotSet() | showCompilerPathWarning() |
+| model | needProjectNameForSave() | showProjectSaveDialog() |
+| model | needProjectNameForOpen() | showProjectOpenDialog() |
+| model | projectLoaded(SaveData) | refresh(SaveData) |
+| model | cleared() | clear() |
+| listWidget | itemChanged(QListWidgetItem*) | listItemChanged(QListWidgetItem*) |
+| createComponentDialog | accepted() | createComponent() |
+| settingsDialog | accepted() | updateSettings() |
+| createComponentAction | triggered() | showCreateComponentDialog() |
+| deleteComponentAction | triggered() | deleteComponent() |
+| deleteListItemAction | triggered() | deleteListItem() |
+| createCodeBlockAction | triggered() | createCodeBlock() |
+| generateAction | triggered() | generateSource() |
+| runAction | triggered() | modelRun() |
+| buildAction | triggered() | modelCompile() |
+| stopCompileAction | triggered() | modelStopCompile() |
+| settingsAction | triggered() | showSettingsDialog() |
+| newProjectAction | triggered() | newProject() |
+| loadProjectAction | triggered() | loadProject() |
+| saveProjectAction | triggered() | saveProject() |
+| listWidget | itemClicked(QListWidgetItem*) | changeSelectedComponent() |
+| minden procedure | useInMainChecked(QString,int) | addListItem(QString,int) |
+| minden procedure | useInMainUnchecked(int) | deleteListItem(int) |
+
+__MemberWidget__
+| küldő | signal | slot |
+|-------|--------|------|
+| typeLineEdit | editingFinished() | edited() |
+| nameLineEdit | editingFinished() | edited() |
+| deleteButton | clicked() | deleteMe() |
+
+__Model__
+| küldő | signal | slot |
+|-------|--------|------|
+| compileProcess | finished(int,QProcess::ExitStatus) | compileFinished(int,QProcess::ExitStatus) |
+| compileProcess | errorOccurred(QProcess::ProcessError) | compileError(QProcess::ProcessError) |
+
+__PopUpTextEdit__
+| küldő | signal | slot |
+|-------|--------|------|
+| inputDialog | accepted() | getTextFromInputDialog() |
+
+__ProcedureWidget__
+| küldő | signal | slot |
+|-------|--------|------|
+| enorComboBox | currentIndexChanged(int) | enorChanged(int) |
+| useInMainCheckBox | stateChanged(int) | useInMainChanged() |
+| optimistCheckBox | stateChanged(int) | optimistChanged() |
+| valueLineEdit | editingFinished() | valueChanged() |
+| greaterRadioButton | toggled(bool) | compareChanged() |
+| neutralTextEdit | textChanged() | popUpTextChanged() |
+| addTextEdit | textChanged() | popUpTextChanged() |
+| funcTextEdit | textChanged() | popUpTextChanged() |
+| condTextEdit | textChanged() | popUpTextChanged() |
+| firstTextEdit | textChanged() | popUpTextChanged() |
+| whileCondTextEdit | textChanged() | popUpTextChanged() |
+
+__SettingsDialog__
+| küldő | signal | slot |
+|-------|--------|------|
+| okButton | clicked() | accept() |
+| cancelButton | clicked() | reject() |
+
+__StructWidget__
+| küldő | signal | slot |
+|-------|--------|------|
+| addnewmemberbutton | clicked() | onAddNewMemberClicked() |
+| addnewcustommethodbutton | clicked() | onAddNewMethodClicked() |
+| member | edited() | memberChanged() |
+| member | deleteMe() | deleteMember() |
+| customMethod | edited() | methodChanged() |
+| customMethod | deleteMe() | deleteMethod() |
+
+__TextInputDialog__
+| küldő | signal | slot |
+|-------|--------|------|
+| saveButton | clicked() | accept() |
+| cancelButton | clicked() | reject() |
+            
+## Resources
+
+A projektben szereplő `resources.qrc` fájl tartalmazza a hivatkozásokat az alkalmazásban felhasznált ikonokra és az osztálysablon könyvtár header fájljára.
+
+Az ikonokat a projekt gyökerében található `icons` mappa tárolja. Minden ikon *svg* formátumban van a fenttartható minőség érdekében.
+
+- stop_button.svg - A fordítás vagy futtatás megállítása
+- build_button.svg - Fordítás
+- run_button.svg - Futtatás
+- settings_button.svg - Beállítások
+- plus_button.svg - Új kódblokk hozzáadása
+- new_button.svg - Új komponens létrehozása
+- generate_button.svg -	Forráskód generálás
+- delete_button.svg - Elem törlése
+- load_project_button.svg - Projekt betöltése
+- new_project_button.svg - Új rojekt létrehozása
+- save_project_button.svg - Projekt mentése
+
+Az osztálysablon könyvtár header fájlja a projekt gyökerében a `library` mappán belül található.
 
 ## Tesztelés
 

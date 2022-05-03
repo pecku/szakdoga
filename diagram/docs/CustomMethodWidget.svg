@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="246px" preserveAspectRatio="none" style="width:509px;height:246px;background:#FFFFFF;" version="1.1" viewBox="0 0 509 246" width="509px" zoomAndPan="magnify"><defs><filter height="300%" id="f1kni1p4ro7n0v" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[6a1abfe6dd0d473320e85a990c0164e5]
+class CustomMethodWidget--><rect codeLine="7" fill="#F8F8F8" filter="url(#f1kni1p4ro7n0v)" height="225.4873" id="CustomMethodWidget" style="stroke:#383838;stroke-width:1.5;" width="488" x="7" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="122" x="190" y="24.457">CustomMethodWidget</text><line style="stroke:#383838;stroke-width:1.5;" x1="8" x2="494" y1="32.0938" y2="32.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="62" x="13" y="47.5127">-id : const int</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="133" x="13" y="61.3486">-headerLineEdit : QLineEdit*</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="179" x="13" y="75.1846">-bodyPopUpTextEdit : PopUpTextEdit*</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="140" x="13" y="89.0205">-deleteButton : QPushButton*</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="137" x="13" y="102.8564">-hboxlayout : QHBoxLayout*</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="138" x="13" y="116.6924">-vboxlayout : QVBoxLayout*</text><line style="stroke:#383838;stroke-width:1.0;" x1="8" x2="494" y1="123.1094" y2="123.1094"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="224" x="13" y="139.0547">+CustomMethodWidget(int id, QString header =</text><text fill="#000000" font-family="monospace" font-size="11" lengthAdjust="spacing" textLength="112" x="240" y="138.1685">, QString body =</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="130" x="359" y="139.0547">, QWidget *parent = nullptr)</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="109" x="13" y="152.8906">+getHeader() : QString</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="99" x="13" y="166.7266">+getBody() : QString</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="58" x="13" y="180.5625">+getID() : int</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="72" x="13" y="212.2344">+edited() : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="86" x="13" y="226.0703">+deleteMe() : void</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="8" x2="222" y1="193.8975" y2="193.8975"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="58" x="222" y="197.8984">&lt;&lt;signals&gt;&gt;</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="280" x2="494" y1="193.8975" y2="193.8975"/><!--MD5=[18e5ed018bbe962a55ab1d1953febc0e]
+@startuml CustomMethodWidget
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+hide circle
+hide enum methods
+
+class CustomMethodWidget
+{
+    - id : const int 
+    - headerLineEdit : QLineEdit*
+    - bodyPopUpTextEdit : PopUpTextEdit*
+    - deleteButton : QPushButton*
+    - hboxlayout : QHBoxLayout*
+    - vboxlayout : QVBoxLayout*
+- -
+    + CustomMethodWidget(int id, QString header = "", QString body = "", QWidget *parent = nullptr)
+    + getHeader() : QString
+    + getBody() : QString
+    + getID() : int
+.. <<signals>> ..
+    + edited() : void
+    + deleteMe() : void
+}
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>

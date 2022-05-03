@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="81px" preserveAspectRatio="none" style="width:195px;height:81px;background:#FFFFFF;" version="1.1" viewBox="0 0 195 81" width="195px" zoomAndPan="magnify"><defs><filter height="300%" id="f63ytqpzzyihh" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[fa9a82ae8c1b63f1f84381e680a24038]
+class CreateComponentDialogMode--><rect codeLine="7" fill="#F8F8F8" filter="url(#f63ytqpzzyihh)" height="60.7656" id="CreateComponentDialogMode" style="stroke:#383838;stroke-width:1.5;" width="174" x="7" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="168" x="10" y="24.457">CreateComponentDialogMode</text><line style="stroke:#383838;stroke-width:1.5;" x1="8" x2="180" y1="32.0938" y2="32.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="61" x="13" y="47.5127">PROCEDURE</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="70" x="13" y="61.3486">ENUMERATOR</text><!--MD5=[036189b9714079fe9591de3ca2624861]
+@startuml CreateComponentDialogMode
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+hide circle
+hide enum methods
+
+enum CreateComponentDialogMode{
+    PROCEDURE
+    ENUMERATOR
+}
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>

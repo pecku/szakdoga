@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="172px" preserveAspectRatio="none" style="width:452px;height:172px;background:#FFFFFF;" version="1.1" viewBox="0 0 452 172" width="452px" zoomAndPan="magnify"><defs><filter height="300%" id="f1hyb41zzxvw7k" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[73bc57207b51c3b467be125ed50baf39]
+class SaveData--><rect codeLine="7" fill="#F8F8F8" filter="url(#f1hyb41zzxvw7k)" height="151.7813" id="SaveData" style="stroke:#383838;stroke-width:1.5;" width="431" x="7" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="53" x="196" y="24.457">SaveData</text><line style="stroke:#383838;stroke-width:1.5;" x1="8" x2="437" y1="32.0938" y2="32.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="111" x="13" y="47.5127">+projectName : QString</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="186" x="13" y="61.3486">+components : QMap&lt;int,Component*&gt;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="179" x="13" y="75.1846">+codeblocks : QMap&lt;int,CodeBlock*&gt;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="136" x="13" y="89.0205">+structs : QMap&lt;int,Struct*&gt;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="137" x="13" y="102.8564">+mainIdOrder : QVector&lt;int&gt;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="52" x="13" y="116.6924">+lastID : int</text><line style="stroke:#383838;stroke-width:1.5;" x1="8" x2="437" y1="123.1094" y2="123.1094"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="419" x="13" y="138.5283">+SaveData(const QString, const QMap&lt;int,Component*&gt;, const QMap&lt;int,CodeBlock*&gt;,</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="268" x="64" y="152.3643">const QMap&lt;int,Struct*&gt;, const QVector&lt;int&gt;, const int)</text><!--MD5=[e5349164dab741f725fec5a62fa837d0]
+@startuml SaveData
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+hide circle
+hide enum methods
+
+class SaveData
+{
+    + projectName : QString
+    + components : QMap<int,Component*>
+    + codeblocks : QMap<int,CodeBlock*>
+    + structs : QMap<int,Struct*>
+    + mainIdOrder : QVector<int>
+    + lastID : int
+
+    + SaveData(const QString, const QMap<int,Component*>, const QMap<int,CodeBlock*>,
+    \t\t const QMap<int,Struct*>, const QVector<int>, const int)
+}
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>

@@ -1,114 +1,120 @@
-ComponentWidget
-| küldő | signal | fogadó | slot |
-|-------|--------|--------|------|
-| addnewmemberbutton | clicked() | nézet:ComponentWidget | onAddNewMemberClicked() |
-| addnewcustommethodbutton | clicked() | nézet:ComponentWidget | onAddNewMethodClicked() |
-| objectNameLineEdit | editingFinished() | nézet:ComponentWidget | objectNameChanged() |
-| itemTypeLineEdit | editingFinished() | nézet:ComponentWidget | itemTypeChanged() |
-| destructorTextEdit | textChanged() | nézet:ComponentWidget | popUpTextChanged() |
-| member | edited() | nézet:ComponentWidget | memberChanged() |
-| member | deleteMe() | nézet:ComponentWidget | deleteMember() |
-| customMethod | edited() | nézet:ComponentWidget | methodChanged() |
-| customMethod | deleteMe() | nézet:ComponentWidget | deleteMethod() |
+A következő táblázatok tartalmazzák a signal-slot kapcsolatokat. Minden táblázat előtt kiemelve szerepel az osztály, amely a signalok fogadója és amelynek a küldő objektumok az adattagjai.
 
-CreateComponentDialog
-| küldő | signal | fogadó | slot |
-|-------|--------|--------|------|
-| okButton | clicked() | nézet:CreateComponentDialog | wantToAccept() |
-| cancelButton | clicked() | nézet:CreateComponentDialog | reject() |
+__ComponentWidget__
+| küldő | signal | slot |
+|-------|--------|------|
+| addnewmemberbutton | clicked() | onAddNewMemberClicked() |
+| addnewcustommethodbutton | clicked() | onAddNewMethodClicked() |
+| objectNameLineEdit | editingFinished() | objectNameChanged() |
+| itemTypeLineEdit | editingFinished() | itemTypeChanged() |
+| destructorTextEdit | textChanged() | popUpTextChanged() |
+| member | edited() | memberChanged() |
+| member | deleteMe() | deleteMember() |
+| customMethod | edited() | methodChanged() |
+| customMethod | deleteMe() | deleteMethod() |
 
-CustomMethodWidget
-| küldő | signal | fogadó | slot |
-|-------|--------|--------|------|
-| headerLineEdit | editingFinished() | nézet:CustomMethodWidget | edited() |
-| bodyPopUpTextEdit | textChanged() | nézet:CustomMethodWidget | edited() |
-| deleteButton | clicked() | nézet:CustomMethodWidget | deleteMe() |
+__CreateComponentDialog__
+| küldő | signal | slot |
+|-------|--------|------|
+| okButton | clicked() | wantToAccept() |
+| cancelButton | clicked() | reject() |
 
-EnumeratorWidget
-| küldő | signal | fogadó | slot |
-|-------|--------|--------|------|
-| firstTextEdit | textChanged() | nézet:EnumeratorWidget | popUpTextChanged() |
-| nextTextEdit | textChanged() | nézet:EnumeratorWidget | popUpTextChanged() |
-| endTextEdit | textChanged() | nézet:EnumeratorWidget | popUpTextChanged() |
-| currentTextEdit | textChanged() | nézet:EnumeratorWidget | popUpTextChanged() |
+__CustomMethodWidget__
+| küldő | signal | slot |
+|-------|--------|------|
+| headerLineEdit | editingFinished() | edited() |
+| bodyPopUpTextEdit | textChanged() | edited() |
+| deleteButton | clicked() | deleteMe() |
 
-MainWindow
-| küldő | signal | fogadó | slot |
-|-------|--------|--------|------|
-| model | haveCompileOutput(QString) | nézet:MainWindow | showCompileOutput(QString) |
-| model | compileProcessEnded() | nézet:MainWindow | allowCompile() |
-| model | compilerPathNotSet() | nézet:MainWindow | showCompilerPathWarning() |
-| model | needProjectNameForSave() | nézet:MainWindow | showProjectSaveDialog() |
-| model | needProjectNameForOpen() | nézet:MainWindow | showProjectOpenDialog() |
-| model | projectLoaded(SaveData) | nézet:MainWindow | refresh(SaveData) |
-| model | cleared() | nézet:MainWindow | clear() |
-| listWidget | itemChanged(QListWidgetItem*) | nézet:MainWindow | listItemChanged(QListWidgetItem*) |
-| createComponentDialog | accepted() | nézet:MainWindow | createComponent() |
-| settingsDialog | accepted() | nézet:MainWindow | updateSettings() |
-| createComponentAction | triggered() | nézet:MainWindow | showCreateComponentDialog() |
-| deleteComponentAction | triggered() | nézet:MainWindow | deleteComponent() |
-| deleteListItemAction | triggered() | nézet:MainWindow | deleteListItem() |
-| createCodeBlockAction | triggered() | nézet:MainWindow | createCodeBlock() |
-| generateAction | triggered() | nézet:MainWindow | generateSource() |
-| runAction | triggered() | nézet:MainWindow | modelRun() |
-| buildAction | triggered() | nézet:MainWindow | modelCompile() |
-| stopCompileAction | triggered() | nézet:MainWindow | modelStopCompile() |
-| settingsAction | triggered() | nézet:MainWindow | showSettingsDialog() |
-| newProjectAction | triggered() | nézet:MainWindow | newProject() |
-| loadProjectAction | triggered() | nézet:MainWindow | loadProject() |
-| saveProjectAction | triggered() | nézet:MainWindow | saveProject() |
-| listWidget | itemSelectionChanged() | nézet:MainWindow | changeSelectedComponent() |
+__EnumeratorWidget__
+| küldő | signal | slot |
+|-------|--------|------|
+| firstTextEdit | textChanged() | popUpTextChanged() |
+| nextTextEdit | textChanged() | popUpTextChanged() |
+| endTextEdit | textChanged() | popUpTextChanged() |
+| currentTextEdit | textChanged() | popUpTextChanged() |
 
-MemberWidget
-| küldő | signal | fogadó | slot |
-|-------|--------|--------|------|
-| typeLineEdit | editingFinished() | nézet:MemberWidget | edited() |
-| nameLineEdit | editingFinished() | nézet:MemberWidget | edited() |
-| deleteButton | clicked() | nézet:MemberWidget | deleteMe() |
+__MainWindow__
+| küldő | signal | slot |
+|-------|--------|------|
+| model | haveCompileOutput(QString) | showCompileOutput(QString) |
+| model | compileProcessEnded() | allowCompile() |
+| model | compilerPathNotSet() | showCompilerPathWarning() |
+| model | needProjectNameForSave() | showProjectSaveDialog() |
+| model | needProjectNameForOpen() | showProjectOpenDialog() |
+| model | projectLoaded(SaveData) | refresh(SaveData) |
+| model | cleared() | clear() |
+| listWidget | itemChanged(QListWidgetItem*) | listItemChanged(QListWidgetItem*) |
+| createComponentDialog | accepted() | createComponent() |
+| settingsDialog | accepted() | updateSettings() |
+| createComponentAction | triggered() | showCreateComponentDialog() |
+| deleteComponentAction | triggered() | deleteComponent() |
+| deleteListItemAction | triggered() | deleteListItem() |
+| createCodeBlockAction | triggered() | createCodeBlock() |
+| generateAction | triggered() | generateSource() |
+| runAction | triggered() | modelRun() |
+| buildAction | triggered() | modelCompile() |
+| stopCompileAction | triggered() | modelStopCompile() |
+| settingsAction | triggered() | showSettingsDialog() |
+| newProjectAction | triggered() | newProject() |
+| loadProjectAction | triggered() | loadProject() |
+| saveProjectAction | triggered() | saveProject() |
+| listWidget | itemClicked(QListWidgetItem*) | changeSelectedComponent() |
+| minden procedure | useInMainChecked(QString,int) | addListItem(QString,int) |
+| minden procedure | useInMainUnchecked(int) | deleteListItem(int) |
 
-model::compileProcess
-| küldő | signal | fogadó | slot |
-|-------|--------|--------|------|
-| compileProcess | finished(int,QProcess::ExitStatus) | modell | compileFinished(int,QProcess::ExitStatus) |
-| compileProcess | errorOccurred(QProcess::ProcessError) | modell | compileError(QProcess::ProcessError) |
+__MemberWidget__
+| küldő | signal | slot |
+|-------|--------|------|
+| typeLineEdit | editingFinished() | edited() |
+| nameLineEdit | editingFinished() | edited() |
+| deleteButton | clicked() | deleteMe() |
 
-PopUpTextEdit
-| küldő | signal | fogadó | slot |
-|-------|--------|--------|------|
-| inputDialog | accepted() | nézet:PopUpTextEdit | getTextFromInputDialog() |
+__Model__
+| küldő | signal | slot |
+|-------|--------|------|
+| compileProcess | finished(int,QProcess::ExitStatus) | compileFinished(int,QProcess::ExitStatus) |
+| compileProcess | errorOccurred(QProcess::ProcessError) | compileError(QProcess::ProcessError) |
 
-ProcedureWidget
-| küldő | signal | fogadó | slot |
-|-------|--------|--------|------|
-| enorComboBox | currentIndexChanged(int) | nézet:ProcedureWidget | enorChanged(int) |
-| optimistCheckBox | stateChanged(int) | nézet:ProcedureWidget | optimistChanged() |
-| valueLineEdit | editingFinished() | nézet:ProcedureWidget | valueChanged() |
-| greaterRadioButton | toggled(bool) | nézet:ProcedureWidget | compareChanged() |
-| neutralTextEdit | textChanged() | nézet:ProcedureWidget | popUpTextChanged() |
-| addTextEdit | textChanged() | nézet:ProcedureWidget | popUpTextChanged() |
-| funcTextEdit | textChanged() | nézet:ProcedureWidget | popUpTextChanged() |
-| condTextEdit | textChanged() | nézet:ProcedureWidget | popUpTextChanged() |
-| firstTextEdit | textChanged() | nézet:ProcedureWidget | popUpTextChanged() |
-| whileCondTextEdit | textChanged() | nézet:ProcedureWidget | popUpTextChanged() |
+__PopUpTextEdit__
+| küldő | signal | slot |
+|-------|--------|------|
+| inputDialog | accepted() | getTextFromInputDialog() |
 
-SettingsDialog
-| küldő | signal | fogadó | slot |
-|-------|--------|--------|------|
-| okButton | clicked() | nézet:SettingsDialog | accept() |
-| cancelButton | clicked() | nézet:SettingsDialog | reject() |
+__ProcedureWidget__
+| küldő | signal | slot |
+|-------|--------|------|
+| enorComboBox | currentIndexChanged(int) | enorChanged(int) |
+| useInMainCheckBox | stateChanged(int) | useInMainChanged() |
+| optimistCheckBox | stateChanged(int) | optimistChanged() |
+| valueLineEdit | editingFinished() | valueChanged() |
+| greaterRadioButton | toggled(bool) | compareChanged() |
+| neutralTextEdit | textChanged() | popUpTextChanged() |
+| addTextEdit | textChanged() | popUpTextChanged() |
+| funcTextEdit | textChanged() | popUpTextChanged() |
+| condTextEdit | textChanged() | popUpTextChanged() |
+| firstTextEdit | textChanged() | popUpTextChanged() |
+| whileCondTextEdit | textChanged() | popUpTextChanged() |
 
-StructWidget
-| küldő | signal | fogadó | slot |
-|-------|--------|--------|------|
-| addnewmemberbutton | clicked() | nézet:StructWidget | onAddNewMemberClicked() |
-| addnewcustommethodbutton | clicked() | nézet:StructWidget | onAddNewMethodClicked() |
-| member | edited() | nézet:StructWidget | memberChanged() |
-| member | deleteMe() | nézet:StructWidget | deleteMember() |
-| customMethod | edited() | nézet:StructWidget | methodChanged() |
-| customMethod | deleteMe() | nézet:StructWidget | deleteMethod() |
+__SettingsDialog__
+| küldő | signal | slot |
+|-------|--------|------|
+| okButton | clicked() | accept() |
+| cancelButton | clicked() | reject() |
 
-TextInputDialog
-| küldő | signal | fogadó | slot |
-|-------|--------|--------|------|
-| saveButton | clicked() | nézet:TextInputDialog | accept() |
-| cancelButton | clicked() | nézet:TextInputDialog | reject() |
+__StructWidget__
+| küldő | signal | slot |
+|-------|--------|------|
+| addnewmemberbutton | clicked() | onAddNewMemberClicked() |
+| addnewcustommethodbutton | clicked() | onAddNewMethodClicked() |
+| member | edited() | memberChanged() |
+| member | deleteMe() | deleteMember() |
+| customMethod | edited() | methodChanged() |
+| customMethod | deleteMe() | deleteMethod() |
+
+__TextInputDialog__
+| küldő | signal | slot |
+|-------|--------|------|
+| saveButton | clicked() | accept() |
+| cancelButton | clicked() | reject() |
+            

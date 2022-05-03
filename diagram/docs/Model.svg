@@ -1,520 +1,93 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1849px" preserveAspectRatio="none" style="width:2103px;height:1849px;background:#FFFFFF;" version="1.1" viewBox="0 0 2103 1849" width="2103px" zoomAndPan="magnify"><defs><filter height="300%" id="fx4flpd9xm4rg" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[7e20e022571e30ec1001cf6eabd7f3e2]
-class Model--><rect codeLine="9" fill="#F8F8F8" filter="url(#fx4flpd9xm4rg)" height="918.6875" id="Model" style="stroke:#383838;stroke-width:1.5;" width="634" x="342" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="37" x="640.5" y="23.1387">Model</text><line style="stroke:#383838;stroke-width:1.5;" x1="343" x2="975" y1="30.9688" y2="30.9688"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="127" x="348" y="45.1792">-QString projectName;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="221" x="348" y="57.9839">-QMap&lt;int,Component*&gt; components;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="208" x="348" y="70.7886">-QMap&lt;int,CodeBlock*&gt; codeblocks;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="160" x="348" y="83.5933">-QMap&lt;int,Struct*&gt; structs;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="160" x="348" y="96.3979">-QVector&lt;int&gt; mainIdOrder;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="58" x="348" y="109.2026">-int lastID;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="129" x="348" y="122.0073">-QString compilerPath;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="186" x="348" y="134.812">-QStringList compilerArguments;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="129" x="348" y="147.6167">-bool compilerPathSet;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="163" x="348" y="160.4214">-QProcess* compileProcess;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="137" x="348" y="173.2261">-QString compileOutput;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="143" x="348" y="186.0308">-DataAccess dataAccess;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="120" x="348" y="198.8354">-QSettings* settings;</text><line style="stroke:#383838;stroke-width:1.0;" x1="343" x2="975" y1="205.4297" y2="205.4297"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="175" x="348" y="219.6401">-int newID() {return ++lastID;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="103" x="348" y="232.4448">-void loadConfig();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="180" x="348" y="245.2495">-QString generateMainSource();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="270" x="348" y="258.0542">-QString replaceReference(QString codeString);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="292" x="348" y="270.8589">-QString getReferenceSource(QString objectName);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="242" x="348" y="283.6636">+explicit Model(QObject *parent = nullptr);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="159" x="348" y="296.4683">+QString generateSource();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="347" x="348" y="309.2729">+int createComponent(QString name, ComponentType type);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="134" x="348" y="322.0776">+int createCodeBlock();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="188" x="348" y="334.8823">+int createStruct(QString name);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="213" x="348" y="347.687">+int createMember(int componentID);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="252" x="348" y="360.4917">+int createCustomMethod(int componentID);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="265" x="348" y="373.2964">+bool isComponentNameUsed(QString name);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="271" x="348" y="386.1011">+bool isObjectNameUsed(QString objectName);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="306" x="348" y="398.9058">+QString getEnumeratorNameById(int enumeratorID);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="475" x="348" y="411.7104">+void modifyMember(int componentID, int memberID, QString type, QString name);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="560" x="348" y="424.5151">+void modifyCustomMethod(int componentID, int customMethodID, QString header, QString body);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="240" x="348" y="437.3198">+void deleteComponent(int componentID);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="228" x="348" y="450.1245">+void deleteCodeBlock(int codeBlockID);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="179" x="348" y="462.9292">+void deleteStruct(int structID);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="306" x="348" y="475.7339">+void deleteMember(int componentID, int memberID);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="380" x="348" y="488.5386">+void deleteCustomMethod(int componentID, int customMethodID);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="349" x="348" y="501.3433">+void setObjectName(int componentID, QString objectName);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="518" x="348" y="514.1479">+void setItem(int componentID, QString item){components[componentID]-&gt;setItem(item);}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="540" x="348" y="526.9526">+void setValue(int componentID, QString value){components[componentID]-&gt;setValue(value);}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="587" x="348" y="539.7573">+void setOptimist(int componentID, bool optimist){components[componentID]-&gt;setOptimist(optimist);}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="622" x="348" y="552.562">+void setCompare(int componentID, QString compare){components[componentID]-&gt;setCompare(compare);}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="329" x="348" y="565.3667">+void setEnumerator(int componentID, int enumeratorID);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="475" x="348" y="578.1714">+void setMethod(int componentID, MethodType methodType, QString methodBody);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="511" x="348" y="590.9761">+void setCode(int codeBlockID, QString code){codeblocks[codeBlockID]-&gt;setCode(code);}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="214" x="348" y="603.7808">+void setCompilerPath(QString path);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="251" x="348" y="616.5854">+void setCompilerArguments(QString path);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="352" x="348" y="629.3901">+void setMainIdOrder(QVector&lt;int&gt; ids){mainIdOrder = ids;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="67" x="348" y="642.1948">+void run();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="92" x="348" y="654.9995">+void compile();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="119" x="348" y="667.8042">+void stopCompile();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="305" x="348" y="680.6089">+QString getCompileOutput(){return compileOutput;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="289" x="348" y="693.4136">+QString getCompilerPath(){return compilerPath;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="383" x="348" y="706.2183">+QStringList getCompilerArguments(){return compilerArguments;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="283" x="348" y="719.0229">+QString getProjectName(){return projectName;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="111" x="348" y="731.8276">+bool newProject();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="115" x="348" y="744.6323">+bool saveProject();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="289" x="348" y="757.437">+void setProject(QString file){projectName = file;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="115" x="348" y="770.2417">+void openProject();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="160" x="348" y="799.8511">+void compilerPathNotSet();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="242" x="348" y="812.6558">+void haveCompileOutput(QString output);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="173" x="348" y="825.4604">+void compileProcessEnded();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="194" x="348" y="838.2651">+void needProjectNameForSave();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="196" x="348" y="851.0698">+void needProjectNameForOpen();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="256" x="348" y="863.8745">+void projectLoaded(const SaveData&amp; data);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="90" x="348" y="876.6792">+void cleared();</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="343" x2="620.5" y1="783.2383" y2="783.2383"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="620.5" y="786.5464">&lt;&lt;signals&gt;&gt;</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="697.5" x2="975" y1="783.2383" y2="783.2383"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="390" x="348" y="906.2886">-void compileFinished(int exitCode, QProcess::ExitStatus exitStatus);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="287" x="348" y="919.0933">-void compileError(QProcess::ProcessError error);</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="343" x2="627" y1="889.6758" y2="889.6758"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="64" x="627" y="892.9839">&lt;&lt;slots&gt;&gt;</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="691" x2="975" y1="889.6758" y2="889.6758"/><!--MD5=[6aab0676cf34802cefb399a4f3777211]
-class ComponentType--><rect codeLine="82" fill="#F8F8F8" filter="url(#fx4flpd9xm4rg)" height="160.0156" id="ComponentType" style="stroke:#383838;stroke-width:1.5;" width="107" x="364.5" y="1675"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="101" x="367.5" y="1691.1387">ComponentType</text><line style="stroke:#383838;stroke-width:1.5;" x1="365.5" x2="470.5" y1="1698.9688" y2="1698.9688"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="60" x="370.5" y="1713.1792">COUNTING</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="62" x="370.5" y="1725.9839">LINSEARCH</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="68" x="370.5" y="1738.7886">MAXSEARCH</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="63" x="370.5" y="1751.5933">SELECTION</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="68" x="370.5" y="1764.3979">SUMMATION</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="49" x="370.5" y="1777.2026">DEFAULT</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="35" x="370.5" y="1790.0073">ARRAY</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="52" x="370.5" y="1802.812">INTERVAL</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="87" x="370.5" y="1815.6167">STRINGSTREAM</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="57" x="370.5" y="1828.4214">SEQINFILE</text><!--MD5=[5e67de1afa87a34c5cf044797ba6a12f]
-class MethodType--><rect codeLine="95" fill="#F8F8F8" filter="url(#fx4flpd9xm4rg)" height="160.0156" id="MethodType" style="stroke:#383838;stroke-width:1.5;" width="88" x="533" y="1675"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="76" x="539" y="1691.1387">MethodType</text><line style="stroke:#383838;stroke-width:1.5;" x1="534" x2="620" y1="1698.9688" y2="1698.9688"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="76" x="539" y="1713.1792">DESTRUCTOR</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="50" x="539" y="1725.9839">NEUTRAL</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="23" x="539" y="1738.7886">ADD</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="30" x="539" y="1751.5933">FUNC</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="33" x="539" y="1764.3979">COND</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="31" x="539" y="1777.2026">FIRST</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="66" x="539" y="1790.0073">WHILECOND</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="29" x="539" y="1802.812">NEXT</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="23" x="539" y="1815.6167">END</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="52" x="539" y="1828.4214">CURRENT</text><!--MD5=[f58fd777f29c17413488bea9e7cfcca3]
-class Member--><rect codeLine="108" fill="#F8F8F8" filter="url(#fx4flpd9xm4rg)" height="116.7969" id="Member" style="stroke:#383838;stroke-width:1.5;" width="395" x="669.5" y="1696.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="50" x="842" y="1712.6387">Member</text><line style="stroke:#383838;stroke-width:1.5;" x1="670.5" x2="1063.5" y1="1720.4688" y2="1720.4688"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="675.5" y="1734.6792">+int id;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="84" x="675.5" y="1747.4839">+QString type;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="92" x="675.5" y="1760.2886">+QString name;</text><line style="stroke:#383838;stroke-width:1.0;" x1="670.5" x2="1063.5" y1="1766.8828" y2="1766.8828"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="675.5" y="1781.0933">+Member(){}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="167" x="675.5" y="1793.8979">+Member(int id) : id(id), type(</text><text fill="#000000" font-family="monospace" font-size="11" lengthAdjust="spacing" textLength="56" x="842.5" y="1793.8979">), name(</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="18" x="898.5" y="1793.8979">){}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="383" x="675.5" y="1806.7026">+Member(QString type, QString name) : type(type), name(name){}</text><!--MD5=[5165f43a09867253b9fbe1cad89a5d49]
-class CustomMethod--><rect codeLine="119" fill="#F8F8F8" filter="url(#fx4flpd9xm4rg)" height="116.7969" id="CustomMethod" style="stroke:#383838;stroke-width:1.5;" width="467" x="1099.5" y="1696.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="94" x="1286" y="1712.6387">CustomMethod</text><line style="stroke:#383838;stroke-width:1.5;" x1="1100.5" x2="1565.5" y1="1720.4688" y2="1720.4688"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="100" x="1105.5" y="1734.6792">+QString header;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="87" x="1105.5" y="1747.4839">+QString body;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="1105.5" y="1760.2886">+int id;</text><line style="stroke:#383838;stroke-width:1.0;" x1="1100.5" x2="1565.5" y1="1766.8828" y2="1766.8828"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="116" x="1105.5" y="1781.0933">+CustomMethod(){}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="186" x="1105.5" y="1793.8979">+CustomMethod(int id) : header(</text><text fill="#000000" font-family="monospace" font-size="11" lengthAdjust="spacing" textLength="56" x="1291.5" y="1793.8979">), body(</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="58" x="1347.5" y="1793.8979">), id(id) {}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="455" x="1105.5" y="1806.7026">+CustomMethod(QString header, QString body) : header(header), body(body){}</text><!--MD5=[4e13963c9dc916a21a8436ef39422b32]
-class Component--><rect codeLine="130" fill="#F8F8F8" filter="url(#fx4flpd9xm4rg)" height="628.9844" id="Component" style="stroke:#383838;stroke-width:1.5;" width="782" x="490" y="986"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="72" x="845" y="1002.1387">Component</text><line style="stroke:#383838;stroke-width:1.5;" x1="491" x2="1271" y1="1009.9688" y2="1009.9688"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="87" x="496" y="1024.1792">-QString name;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="36" x="496" y="1036.9839">-int id;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="122" x="496" y="1049.7886">-QString objectName;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="128" x="496" y="1062.5933">-ComponentType type;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="80" x="496" y="1075.3979">-QString item;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="104" x="496" y="1088.2026">-int enumeratorID;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="191" x="496" y="1101.0073">-QString enumeratorObjectName;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="82" x="496" y="1113.812">-bool optimist;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="85" x="496" y="1126.6167">-QString value;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="105" x="496" y="1139.4214">-QString compare;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="227" x="496" y="1152.2261">-QMap&lt;MethodType,QString&gt; methods;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="181" x="496" y="1165.0308">-QMap&lt;int,Member&gt; members;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="255" x="496" y="1177.8354">-QMap&lt;int,CustomMethod&gt; customMethods;</text><line style="stroke:#383838;stroke-width:1.5;" x1="491" x2="1271" y1="1184.4297" y2="1184.4297"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="329" x="496" y="1198.6401">+Component(QString name, ComponentType type, int id);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="161" x="496" y="1211.4448">+QString getSource() const;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="205" x="496" y="1224.2495">+QString getSourceForMain() const;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="263" x="496" y="1237.0542">+QString getSourceForObjectCreation() const;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="243" x="496" y="1249.8589">+QString getName() const {return name;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="170" x="496" y="1262.6636">+int getID() const {return id;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="314" x="496" y="1275.4683">+QString getObjectName() const {return objectName;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="278" x="496" y="1288.2729">+ComponentType getType() const {return type;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="228" x="496" y="1301.0776">+QString getItem() const {return item;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="305" x="496" y="1313.8823">+int getEnumeratorID() const {return enumeratorID;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="450" x="496" y="1326.687">+QString getEnumeratorObjectName() const {return enumeratorObjectName;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="253" x="496" y="1339.4917">+bool getOptimist() const {return optimist;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="239" x="496" y="1352.2964">+QString getValue() const {return value;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="280" x="496" y="1365.1011">+QString getCompare() const {return compare;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="398" x="496" y="1377.9058">+QMap&lt;MethodType,QString&gt; getMethods() const {return methods;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="357" x="496" y="1390.7104">+QMap&lt;int,Member&gt; getMembers() const {return members;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="470" x="496" y="1403.5151">+QMap&lt;int,CustomMethod&gt; getCustomMethods() const {return customMethods;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="448" x="496" y="1416.3198">+void setObjectName(QString objectName){this-&gt;objectName = objectName;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="278" x="496" y="1429.1245">+void setItem(QString item){this-&gt;item = item;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="299" x="496" y="1441.9292">+void setValue(QString value){this-&gt;value = value;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="345" x="496" y="1454.7339">+void setOptimist(bool optimist){this-&gt;optimist = optimist;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="380" x="496" y="1467.5386">+void setCompare(QString compare){this-&gt;compare = compare;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="420" x="496" y="1480.3433">+void setEnumerator(int enumeratorID, QString enumeratorObjectName);</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="605" x="496" y="1493.1479">+void setMethod(MethodType methodType, QString methodBody){methods[methodType] = methodBody;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="628" x="496" y="1505.9526">+void setMember(int id, QString type, QString name){members[id].type = type; members[id].name = name;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="326" x="496" y="1518.7573">+void createMember(int id){members[id] = Member(id);}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="291" x="496" y="1531.562">+void deleteMember(int id){members.remove(id);}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="770" x="496" y="1544.3667">+void setCustomMethod(int id, QString header, QString body){customMethods[id].header = header; customMethods[id].body = body;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="439" x="496" y="1557.1714">+void createCustomMethod(int id){customMethods[id] = CustomMethod(id);}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="365" x="496" y="1569.9761">+void deleteCustomMethod(int id){customMethods.remove(id);}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="498" x="496" y="1582.7808">+void setMethods(QMap&lt;MethodType,QString&gt; methods){this-&gt;methods = methods;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="467" x="496" y="1595.5854">+void setMembers(QMap&lt;int,Member&gt; members){this-&gt;members = members;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="650" x="496" y="1608.3901">+void setCustomMethods(QMap&lt;int,CustomMethod&gt; customMethods){this-&gt;customMethods = customMethods;}</text><!--MD5=[1e7e2556068960ccc5ff0e8b9ae795bf]
-class CodeBlock--><rect codeLine="181" fill="#F8F8F8" filter="url(#fx4flpd9xm4rg)" height="129.6016" id="CodeBlock" style="stroke:#383838;stroke-width:1.5;" width="300" x="7" y="401.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="65" x="124.5" y="417.6387">CodeBlock</text><line style="stroke:#383838;stroke-width:1.5;" x1="8" x2="306" y1="425.4688" y2="425.4688"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="36" x="13" y="439.6792">-int id;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="82" x="13" y="452.4839">-QString code;</text><line style="stroke:#383838;stroke-width:1.5;" x1="8" x2="306" y1="459.0781" y2="459.0781"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="158" x="13" y="473.2886">+CodeBlock(int id) : id(id){}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="206" x="13" y="486.0933">+QString getSource(){return code;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="170" x="13" y="498.8979">+int getID() const {return id;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="195" x="13" y="511.7026">+QString getCode(){return code;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="288" x="13" y="524.5073">+void setCode(QString code){this-&gt;code = code;}</text><!--MD5=[eb0f4986160aea42d9ece72995cb24c7]
-class Struct--><rect codeLine="193" fill="#F8F8F8" filter="url(#fx4flpd9xm4rg)" height="270.4531" id="Struct" style="stroke:#383838;stroke-width:1.5;" width="782" x="1307" y="1165.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="38" x="1679" y="1181.6387">Struct</text><line style="stroke:#383838;stroke-width:1.5;" x1="1308" x2="2088" y1="1189.4688" y2="1189.4688"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="87" x="1313" y="1203.6792">-QString name;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="36" x="1313" y="1216.4839">-int id;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="181" x="1313" y="1229.2886">-QMap&lt;int,Member&gt; members;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="255" x="1313" y="1242.0933">-QMap&lt;int,CustomMethod&gt; customMethods;</text><line style="stroke:#383838;stroke-width:1.5;" x1="1308" x2="2088" y1="1248.6875" y2="1248.6875"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="300" x="1313" y="1262.8979">+Struct(QString name, int id) : name(name), id(id){}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="126" x="1313" y="1275.7026">+QString getSource();</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="243" x="1313" y="1288.5073">+QString getName() const {return name;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="170" x="1313" y="1301.312">+int getID() const {return id;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="357" x="1313" y="1314.1167">+QMap&lt;int,Member&gt; getMembers() const {return members;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="470" x="1313" y="1326.9214">+QMap&lt;int,CustomMethod&gt; getCustomMethods() const {return customMethods;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="628" x="1313" y="1339.7261">+void setMember(int id, QString type, QString name){members[id].type = type; members[id].name = name;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="326" x="1313" y="1352.5308">+void createMember(int id){members[id] = Member(id);}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="291" x="1313" y="1365.3354">+void deleteMember(int id){members.remove(id);}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="770" x="1313" y="1378.1401">+void setCustomMethod(int id, QString header, QString body){customMethods[id].header = header; customMethods[id].body = body;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="439" x="1313" y="1390.9448">+void createCustomMethod(int id){customMethods[id] = CustomMethod(id);}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="365" x="1313" y="1403.7495">+void deleteCustomMethod(int id){customMethods.remove(id);}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="467" x="1313" y="1416.5542">+void setMembers(QMap&lt;int,Member&gt; members){this-&gt;members = members;}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="650" x="1313" y="1429.3589">+void setCustomMethods(QMap&lt;int,CustomMethod&gt; customMethods){this-&gt;customMethods = customMethods;}</text><!--MD5=[73bc57207b51c3b467be125ed50baf39]
-class SaveData--><rect codeLine="216" fill="#F8F8F8" filter="url(#fx4flpd9xm4rg)" height="129.6016" id="SaveData" style="stroke:#383838;stroke-width:1.5;" width="847" x="1011.5" y="401.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="60" x="1405" y="417.6387">SaveData</text><line style="stroke:#383838;stroke-width:1.5;" x1="1012.5" x2="1857.5" y1="425.4688" y2="425.4688"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="132" x="1017.5" y="439.6792">+QString projectName;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="226" x="1017.5" y="452.4839">+QMap&lt;int,Component*&gt; components;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="213" x="1017.5" y="465.2886">+QMap&lt;int,CodeBlock*&gt; codeblocks;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="165" x="1017.5" y="478.0933">+QMap&lt;int,Struct*&gt; structs;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="165" x="1017.5" y="490.8979">+QVector&lt;int&gt; mainIdOrder;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="63" x="1017.5" y="503.7026">+int lastID;</text><line style="stroke:#383838;stroke-width:1.5;" x1="1012.5" x2="1857.5" y1="510.2969" y2="510.2969"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="835" x="1017.5" y="524.5073">+SaveData(const QString, const QMap&lt;int,Component*&gt;, const QMap&lt;int,CodeBlock*&gt;, const QMap&lt;int,Struct*&gt;, const QVector&lt;int&gt;, const int)</text><!--MD5=[ce9560a30efbe5dc54bef772049eaadc]
-class DataAccess--><rect fill="#F8F8F8" filter="url(#fx4flpd9xm4rg)" height="39.9688" id="DataAccess" style="stroke:#383838;stroke-width:1.5;" width="80" x="1893" y="446.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="1896" y="462.6387">DataAccess</text><line style="stroke:#383838;stroke-width:1.5;" x1="1894" x2="1972" y1="470.4688" y2="470.4688"/><line style="stroke:#383838;stroke-width:1.5;" x1="1894" x2="1972" y1="478.4688" y2="478.4688"/><!--MD5=[bdba4f83a8f3a0df7a39dcf0be1ee81a]
-link Model to Component--><path codeLine="228" d="M733,926.19 C733,926.19 733,980.93 733,980.93 " fill="none" id="Model-to-Component" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="733,985.93,737,976.93,733,980.93,729,976.93,733,985.93" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[eb3c68dc0fac18933f0699d15840f05e]
-reverse link CodeBlock to Model--><path codeLine="229" d="M312.28,467 C312.28,467 341.93,467 341.93,467 " fill="none" id="CodeBlock-backto-Model" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="307.28,467,316.28,471,312.28,467,316.28,463,307.28,467" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[712af21e067633db4a8f6d5390032a6e]
-link Model to Struct--><path codeLine="230" d="M976.26,795 C1243.56,795 1582.75,795 1582.75,795 C1582.75,795 1582.75,1160.37 1582.75,1160.37 " fill="none" id="Model-to-Struct" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="1582.75,1165.37,1586.75,1156.37,1582.75,1160.37,1578.75,1156.37,1582.75,1165.37" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[91983d9b0fb22240b91b5c594ac69904]
-link Model to DataAccess--><path codeLine="231" d="M976.38,663 C1353.71,663 1933,663 1933,663 C1933,663 1933,491.79 1933,491.79 " fill="none" id="Model-to-DataAccess" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="1933,486.79,1929,495.79,1933,491.79,1937,495.79,1933,486.79" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[5e8899ce93567b2160febbbf1039bb17]
-link Model to ComponentType--><path codeLine="232" d="M418,926.22 C418,926.22 418,1669.95 418,1669.95 " fill="none" id="Model-to-ComponentType" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="418,1674.95,422,1665.95,418,1669.95,414,1665.95,418,1674.95" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[bef001e920e05a5e0dcff01aa3a90183]
-link Model to MethodType--><path codeLine="233" d="M480.75,926.31 C480.75,1287.21 480.75,1729 480.75,1729 C480.75,1729 527.82,1729 527.82,1729 " fill="none" id="Model-to-MethodType" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="532.82,1729,523.82,1725,527.82,1729,523.82,1733,532.82,1729" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[deea300509e3cee7e4a9ccb449dad3ff]
-link Model to SaveData--><path codeLine="234" d="M976.03,467 C976.03,467 1006.44,467 1006.44,467 " fill="none" id="Model-to-SaveData" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="1011.44,467,1002.44,463,1006.44,467,1002.44,471,1011.44,467" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[edae267f20d00c45e66b55ac57e8aba1]
-link Component to ComponentType--><path codeLine="236" d="M511.5,1615.28 C511.5,1706.49 511.5,1782 511.5,1782 C511.5,1782 476.58,1782 476.58,1782 " fill="none" id="Component-to-ComponentType" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="471.58,1782,480.58,1786,476.58,1782,480.58,1778,471.58,1782" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[938c6a3f774038a73ff8b9469cfe3bb2]
-link Component to MethodType--><path codeLine="237" d="M577,1615.24 C577,1615.24 577,1669.65 577,1669.65 " fill="none" id="Component-to-MethodType" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="577,1674.65,581,1665.65,577,1669.65,573,1665.65,577,1674.65" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[4fd84df694c7d57cb44a39e2dec32259]
-link Component to CustomMethod--><path codeLine="238" d="M1185.75,1615.24 C1185.75,1615.24 1185.75,1691.49 1185.75,1691.49 " fill="none" id="Component-to-CustomMethod" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="1185.75,1696.49,1189.75,1687.49,1185.75,1691.49,1181.75,1687.49,1185.75,1696.49" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[b1ff95d87064ef81466dce1ac49d2825]
-link Component to Member--><path codeLine="239" d="M867,1615.24 C867,1615.24 867,1691.49 867,1691.49 " fill="none" id="Component-to-Member" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="867,1696.49,871,1687.49,867,1691.49,863,1687.49,867,1696.49" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[ccb0e373f94b775d3c96fae56259bd5c]
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1024px" preserveAspectRatio="none" style="width:502px;height:1024px;background:#FFFFFF;" version="1.1" viewBox="0 0 502 1024" width="502px" zoomAndPan="magnify"><defs><filter height="300%" id="f116lgho1nfheq" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[7e20e022571e30ec1001cf6eabd7f3e2]
+class Model--><rect codeLine="7" fill="#F8F8F8" filter="url(#f116lgho1nfheq)" height="1003.7734" id="Model" style="stroke:#383838;stroke-width:1.5;" width="481" x="7" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="33" x="231" y="24.457">Model</text><line style="stroke:#383838;stroke-width:1.5;" x1="8" x2="487" y1="32.0938" y2="32.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="109" x="13" y="47.5127">-projectName : QString</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="184" x="13" y="61.3486">-components : QMap&lt;int,Component*&gt;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="177" x="13" y="75.1846">-codeblocks : QMap&lt;int,CodeBlock*&gt;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="134" x="13" y="89.0205">-structs : QMap&lt;int,Struct*&gt;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="135" x="13" y="102.8564">-mainIdOrder : QVector&lt;int&gt;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="50" x="13" y="116.6924">-lastID : int</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="110" x="13" y="130.5283">-compilerPath : QString</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="159" x="13" y="144.3643">-compilerArguments : QStringList</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="110" x="13" y="158.2002">-compilerPathSet : bool</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="141" x="13" y="172.0361">-compileProcess : QProcess*</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="117" x="13" y="185.8721">-compileOutput : QString</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="132" x="13" y="199.708">-dataAccess : DataAccess</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="102" x="13" y="213.5439">-settings : QSettings*</text><line style="stroke:#383838;stroke-width:1.0;" x1="8" x2="487" y1="219.9609" y2="219.9609"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="63" x="13" y="235.3799">-newID() : int</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="92" x="13" y="249.2158">-loadConfig() : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="157" x="13" y="263.0518">-generateMainSource() : QString</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="235" x="13" y="276.8877">-replaceReference(QString codeString) : QString</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="253" x="13" y="290.7236">-getReferenceSource(QString objectName) : QString</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="160" x="13" y="304.5596">+Model(QObject *parent = nullptr)</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="137" x="13" y="318.3955">+generateSource() : QString</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="292" x="13" y="332.2314">+createComponent(QString name, ComponentType type) : int</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="116" x="13" y="346.0674">+createCodeBlock() : int</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="159" x="13" y="359.9033">+createStruct(QString name) : int</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="179" x="13" y="373.7393">+createMember(int componentID) : int</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="212" x="13" y="387.5752">+createCustomMethod(int componentID) : int</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="222" x="13" y="401.4111">+isComponentNameUsed(QString name) : bool</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="229" x="13" y="415.2471">+isObjectNameUsed(QString objectName) : bool</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="255" x="13" y="429.083">+getEnumeratorNameById(int enumeratorID) : QString</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="393" x="13" y="442.9189">+modifyMember(int componentID, int memberID, QString type, QString name) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="469" x="13" y="456.7549">+modifyCustomMethod(int componentID, int customMethodID, QString header, QString body) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="202" x="13" y="470.5908">+deleteComponent(int componentID) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="196" x="13" y="484.4268">+deleteCodeBlock(int codeBlockID) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="152" x="13" y="498.2627">+deleteStruct(int structID) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="253" x="13" y="512.0986">+deleteMember(int componentID, int memberID) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="318" x="13" y="525.9346">+deleteCustomMethod(int componentID, int customMethodID) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="260" x="13" y="539.7705">+setUseInMain(int componentID, bool useInMain) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="293" x="13" y="553.6064">+setObjectName(int componentID, QString objectName) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="217" x="13" y="567.4424">+setItem(int componentID, QString item) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="233" x="13" y="581.2783">+setValue(int componentID, QString value) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="237" x="13" y="595.1143">+setOptimist(int componentID, bool optimist) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="264" x="13" y="608.9502">+setCompare(int componentID, QString compare) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="273" x="13" y="622.7861">+setEnumerator(int componentID, int enumeratorID) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="401" x="13" y="636.6221">+setMethod(int componentID, MethodType methodType, QString methodBody) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="225" x="13" y="650.458">+setCode(int codeBlockID, QString code) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="180" x="13" y="664.2939">+setCompilerPath(QString path) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="212" x="13" y="678.1299">+setCompilerArguments(QString path) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="197" x="13" y="691.9658">+setMainIdOrder(QVector&lt;int&gt; ids) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="59" x="13" y="705.8018">+run() : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="79" x="13" y="719.6377">+compile() : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="101" x="13" y="733.4736">+stopCompile() : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="143" x="13" y="747.3096">+getCompileOutput() : QString</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="136" x="13" y="761.1455">+getCompilerPath() : QString</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="185" x="13" y="774.9814">+getCompilerArguments() : QStringList</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="134" x="13" y="788.8174">+getProjectName() : QString</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="98" x="13" y="802.6533">+newProject() : bool</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="100" x="13" y="816.4893">+saveProject() : bool</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="144" x="13" y="830.3252">+setProject(QString file) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="100" x="13" y="844.1611">+openProject() : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="136" x="13" y="875.833">+compilerPathNotSet() : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="205" x="13" y="889.6689">+haveCompileOutput(QString output) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="149" x="13" y="903.5049">+compileProcessEnded() : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="168" x="13" y="917.3408">+needProjectNameForSave() : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="169" x="13" y="931.1768">+needProjectNameForOpen() : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="220" x="13" y="945.0127">+projectLoaded(const SaveData&amp; data) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="79" x="13" y="958.8486">+cleared() : void</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="8" x2="218.5" y1="857.4961" y2="857.4961"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="58" x="218.5" y="861.4971">&lt;&lt;signals&gt;&gt;</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="276.5" x2="487" y1="857.4961" y2="857.4961"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="332" x="13" y="990.5205">-compileFinished(int exitCode, QProcess::ExitStatus exitStatus) : void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="246" x="13" y="1004.3564">-compileError(QProcess::ProcessError error) : void</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="8" x2="224" y1="972.1836" y2="972.1836"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="47" x="224" y="976.1846">&lt;&lt;slots&gt;&gt;</text><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="271" x2="487" y1="972.1836" y2="972.1836"/><!--MD5=[2fdd4574553be6078ca4a6f26ddf79f4]
 @startuml Model
 
 skinparam Monochrome true
 skinparam ClassAttributeIconSize 0
-'skinparam groupInheritance 2
-skinparam linetype ortho
 hide circle
 hide enum methods
 
 class Model
 {
-    - QString projectName;
-    - QMap<int,Component*> components;
-    - QMap<int,CodeBlock*> codeblocks;
-    - QMap<int,Struct*> structs;
-    - QVector<int> mainIdOrder;
-    - int lastID;
-    - QString compilerPath;
-    - QStringList compilerArguments;
-    - bool compilerPathSet;
-    - QProcess* compileProcess;
-    - QString compileOutput;
-    - DataAccess dataAccess;
-    - QSettings* settings;
+    - projectName : QString
+    - components : QMap<int,Component*>
+    - codeblocks : QMap<int,CodeBlock*>
+    - structs : QMap<int,Struct*>
+    - mainIdOrder : QVector<int>
+    - lastID : int
+    - compilerPath : QString
+    - compilerArguments : QStringList
+    - compilerPathSet : bool
+    - compileProcess : QProcess*
+    - compileOutput : QString
+    - dataAccess : DataAccess
+    - settings : QSettings*
 - -
-    - int newID() {return ++lastID;}
-    - void loadConfig();
-    - QString generateMainSource();
-    - QString replaceReference(QString codeString);
-    - QString getReferenceSource(QString objectName);
-    + explicit Model(QObject *parent = nullptr);
-    + QString generateSource();
-    + int createComponent(QString name, ComponentType type);
-    + int createCodeBlock();
-    + int createStruct(QString name);
-    + int createMember(int componentID);
-    + int createCustomMethod(int componentID);
-    + bool isComponentNameUsed(QString name);
-    + bool isObjectNameUsed(QString objectName);
-    + QString getEnumeratorNameById(int enumeratorID);
-    + void modifyMember(int componentID, int memberID, QString type, QString name);
-    + void modifyCustomMethod(int componentID, int customMethodID, QString header, QString body);
-    + void deleteComponent(int componentID);
-    + void deleteCodeBlock(int codeBlockID);
-    + void deleteStruct(int structID);
-    + void deleteMember(int componentID, int memberID);
-    + void deleteCustomMethod(int componentID, int customMethodID);
-    + void setObjectName(int componentID, QString objectName);
-    + void setItem(int componentID, QString item){components[componentID]->setItem(item);}
-    + void setValue(int componentID, QString value){components[componentID]->setValue(value);}
-    + void setOptimist(int componentID, bool optimist){components[componentID]->setOptimist(optimist);}
-    + void setCompare(int componentID, QString compare){components[componentID]->setCompare(compare);}
-    + void setEnumerator(int componentID, int enumeratorID);
-    + void setMethod(int componentID, MethodType methodType, QString methodBody);
-    + void setCode(int codeBlockID, QString code){codeblocks[codeBlockID]->setCode(code);}
-    + void setCompilerPath(QString path);
-    + void setCompilerArguments(QString path);
-    + void setMainIdOrder(QVector<int> ids){mainIdOrder = ids;}
-    + void run();
-    + void compile();
-    + void stopCompile();
-    + QString getCompileOutput(){return compileOutput;}
-    + QString getCompilerPath(){return compilerPath;}
-    + QStringList getCompilerArguments(){return compilerArguments;}
-    + QString getProjectName(){return projectName;}
-    + bool newProject();
-    + bool saveProject();
-    + void setProject(QString file){projectName = file;}
-    + void openProject();
+    - newID() : int
+    - loadConfig() : void
+    - generateMainSource() : QString
+    - replaceReference(QString codeString) : QString
+    - getReferenceSource(QString objectName) : QString
+    + Model(QObject *parent = nullptr)
+    + generateSource() : QString
+    + createComponent(QString name, ComponentType type) : int
+    + createCodeBlock() : int
+    + createStruct(QString name) : int
+    + createMember(int componentID) : int
+    + createCustomMethod(int componentID) : int
+    + isComponentNameUsed(QString name) : bool
+    + isObjectNameUsed(QString objectName) : bool
+    + getEnumeratorNameById(int enumeratorID) : QString
+    + modifyMember(int componentID, int memberID, QString type, QString name) : void
+    + modifyCustomMethod(int componentID, int customMethodID, QString header, QString body) : void
+    + deleteComponent(int componentID) : void
+    + deleteCodeBlock(int codeBlockID) : void
+    + deleteStruct(int structID) : void
+    + deleteMember(int componentID, int memberID) : void
+    + deleteCustomMethod(int componentID, int customMethodID) : void
+    + setUseInMain(int componentID, bool useInMain) : void
+    + setObjectName(int componentID, QString objectName) : void
+    + setItem(int componentID, QString item) : void
+    + setValue(int componentID, QString value) : void
+    + setOptimist(int componentID, bool optimist) : void
+    + setCompare(int componentID, QString compare) : void
+    + setEnumerator(int componentID, int enumeratorID) : void
+    + setMethod(int componentID, MethodType methodType, QString methodBody) : void
+    + setCode(int codeBlockID, QString code) : void
+    + setCompilerPath(QString path) : void
+    + setCompilerArguments(QString path) : void
+    + setMainIdOrder(QVector<int> ids) : void
+    + run() : void
+    + compile() : void
+    + stopCompile() : void
+    + getCompileOutput() : QString
+    + getCompilerPath() : QString
+    + getCompilerArguments() : QStringList
+    + getProjectName() : QString
+    + newProject() : bool
+    + saveProject() : bool
+    + setProject(QString file) : void
+    + openProject() : void
 .. <<signals>> ..
-    + void compilerPathNotSet();
-    + void haveCompileOutput(QString output);
-    + void compileProcessEnded();
-    + void needProjectNameForSave();
-    + void needProjectNameForOpen();
-    + void projectLoaded(const SaveData& data);
-    + void cleared();
+    + compilerPathNotSet() : void
+    + haveCompileOutput(QString output) : void
+    + compileProcessEnded() : void
+    + needProjectNameForSave() : void
+    + needProjectNameForOpen() : void
+    + projectLoaded(const SaveData& data) : void
+    + cleared() : void
 .. <<slots>> ..
-    - void compileFinished(int exitCode, QProcess::ExitStatus exitStatus);
-    - void compileError(QProcess::ProcessError error);
+    - compileFinished(int exitCode, QProcess::ExitStatus exitStatus) : void
+    - compileError(QProcess::ProcessError error) : void
 }
-
-enum ComponentType{
-    COUNTING
-    LINSEARCH
-    MAXSEARCH
-    SELECTION
-    SUMMATION
-    DEFAULT
-    ARRAY
-    INTERVAL
-    STRINGSTREAM
-    SEQINFILE
-}
-
-enum MethodType{
-    DESTRUCTOR
-    NEUTRAL
-    ADD
-    FUNC
-    COND
-    FIRST
-    WHILECOND
-    NEXT
-    END
-    CURRENT
-}
-
-class Member
-{
-    + int id;
-    + QString type;
-    + QString name;
-- -
-    + Member(){}
-    + Member(int id) : id(id), type(""), name(""){}
-    + Member(QString type, QString name) : type(type), name(name){}
-}
-
-class CustomMethod
-{
-    + QString header;
-    + QString body;
-    + int id;
-- -
-    + CustomMethod(){}
-    + CustomMethod(int id) : header(""), body(""), id(id) {}
-    + CustomMethod(QString header, QString body) : header(header), body(body){}
-}
-
-class Component
-{
-    - QString name;
-    - int id;
-    - QString objectName;
-    - ComponentType type;
-    - QString item;
-    - int enumeratorID;
-    - QString enumeratorObjectName;
-    - bool optimist;
-    - QString value;
-    - QString compare;
-    - QMap<MethodType,QString> methods;
-    - QMap<int,Member> members;
-    - QMap<int,CustomMethod> customMethods;
-
-    + Component(QString name, ComponentType type, int id);
-    + QString getSource() const;
-    + QString getSourceForMain() const;
-    + QString getSourceForObjectCreation() const;
-    + QString getName() const {return name;}
-    + int getID() const {return id;}
-    + QString getObjectName() const {return objectName;}
-    + ComponentType getType() const {return type;}
-    + QString getItem() const {return item;}
-    + int getEnumeratorID() const {return enumeratorID;}
-    + QString getEnumeratorObjectName() const {return enumeratorObjectName;}
-    + bool getOptimist() const {return optimist;}
-    + QString getValue() const {return value;}
-    + QString getCompare() const {return compare;}
-    + QMap<MethodType,QString> getMethods() const {return methods;}
-    + QMap<int,Member> getMembers() const {return members;}
-    + QMap<int,CustomMethod> getCustomMethods() const {return customMethods;}
-    + void setObjectName(QString objectName){this->objectName = objectName;}
-    + void setItem(QString item){this->item = item;}
-    + void setValue(QString value){this->value = value;}
-    + void setOptimist(bool optimist){this->optimist = optimist;}
-    + void setCompare(QString compare){this->compare = compare;}
-    + void setEnumerator(int enumeratorID, QString enumeratorObjectName);
-    + void setMethod(MethodType methodType, QString methodBody){methods[methodType] = methodBody;}
-    + void setMember(int id, QString type, QString name){members[id].type = type; members[id].name = name;}
-    + void createMember(int id){members[id] = Member(id);}
-    + void deleteMember(int id){members.remove(id);}
-    + void setCustomMethod(int id, QString header, QString body){customMethods[id].header = header; customMethods[id].body = body;}
-    + void createCustomMethod(int id){customMethods[id] = CustomMethod(id);}
-    + void deleteCustomMethod(int id){customMethods.remove(id);}
-    + void setMethods(QMap<MethodType,QString> methods){this->methods = methods;}
-    + void setMembers(QMap<int,Member> members){this->members = members;}
-    + void setCustomMethods(QMap<int,CustomMethod> customMethods){this->customMethods = customMethods;}
-}
-
-class CodeBlock
-{
-    - int id;
-    - QString code;
-
-    + CodeBlock(int id) : id(id){}
-    + QString getSource(){return code;}
-    + int getID() const {return id;}
-    + QString getCode(){return code;}
-    + void setCode(QString code){this->code = code;}
-}
-
-class Struct
-{
-    - QString name;
-    - int id;
-    - QMap<int,Member> members;
-    - QMap<int,CustomMethod> customMethods;
-
-    + Struct(QString name, int id) : name(name), id(id){}
-    + QString getSource();
-    + QString getName() const {return name;}
-    + int getID() const {return id;}
-    + QMap<int,Member> getMembers() const {return members;}
-    + QMap<int,CustomMethod> getCustomMethods() const {return customMethods;}
-    + void setMember(int id, QString type, QString name){members[id].type = type; members[id].name = name;}
-    + void createMember(int id){members[id] = Member(id);}
-    + void deleteMember(int id){members.remove(id);}
-    + void setCustomMethod(int id, QString header, QString body){customMethods[id].header = header; customMethods[id].body = body;}
-    + void createCustomMethod(int id){customMethods[id] = CustomMethod(id);}
-    + void deleteCustomMethod(int id){customMethods.remove(id);}
-    + void setMembers(QMap<int,Member> members){this->members = members;}
-    + void setCustomMethods(QMap<int,CustomMethod> customMethods){this->customMethods = customMethods;}
-}
-
-class SaveData
-{
-    + QString projectName;
-    + QMap<int,Component*> components;
-    + QMap<int,CodeBlock*> codeblocks;
-    + QMap<int,Struct*> structs;
-    + QVector<int> mainIdOrder;
-    + int lastID;
-
-    + SaveData(const QString, const QMap<int,Component*>, const QMap<int,CodeBlock*>, const QMap<int,Struct*>, const QVector<int>, const int)
-}
-
-Model .down.> Component
-Model .left.> CodeBlock
-Model .down.> Struct
-Model .right.> DataAccess
-Model .right.> ComponentType
-Model .right.> MethodType
-Model .right.> SaveData
-
-Component ..> ComponentType
-Component ..> MethodType
-Component ..> CustomMethod
-Component ..> Member
-
-'layout helpers
-'SaveData -down[hidden]-> CodeBlock
-'Struct -up[hidden]-> CodeBlock
-
-@enduml
-
-@startuml Model
-
-skinparam Monochrome true
-skinparam ClassAttributeIconSize 0
-skinparam linetype ortho
-hide circle
-hide enum methods
-
-class Model
-{
-    - QString projectName;
-    - QMap<int,Component*> components;
-    - QMap<int,CodeBlock*> codeblocks;
-    - QMap<int,Struct*> structs;
-    - QVector<int> mainIdOrder;
-    - int lastID;
-    - QString compilerPath;
-    - QStringList compilerArguments;
-    - bool compilerPathSet;
-    - QProcess* compileProcess;
-    - QString compileOutput;
-    - DataAccess dataAccess;
-    - QSettings* settings;
-- -
-    - int newID() {return ++lastID;}
-    - void loadConfig();
-    - QString generateMainSource();
-    - QString replaceReference(QString codeString);
-    - QString getReferenceSource(QString objectName);
-    + explicit Model(QObject *parent = nullptr);
-    + QString generateSource();
-    + int createComponent(QString name, ComponentType type);
-    + int createCodeBlock();
-    + int createStruct(QString name);
-    + int createMember(int componentID);
-    + int createCustomMethod(int componentID);
-    + bool isComponentNameUsed(QString name);
-    + bool isObjectNameUsed(QString objectName);
-    + QString getEnumeratorNameById(int enumeratorID);
-    + void modifyMember(int componentID, int memberID, QString type, QString name);
-    + void modifyCustomMethod(int componentID, int customMethodID, QString header, QString body);
-    + void deleteComponent(int componentID);
-    + void deleteCodeBlock(int codeBlockID);
-    + void deleteStruct(int structID);
-    + void deleteMember(int componentID, int memberID);
-    + void deleteCustomMethod(int componentID, int customMethodID);
-    + void setObjectName(int componentID, QString objectName);
-    + void setItem(int componentID, QString item){components[componentID]->setItem(item);}
-    + void setValue(int componentID, QString value){components[componentID]->setValue(value);}
-    + void setOptimist(int componentID, bool optimist){components[componentID]->setOptimist(optimist);}
-    + void setCompare(int componentID, QString compare){components[componentID]->setCompare(compare);}
-    + void setEnumerator(int componentID, int enumeratorID);
-    + void setMethod(int componentID, MethodType methodType, QString methodBody);
-    + void setCode(int codeBlockID, QString code){codeblocks[codeBlockID]->setCode(code);}
-    + void setCompilerPath(QString path);
-    + void setCompilerArguments(QString path);
-    + void setMainIdOrder(QVector<int> ids){mainIdOrder = ids;}
-    + void run();
-    + void compile();
-    + void stopCompile();
-    + QString getCompileOutput(){return compileOutput;}
-    + QString getCompilerPath(){return compilerPath;}
-    + QStringList getCompilerArguments(){return compilerArguments;}
-    + QString getProjectName(){return projectName;}
-    + bool newProject();
-    + bool saveProject();
-    + void setProject(QString file){projectName = file;}
-    + void openProject();
-.. <<signals>> ..
-    + void compilerPathNotSet();
-    + void haveCompileOutput(QString output);
-    + void compileProcessEnded();
-    + void needProjectNameForSave();
-    + void needProjectNameForOpen();
-    + void projectLoaded(const SaveData& data);
-    + void cleared();
-.. <<slots>> ..
-    - void compileFinished(int exitCode, QProcess::ExitStatus exitStatus);
-    - void compileError(QProcess::ProcessError error);
-}
-
-enum ComponentType{
-    COUNTING
-    LINSEARCH
-    MAXSEARCH
-    SELECTION
-    SUMMATION
-    DEFAULT
-    ARRAY
-    INTERVAL
-    STRINGSTREAM
-    SEQINFILE
-}
-
-enum MethodType{
-    DESTRUCTOR
-    NEUTRAL
-    ADD
-    FUNC
-    COND
-    FIRST
-    WHILECOND
-    NEXT
-    END
-    CURRENT
-}
-
-class Member
-{
-    + int id;
-    + QString type;
-    + QString name;
-- -
-    + Member(){}
-    + Member(int id) : id(id), type(""), name(""){}
-    + Member(QString type, QString name) : type(type), name(name){}
-}
-
-class CustomMethod
-{
-    + QString header;
-    + QString body;
-    + int id;
-- -
-    + CustomMethod(){}
-    + CustomMethod(int id) : header(""), body(""), id(id) {}
-    + CustomMethod(QString header, QString body) : header(header), body(body){}
-}
-
-class Component
-{
-    - QString name;
-    - int id;
-    - QString objectName;
-    - ComponentType type;
-    - QString item;
-    - int enumeratorID;
-    - QString enumeratorObjectName;
-    - bool optimist;
-    - QString value;
-    - QString compare;
-    - QMap<MethodType,QString> methods;
-    - QMap<int,Member> members;
-    - QMap<int,CustomMethod> customMethods;
-
-    + Component(QString name, ComponentType type, int id);
-    + QString getSource() const;
-    + QString getSourceForMain() const;
-    + QString getSourceForObjectCreation() const;
-    + QString getName() const {return name;}
-    + int getID() const {return id;}
-    + QString getObjectName() const {return objectName;}
-    + ComponentType getType() const {return type;}
-    + QString getItem() const {return item;}
-    + int getEnumeratorID() const {return enumeratorID;}
-    + QString getEnumeratorObjectName() const {return enumeratorObjectName;}
-    + bool getOptimist() const {return optimist;}
-    + QString getValue() const {return value;}
-    + QString getCompare() const {return compare;}
-    + QMap<MethodType,QString> getMethods() const {return methods;}
-    + QMap<int,Member> getMembers() const {return members;}
-    + QMap<int,CustomMethod> getCustomMethods() const {return customMethods;}
-    + void setObjectName(QString objectName){this->objectName = objectName;}
-    + void setItem(QString item){this->item = item;}
-    + void setValue(QString value){this->value = value;}
-    + void setOptimist(bool optimist){this->optimist = optimist;}
-    + void setCompare(QString compare){this->compare = compare;}
-    + void setEnumerator(int enumeratorID, QString enumeratorObjectName);
-    + void setMethod(MethodType methodType, QString methodBody){methods[methodType] = methodBody;}
-    + void setMember(int id, QString type, QString name){members[id].type = type; members[id].name = name;}
-    + void createMember(int id){members[id] = Member(id);}
-    + void deleteMember(int id){members.remove(id);}
-    + void setCustomMethod(int id, QString header, QString body){customMethods[id].header = header; customMethods[id].body = body;}
-    + void createCustomMethod(int id){customMethods[id] = CustomMethod(id);}
-    + void deleteCustomMethod(int id){customMethods.remove(id);}
-    + void setMethods(QMap<MethodType,QString> methods){this->methods = methods;}
-    + void setMembers(QMap<int,Member> members){this->members = members;}
-    + void setCustomMethods(QMap<int,CustomMethod> customMethods){this->customMethods = customMethods;}
-}
-
-class CodeBlock
-{
-    - int id;
-    - QString code;
-
-    + CodeBlock(int id) : id(id){}
-    + QString getSource(){return code;}
-    + int getID() const {return id;}
-    + QString getCode(){return code;}
-    + void setCode(QString code){this->code = code;}
-}
-
-class Struct
-{
-    - QString name;
-    - int id;
-    - QMap<int,Member> members;
-    - QMap<int,CustomMethod> customMethods;
-
-    + Struct(QString name, int id) : name(name), id(id){}
-    + QString getSource();
-    + QString getName() const {return name;}
-    + int getID() const {return id;}
-    + QMap<int,Member> getMembers() const {return members;}
-    + QMap<int,CustomMethod> getCustomMethods() const {return customMethods;}
-    + void setMember(int id, QString type, QString name){members[id].type = type; members[id].name = name;}
-    + void createMember(int id){members[id] = Member(id);}
-    + void deleteMember(int id){members.remove(id);}
-    + void setCustomMethod(int id, QString header, QString body){customMethods[id].header = header; customMethods[id].body = body;}
-    + void createCustomMethod(int id){customMethods[id] = CustomMethod(id);}
-    + void deleteCustomMethod(int id){customMethods.remove(id);}
-    + void setMembers(QMap<int,Member> members){this->members = members;}
-    + void setCustomMethods(QMap<int,CustomMethod> customMethods){this->customMethods = customMethods;}
-}
-
-class SaveData
-{
-    + QString projectName;
-    + QMap<int,Component*> components;
-    + QMap<int,CodeBlock*> codeblocks;
-    + QMap<int,Struct*> structs;
-    + QVector<int> mainIdOrder;
-    + int lastID;
-
-    + SaveData(const QString, const QMap<int,Component*>, const QMap<int,CodeBlock*>, const QMap<int,Struct*>, const QVector<int>, const int)
-}
-
-Model .down.> Component
-Model .left.> CodeBlock
-Model .down.> Struct
-Model .right.> DataAccess
-Model .right.> ComponentType
-Model .right.> MethodType
-Model .right.> SaveData
-
-Component ..> ComponentType
-Component ..> MethodType
-Component ..> CustomMethod
-Component ..> Member
-
 
 @enduml
 
 PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
 (GPL source distribution)
-Java Runtime: OpenJDK Runtime Environment
-JVM: OpenJDK 64-Bit Server VM
-Default Encoding: UTF-8
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: Cp1252
 Language: en
-Country: US
+Country: GB
 --></g></svg>

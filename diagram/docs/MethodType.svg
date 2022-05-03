@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="192px" preserveAspectRatio="none" style="width:101px;height:192px;background:#FFFFFF;" version="1.1" viewBox="0 0 101 192" width="101px" zoomAndPan="magnify"><defs><filter height="300%" id="fd60vv0qtjzf5" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[5e67de1afa87a34c5cf044797ba6a12f]
+class MethodType--><rect codeLine="7" fill="#F8F8F8" filter="url(#fd60vv0qtjzf5)" height="171.4531" id="MethodType" style="stroke:#383838;stroke-width:1.5;" width="80" x="7" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="66" x="14" y="24.457">MethodType</text><line style="stroke:#383838;stroke-width:1.5;" x1="8" x2="86" y1="32.0938" y2="32.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="68" x="13" y="47.5127">DESTRUCTOR</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="47" x="13" y="61.3486">NEUTRAL</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="22" x="13" y="75.1846">ADD</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="27" x="13" y="89.0205">FUNC</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="29" x="13" y="102.8564">COND</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="28" x="13" y="116.6924">FIRST</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="60" x="13" y="130.5283">WHILECOND</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="26" x="13" y="144.3643">NEXT</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="20" x="13" y="158.2002">END</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="47" x="13" y="172.0361">CURRENT</text><!--MD5=[ae40f698ce53fc307bc881cd7702c985]
+@startuml MethodType
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+hide circle
+hide enum methods
+
+enum MethodType{
+    DESTRUCTOR
+    NEUTRAL
+    ADD
+    FUNC
+    COND
+    FIRST
+    WHILECOND
+    NEXT
+    END
+    CURRENT
+}
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>

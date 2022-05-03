@@ -1,353 +1,419 @@
-@startuml View
+@startuml MainWindow
 
 skinparam Monochrome true
 skinparam ClassAttributeIconSize 0
-'skinparam groupInheritance 2
-skinparam linetype ortho
 hide circle
 hide enum methods
 
-class Model
-class Component
-enum ComponentType
-enum MethodType
-
-class MainWindow extends QMainWindow
+class MainWindow
 {
     - model : Model*
     - createComponentDialog : CreateComponentDialog*
     - settingsDialog : SettingsDialog*
     - menuBar : QMenuBar*
-    - QSplitter* centralSplitter
-    - QWidget* componentEditorWidget
-    - QVBoxLayout* componentEditorLayout
-    - QWidget* listSegmentWidget
-    - QVBoxLayout* listSegmentLayout
-    - QSplitter* buildSplitter
-    - QToolBar* componentEditorToolBar
-    - QToolBar* listSegmentToolBar
-    - QToolBar* buildToolBar
-    - QToolBox* toolBox
-    - QListWidget* listWidget
-    - QTextBrowser* sourceTextBrowser
-    - QTextBrowser* compileOutputBrowser
-    - QVector<ProcedureWidget*> procedureWidgets
-    - QVector<EnumeratorWidget*> enumeratorWidgets
-    - QVector<StructWidget*> structWidgets
-    - QAction* createComponentAction
-    - QAction* deleteComponentAction
-    - QAction* deleteListItemAction
-    - QAction* createCodeBlockAction
-    - QAction* generateAction
-    - QAction* runAction
-    - QAction* buildAction
-    - QAction* stopCompileAction
-    - QAction* settingsAction
-    - QAction* newProjectAction
-    - QAction* saveProjectAction
-    - QAction* loadProjectAction
+    - centralSplitter : QSplitter*
+    - componentEditorWidget : QWidget*
+    - componentEditorLayout : QVBoxLayout*
+    - listSegmentWidget : QWidget*
+    - listSegmentLayout : QVBoxLayout*
+    - buildSplitter : QSplitter*
+    - componentEditorToolBar : QToolBar*
+    - listSegmentToolBar : QToolBar*
+    - buildToolBar : QToolBar*
+    - toolBox : QToolBox*
+    - listWidget : QListWidget*
+    - sourceTextBrowser : QTextBrowser*
+    - compileOutputBrowser : QTextBrowser*
+    - procedureWidgets : QVector<ProcedureWidget*>
+    - enumeratorWidgets : QVector<EnumeratorWidget*>
+    - structWidgets : QVector<StructWidget*>
+    - createComponentAction : QAction*
+    - deleteComponentAction : QAction*
+    - deleteListItemAction : QAction*
+    - createCodeBlockAction : QAction*
+    - generateAction : QAction*
+    - runAction : QAction*
+    - buildAction : QAction*
+    - stopCompileAction : QAction*
+    - settingsAction : QAction*
+    - newProjectAction : QAction*
+    - saveProjectAction : QAction*
+    - loadProjectAction : QAction*
 --
-    + MainWindow(QWidget *parent = nullptr)
+    + MainWindow(QWidget *parent)
     + ~MainWindow()
-    - void initDialogs()
-    - void initActions()
-    - void initMenuBar()
-    - void initComponentEditorSegment()
-    - void initListSegment()
-    - void initSourceSegment()
-    - bool showDiscardWarning()
+    - initDialogs() : void
+    - initActions() : void
+    - initMenuBar() : void
+    - initComponentEditorSegment() : void
+    - initListSegment() : void
+    - initSourceSegment() : void
+    - showDiscardWarning() : bool
 .. <<slots>> ..
-    - void showCreateComponentDialog()
-    - void createComponent()
-    - void deleteComponent()
-    - void deleteListItem()
-    - void createCodeBlock()
-    - void showSettingsDialog()
-    - void updateSettings()
-    - void generateSource()
-    - void modelRun()
-    - void modelCompile()
-    - void modelStopCompile()
-    - void showCompileOutput(QString output)
-    - void allowCompile()
-    - void showCompilerPathWarning()
-    - void listItemChanged(QListWidgetItem* item)
-    - void changeSelectedComponent()
-    - void newProject()
-    - void loadProject()
-    - void saveProject()
-    - void showProjectSaveDialog()
-    - void showProjectOpenDialog()
-    - void refresh(const SaveData& data)
-    - void clear()
+    - showCreateComponentDialog() : void
+    - createComponent() : void
+    - deleteComponent() : void
+    - addListItem(QString componentName, int componentID) : void
+    - deleteListItem(int id) : void
+    - deleteListItem() : void
+    - createCodeBlock() : void
+    - showSettingsDialog() : void
+    - updateSettings() : void
+    - generateSource() : void
+    - modelRun() : void
+    - modelCompile() : void
+    - modelStopCompile() : void
+    - showCompileOutput(QString output) : void
+    - allowCompile() : void
+    - showCompilerPathWarning() : void
+    - listItemChanged(QListWidgetItem* item) : void
+    - changeSelectedComponent() : void
+    - newProject() : void
+    - loadProject() : void
+    - saveProject() : void
+    - showProjectSaveDialog() : void
+    - showProjectOpenDialog() : void
+    - refresh(const SaveData& data) : void
+    - clear() : void
 }
 
-class ComponentWidget extends QWidget
+@enduml
+
+@startuml ComponentWidget
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+hide circle
+hide enum methods
+
+class ComponentWidget
 {
-    - QString name;
-    - bool objectNameApproved;
-    - QVector<MemberWidget*> members;
-    - QVector<CustomMethodWidget*> customMethods;
-    - QLabel* nameLabel;
-    - QLabel* parentClassLabel;
-    - QVBoxLayout* memberLayout;
-    - QVBoxLayout* customMethodLayout;
-    # ComponentType type;
-    # const int id;
-    # Model* model;
-    # QGridLayout* gridlayout;
-    # QVBoxLayout* vboxlayout;
-    # QLabel* objectNameLabel;
-    # QLineEdit* objectNameLineEdit;
-    # QLabel* itemTypeLabel;
-    # QLineEdit* itemTypeLineEdit;
-    # QLabel* destructorLabel;
-    # PopUpTextEdit* destructorTextEdit;
+    - name : QString
+    - objectNameApproved : bool
+    - members : QVector<MemberWidget*>
+    - customMethods : QVector<CustomMethodWidget*>
+    - nameLabel : QLabel*
+    - parentClassLabel : QLabel*
+    - memberLayout : QVBoxLayout*
+    - customMethodLayout : QVBoxLayout*
+    # type : ComponentType
+    # id : const int
+    # model : Model*
+    # gridlayout : QGridLayout*
+    # vboxlayout : QVBoxLayout*
+    # objectNameLabel : QLabel*
+    # objectNameLineEdit : QLineEdit*
+    # itemTypeLabel : QLabel*
+    # itemTypeLineEdit : QLineEdit*
+    # destructorLabel : QLabel*
+    # destructorTextEdit : PopUpTextEdit*
 --
-    - void initSegments();
-    # bool checkRequiredBase();
-    # void connectSignals();
-    # void createMember(int id, QString type = "", QString name = "");
-    # void createCustomMethod(int id, QString header = "", QString body = "");
-    # void createMembers(QMap<int,Member> members);
-    # void createCustomMethods(QMap<int,CustomMethod> customMethods);
-    + explicit ComponentWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);
-    + QString getName(){return name;}
-    + ComponentType getType(){return type;}
-    + int getID(){return id;}
-    + virtual bool checkRequired() = 0;
+    - initSegments() : void
+    # checkRequiredBase() : bool
+    # connectSignals() : void
+    # createMember(int id, QString type, QString name) : void
+    # createCustomMethod(int id, QString header, QString body) : void
+    # createMembers(QMap<int,Member> members) : void
+    # createCustomMethods(QMap<int,CustomMethod> customMethods) : void
+    + ComponentWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent)
+    + getName() : QString
+    + getType() : ComponentType
+    + getID() : int
+    + checkRequired() : bool {virtual}
 .. <<slots>> ..
-    - void onAddNewMemberClicked();
-    - void onAddNewMethodClicked();
-    - void memberChanged();
-    - void methodChanged();
-    - void objectNameChanged();
-    - void itemTypeChanged();
-    - void deleteMember();
-    - void deleteMethod();
-    - void popUpTextChanged();
+    - onAddNewMemberClicked() : void
+    - onAddNewMethodClicked() : void
+    - memberChanged() : void
+    - methodChanged() : void
+    - objectNameChanged() : void
+    - itemTypeChanged() : void
+    - deleteMember() : void
+    - deleteMethod() : void
+    - popUpTextChanged() : void
 }
 
-class EnumeratorWidget extends ComponentWidget
-{
-    - void initSegments();
-    - void connectSignals();
-    - QLabel* firstLabel;
-    - PopUpTextEdit* firstTextEdit;
-    - QLabel* nextLabel;
-    - PopUpTextEdit* nextTextEdit;
-    - QLabel* endLabel;
-    - PopUpTextEdit* endTextEdit;
-    - QLabel* currentLabel;
-    - PopUpTextEdit* currentTextEdit;
+@enduml
 
-    + explicit EnumeratorWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);
-    + EnumeratorWidget(const Component& component, Model* model, QWidget *parent = nullptr);
-    + bool checkRequired();
+@startuml EnumeratorWidget
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+hide circle
+hide enum methods
+
+class EnumeratorWidget
+{
+    - initSegments() : void
+    - connectSignals() : void
+    - firstLabel : QLabel*
+    - firstTextEdit : PopUpTextEdit*
+    - nextLabel : QLabel*
+    - nextTextEdit : PopUpTextEdit*
+    - endLabel : QLabel*
+    - endTextEdit : PopUpTextEdit*
+    - currentLabel : QLabel*
+    - currentTextEdit : PopUpTextEdit*
+
+    + EnumeratorWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent)
+    + EnumeratorWidget(const Component& component, Model* model, QWidget *parent)
+    + checkRequired() : bool
 }
 
-class ProcedureWidget extends ComponentWidget
+@enduml
+
+@startuml ProcedureWidget
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+hide circle
+hide enum methods
+
+class ProcedureWidget
 {
-    - void initSegments();
-    - void connectSignals();
-    - QLabel* enorLabel;
-    - QComboBox* enorComboBox;
-    - QLabel* optimistLabel;
-    - QCheckBox* optimistCheckBox;
-    - QLabel* valueLabel;
-    - QLineEdit* valueLineEdit;
-    - QLabel* compareLabel;
-    - QRadioButton* greaterRadioButton;
-    - QRadioButton* lessRadioButton;
-    - QLabel* neutralLabel;
-    - PopUpTextEdit* neutralTextEdit;
-    - QLabel* addLabel;
-    - PopUpTextEdit* addTextEdit;
-    - QLabel* funcLabel;
-    - PopUpTextEdit* funcTextEdit;
-    - QLabel* condLabel;
-    - PopUpTextEdit* condTextEdit;
-    - QLabel* firstLabel;
-    - PopUpTextEdit* firstTextEdit;
-    - QLabel* whileCondLabel;
-    - PopUpTextEdit* whileCondTextEdit;
+    - useInMainLabel : QLabel*
+    - useInMainCheckBox : QCheckBox*
+    - enorLabel : QLabel*
+    - enorComboBox : QComboBox*
+    - optimistLabel : QLabel*
+    - optimistCheckBox : QCheckBox*
+    - valueLabel : QLabel*
+    - valueLineEdit : QLineEdit*
+    - compareLabel : QLabel*
+    - greaterRadioButton : QRadioButton*
+    - lessRadioButton : QRadioButton*
+    - neutralLabel : QLabel*
+    - neutralTextEdit : PopUpTextEdit*
+    - addLabel : QLabel*
+    - addTextEdit : PopUpTextEdit*
+    - funcLabel : QLabel*
+    - funcTextEdit : PopUpTextEdit*
+    - condLabel : QLabel*
+    - condTextEdit : PopUpTextEdit*
+    - firstLabel : QLabel*
+    - firstTextEdit : PopUpTextEdit*
+    - whileCondLabel : QLabel*
+    - whileCondTextEdit : PopUpTextEdit*
 --
-    + explicit ProcedureWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent = nullptr);
-    + ProcedureWidget(const Component& component, Model* model, QWidget *parent = nullptr);
-    + void addEnumeratorChoice(QString enumeratorName, int enumeratorID);
-    + void removeEnumeratorChoice(int enumeratorID);
-    + void selectEnumerator(QString enumeratorName);
-    + bool checkRequired();
+    - initSegments() : void
+    - connectSignals() : void
+    + ProcedureWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent)
+    + ProcedureWidget(const Component& component, Model* model, QWidget *parent)
+    + addEnumeratorChoice(QString enumeratorName, int enumeratorID) : void
+    + removeEnumeratorChoice(int enumeratorID) : void
+    + selectEnumerator(QString enumeratorName) : void
+    + checkRequired() : bool
 .. <<slots>> ..
-    void enorChanged(int index);
-    void optimistChanged();
-    void valueChanged();
-    void compareChanged();
+    - useInMainChanged() : void
+    - enorChanged(int index) : void
+    - optimistChanged() : void
+    - valueChanged() : void
+    - compareChanged() : void
+.. <<signals>> ..
+    + useInMainChecked(QString componentName, int componentID) : void
+    + useInMainUnchecked(int componentID) : void
 }
 
-class StructWidget extends QWidget
+@enduml
+
+@startuml StructWidget
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+hide circle
+hide enum methods
+
+class StructWidget
 {
-    - QString name;
-    - QVector<MemberWidget*> members;
-    - QVector<CustomMethodWidget*> customMethods;
-    - QLabel* nameLabel;
-    - QLabel* structLabel;
-    - QVBoxLayout* memberLayout;
-    - QVBoxLayout* customMethodLayout;
-    # const int id;
-    # Model* model;
-    # QGridLayout* gridlayout;
-    # QVBoxLayout* vboxlayout;
+    - name : QString
+    - members : QVector<MemberWidget*>
+    - customMethods : QVector<CustomMethodWidget*>
+    - nameLabel : QLabel*
+    - structLabel : QLabel*
+    - memberLayout : QVBoxLayout*
+    - customMethodLayout : QVBoxLayout*
+    # id : const int
+    # model : Model*
+    # gridlayout : QGridLayout*
+    # vboxlayout : QVBoxLayout*
 --
-    + explicit StructWidget(int id, QString name, Model* model, QWidget *parent = nullptr);
-    + StructWidget(const Struct& _struct, Model* model, QWidget *parent = nullptr);
-    + QString getName(){return name;}
-    + int getID(){return id;}
-    - void initSegments();
-    - void createMember(int id, QString type = "", QString name = "");
-    - void createCustomMethod(int id, QString header = "", QString body = "");
-    - void createMembers(QMap<int,Member> members);
-    - void createCustomMethods(QMap<int,CustomMethod> customMethods);
+    + StructWidget(int id, QString name, Model* model, QWidget *parent)
+    + StructWidget(const Struct& _struct, Model* model, QWidget *parent)
+    + getName() : QString
+    + getID() : int
+    - initSegments() : void
+    - createMember(int id, QString type, QString name) : void
+    - createCustomMethod(int id, QString header, QString body) : void
+    - createMembers(QMap<int,Member> members) : void
+    - createCustomMethods(QMap<int,CustomMethod> customMethods) : void
 .. <<slots>> ..
-    void onAddNewMemberClicked();
-    void onAddNewMethodClicked();
-    void memberChanged();
-    void methodChanged();
-    void deleteMember();
-    void deleteMethod();
+    - onAddNewMemberClicked() : void
+    - onAddNewMethodClicked() : void
+    - memberChanged() : void
+    - methodChanged() : void
+    - deleteMember() : void
+    - deleteMethod() : void
 }
+
+@enduml
+
+@startuml CreateComponentDialogMode
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+hide circle
+hide enum methods
 
 enum CreateComponentDialogMode{
     PROCEDURE
     ENUMERATOR
 }
 
-class CreateComponentDialog extends QDialog
+@enduml
+
+@startuml CreateComponentDialog
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+hide circle
+hide enum methods
+
+class CreateComponentDialog
 {
-    - Model* model;
-    - QPushButton* okButton;
-    - QPushButton* cancelButton;
-    - QLineEdit* nameLineEdit;
-    - QComboBox* componentTypeSelect;
-    - QLabel* errorLabel;
+    - model : Model*
+    - okButton : QPushButton*
+    - cancelButton : QPushButton*
+    - nameLineEdit : QLineEdit*
+    - componentTypeSelect : QComboBox*
+    - errorLabel : QLabel*
 --
-    + explicit CreateComponentDialog(Model* model);
-    + QString getName(){return nameLineEdit->text();}
-    + QVariant getComponent(){return componentTypeSelect->currentData();}
-    + void clear();    
+    + CreateComponentDialog(Model* model);
+    + getName() : QString
+    + getComponent() : QVariant
+    + clear() : void
 .. <<slots>> ..
-    - void wantToAccept();
+    - wantToAccept() : void
 }
 
-class CustomMethodWidget extends QWidget
+@enduml
+
+@startuml CustomMethodWidget
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+hide circle
+hide enum methods
+
+class CustomMethodWidget
 {
-    - const int id;
-    - QLineEdit* headerLineEdit;
-    - PopUpTextEdit* bodyPopUpTextEdit;
-    - QPushButton* deleteButton;
-    - QVBoxLayout* hboxlayout;
+    - id : const int 
+    - headerLineEdit : QLineEdit*
+    - bodyPopUpTextEdit : PopUpTextEdit*
+    - deleteButton : QPushButton*
+    - hboxlayout : QHBoxLayout*
+    - vboxlayout : QVBoxLayout*
 --
-    + explicit CustomMethodWidget(int id, QString header = "", QString body = "", QWidget *parent = nullptr);
-    + QString getHeader(){return header->text();}
-    + QString getBody(){return body->toPlainText();}
-    + int getID(){return id;}
+    + CustomMethodWidget(int id, QString header, QString body, QWidget *parent)
+    + getHeader() : QString
+    + getBody() : QString
+    + getID() : int
 .. <<signals>> ..
-    + void edited();
-    + void deleteMe();
+    + edited() : void
+    + deleteMe() : void
 }
 
-class MemberWidget extends QWidget
+@enduml
+
+@startuml MemberWidget
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+hide circle
+hide enum methods
+
+class MemberWidget
 {
-    - const int id;
-    - QLineEdit* typeLineEdit;
-    - QLineEdit* nameLineEdit;
-    - QPushButton* deleteButton;
-    - QHBoxLayout* hboxlayout;
+    - id : const int
+    - typeLineEdit : QLineEdit*
+    - nameLineEdit : QLineEdit*
+    - deleteButton : QPushButton*
+    - hboxlayout : QHBoxLayout*
 --
-    + explicit MemberWidget(const int id, QWidget *parent = nullptr);
-    + MemberWidget(const int id, QString type, QString name, QWidget *parent = nullptr);
-    + QString getType(){return typeLineEdit->text();}
-    + QString getName(){return nameLineEdit->text();}
-    + int getID(){return id;}
+    + MemberWidget(const int id, QWidget *parent)
+    + MemberWidget(const int id, QString type, QString name, QWidget *parent)
+    + getType() : QString
+    + getName() : QString
+    + getID() : int
 .. <<signals>> ..
-    void edited();
-    void deleteMe();
+    - edited() : void
+    - deleteMe() : void
 }
 
-class PopUpTextEdit extends QTextBrowser
+@enduml
+
+@startuml PopUpTextEdit
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+hide circle
+hide enum methods
+
+class PopUpTextEdit
 {
-    - MethodType methodType;
-    - TextInputDialog* inputDialog;
+    - methodType : MethodType
+    - inputDialog : TextInputDialog*
 --
-    + PopUpTextEdit();
-    + PopUpTextEdit(MethodType methodType) : PopUpTextEdit(){this->methodType=methodType;}
-    + MethodType getMethodType(){return methodType;}
-    # void focusInEvent(QFocusEvent *e) override;
+    + PopUpTextEdit()
+    + PopUpTextEdit(MethodType methodType)
+    + getMethodType() : MethodType
+    # focusInEvent(QFocusEvent *e) : void {override}
 .. <<slots>> ..
-    - void getTextFromInputDialog();
+    - getTextFromInputDialog() : void
 .. <<signals>> ..
-    + void textChanged();
+    + textChanged() : void
 }
 
-class SettingsDialog extends QDialog
-{
-    - QPushButton* okButton;
-    - QPushButton* cancelButton;
-    - QLineEdit* compilerPathLineEdit;
-    - QLineEdit* argumentsLineEdit;
+@enduml
 
-    + explicit SettingsDialog();
-    + QString getCompilerPath(){return compilerPathLineEdit->text();}
-    + QString getArguments(){return argumentsLineEdit->text();}
-    + void setCompilerPath(QString compilerPath){compilerPathLineEdit->setText(compilerPath);}
-    + void setArguments(QString compilerArguments){argumentsLineEdit->setText(compilerArguments);}
+@startuml SettingsDialog
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+hide circle
+hide enum methods
+
+class SettingsDialog
+{
+    - okButton : QPushButton*
+    - cancelButton : QPushButton*
+    - compilerPathLineEdit : QLineEdit*
+    - argumentsLineEdit : QLineEdit*
+
+    + SettingsDialog()
+    + getCompilerPath() : QString
+    + getArguments() : QString
+    + setCompilerPath(QString compilerPath) : void
+    + setArguments(QString compilerArguments) : void
 }
 
-class TextInputDialog extends QDialog
+@enduml
+
+@startuml TextInputDialog
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+hide circle
+hide enum methods
+
+class TextInputDialog
 {
-    - QTextEdit* textEdit;
-    - QPushButton* saveButton;
-    - QPushButton* cancelButton;
+    - textEdit : QTextEdit*
+    - saveButton : QPushButton*
+    - cancelButton : QPushButton*
 --
     - using QDialog::exec;
-    + explicit TextInputDialog();
-    + QString getText(){return textEdit->toPlainText();}
-    + void exec(QString text){textEdit->setText(text); exec();}
+    + TextInputDialog();
+    + getText() : QString
+    + exec(QString text) : void
 }
-
-MainWindow ..> Model
-MainWindow .up.> CreateComponentDialog
-MainWindow .up.> SettingsDialog
-MainWindow .up.> TextInputDialog
-MainWindow .left.> EnumeratorWidget
-MainWindow .left.> ProcedureWidget
-MainWindow .left.> StructWidget
-
-ComponentWidget ..> MemberWidget
-ComponentWidget ..> CustomMethodWidget
-ComponentWidget ..> Model
-ComponentWidget ..> ComponentType
-ComponentWidget ..> PopUpTextEdit
-
-EnumeratorWidget ..> PopUpTextEdit
-EnumeratorWidget ..> Model
-EnumeratorWidget ..> ComponentType
-EnumeratorWidget ..> Component
-
-ProcedureWidget ..> PopUpTextEdit
-ProcedureWidget ..> Model
-ProcedureWidget ..> ComponentType
-ProcedureWidget ..> Component
-
-StructWidget ..> MemberWidget
-StructWidget ..> CustomMethodWidget
-StructWidget ..> Model
-
-CustomMethodWidget ..> PopUpTextEdit
-
-PopUpTextEdit ..> MethodType
-
-CreateComponentDialog .up.> CreateComponentDialogMode
-CreateComponentDialog ..> Model
 
 @enduml

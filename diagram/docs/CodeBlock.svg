@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="158px" preserveAspectRatio="none" style="width:179px;height:158px;background:#FFFFFF;" version="1.1" viewBox="0 0 179 158" width="179px" zoomAndPan="magnify"><defs><filter height="300%" id="f16ymd7p6lbgbk" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[1e7e2556068960ccc5ff0e8b9ae795bf]
+class CodeBlock--><rect codeLine="7" fill="#F8F8F8" filter="url(#f16ymd7p6lbgbk)" height="137.9453" id="CodeBlock" style="stroke:#383838;stroke-width:1.5;" width="158" x="7" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="60" x="56" y="24.457">CodeBlock</text><line style="stroke:#383838;stroke-width:1.5;" x1="8" x2="164" y1="32.0938" y2="32.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="32" x="13" y="47.5127">-id : int</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="73" x="13" y="61.3486">-code : QString</text><line style="stroke:#383838;stroke-width:1.5;" x1="8" x2="164" y1="67.7656" y2="67.7656"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="87" x="13" y="83.1846">+CodeBlock(int id)</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="109" x="13" y="97.0205">+getSource() : QString</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="88" x="13" y="110.8564">+getID() const : int</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="99" x="13" y="124.6924">+getCode() : QString</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="146" x="13" y="138.5283">+setCode(QString code) : void</text><!--MD5=[076f2b96381225c5111daab9fcd4c153]
+@startuml CodeBlock
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+hide circle
+hide enum methods
+
+class CodeBlock
+{
+    - id : int
+    - code : QString
+
+    + CodeBlock(int id)
+    + getSource() : QString
+    + getID() const : int
+    + getCode() : QString
+    + setCode(QString code) : void
+}
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>

@@ -1,0 +1,16 @@
+@startuml DataAccess
+
+skinparam Monochrome true
+skinparam ClassAttributeIconSize 0
+hide circle
+hide enum methods
+
+class DataAccess
+{
+    + writeSource(QString source) : bool
+    + saveProject(SaveData data) : bool
+    + loadProject(QString projectName) : SaveData
+    + DataAccess()
+}
+
+@enduml
