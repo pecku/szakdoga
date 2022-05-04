@@ -156,3 +156,8 @@ void ComponentWidget::popUpTextChanged(){
     PopUpTextEdit* popUpTextEdit = qobject_cast<PopUpTextEdit*>(sender());
     model->setMethod(this->id,popUpTextEdit->getMethodType(),popUpTextEdit->toPlainText());
 }
+
+void ComponentWidget::constructorParameterChanged(){
+    QLineEdit* lineEdit = qobject_cast<QLineEdit*>(sender());
+    model->setConstructorParameter(this->id,lineEdit->text());
+}

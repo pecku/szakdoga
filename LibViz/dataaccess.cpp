@@ -56,6 +56,7 @@ bool DataAccess::saveProject(SaveData data){
                     xmlWriter.writeTextElement("useInMain", component->getUseInMain() ? "true" : "false");
                     xmlWriter.writeTextElement("value", component->getValue());
                     xmlWriter.writeTextElement("compare", component->getCompare());
+                    xmlWriter.writeTextElement("constructorParameter", component->getConstructorParameter());
                     xmlWriter.writeStartElement("members");
                         foreach(Member member, component->getMembers()){
                             xmlWriter.writeStartElement("member");
@@ -172,6 +173,7 @@ SaveData DataAccess::loadProject(QString projectName){
                                         bool useInMain = false;
                                         QString value = "";
                                         QString compare = "";
+                                        QString constructorParameter = "";
                                         QMap<MethodType,QString> methods;
                                         QMap<int,Member> members;
                                         QMap<int,CustomMethod> customMethods;
@@ -221,6 +223,10 @@ SaveData DataAccess::loadProject(QString projectName){
                                                 if(xmlReader.name().toString() == "compare"){
                                                     xmlReader.readNext();
                                                     compare = xmlReader.text().toString();
+                                                }
+                                                if(xmlReader.name().toString() == "constructorParameter"){
+                                                    xmlReader.readNext();
+                                                    constructorParameter = xmlReader.text().toString();
                                                 }
                                                 if(xmlReader.name().toString() == "methods"){
                                                     xmlReader.readNext();
@@ -372,6 +378,7 @@ SaveData DataAccess::loadProject(QString projectName){
                                             component->setUseInMain(useInMain);
                                             component->setValue(value);
                                             component->setCompare(compare);
+                                            component->setConstructorParameter(constructorParameter);
                                             component->setMethods(methods);
                                             component->setMembers(members);
                                             component->setCustomMethods(customMethods);

@@ -104,6 +104,7 @@ private:
     bool optimist;
     QString value;
     QString compare;
+    QString constructorParameter;
     QMap<MethodType,QString> methods;
     QMap<int,Member> members;
     QMap<int,CustomMethod> customMethods;
@@ -124,6 +125,7 @@ public:
     bool getOptimist() const {return optimist;}
     QString getValue() const {return value;}
     QString getCompare() const {return compare;}
+    QString getConstructorParameter() const {return constructorParameter;}
     QMap<MethodType,QString> getMethods() const {return methods;}
     QMap<int,Member> getMembers() const {return members;}
     QMap<int,CustomMethod> getCustomMethods() const {return customMethods;}
@@ -145,6 +147,7 @@ public:
     void setMethods(QMap<MethodType,QString> methods){this->methods = methods;}
     void setMembers(QMap<int,Member> members){this->members = members;}
     void setCustomMethods(QMap<int,CustomMethod> customMethods){this->customMethods = customMethods;}
+    void setConstructorParameter(QString constructorParameter){this->constructorParameter = constructorParameter;}
 };
 
 class CodeBlock{

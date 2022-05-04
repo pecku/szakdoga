@@ -41,6 +41,7 @@ public:
     void setCompare(int componentID, QString compare){components[componentID]->setCompare(compare);}
     void setEnumerator(int componentID, int enumeratorID);
     void setMethod(int componentID, MethodType methodType, QString methodBody);
+    void setConstructorParameter(int componentID, QString constructorParameter){components[componentID]->setConstructorParameter(constructorParameter);}
 
     void setCode(int codeBlockID, QString code){codeblocks[codeBlockID]->setCode(code);}
 

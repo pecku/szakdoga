@@ -66,6 +66,7 @@ private slots:
     void deleteMember();
     void deleteMethod();
     void popUpTextChanged();
+    void constructorParameterChanged();
 
 signals:
 

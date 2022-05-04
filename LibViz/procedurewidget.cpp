@@ -55,6 +55,8 @@ void ProcedureWidget::initSegments(){
     gridlayout->addWidget(enorLabel,++gridlayoutIndex,0);
     gridlayout->addWidget(enorComboBox,gridlayoutIndex,1);
 
+    constructorParameterLabel = nullptr;
+    constructorParameterLineEdit = nullptr;
     optimistLabel = nullptr;
     optimistCheckBox = nullptr;
     valueLabel = nullptr;
@@ -68,6 +70,13 @@ void ProcedureWidget::initSegments(){
     neutralTextEdit = nullptr;
     addLabel = nullptr;
     addTextEdit = nullptr;
+
+    if(type == SUMMATION){
+        constructorParameterLabel = new QLabel("Constructor parameter:");
+        constructorParameterLineEdit = new QLineEdit();
+        gridlayout->addWidget(constructorParameterLabel,++gridlayoutIndex,0);
+        gridlayout->addWidget(constructorParameterLineEdit,gridlayoutIndex,1);
+    }
 
     if(type == LINSEARCH){
         optimistLabel = new QLabel("Optimist:");
@@ -134,6 +143,7 @@ void ProcedureWidget::initSegments(){
 void ProcedureWidget::connectSignals(){
     connect(useInMainCheckBox,SIGNAL(stateChanged(int)),this,SLOT(useInMainChanged()));
     connect(enorComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(enorChanged(int)));
+    if(constructorParameterLineEdit != nullptr) connect(constructorParameterLineEdit,SIGNAL(editingFinished()),this,SLOT(constructorParameterChanged()));
     if(optimistCheckBox != nullptr) connect(optimistCheckBox,SIGNAL(stateChanged(int)),this,SLOT(optimistChanged()));
     if(valueLineEdit != nullptr) connect(valueLineEdit,SIGNAL(editingFinished()),this,SLOT(valueChanged()));
     if(greaterRadioButton != nullptr) connect(greaterRadioButton,SIGNAL(toggled(bool)),this,SLOT(compareChanged()));

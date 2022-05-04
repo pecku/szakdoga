@@ -2,6 +2,7 @@
 
 Component::Component(QString name, ComponentType type, int id) : name(name), id(id), type(type){
     enumeratorID = -1;
+    constructorParameter = "";
     if(type == DEFAULT || type == ARRAY || type == INTERVAL || type == STRINGSTREAM || type == SEQINFILE){
         useInMain = false;
     }else{
@@ -89,7 +90,11 @@ QString Component::getSourceForObjectCreation() const{
     QString source;
     QTextStream ts(&source);
 
-    ts << name << " " << objectName << ";";
+    ts << name << " " << objectName;
+    if(constructorParameter != ""){
+        ts << "(" << constructorParameter << ")";
+    }
+    ts << ";";
 
     return source;
 }

@@ -14,6 +14,7 @@ EnumeratorWidget::EnumeratorWidget(const Component& component, Model* model, QWi
     QMap<MethodType,QString> methods = component.getMethods();
     objectNameLineEdit->setText(component.getObjectName());
     itemTypeLineEdit->setText(component.getItem());
+    if(constructorParameterLineEdit != nullptr) constructorParameterLineEdit->setText(component.getConstructorParameter());
     if(firstTextEdit != nullptr) firstTextEdit->setText(methods[FIRST]);
     if(nextTextEdit != nullptr) nextTextEdit->setText(methods[NEXT]);
     if(endTextEdit != nullptr) endTextEdit->setText(methods[END]);
@@ -27,6 +28,10 @@ EnumeratorWidget::EnumeratorWidget(const Component& component, Model* model, QWi
 }
 
 void EnumeratorWidget::initSegments(){
+    int gridlayoutIndex = 2;
+
+    constructorParameterLabel = nullptr;
+    constructorParameterLineEdit = nullptr;
     firstLabel = nullptr;
     firstTextEdit = nullptr;
     nextLabel = nullptr;
@@ -36,30 +41,39 @@ void EnumeratorWidget::initSegments(){
     currentLabel = nullptr;
     currentTextEdit = nullptr;
 
+
+    if(type != DEFAULT){
+        constructorParameterLabel = new QLabel("Constructor parameter:");
+        constructorParameterLineEdit = new QLineEdit();
+        gridlayout->addWidget(constructorParameterLabel,gridlayoutIndex,0);
+        gridlayout->addWidget(constructorParameterLineEdit,gridlayoutIndex,1);
+    }
+
     if(type != SEQINFILE){
         firstLabel = new QLabel("First:");
         firstTextEdit = new PopUpTextEdit(FIRST);
-        gridlayout->addWidget(firstLabel,2,0);
-        gridlayout->addWidget(firstTextEdit,2,1);
+        gridlayout->addWidget(firstLabel,++gridlayoutIndex,0);
+        gridlayout->addWidget(firstTextEdit,gridlayoutIndex,1);
 
         nextLabel = new QLabel("Next:");
         nextTextEdit = new PopUpTextEdit(NEXT);
-        gridlayout->addWidget(nextLabel,3,0);
-        gridlayout->addWidget(nextTextEdit,3,1);
+        gridlayout->addWidget(nextLabel,++gridlayoutIndex,0);
+        gridlayout->addWidget(nextTextEdit,gridlayoutIndex,1);
 
         endLabel = new QLabel("End:");
         endTextEdit = new PopUpTextEdit(END);
-        gridlayout->addWidget(endLabel,4,0);
-        gridlayout->addWidget(endTextEdit,4,1);
+        gridlayout->addWidget(endLabel,++gridlayoutIndex,0);
+        gridlayout->addWidget(endTextEdit,gridlayoutIndex,1);
 
         currentLabel = new QLabel("Current:");
         currentTextEdit = new PopUpTextEdit(CURRENT);
-        gridlayout->addWidget(currentLabel,5,0);
-        gridlayout->addWidget(currentTextEdit,5,1);
+        gridlayout->addWidget(currentLabel,++gridlayoutIndex,0);
+        gridlayout->addWidget(currentTextEdit,gridlayoutIndex,1);
     }
 }
 
 void EnumeratorWidget::connectSignals(){
+    if(constructorParameterLineEdit != nullptr) connect(constructorParameterLineEdit,SIGNAL(editingFinished()),this,SLOT(constructorParameterChanged()));
     if(firstTextEdit != nullptr) connect(firstTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
     if(nextTextEdit != nullptr) connect(nextTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
     if(endTextEdit != nullptr) connect(endTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
