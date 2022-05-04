@@ -299,6 +299,7 @@ QString Model::getReferenceSource(QString objectName){
             QTextStream resultStream(&result);
             QString ms = component->getSourceForMain();
             QTextStream codeStringStream(&ms);
+            resultStream << "        " + components[component->getEnumeratorID()]->getSourceForObjectCreation() << Qt::endl;
             resultStream << "        " + component->getSourceForObjectCreation();
             while(!codeStringStream.atEnd()){
                 resultStream << Qt::endl << "        " + codeStringStream.readLine();
