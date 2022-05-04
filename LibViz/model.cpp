@@ -157,6 +157,7 @@ QString Model::generateMainSource(){
 
     foreach(Component* component, components){
         if(component->getUseInMain()){
+            ts << "    " << components[component->getEnumeratorID()]->getSourceForObjectCreation() << Qt::endl;
             ts << "    " << component->getSourceForObjectCreation() << Qt::endl;
         }
     }
@@ -197,7 +198,6 @@ void Model::compile(){
         emit compilerPathNotSet();
         emit compileProcessEnded();
     }else{
-        qDebug()<<compilerArguments;
         compileProcess->start(compilerPath, compilerArguments);
     }
 }
