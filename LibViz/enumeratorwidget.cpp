@@ -14,7 +14,6 @@ EnumeratorWidget::EnumeratorWidget(const Component& component, Model* model, QWi
     QMap<MethodType,QString> methods = component.getMethods();
     objectNameLineEdit->setText(component.getObjectName());
     itemTypeLineEdit->setText(component.getItem());
-    if(constructorParameterLineEdit != nullptr) constructorParameterLineEdit->setText(component.getConstructorParameter());
     if(firstTextEdit != nullptr) firstTextEdit->setText(methods[FIRST]);
     if(nextTextEdit != nullptr) nextTextEdit->setText(methods[NEXT]);
     if(endTextEdit != nullptr) endTextEdit->setText(methods[END]);
@@ -28,10 +27,8 @@ EnumeratorWidget::EnumeratorWidget(const Component& component, Model* model, QWi
 }
 
 void EnumeratorWidget::initSegments(){
-    int gridlayoutIndex = 2;
+    int gridlayoutIndex = 3;
 
-    constructorParameterLabel = nullptr;
-    constructorParameterLineEdit = nullptr;
     firstLabel = nullptr;
     firstTextEdit = nullptr;
     nextLabel = nullptr;
@@ -40,14 +37,6 @@ void EnumeratorWidget::initSegments(){
     endTextEdit = nullptr;
     currentLabel = nullptr;
     currentTextEdit = nullptr;
-
-
-    if(type != DEFAULT){
-        constructorParameterLabel = new QLabel("Constructor parameter:");
-        constructorParameterLineEdit = new QLineEdit();
-        gridlayout->addWidget(constructorParameterLabel,gridlayoutIndex,0);
-        gridlayout->addWidget(constructorParameterLineEdit,gridlayoutIndex,1);
-    }
 
     if(type != SEQINFILE){
         firstLabel = new QLabel("First:");
@@ -73,7 +62,6 @@ void EnumeratorWidget::initSegments(){
 }
 
 void EnumeratorWidget::connectSignals(){
-    if(constructorParameterLineEdit != nullptr) connect(constructorParameterLineEdit,SIGNAL(editingFinished()),this,SLOT(constructorParameterChanged()));
     if(firstTextEdit != nullptr) connect(firstTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
     if(nextTextEdit != nullptr) connect(nextTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
     if(endTextEdit != nullptr) connect(endTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));

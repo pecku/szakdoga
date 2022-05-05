@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(model, SIGNAL(compilerPathNotSet()), this, SLOT(showCompilerPathWarning()));
     connect(model, SIGNAL(needProjectNameForSave()), this, SLOT(showProjectSaveDialog()));
     connect(model, SIGNAL(needProjectNameForOpen()), this, SLOT(showProjectOpenDialog()));
+    connect(model, SIGNAL(wantToGenerateSource()), this, SLOT(generateSource()));
     connect(model, SIGNAL(projectLoaded(SaveData)), this, SLOT(refresh(SaveData)));
     connect(model, SIGNAL(cleared()), this, SLOT(clear()));
 
@@ -144,7 +145,6 @@ void MainWindow::createCodeBlock(){
     QListWidgetItem* item = new QListWidgetItem("",listWidget,id);
     item->setData(Qt::UserRole, "codeblock");
     item->setFlags(item->flags() | Qt::ItemIsEditable);
-    connect(listWidget,SIGNAL(itemChanged(QListWidgetItem*)),this,SLOT(listItemChanged(QListWidgetItem*)));
 }
 
 void MainWindow::listItemChanged(QListWidgetItem* item){
@@ -278,6 +278,7 @@ void MainWindow::initListSegment(){
     listSegmentToolBar->addAction(deleteListItemAction);
 
     connect(listWidget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(changeSelectedComponent()));
+    connect(listWidget,SIGNAL(itemChanged(QListWidgetItem*)),this,SLOT(listItemChanged(QListWidgetItem*)));
 }
 
 void MainWindow::initSourceSegment(){
@@ -436,6 +437,9 @@ void MainWindow::showProjectOpenDialog(){
 void MainWindow::refresh(const SaveData& data){
     clear();
     setWindowTitle((QString)APP_NAME + " - " + data.projectName);
+
+    QMap<int,QListWidgetItem*> listItems;
+
     foreach(const Component* component, data.components){
         ComponentType componentType = component->getType();
         if(componentType == COUNTING || componentType == LINSEARCH || componentType == MAXSEARCH || componentType == SELECTION || componentType == SUMMATION){
@@ -445,7 +449,9 @@ void MainWindow::refresh(const SaveData& data){
             toolBox->addItem(procedure,component->getName());
             procedureWidgets.push_back(procedure);
             if(component->getUseInMain()){
-                addListItem(component->getName(),component->getID());
+                QListWidgetItem* listItem = new QListWidgetItem(component->getName(), nullptr, component->getID());
+                listItem->setData(Qt::UserRole,"component");
+                listItems[component->getID()] = listItem;
             }
         }else{
             EnumeratorWidget* enumerator = new EnumeratorWidget(*component, model, this);
@@ -453,11 +459,24 @@ void MainWindow::refresh(const SaveData& data){
             enumeratorWidgets.push_back(enumerator);
         }
     }
+
+    foreach(const CodeBlock* codeBlock, data.codeblocks){
+        QListWidgetItem* listItem = new QListWidgetItem(codeBlock->getCode(),nullptr,codeBlock->getID());
+        listItem->setData(Qt::UserRole, "codeblock");
+        listItem->setFlags(listItem->flags() | Qt::ItemIsEditable);
+        listItems[codeBlock->getID()] = listItem;
+    }
+
+    for(int i = 0; i < data.mainIdOrder.size(); i++){
+        listWidget->insertItem(i,listItems[data.mainIdOrder[i]]);
+    }
+
     foreach(ProcedureWidget* procw, procedureWidgets){
         foreach(EnumeratorWidget* enorw, enumeratorWidgets){
             procw->addEnumeratorChoice(enorw->getName(), enorw->getID());
         }
     }
+
     foreach(const Struct* _struct, data.structs){
         StructWidget* structWidget = new StructWidget(*_struct, model, this);
         toolBox->addItem(structWidget,_struct->getName());

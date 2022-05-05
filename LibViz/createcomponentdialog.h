@@ -10,8 +10,6 @@
 #include <QLabel>
 #include "model.h"
 
-enum CreateComponentDialogMode{PROCEDURE,ENUMERATOR};
-
 class CreateComponentDialog : public QDialog
 {
     Q_OBJECT

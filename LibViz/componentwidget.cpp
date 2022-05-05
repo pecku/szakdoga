@@ -41,6 +41,11 @@ ComponentWidget::ComponentWidget(int id, QString name, ComponentType type, Model
     gridlayout->addWidget(itemTypeLabel,1,0);
     gridlayout->addWidget(itemTypeLineEdit,1,1);
 
+    constructorParameterLabel = new QLabel("Constructor parameter:");
+    constructorParameterLineEdit = new QLineEdit();
+    gridlayout->addWidget(constructorParameterLabel,2,0);
+    gridlayout->addWidget(constructorParameterLineEdit,2,1);
+
     destructorLabel = new QLabel("Destructor:");
     destructorTextEdit = new PopUpTextEdit(DESTRUCTOR);
     gridlayout->addWidget(destructorLabel,100,0);
@@ -53,6 +58,7 @@ ComponentWidget::ComponentWidget(int id, QString name, ComponentType type, Model
 void ComponentWidget::connectSignals(){
     connect(objectNameLineEdit,SIGNAL(editingFinished()),this,SLOT(objectNameChanged()));
     connect(itemTypeLineEdit,SIGNAL(editingFinished()),this,SLOT(itemTypeChanged()));
+    connect(constructorParameterLineEdit,SIGNAL(editingFinished()),this,SLOT(constructorParameterChanged()));
     connect(destructorTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
 }
 

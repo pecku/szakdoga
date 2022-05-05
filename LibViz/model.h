@@ -77,6 +77,7 @@ private:
     bool compilerPathSet;
     QProcess* compileProcess;
     QString compileOutput;
+    bool compileFailed;
     DataAccess dataAccess;
     QSettings* settings;
 
@@ -93,6 +94,7 @@ signals:
     void compileProcessEnded();
     void needProjectNameForSave();
     void needProjectNameForOpen();
+    void wantToGenerateSource();
     void projectLoaded(const SaveData& data);
     void cleared();
 

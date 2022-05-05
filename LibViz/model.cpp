@@ -134,12 +134,12 @@ QString Model::generateSource(){
     ts << "#include <iostream>" << Qt::endl;
     ts << "#include \"library.hpp\"" << Qt::endl << Qt::endl;
 
-    foreach(Struct* _struct, structs){
-        ts << replaceReference(_struct->getSource()) << ";" << Qt::endl << Qt::endl;
-    }
-
-    foreach(Component* component, components){
-        ts << replaceReference(component->getSource()) << ";" << Qt::endl << Qt::endl;
+    for(int i = 1; i <= lastID; i++){
+        if(components.contains(i)){
+            ts << replaceReference(components[i]->getSource()) << ";" << Qt::endl << Qt::endl;
+        }else if(structs.contains(i)){
+            ts << replaceReference(structs[i]->getSource()) << ";" << Qt::endl << Qt::endl;
+        }
     }
 
     ts << generateMainSource();
@@ -185,19 +185,24 @@ QString Model::generateMainSource(){
 void Model::run(){
     compile();
     compileProcess->waitForFinished();
-    #ifdef Q_OS_WIN
-    compileProcess->start("./a.exe");
-    #endif
-    #ifdef Q_OS_LINUX
-    compileProcess->start("./a.out");
-    #endif
+    if(!compileFailed){
+        #ifdef Q_OS_WIN
+        compileProcess->start("./a.exe");
+        #endif
+        #ifdef Q_OS_LINUX
+        compileProcess->start("./a.out");
+        #endif
+    }
 }
 
 void Model::compile(){
+    compileFailed = false;
     if(!compilerPathSet){
         emit compilerPathNotSet();
         emit compileProcessEnded();
+        compileFailed = true;
     }else{
+        emit wantToGenerateSource();
         compileProcess->start(compilerPath, compilerArguments);
     }
 }
@@ -215,6 +220,7 @@ void Model::compileFinished(int exitCode, QProcess::ExitStatus exitStatus){
     if(exitCode == 0){
         output = QString(compileProcess->readAllStandardOutput());
     }else{
+        compileFailed = true;
         output = QString(compileProcess->readAllStandardError());
     }
 
@@ -224,6 +230,7 @@ void Model::compileFinished(int exitCode, QProcess::ExitStatus exitStatus){
 
 void Model::compileError(QProcess::ProcessError error){
     (void)error;
+    compileFailed = true;
     emit haveCompileOutput(QString(compileProcess->readAllStandardError()));
     emit compileProcessEnded();
 }

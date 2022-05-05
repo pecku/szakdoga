@@ -157,9 +157,9 @@ private:
 public:
     CodeBlock(int id) : id(id){}
 
-    QString getSource(){return code;}
+    QString getSource() const {return code;}
     int getID() const {return id;}
-    QString getCode(){return code;}
+    QString getCode() const {return code;}
 
     void setCode(QString code){this->code = code;}
 };

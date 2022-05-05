@@ -22,7 +22,7 @@ QString Component::getSource() const{
         ts << "," << (optimist ? "true" : "false");
     }else if(type == MAXSEARCH){
         ts << "," << value;
-        ts << "," << compare;
+        ts << "," << compare << "<" << value << ">";
     }else if(type == SUMMATION){
         ts << "," << value;
     }
@@ -47,18 +47,33 @@ QString Component::getSource() const{
         ts << Qt::endl << "    " << "}";
     }
 
+    if(methods.contains(DESTRUCTOR)){
+        ts << Qt::endl << "    ";
+        ts << "~" << name;
+        ts << methodHeaderStrings[DESTRUCTOR].first;
+        ts << methodHeaderStrings[DESTRUCTOR].second << " override" << Qt::endl << "    {";
+        QString methodBody = methods[DESTRUCTOR];
+        QTextStream methodBodyStream(&methodBody);
+        while(!methodBodyStream.atEnd()){
+            ts << Qt::endl << "        " << methodBodyStream.readLine();
+        }
+        ts << Qt::endl << "    " << "}";
+    }
+
     ts << Qt::endl << "protected:";
 
     auto methodkeys = methods.keys();
     foreach(MethodType key, methodkeys){
+        if(key == DESTRUCTOR){
+            continue;
+        }
+
         ts << Qt::endl << "    ";
 
         if(key == NEUTRAL || key == ADD || key == FUNC){
             ts << value << " ";
         }else if(key == CURRENT){
             ts << item << " ";
-        }else if(key == DESTRUCTOR){
-            ts << "~" << name;
         }
 
 
@@ -115,12 +130,8 @@ QString Component::getSourceForMain() const{
 }
 
 void Component::setEnumerator(int enumeratorID, QString enumeratorObjectName){
-    if(this->enumeratorID == -1){
-        this->enumeratorID = enumeratorID;
-        this->enumeratorObjectName = enumeratorObjectName;
-    }else if(this->enumeratorID == enumeratorID){
-        this->enumeratorObjectName = enumeratorObjectName;
-    }
+    this->enumeratorID = enumeratorID;
+    this->enumeratorObjectName = enumeratorObjectName;
 }
 
 QString Struct::getSource(){

@@ -46,6 +46,8 @@ protected:
     QLineEdit* objectNameLineEdit;
     QLabel* itemTypeLabel;
     QLineEdit* itemTypeLineEdit;
+    QLabel* constructorParameterLabel;
+    QLineEdit* constructorParameterLineEdit;
     QLabel* destructorLabel;
     PopUpTextEdit* destructorTextEdit;
 

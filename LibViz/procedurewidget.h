@@ -27,9 +27,6 @@ private:
     QLabel* useInMainLabel;
     QCheckBox* useInMainCheckBox;
 
-    QLabel* constructorParameterLabel;
-    QLineEdit* constructorParameterLineEdit;
-
     //enumerator
     QLabel* enorLabel;
     QComboBox* enorComboBox;
