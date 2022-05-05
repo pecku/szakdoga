@@ -25,6 +25,11 @@ Az alkalmazás Qt Creator segítségével lesz megvalósítva C++ nyelven. Azér
 	3. [Használati esetek](#használati-esetek)
     4. [Architektúra](#architektúra)
     5. [Nézet](#nézet)
+		1. [MainWindow](#mainwindow)
+		2. [ComponentWidget, ProcedureWidget, EnumeratorWidget](#componentwidget-procedurewidget-enumeratorwidget)
+		3. [StructWidget](#structwidget)
+		4. [MemberWidget és CustomMethodWidget](#memberwidget-és-custommethodwidget)
+		5. [PopUpTextEdit és TextInputDialog](#popuptextedit-és-textinputdialog)
     6. [Modell](#modell)
 		1. [Modell adattagok és metódusok](#modell-adattagok-és-metódusok)
 			1. [Adattagok](#adattagok)
@@ -116,9 +121,9 @@ A megadott adatok alapján a program generál egy c++ forráskódot, amelyet ak�
 
 ## Telepítés és rendszerkövetelmények
 
-> zippelt exe + dll-ek
-
 A LibViz tesztelése elsősorban Windows 10-en zajlott, így ez az elsődlegesen támogatott operációs rendszer.
+
+Az alkalmazás egy Windows 10-en futtatható verziója tömörített formában letölthető `innen`. Letöltés után kicsomagoljuk az állományt, amely ezután LibViz mappában található `LibViz.exe` fájl indításával futtatható.
 
 Ha a felhasználó a forráskód alapján szeretné futtatni a programot lokális környezetben, akkor erre is van lehetőség. Az alkalmazás kódja GitHub-on elérhető a következő linken: [github repo]()
 A buildelés a Qt Creator segítségével a legegyszerűbb. Ezen belül a Qt 6.0-ás verziója ajánlott, mivel ebben íródott a program.
@@ -187,6 +192,11 @@ Egy komponens egyszerűen a mezőinek a kitöltésével módosítható. A metód
 Új metódus hozzáadásához az ennek elnevezett gombra kell kattintanunk. Ekkor megjelenik két új beviteli mező, amelyekben az metódus fejlécét és törzsét tudjuk megadni. A beviteli mezők melletti gombbal pedig lehetőség van a metódus törlésére is.
 
 ![Metódus hozzáadása](./use_pictures/new-method.PNG)
+
+A metódusokban hivatkozni lehet saját objektumokra. Ezt az objektum *objektumnevét* felhasználva tehetjük meg úgy, hogy azt '%' jelek közé tesszük. Ezzel azt érjük el, hogy a hivatkozott objektum a kódgeneráláskor az adott helyen lesz létrehozva, hogy aztán azt fel tudjuk használni.
+
+![Hivatkozás objektumra](./use_pictures/reference-object.PNG)
+![Hivatkozott objektum forráskód](./use_pictures/reference-object-source.PNG)
 
 #### Main List Editor
 
@@ -261,7 +271,48 @@ A következő ábrán látható a nézetet alkotó osztályok kapcsolata.
 ![SettingsDialog uml](../diagram/docs/SettingsDialog.svg)
 ![TextInputDialog uml](../diagram/docs/TextInputDialog.svg)
 ![CreateComponentDialog uml](../diagram/docs/CreateComponentDialog.svg)
-![CreateComponentDialogMode uml](../diagram/docs/CreateComponentDialogMode.svg)
+
+
+### MainWindow
+
+A fő ablak felépítése widgetek, layoutok és splitterek segítségével van megvalósítva, így az ablak méretének változtatásakor dinamikusan igazodik hozzá a tartalom, valamint az egyes részek méretét külön is tudjuk változtatni.
+
+Az init függvények biztosítják, hogy minden eleme a nézetnek megfelelően inicializálva legyen a program indulásakor.
+
+- __initDialogs()__: Létrehozza a dialogusablakokat, betölti a szükséges tartalmakt, valamint összeköti a megfelelő signalokat és slotokat.
+- __initActions()__: Létrehozza az akciókat, amelyek a menü és a felületen található gombok működéséhez elengedhetetlenek. Felépíti szükséges signal-slot kapcsolatokat.
+- __initMenuBar()__: Létrehozza a menüelemeket, valamint hozzáadja a menüpontokhoz a megfelelő akciókat.
+- __initComponentEditorSegment()__: Létrehozza a komponensszerkesztő részhez szükséges elemeket, majd felépíti és összekapcsolja azokat a megfelelő kinézet elérése érdekében. 
+- __initListSegment()__: Létrehozza a listához szükséges elemeket, módosítja a lista beállításait a kívánt kinézet és működés elérése érdekében.
+- __initSourceSegment()__: Létrehozza a forráskód nézegető, valamint a futtatáshoz és fordításhoz szükséges elemeket.
+
+A MainWindow működése ezen felül főleg slotokkal valósul meg.
+
+- createComponent(): Az új komponens létrehozását segítő dialógusablak által szolgáltatott információk segítségével eldönti, hogy milyen típusú komponenst szeretnénk létrehozni. Ezek alapján létrejön történik egy modell hívás, amely során létrejön egy új komponens a háttérben és ezt követően a megfelelő objektumok létrehozásával a nézet hozzáadja a komponens szerkesztő részhez az adott komponens widgetet, valamint a main listába is bekerül egy új elem, ha ez szükséges.
+- deleteComponent(): A jelenleg kijelölt komponenst törli, mind a nézetben való minden megjelenését, mind a modellben róla tárolt adatokat.
+- generateSource(): A forráskód generálását elindítő függvény. Minden komponens widgeten lefuttat egy ellenőrzést, hogy minden kötelezően kitöltendő mező ki lett-e töltve. Ha valami hiányzik, a felületen piros keretekkel jelezzük, valamint a forráskód nézegetőben is megjelenik egy üzenet ezzel kapcsolatban.
+Ha az ellenőrzés mindent rendben talált, a modell legenerálja a forráskódot, amely ezután forráskód nézegetőben megjelenik.
+- changeSelectedComponent(): Amikor a main listában egy elemre kattintunk, a komponens szerkesztő részben a hozzá tartozó komponens (ha van ilyen) kerül nyitott állapotba.
+- refresh(): Egy projekt betöltése után ez az a függvény, amely minden adatot, amelyet a modell biztosít, betölt a nézetbe. Létrehoz minden szükséges widgetet és feltölti azokat a megfelelő adatokkal.
+- clear(): Egy új létrehozásakor vagy egy projekt betöltése előtt ez a függvény felel minden jelenlegi nézetelem törléséért.
+
+Az itt nem említett függvények nevükből adódó egyértelmű működést biztosítanak.
+
+### ComponentWidget, ProcedureWidget, EnumeratorWidget
+
+A ComponentWidget szolgál a ProcedureWidgetben és az EnumeratorWidgetben található közös elemek és funkciók biztosítására. Az utóbbi kettőben található eltérések főleg a felülírandó metódusokban és egymással való kapcsolatukban valósulnak meg.
+
+### StructWidget
+
+A StructWidget hasonló tulajdonságokkal rendelkezik, mint az előzőekben említett komponens widgetek. A kevesebb funkcionalitás miatt a felépítése egyszerűbb.
+
+### MemberWidget és CustomMethodWidget
+
+Ez a két widget előre meghatározott kinézettel és előre definiált singalokkal rendelkezik. Azért van rájuk szükség, hogy leegyszerűsítse a komponensekben elérhető új adattag és új metódus funkciók működését azzal, hogy egy egységként hozzáadhatóak ezek az elemek.
+
+### PopUpTextEdit és TextInputDialog
+
+A PopUpTextEdit widget egy szövegmező, amelyet az előzőekben említett widgetek használnak. A szövegmező közvetlenül a felületen is megjelenik, de a tartalma ott nem szerkeszthető. Tartalom hozzáadásához rá kell kattintani, így megjelenik egy TextInputDialog, amelyben egy szerkesztő widget található, ahol a szövegmező tartalma szerkeszthető.
 
 ## Modell
 
