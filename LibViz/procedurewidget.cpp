@@ -20,6 +20,7 @@ ProcedureWidget::ProcedureWidget(const Component& component, Model* model, QWidg
     }
     objectNameLineEdit->setText(component.getObjectName());
     itemTypeLineEdit->setText(component.getItem());
+    constructorParameterLineEdit->setText(component.getConstructorParameter());
     useInMainCheckBox->setChecked(component.getUseInMain());
     if(optimistCheckBox != nullptr) optimistCheckBox->setChecked(component.getOptimist());
     if(valueLineEdit != nullptr) valueLineEdit->setText(component.getValue());

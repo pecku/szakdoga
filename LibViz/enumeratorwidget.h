@@ -17,9 +17,6 @@ private:
     void initSegments();
     void connectSignals();
 
-    QLabel* constructorParameterLabel;
-    QLineEdit* constructorParameterLineEdit;
-
     //void first()
     QLabel* firstLabel;
     PopUpTextEdit* firstTextEdit;

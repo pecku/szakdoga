@@ -14,6 +14,7 @@ EnumeratorWidget::EnumeratorWidget(const Component& component, Model* model, QWi
     QMap<MethodType,QString> methods = component.getMethods();
     objectNameLineEdit->setText(component.getObjectName());
     itemTypeLineEdit->setText(component.getItem());
+    constructorParameterLineEdit->setText(component.getConstructorParameter());
     if(firstTextEdit != nullptr) firstTextEdit->setText(methods[FIRST]);
     if(nextTextEdit != nullptr) nextTextEdit->setText(methods[NEXT]);
     if(endTextEdit != nullptr) endTextEdit->setText(methods[END]);
