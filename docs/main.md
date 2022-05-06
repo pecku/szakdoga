@@ -76,8 +76,6 @@ Köszönet a családomnak és barátaimnak, hogy minden támogatást megadtak, a
 
 # Bevezetés
 
-> gtlib rövid leírás
-
 Programozás során elengedhetetlen alapokat nyújt a programozási tételek használata, megfelelő alkalmazása. Ezért nem is meglepő, hogy az egyetemen is már az első félévben találkoznak ezzel a hallgatók.
 
 E tudás elsajátításának megkönnyítése érdekében hozta létre dr. Gregorics Tibor Tanár Úr a programozási tételekhez osztálysablonokat megvalósító c++ könyvtárat, amely ezáltal hozzájárul mind a kód újra felhasználásának gyakorlásához, mind az objektumorientált programok öröklődéseinek megértéséhez, de a legfontosabb, hogy fejleszti a programtervezési készségeket a programozási tételek mentén.
@@ -109,13 +107,13 @@ Egy tipikus felhasználása a könyvtárnak a következő:
 
 ## Applikáció bemutatása
 
-Programozás során elengedhetetlen alapokat nyújt a programozási tételek használata, megfelelő alkalmazása. E tudás elsajátításának megkönnyítése érdekében hozta létre dr. Gregorics Tibor Tanár Úr a programozási tételekhez osztálysablonokat megvalósító c++ könyvtárat, amely ezáltal hozzájárul mind a kód újra felhasználásának gyakorlásához, mind az objektumorientált programok öröklődéseinek megértéséhez, de a legfontosabb, hogy fejleszti a programtervezési készségeket a programozási tételek mentén.
+Programozás során elengedhetetlen alapokat nyújt a programozási tételek használata, megfelelő alkalmazása. E tudás elsajátításának megkönnyítése érdekében hozta létre dr. Gregorics Tibor Tanár Úr a programozási tételekhez osztálysablonokat megvalósító c++ könyvtárat, amely ezáltal hozzájárul mind a kód újrafelhasználásának gyakorlásához, mind az objektumorientált programok öröklődéseinek megértéséhez, de a legfontosabb, hogy fejleszti a programtervezési készségeket a programozási tételek mentén.
 
-Az aplikáció a könyvtár használatát mégtovább egyszerűsíti és befogadhatóbbá teszi azok számára, akik részben még csak ismerkednek a programozással. A felület tehát előre összeállított, minden fontos elemet tartalmazó komponenseket biztosít az átláthatóság kedvéért.
+Az applikáció a könyvtár használatát még tovább egyszerűsíti és befogadhatóbbá teszi azok számára, akik részben még csak ismerkednek a programozással. A felület tehát előre összeállított, minden fontos elemet tartalmazó komponenseket biztosít az átláthatóság kedvéért.
 
 A felhasználónak lehetősége van kedve szerint létrehozni osztályokat a programozási tétel és enumerátor sablonokból leszármaztatva. A létrehozott osztályokat lehet ezután tovább bővíteni, részegységeiket definiálni. Az osztályok részegységei a következők lehetnek: felülírandó metódusok, saját privát adattagok, saját publikus metódusok. A programozási tételeket megvalósító osztályok esetében az általuk használt, szintén létrehozott enumerátort is szükséges megadni. Ezeken kívül lehetőség van saját struktúrák definiálására is, melyek saját publikus adattagokat és metódusokat tartalmazhatnak.
 
-Az általunk létrehozott osztályok közül a "main függvényben felhasználandónak" jelölt programozási tételeket megvalósító osztályok megjelennek a középen található listában, amely a program futásának manipulálására hivatott. Itt meghatározni, hogy milyen sorrendben fussanak le a tételeink, emelett plusz kódrészleteket is tudunk hozzáadni, amely lehetőséget biztosít egyéb kiíratásokra, beolvasásokra, ellenőrzésekre.
+Az általunk létrehozott osztályok közül a "main függvényben felhasználandónak" jelölt programozási tételeket megvalósító osztályok megjelennek az ezt reprezentáló listában, amely a program futásának manipulálására hivatott. Itt lehet meghatározni, hogy milyen sorrendben fussanak le a tételeink, emellett plusz kódrészleteket is tudunk hozzáadni, amely lehetőséget biztosít egyéb kiíratásokra, beolvasásokra, ellenőrzésekre.
 
 A megadott adatok alapján a program generál egy c++ forráskódot, amelyet akár fel is használhatunk saját környezetben, azonban az applikációban rendelkezésre áll a forráskód lefordításának és futtatásának lehetősége. Ehhez a beállításokban szükséges bekonfigurálni a g++ fordító adatait. Az alkalmazás megjeleníti a fordítás és futtatás kimenetét is.
 
@@ -123,9 +121,9 @@ A megadott adatok alapján a program generál egy c++ forráskódot, amelyet ak�
 
 A LibViz tesztelése elsősorban Windows 10-en zajlott, így ez az elsődlegesen támogatott operációs rendszer.
 
-Az alkalmazás egy Windows 10-en futtatható verziója tömörített formában letölthető `innen`. Letöltés után kicsomagoljuk az állományt, amely ezután LibViz mappában található `LibViz.exe` fájl indításával futtatható.
+Az alkalmazás egy Windows 10-en futtatható verziója tömörített formában is mellékelve van. Kicsomagoljuk az állományt, amely ezután LibViz mappában található `LibViz.exe` fájl indításával futtatható.
 
-Ha a felhasználó a forráskód alapján szeretné futtatni a programot lokális környezetben, akkor erre is van lehetőség. Az alkalmazás kódja GitHub-on elérhető a következő linken: [github repo]()
+Ha a felhasználó a forráskód alapján szeretné futtatni a programot lokális környezetben, akkor erre is van lehetőség.
 A buildelés a Qt Creator segítségével a legegyszerűbb. Ezen belül a Qt 6.0-ás verziója ajánlott, mivel ebben íródott a program.
 
 0.  *előzetes rendszerfüggő compiler, kit beállítások*
@@ -156,15 +154,14 @@ A fő ablak három fontosabb szekcióra bontható, melyek a következők:
 
 A menüsor a következőképpen épül fel:
 - A `File` menü tartalmazza a projektkezeléshez szükséges akciókat.
-- A `Create` menü tartalmazza a komponensek létrehozásához és törléséhez szükséges akciókat.
-- A `Generate` menü tartalmazza a forráskód generálással kapcsolatos akciókat.
-- A `Build` menü tartalmazza a forráskód fordításához és futtatásához szükséges akciókat.
-- A `Settings` menü tartalmazza a program beállításainak módosításához szükséges akciókat.
-
 ![File menü](./use_pictures/file-menu.PNG)
+- A `Create` menü tartalmazza a komponensek létrehozásához és törléséhez szükséges akciókat.
 ![Create menü](./use_pictures/create-menu.PNG)
+- A `Generate` menü tartalmazza a forráskód generálással kapcsolatos akciókat.
 ![Generate menü](./use_pictures/generate-menu.PNG)
+- A `Build` menü tartalmazza a forráskód fordításához és futtatásához szükséges akciókat.
 ![Build menü](./use_pictures/build-menu.PNG)
+- A `Settings` menü tartalmazza a program beállításainak módosításához szükséges akciókat.
 ![Settings menü](./use_pictures/settings-menu.PNG)
 
 #### Component Editor
@@ -173,15 +170,18 @@ A menüsor a következőképpen épül fel:
 
 Új komponenst a Component Editor szekció jobb felső sarkában található hozzáadás gomb vagy a Create menü új komponens akciójával hozhatunk létre.
 Egy komponens létrehozásához szükség van a nevének és a típusának megadásához.
-Ha nem adunk meg nevet, vagy az már használatban van egy másik objektum által, a program piros keretezéssel és hibaüzenettel jelzi. Ha nem választunk típust, szintén hibát kapunk. A komponens nem hozható létre, amíg nincsenek helyesen megadva ezek az adatok. A létrehozott komponensek között ezután a nevükre kattintva lehet váltogatni, hogy éppen melyiknek az adatai legyenek láthatóak.
 
 ![Új komponens](./use_pictures/new-component-empty.PNG)
-![Új komponens hiba](./use_pictures/new-component-red.PNG)
 ![Új komponens típusválasztó](./use_pictures/new-component-dropdown.PNG)
+
+Ha nem adunk meg nevet, vagy az már használatban van egy másik objektum által, a program piros keretezéssel és hibaüzenettel jelzi. Ha nem választunk típust, szintén hibát kapunk.
+A komponens nem hozható létre, amíg nincsenek helyesen megadva ezek az adatok. A létrehozott komponensek között ezután a nevükre kattintva lehet váltogatni, hogy éppen melyiknek az adatai legyenek láthatóak.
+
+![Új komponens hiba](./use_pictures/new-component-red.PNG)
 
 ##### Komponens szerkesztése
 
-Egy komponens egyszerűen a mezőinek a kitöltésével módosítható. A metódusok törzsének fenttartott szöveges mezők tartalma úgy szerkeszthető, ha abba belekantintunk, majd a felugró ablakban adjuk meg a kódot. Ezt elmentve a metódus törzsébe íródik a megadott tartalom.
+Egy komponens egyszerűen a mezőinek a kitöltésével módosítható. A metódusok törzsének fenttartott szöveges mezők tartalma úgy szerkeszthető, ha abba belekattintunk, majd a felugró ablakban adjuk meg a kódot. Ezt elmentve a metódus törzsébe íródik a megadott tartalom.
 
 ![Metódus szerkesztése](./use_pictures/edit-method.PNG)
 
@@ -193,19 +193,36 @@ Egy komponens egyszerűen a mezőinek a kitöltésével módosítható. A metód
 
 ![Metódus hozzáadása](./use_pictures/new-method.PNG)
 
-A metódusokban hivatkozni lehet saját objektumokra. Ezt az objektum *objektumnevét* felhasználva tehetjük meg úgy, hogy azt '%' jelek közé tesszük. Ezzel azt érjük el, hogy a hivatkozott objektum a kódgeneráláskor az adott helyen lesz létrehozva, hogy aztán azt fel tudjuk használni.
+A metódusokban hivatkozni lehet saját objektumokra. Ezt az objektum *objektumnevét* felhasználva tehetjük meg úgy, hogy azt '%' jelek közé tesszük a X. ábrán látható módon. Ezzel azt érjük el, hogy a hivatkozott objektum a kódgeneráláskor az adott helyen lesz létrehozva és futtatva, mint ahogy az a X. ábrán is látható.
 
 ![Hivatkozás objektumra](./use_pictures/reference-object.PNG)
 ![Hivatkozott objektum forráskód](./use_pictures/reference-object-source.PNG)
 
 #### Main List Editor
 
-Az általunk létrehozott osztályok közül a "main függvényben felhasználandónak" jelölt programozási tételeket megvalósító osztályok megjelennek a középen található listában. A listához további kódrészleteket lehet hozzáadni a felül található hozzáadás gomb segítségével. A kódblokkok dupla kattintás segítségével szerkeszthetőek. A listában található elemeket a rajta lenyomvatartott bal egérgombbal tudjuk húzgálva rendezni.
+Az általunk létrehozott osztályok közül a "main függvényben felhasználandónak" jelölt programozási tételeket megvalósító osztályok megjelennek a középen található listában. A listához további kódrészleteket lehet hozzáadni a felül található hozzáadás gomb segítségével. A kódblokkok dupla kattintás segítségével szerkeszthetőek. A listában található elemeket a rajta lenyomva tartott bal egérgombbal tudjuk húzgálva rendezni.
+
+![Main list editor](./use_pictures/main-list.PNG)
 
 #### Forráskód nézegető és fordítás, futtatás
 
+![Forráskód szekció](./use_pictures/source-segment.PNG)
 
+A fenti ábrán látható a forráskóddal kapcsolatos szekció, amely a felület jobb oldalát tölti ki. A felső szövegmező a forráskód nézegető, ahol láthatjuk a legenerált forráskódot, amit innen lehetőségünk van akár kimásolni, hogy máshol fel tudjuk használni. Az alkalmazás viszont biztosít lehetőséget a fordítás és futtatás végrehajtására is.
 
+A forráskód nézegető szövegmező alatt találhatóak az alábbi gombok:
+- Forráskód generálás
+- Futtatás
+- Fordítás
+- Futtatás vagy fordítás leállítása
+
+Alul található a futtatás és fordítás kimenetét megjelenítő szövegmező, amely az alábbi kimeneteket tartalmazhatja:
+- Hibaüzenet, amely figyelmeztet, hogy nincs beállítva a fordító konfiguráció a beállításokban.
+- A fordítás során kapott hibaüzenet, amely lehet a fordítóval kapcsolatos hiba, vagy a fordítás eredménye.
+- A futtatott program által kiírt kimenet.
+
+![Fordítási hiba](./use_pictures/build-error.PNG)
+Az ábrán egy fordítási hiba látható.
 
 # Fejlesztői dokumentáció
 
@@ -231,16 +248,27 @@ A nézet felépítése a X-as ábrán látható. Bal oldalt az általunk létreh
 
 ![Az alkalmazás fő ablaka](./wireframes/mainwindow.png)
 
+A X. ábrán látható egy komponens nézetbeli felépítésének terve, amely tartalmaz gombokat, és többféle beviteli mezőket.
 
 ![Komponens](./wireframes/component.png)
 
+A következő dialógusablakokkal találkozhat a felhasználó az alkalmazás használata során:
+- Beállítások dialógusablak
+
 ![Beállítások dialógusablak](./wireframes/settingsdialog.png)
+
+- Új komponens dialógusablak
 
 ![Új komponens dialógusablak](./wireframes/newdialog.png)
 
+- Törlés dialógusablak
+
 ![Törlés dialógusablak](./wireframes/deletedialog.png)
 
+- Figyelmeztetés változások mentésére dialógusablak
+
 ![Figyelmeztetés változások mentésére dialógusablak](./wireframes/discarddialog.png)
+
 
 ## Használati esetek
 
@@ -261,21 +289,12 @@ Az alkalmazás háromrétegű nézet-modell-perzisztencia architektúrával lett
 A következő ábrán látható a nézetet alkotó osztályok kapcsolata.
 ![Nézet kapcsolatok uml](../diagram/docs/View-relations.svg)
 
-![MainWindow uml](../diagram/docs/MainWindow.svg)
-![ComponentWidget uml](../diagram/docs/ComponentWidget.svg)
-![EnumeratorWidget uml](../diagram/docs/EnumeratorWidget.svg)
-![ProcedureWidget uml](../diagram/docs/ProcedureWidget.svg)
-![CustomMethodWidget uml](../diagram/docs/CustomMethodWidget.svg)
-![MemberWidget uml](../diagram/docs/MemberWidget.svg)
-![PopUpTextEdit uml](../diagram/docs/PopUpTextEdit.svg)
-![SettingsDialog uml](../diagram/docs/SettingsDialog.svg)
-![TextInputDialog uml](../diagram/docs/TextInputDialog.svg)
-![CreateComponentDialog uml](../diagram/docs/CreateComponentDialog.svg)
-
 
 ### MainWindow
 
 A fő ablak felépítése widgetek, layoutok és splitterek segítségével van megvalósítva, így az ablak méretének változtatásakor dinamikusan igazodik hozzá a tartalom, valamint az egyes részek méretét külön is tudjuk változtatni.
+
+![MainWindow uml](../diagram/docs/MainWindow.svg)
 
 Az init függvények biztosítják, hogy minden eleme a nézetnek megfelelően inicializálva legyen a program indulásakor.
 
@@ -288,7 +307,7 @@ Az init függvények biztosítják, hogy minden eleme a nézetnek megfelelően i
 
 A MainWindow működése ezen felül főleg slotokkal valósul meg.
 
-- createComponent(): Az új komponens létrehozását segítő dialógusablak által szolgáltatott információk segítségével eldönti, hogy milyen típusú komponenst szeretnénk létrehozni. Ezek alapján létrejön történik egy modell hívás, amely során létrejön egy új komponens a háttérben és ezt követően a megfelelő objektumok létrehozásával a nézet hozzáadja a komponens szerkesztő részhez az adott komponens widgetet, valamint a main listába is bekerül egy új elem, ha ez szükséges.
+- createComponent(): Az új komponens létrehozását segítő dialógusablak által szolgáltatott információk segítségével eldönti, hogy milyen típusú komponenst szeretnénk létrehozni. Ezek alapján történik egy modell hívás, amely során létrejön egy új komponens a háttérben és ezt követően a megfelelő objektumok létrehozásával a nézet hozzáadja a komponens szerkesztő részhez az adott komponens widgetet, valamint a main listába is bekerül egy új elem, ha ez szükséges.
 - deleteComponent(): A jelenleg kijelölt komponenst törli, mind a nézetben való minden megjelenését, mind a modellben róla tárolt adatokat.
 - generateSource(): A forráskód generálását elindítő függvény. Minden komponens widgeten lefuttat egy ellenőrzést, hogy minden kötelezően kitöltendő mező ki lett-e töltve. Ha valami hiányzik, a felületen piros keretekkel jelezzük, valamint a forráskód nézegetőben is megjelenik egy üzenet ezzel kapcsolatban.
 Ha az ellenőrzés mindent rendben talált, a modell legenerálja a forráskódot, amely ezután forráskód nézegetőben megjelenik.
@@ -300,7 +319,11 @@ Az itt nem említett függvények nevükből adódó egyértelmű működést bi
 
 ### ComponentWidget, ProcedureWidget, EnumeratorWidget
 
-A ComponentWidget szolgál a ProcedureWidgetben és az EnumeratorWidgetben található közös elemek és funkciók biztosítására. Az utóbbi kettőben található eltérések főleg a felülírandó metódusokban és egymással való kapcsolatukban valósulnak meg.
+A ComponentWidget (X. ábra) szolgál a ProcedureWidgetben (X. ábra) és az EnumeratorWidgetben (X. ábra) található közös elemek és funkciók biztosítására. Az utóbbi kettőben található eltérések főleg a felülírandó metódusokban és egymással való kapcsolatukban valósulnak meg.
+
+![ComponentWidget uml](../diagram/docs/ComponentWidget.svg)
+![EnumeratorWidget uml](../diagram/docs/EnumeratorWidget.svg)
+![ProcedureWidget uml](../diagram/docs/ProcedureWidget.svg)
 
 ### StructWidget
 
@@ -310,9 +333,27 @@ A StructWidget hasonló tulajdonságokkal rendelkezik, mint az előzőekben eml�
 
 Ez a két widget előre meghatározott kinézettel és előre definiált singalokkal rendelkezik. Azért van rájuk szükség, hogy leegyszerűsítse a komponensekben elérhető új adattag és új metódus funkciók működését azzal, hogy egy egységként hozzáadhatóak ezek az elemek.
 
+![CustomMethodWidget uml](../diagram/docs/CustomMethodWidget.svg)
+![MemberWidget uml](../diagram/docs/MemberWidget.svg)
+
 ### PopUpTextEdit és TextInputDialog
 
-A PopUpTextEdit widget egy szövegmező, amelyet az előzőekben említett widgetek használnak. A szövegmező közvetlenül a felületen is megjelenik, de a tartalma ott nem szerkeszthető. Tartalom hozzáadásához rá kell kattintani, így megjelenik egy TextInputDialog, amelyben egy szerkesztő widget található, ahol a szövegmező tartalma szerkeszthető.
+A PopUpTextEdit widget (X. ábra) egy szövegmező, amelyet az előzőekben említett widgetek használnak. A szövegmező közvetlenül a felületen is megjelenik, de a tartalma ott nem szerkeszthető. Tartalom hozzáadásához rá kell kattintani, így megjelenik egy TextInputDialog (X. ábra), amelyben egy szerkesztő widget található, ahol a szövegmező tartalma szerkeszthető.
+
+![PopUpTextEdit uml](../diagram/docs/PopUpTextEdit.svg)
+![TextInputDialog uml](../diagram/docs/TextInputDialog.svg)
+
+### SettingsDialog
+
+A SettingsDialog (X. ábra) egy felugró ablak, amelyben a g++ fordító elérési útját, valamint az igény szerinti argumentumokat tudjuk megadja.
+
+![SettingsDialog uml](../diagram/docs/SettingsDialog.svg)
+
+### CreateComponentDialog
+
+A CreateComponentDialog (X. ábra) egy felugró ablak, amelyben a létrehozandó komponensek nevét és típusát tudjuk megadni. Ezt egy egyszerű szövegmező és egy lenyíló választó menü segítségével tudjuk megtenni.
+
+![CreateComponentDialog uml](../diagram/docs/CreateComponentDialog.svg)
 
 ## Modell
 
