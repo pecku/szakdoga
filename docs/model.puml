@@ -187,6 +187,7 @@ class Component
     - optimist : bool
     - value : QString
     - compare : QString
+    - constructorParameter : QString
     - methods : QMap<MethodType,QString>
     - members : QMap<int,Member>
     - customMethods : QMap<int,CustomMethod>
@@ -206,6 +207,7 @@ class Component
     + getOptimist() const : bool
     + getValue() const : QString
     + getCompare() const : QString
+    + getConstructorParameter() const : QString
     + getMethods() const : QMap<MethodType,QString>
     + getMembers() const : QMap<int,Member>
     + getCustomMethods() const : QMap<int,CustomMethod>
@@ -215,6 +217,7 @@ class Component
     + setValue(QString value) : void
     + setOptimist(bool optimist) : void
     + setCompare(QString compare) : void
+    + setConstructorParameter(QString constructorParameter) : void
     + setEnumerator(int enumeratorID, QString enumeratorObjectName) : void
     + setMethod(MethodType methodType, QString methodBody) : void
     + setMember(int id, QString type, QString name) : void

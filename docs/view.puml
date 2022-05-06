@@ -130,6 +130,7 @@ class ComponentWidget
     - deleteMember() : void
     - deleteMethod() : void
     - popUpTextChanged() : void
+    - constructorParameterChanged() : void
 }
 
 @enduml

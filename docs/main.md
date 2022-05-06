@@ -374,22 +374,6 @@ A CreateComponentDialog (X. ábra) egy felugró ablak, amelyben a létrehozandó
 
 #### Adattagok
 
-```cpp
-QString projectName;
-QMap<int,Component*> components;
-QMap<int,CodeBlock*> codeblocks;
-QMap<int,Struct*> structs;
-QVector<int> mainIdOrder;
-int lastID;
-QString compilerPath;
-QStringList compilerArguments;
-bool compilerPathSet;
-QProcess* compileProcess;
-QString compileOutput;
-DataAccess dataAccess;
-QSettings* settings;
-```
-
 - projectName: A projekt elérési útját tárolja.
 - components: A projektben lévő komponensek címét egyedi azonosítóval párosítva tároló map.
 - codeblocks: A projektben lévő kódblokkok címét egyedi azonosítóval párosítva tároló map.
@@ -407,27 +391,12 @@ QSettings* settings;
 
 #### Projektkezelés
 
-```cpp
-bool newProject();
-bool saveProject();
-void openProject();
-void setProject(QString file);
-```
-
 - newProject(): Új projekt létrehozására alkalmas. A projekt elérési útját a nézettől kéri be.
 - saveProject(): A projekt mentésére alkalmas. Ha nincs jelenlegi projekt, akkor a nézettől kéri be a projekt elérési útját.
 - openProject(): Egy projekt megnyitására alkalmas. A nézettől kéri be a megnyitandó projekt elérési útját.
 - setProject(QString file): A jelenlegi projekt elérési útjának beállítására alkalmas.
 
 #### Létrehozó függvények
-
-```cpp
-int createComponent(QString name, ComponentType type);
-int createCodeBlock();
-int createStruct(QString name);
-int createMember(int componentID);
-int createCustomMethod(int componentID);
-```
 
 - createComponent(QString name, ComponentType type): Egy komponens létrehozására alkalmas megadott név és típus alapján. 
 - createCodeBlock(): Egy kódblokk létrehozására alkalmas.
@@ -437,14 +406,6 @@ int createCustomMethod(int componentID);
 
 #### Törlő függvények
 
-```cpp
-void deleteComponent(int componentID);
-void deleteCodeBlock(int codeBlockID);
-void deleteStruct(int structID);
-void deleteMember(int componentID, int memberID);
-void deleteCustomMethod(int componentID, int customMethodID);
-```
-
 - deleteComponent(int componentID): Egy komponens törlése azonosító alapján.
 - deleteCodeBlock(int codeBlockID): Egy kódblokk törlése azonosító alapján.
 - deleteStruct(int structID): Egy struktúra törlése azonosító alapján.
@@ -452,22 +413,6 @@ void deleteCustomMethod(int componentID, int customMethodID);
 - deleteCustomMethod(int componentID, int customMethodID): Egy metódus törlése a tároló komponens és az metódus azonosítója alapján.
 
 #### Setterek
-
-```cpp
-void modifyMember(int componentID, int memberID, QString type, QString name);
-void modifyCustomMethod(int componentID, int customMethodID, QString header, QString body);
-void setObjectName(int componentID, QString objectName);
-void setItem(int componentID, QString item);
-void setValue(int componentID, QString value);
-void setOptimist(int componentID, bool optimist);
-void setCompare(int componentID, QString compare);
-void setEnumerator(int componentID, int enumeratorID);
-void setMethod(int componentID, MethodType methodType, QString methodBody);
-void setCode(int codeBlockID, QString code);
-void setCompilerPath(QString path);
-void setCompilerArguments(QString path);
-void setMainIdOrder(QVector<int> ids);
-```
 
 - modifyMember(int componentID, int memberID, QString type, QString name): Egy adattag módosítására alkalmas. A tároló komponens és az adattag azonosítója alapján. A megadott típust és nevet felhasználva módosítja az adattagot.
 - modifyCustomMethod(int componentID, int customMethodID, QString header, QString body): Egy metódus módosítására alkalmas. A tároló komponens és a metódus azonosítója alapján. A megadott fejlécet és a törzsét felhasználva módosítja a metódust.
@@ -486,14 +431,6 @@ void setMainIdOrder(QVector<int> ids);
 
 #### Getterek
 
-```cpp
-QString getEnumeratorNameById(int enumeratorID);
-QString getCompileOutput();
-QString getCompilerPath();
-QStringList getCompilerArguments();
-QString getProjectName();
-```
-
 - getEnumeratorNameById(int enumeratorID): Egy adott azonosítójú enumerátor nevének lekérdezésére alkalmas.
 - getCompileOutput(): A fordítás kimenetének lekérdezésére alkalmas.
 - getCompilerPath(): A fordító elérési útjának lekérdezésére alkalmas.
@@ -503,13 +440,6 @@ QString getProjectName();
 
 #### Egyéb függvények
 
-```cpp
-bool isComponentNameUsed(QString name);
-bool isObjectNameUsed(QString objectName);
-int newID() {return ++lastID;}
-void loadConfig();
-```
-
 - isComponentNameUsed(QString name): Lekérdezi, hogy a megadott komponens név használatban van-e már másik komponens által.
 - isObjectNameUsed(QString objectName): Lekérdezi, hogy a megadott objektum név használatban van-e másik komponens által.
 - newID(): Visszaad egy új egyedi azonosítót.
@@ -518,12 +448,6 @@ void loadConfig();
 
 #### Forráskód generálás
 
-```cpp
-QString generateSource();
-QString generateMainSource();
-QString replaceReference(QString codeString);
-QString getReferenceSource(QString objectName);
-```
 
 - generateSource(): A forráskód generálására alkalmas.
 - generateMainSource(): A main függvény forrásának külön generálására alkalmas. A generateSource() függvény segédfüggvényeként van jelen.
@@ -532,12 +456,6 @@ QString getReferenceSource(QString objectName);
 
 
 #### Fordítás és futtatás
-
-```cpp
-void run();
-void compile();
-void stopCompile();
-```
 
 - run(): A fordított program futtatására szolgál. Amennyiben még nem volt lefordítva a jelenlegi forráskód, ezt is megteszi.
 - compile(): A fordítást kezdeményező függvény. A beállításokban megadott g++ adatokat használva fordítja a jelenlegi forráskódot.
@@ -556,23 +474,7 @@ void stopCompile();
 
 #### Component
 
-adattagjai:
-```cpp
-QString name;
-int id;
-QString objectName;
-ComponentType type;
-QString item;
-int enumeratorID;
-QString enumeratorObjectName;
-bool optimist;
-QString value;
-QString compare;
-QMap<MethodType,QString> methods;
-QMap<int,Member> members;
-QMap<int,CustomMethod> customMethods;
-```
-
+Adattagjai:
 - name: A komponens neve.
 - id: A komponens azonosítója.
 - objectName: A komponens objektum neve.
@@ -592,15 +494,7 @@ A Component metódusai továbbá a nevükből egyértelmű létrehozó, törlő,
 
 ### SaveData
 
-adattagjai:
-```cpp
-QString projectName;
-QMap<int,Component*> components;
-QMap<int,CodeBlock*> codeblocks;
-QMap<int,Struct*> structs;
-QVector<int> mainIdOrder;
-int lastID;
-```
+Adattagjai:
 
 - projectName: A projekt neve.
 - components: A projektben lévő komponensek címeit tárolja azonosítóval párosítva.
@@ -612,16 +506,6 @@ int lastID;
 A SaveData konstruktorában minden tárolandó adatot egyben meg lehet adni.
 
 #### Egyéb segédobjektumok
-
-```cpp
-enum ComponentType;
-enum MethodType;
-static const QMap<ComponentType,QString> componentTypeNameStrings;
-static const QMap<MethodType,QPair<QString,QString>> methodHeaderStrings;
-static const QMap<MethodType,QString> methodTypeStrings;
-static const QMap<QString,MethodType> methodTypeFromString;
-static const QMap<QString,ComponentType> componentTypeFromString;
-```
 
 - ComponentType: Egy enum, amely a lehetséges komponens típusokat tárolja.
 - MethodType: Egy enum, amely a lehetséges metódus típusokat tárolja.
@@ -676,7 +560,10 @@ A projektfájl a következő struktúrával rendelkezik:
 				
 				<!-- QString compare; -->
 				<compare>ComponentCompare</compare>
-				
+
+				<!-- QString constructorParameter; -->
+				<constructorParameter>ComponentConstructorParameter</constructorParameter>
+
 				<!-- QMap<MethodType,QString> methods; -->
 				<methods>
 					<method>
@@ -761,6 +648,7 @@ A `<data>` tag-en belül a `<components>` tag a komponenseket tartalmazza. A kom
 - Az `<useInMain>` tag azt tartalmazza, hogy az adott komponens a `main` függvényben használva van-e.
 - A `<value>` tag a komponens `value` típusát tartalmazza.
 - A `<compare>` tag a komponens összehasonlítási módját tartalmazza.
+- A `<constructorParameter>` tag a komponens konstruktor paramétereit tartalmazza.
 - A `<methods>` tag a komponens felülírt metódusait tartalmazza. A metódusok egy-egy `<method>` tag párba vannak és tartalmuk a következő:
     - Az `<header>` tag a metódus fejlécét tartalmazza.
     - A `<body>` tag a metódus törzsét tartalmazza.
