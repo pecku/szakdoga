@@ -17,7 +17,7 @@
         <td rowspan="3">1.2</td>
         <td rowspan="3">Kilépés</td>
         <td>GIVEN</td>
-        <td>A alkalmazás fut.</td>
+        <td>Az alkalmazás fut.</td>
     </tr>
     <tr>
         <td>WHEN</td>
@@ -31,7 +31,7 @@
         <td rowspan="3">2.1</td>
         <td rowspan="3">Új projekt</td>
         <td>GIVEN</td>
-        <td>A alkalmazás fut.</td>
+        <td>Az alkalmazás fut.</td>
     </tr>
     <tr>
         <td>WHEN</td>
@@ -45,7 +45,7 @@
         <td rowspan="3">2.2</td>
         <td rowspan="3">Projekt betöltése</td>
         <td>GIVEN</td>
-        <td>A alkalmazás fut.</td>
+        <td>Az alkalmazás fut.</td>
     </tr>
     <tr>
         <td>WHEN</td>
@@ -59,7 +59,7 @@
         <td rowspan="3">2.3</td>
         <td rowspan="3">Projekt mentése</td>
         <td>GIVEN</td>
-        <td>A alkalmazás fut.</td>
+        <td>Az alkalmazás fut.</td>
     </tr>
     <tr>
         <td>WHEN</td>
@@ -115,7 +115,7 @@
         <td rowspan="3">3.2</td>
         <td rowspan="3">Új komponens létrehozásának megszakítása</td>
         <td>GIVEN</td>
-        <td>Aktív az új kompnens létrehozása dialógusablak.</td>
+        <td>Aktív az új komponens létrehozása dialógusablak.</td>
     </tr>
     <tr>
         <td>WHEN</td>
@@ -129,7 +129,7 @@
         <td rowspan="3">3.3</td>
         <td rowspan="3">Új komponens létrehozása hiányos vagy helytelen adatokkal</td>
         <td>GIVEN</td>
-        <td>Aktív az új kompnens létrehozása dialógusablak.</td>
+        <td>Aktív az új komponens létrehozása dialógusablak.</td>
     </tr>
     <tr>
         <td>WHEN</td>
@@ -143,7 +143,7 @@
         <td rowspan="3">3.4</td>
         <td rowspan="3">Új komponens létrehozása helyes adatokkal</td>
         <td>GIVEN</td>
-        <td>Aktív az új kompnens létrehozása dialógusablak.</td>
+        <td>Aktív az új komponens létrehozása dialógusablak.</td>
     </tr>
     <tr>
         <td>WHEN</td>
@@ -434,5 +434,3 @@
         <td>A program leállítja a fordításért vagy futtatásért felelős háttérfolyamatot.</td>
     </tr>
 </table>
-
-<!--  Ha a nem lehetőséget választjuk, nem történik semmi. Ha az igen lehetőségre kattintunk, megjelenik egy ablak, amelyben a mentés helyét kell kiválasztanunk és megadni a projekt nevét. -->
