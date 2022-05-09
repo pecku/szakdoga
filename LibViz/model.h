@@ -10,6 +10,9 @@
 class Model : public QObject
 {
     Q_OBJECT
+
+    friend class Test;
+
 public:
     explicit Model(QObject *parent = nullptr);
 

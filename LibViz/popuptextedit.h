@@ -2,7 +2,7 @@
 #define POPUPTEXTEDIT_H
 
 #include <QTextBrowser>
-#include <textinputdialog.h>
+#include "textinputdialog.h"
 #include "modelkit.h"
 
 class PopUpTextEdit : public QTextBrowser

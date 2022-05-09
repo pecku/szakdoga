@@ -8,7 +8,7 @@
 #include <QXmlStreamReader>
 #include <QDebug>
 #include <QTextStream>
-#include <modelkit.h>
+#include "modelkit.h"
 
 class DataAccess
 {

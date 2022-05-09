@@ -1,3 +1,7 @@
+#include "../LibVizTest/tst_test.cpp"
+
+#ifndef TEST
+
 #include "mainwindow.h"
 
 #include <QApplication>
@@ -9,3 +13,5 @@ int main(int argc, char *argv[])
     w.show();
     return a.exec();
 }
+
+#endif // TEST
