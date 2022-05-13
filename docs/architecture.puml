@@ -8,8 +8,8 @@ hide class members
 
 class Nézet
 
-Nézet *-- Modell
-Modell *-- Perzisztencia
+Nézet *-right- Modell
+Modell *-right- Perzisztencia
 
 
 @enduml

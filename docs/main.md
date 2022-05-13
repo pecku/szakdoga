@@ -68,7 +68,7 @@ Az alkalmazás Qt Creator segítségével lesz megvalósítva C++ nyelven. Azér
 
 Ezúton szeretném megköszönni mindazoknak, akik nélkül ez a dolgozat nem jöhetett volna létre:
 
-Köszönet a konzulensemnek, aki rendelkezésemre bocsátotta tudását, hasznos tanácsokkal és rengeteg segítséggel láttott el a dolgozat elkészítése során.
+Köszönet a konzulensemnek, aki rendelkezésemre bocsátotta tudását, hasznos tanácsokkal és rengeteg segítséggel látott el a dolgozat elkészítése során.
 
 Köszönet az Eötvös Loránd Tudományegyetem Informatikai Karának, hogy az itt eltöltött félévek alatt elsajátíthattam a szükséges alapokat.
 
@@ -108,6 +108,17 @@ Egy tipikus felhasználása a könyvtárnak a következő:
 ## Applikáció bemutatása
 
 Programozás során elengedhetetlen alapokat nyújt a programozási tételek használata, megfelelő alkalmazása. E tudás elsajátításának megkönnyítése érdekében hozta létre dr. Gregorics Tibor Tanár Úr a programozási tételekhez osztálysablonokat megvalósító c++ könyvtárat, amely ezáltal hozzájárul mind a kód újrafelhasználásának gyakorlásához, mind az objektumorientált programok öröklődéseinek megértéséhez, de a legfontosabb, hogy fejleszti a programtervezési készségeket a programozási tételek mentén.
+
+Az osztály-sablon könyvtár a visszavezetéssel tervezett programok C++-beli megvalósítását támogatja. Ahhoz a programozási módszerhez illeszkedik, amely programozási tételekre vezeti vissza a megoldandó feladatot, és a megoldó programkódhoz a könyvtár elemeinek újrahasznosításával jut el. Ehhez egyrészt objektum-orientált technikákra (objektum összetétel, származtatás, virtuális metódusok felüldefiniálása), másrészt osztály-sablonok példányosítására van szükség. A könyvtárban alapvetően kétféle osztályt találunk. Egyfelől a különféle programozási tételeket általánosan leíró osztály-sablonokat, másfelől a nevezetes felsorolásokat definiáló osztály-sablonokat.
+
+Egy tipikus felhasználása a könyvtárnak a következő:
+1. Egy konkrét feladat megoldásához származtatunk egy osztályt a feladat megoldására alkalmas programozási tétel osztály-sablonjából,
+	1. megadva ezen osztály-sablon sablon-paramétereit (köztük a megoldáshoz felsorolandó elemek típusát: Item ),
+	2. felüldefiniálva az osztály-sablon bizonyos virtuális metódusait.
+2. Példányosítjuk a fenti osztályt, és ezzel létrehozunk egy tevékenység objektumot.
+3. Példányosítunk egy alkalmas felsoroló objektumot. Ennek osztályát vagy közvetlenül a könyvtárból vesszük, vagy magunk implementáljuk a könyvtár Enumerator interfészét megvalósítva a first() , next() , current() , end() metódusokat. Ügyelni kell arra, hogy a felsorolt elemek típusa egyezzen meg a programozási tétel által feldolgozott elemek típusával. (Ez az Item sablon-paraméter helyébe írt típus).
+4. Hozzákapcsoljuk a tevékenység objektumhoz ( addEnumerator() ) a felsoroló objektumot.
+5. A tevékenység objektumnak meghívjuk a run() metódusát, majd különféle getter-ekkel lekérdezzük a tevékenység eredményét.
 
 Az applikáció a könyvtár használatát még tovább egyszerűsíti és befogadhatóbbá teszi azok számára, akik részben még csak ismerkednek a programozással. A felület tehát előre összeállított, minden fontos elemet tartalmazó komponenseket biztosít az átláthatóság kedvéért.
 
@@ -271,6 +282,11 @@ A következő dialógusablakokkal találkozhat a felhasználó az alkalmazás ha
 
 ![Figyelmeztetés változások mentésére dialógusablak](./wireframes/discarddialog.png)
 
+## Osztály-sablon könyvtár
+
+### Szerkezete
+
+![Osztály-sablon könyvtár szerkezete uml diagrammal](../diagram/docs/gtlib.svg)
 
 ## Használati esetek
 
@@ -328,6 +344,8 @@ A ComponentWidget (X. ábra) szolgál a ProcedureWidgetben (X. ábra) és az Enu
 ### StructWidget
 
 A StructWidget hasonló tulajdonságokkal rendelkezik, mint az előzőekben említett komponens widgetek. A kevesebb funkcionalitás miatt a felépítése egyszerűbb.
+
+![StructWidget uml](../diagram/docs/StructWidget.svg)
 
 ### MemberWidget és CustomMethodWidget
 
@@ -520,6 +538,13 @@ A SaveData konstruktorában minden tárolandó adatot egyben meg lehet adni.
 
 Az alkalmazás képes kezdetleges projektkezelésre, ami a létrehozást, mentést és betöltést foglalja magában. Egy projekt egy xml fájlban tárolódik, aminek az elérési útját a felhasználó határozza meg. 
 
+A perzisztencia a DataAccess osztály formájában létezik. A következő metódusokat tartalmazza:
+- writeSource(QString source): A forráskód fájlbaírásáért felel, hogy az elérhető legyen a fordító által.
+- saveProject(SaveData data): A paraméterként megadott adatokat menti egy fájlba.
+- loadProject(QString projectName): A paraméterként megadott projektet tölti be. 
+
+![DataAccess uml diagram](../diagram/docs/DataAccess.svg)
+
 A projektfájl a következő struktúrával rendelkezik:
 
 ```xml
@@ -676,8 +701,6 @@ A `<data>` tag-en belül a `<structs>` tag a struktúrákat tartalmazza. A struk
 A `<data>` tag-en belül a `<codeblocks>` tag a kódblokkokat tartalmazza. A kódblokkok egy-egy `<codeblock>` tag párban vannak és tartalmuk a következő:
 - Az `<id>` tag a kódblokk azonosítóját tartalmazza.
 - A `<code>` tag a kódblokk kódját tartalmazza.
-
-> dataaccess uml
 
 
 ## Signal-ok és Slot-ok
