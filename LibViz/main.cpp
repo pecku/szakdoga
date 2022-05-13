@@ -1,5 +1,4 @@
-#include "../LibVizTest/tst_test.cpp"
-
+//#define TEST
 #ifndef TEST
 
 #include "mainwindow.h"
