@@ -38,3 +38,52 @@ MaxSearch ..> Greater
 MaxSearch .up.> Less
 
 @enduml
+
+@startuml procedure-enumerator-uml
+
+skinparam Monochrome true
+hide circle
+skinparam ClassAttributeIconSize 0
+
+class Procedure<Item>{
+    # enor : Enumerator<Item>*
+    + run() : void {final}
+    + addEnumerator(Enumerator<Item>*) : void {final}
+    # init() : void {virtual}
+    # first() : void {virtual}
+    # body(Item) : void {virtual}
+    # loopCond() : bool {virtual}
+    # whileCond(Item) : bool {virtual}
+}
+
+
+interface Enumerator<Item> <<inteface>>{
+    + first() : void
+    + next() : void
+    + current() : Item
+    + end() : void
+}
+
+@enduml
+
+
+@startuml procedure-enumerator
+
+skinparam Monochrome true
+hide circle
+skinparam ClassAttributeIconSize 0
+
+class Procedure{
+    run() 
+    addEnumerator(Enumerator<Item>) 
+}
+
+
+interface Enumerator{
+    first() 
+    next() 
+    current() 
+    end() 
+}
+
+@enduml

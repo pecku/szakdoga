@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="117px" preserveAspectRatio="none" style="width:306px;height:117px;background:#FFFFFF;" version="1.1" viewBox="0 0 306 117" width="306px" zoomAndPan="magnify"><defs><filter height="300%" id="f171dnz13dcnzj" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[df3fc242ef91a47d9d4eb0969d2a8168]
+class Procedure--><rect codeLine="6" fill="#F8F8F8" filter="url(#f171dnz13dcnzj)" height="68.7656" id="Procedure" style="stroke:#383838;stroke-width:1.5;" width="179" x="7" y="20.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="57" x="68" y="37.957">Procedure</text><line style="stroke:#383838;stroke-width:1.5;" x1="8" x2="185" y1="45.5938" y2="45.5938"/><line style="stroke:#383838;stroke-width:1.5;" x1="8" x2="185" y1="53.5938" y2="53.5938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="24" x="13" y="69.0127">run()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="167" x="13" y="82.8486">addEnumerator(Enumerator&lt;Item&gt;)</text><!--MD5=[3787884da870b7cc2169c546b8860673]
+class Enumerator--><rect codeLine="12" fill="#F8F8F8" filter="url(#f171dnz13dcnzj)" height="96.4375" id="Enumerator" style="stroke:#383838;stroke-width:1.5;" width="71" x="221" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="65" x="224" y="24.457">Enumerator</text><line style="stroke:#383838;stroke-width:1.5;" x1="222" x2="291" y1="32.0938" y2="32.0938"/><line style="stroke:#383838;stroke-width:1.5;" x1="222" x2="291" y1="40.0938" y2="40.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="27" x="227" y="55.5127">first()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="29" x="227" y="69.3486">next()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="43" x="227" y="83.1846">current()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="26" x="227" y="97.0205">end()</text><!--MD5=[3125ffccf19b8106a675a532c69160f7]
+@startuml procedure-enumerator
+
+skinparam Monochrome true
+hide circle
+skinparam ClassAttributeIconSize 0
+
+class Procedure{
+    run() 
+    addEnumerator(Enumerator<Item>) 
+}
+
+
+interface Enumerator{
+    first() 
+    next() 
+    current() 
+    end() 
+}
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>
