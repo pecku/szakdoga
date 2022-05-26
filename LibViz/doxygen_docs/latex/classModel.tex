@@ -1,0 +1,614 @@
+\hypertarget{classModel}{}\doxysection{Model Class Reference}
+\label{classModel}\index{Model@{Model}}
+
+
+The class representing the model that is the brain behind the whole application.  
+
+
+
+
+{\ttfamily \#include $<$model.\+h$>$}
+
+
+
+Inheritance diagram for Model\+:
+% FIG 0
+
+
+Collaboration diagram for Model\+:
+% FIG 1
+\doxysubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classModel_aff593ae938a45772daa0880142675255}\label{classModel_aff593ae938a45772daa0880142675255}} 
+void {\bfseries compiler\+Path\+Not\+Set} ()
+\item 
+\mbox{\Hypertarget{classModel_a67475dedb5f495f1eb7407be158f2235}\label{classModel_a67475dedb5f495f1eb7407be158f2235}} 
+void {\bfseries have\+Compile\+Output} (Q\+String output)
+\item 
+\mbox{\Hypertarget{classModel_afeb9875ecdd508a3abe2ab398bccbb4f}\label{classModel_afeb9875ecdd508a3abe2ab398bccbb4f}} 
+void {\bfseries compile\+Process\+Ended} ()
+\item 
+\mbox{\Hypertarget{classModel_a08196c5a0cf2644f02bb9ba1d70d433b}\label{classModel_a08196c5a0cf2644f02bb9ba1d70d433b}} 
+void {\bfseries need\+Project\+Name\+For\+Save} ()
+\item 
+\mbox{\Hypertarget{classModel_a6b3ed4ced9e4a0b045fa8836ae3e2b0e}\label{classModel_a6b3ed4ced9e4a0b045fa8836ae3e2b0e}} 
+void {\bfseries need\+Project\+Name\+For\+Open} ()
+\item 
+\mbox{\Hypertarget{classModel_a021499de976a893468e1b2013745a31e}\label{classModel_a021499de976a893468e1b2013745a31e}} 
+void {\bfseries want\+To\+Generate\+Source} ()
+\item 
+\mbox{\Hypertarget{classModel_a012eedd157e1f04101a4c9c0d1e74a30}\label{classModel_a012eedd157e1f04101a4c9c0d1e74a30}} 
+void {\bfseries project\+Loaded} (const \mbox{\hyperlink{structSaveData}{Save\+Data}} \&data)
+\item 
+\mbox{\Hypertarget{classModel_ae85ae67835bf15034d7fdccc43835ea1}\label{classModel_ae85ae67835bf15034d7fdccc43835ea1}} 
+void {\bfseries cleared} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classModel_a565459c4bd6ccc7ee01eb02589020f11}{Model}} (Q\+Object $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructs a new \mbox{\hyperlink{classModel}{Model}} object. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classModel_a7039adcfbe6dad07ad83d5523c1f14ac}{generate\+Source}} ()
+\begin{DoxyCompactList}\small\item\em Generates the source code of the project. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classModel_ac39dedddeec0cdd6aff77147e4a2a88e}{create\+Component}} (Q\+String name, Component\+Type type)
+\begin{DoxyCompactList}\small\item\em Creates a component. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classModel_af52497ad89bb97f0a22c4d6c0d631aee}{create\+Code\+Block}} ()
+\begin{DoxyCompactList}\small\item\em Creates a code block. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classModel_ad7375aec51631ee86f38f19f5a321a88}{create\+Struct}} (Q\+String name)
+\begin{DoxyCompactList}\small\item\em Creates a struct. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classModel_a51cf4591e45bd6d7c873d712a84cf5e4}{create\+Member}} (int component\+ID)
+\begin{DoxyCompactList}\small\item\em Creates a member. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classModel_ade5079cc89d1478825a9e7f144e3e2b8}{create\+Custom\+Method}} (int component\+ID)
+\begin{DoxyCompactList}\small\item\em Creates a custom method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classModel_ade625d9e136e6633905fa7f8fef829be}{is\+Component\+Name\+Used}} (Q\+String name)
+\begin{DoxyCompactList}\small\item\em Checks if the given component name is used by another component. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classModel_a60cacb84464a5f29046f9df4d88af1ea}{is\+Object\+Name\+Used}} (Q\+String object\+Name)
+\begin{DoxyCompactList}\small\item\em Checks if the given object name is used by another object. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classModel_a66ef240bc0e95bc8e5c27114ba1c5146}{get\+Enumerator\+Name\+By\+Id}} (int enumerator\+ID)
+\begin{DoxyCompactList}\small\item\em Returns the enumerator\textquotesingle{}s name corresponding to the given id. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classModel_a239cc7a1af198f64ab1fc97efaf79de3}{modify\+Member}} (int component\+ID, int member\+ID, Q\+String type, Q\+String name)
+\begin{DoxyCompactList}\small\item\em Modifies a member. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classModel_aad2e3dfff50a7974f6bc84c29b95f524}{modify\+Custom\+Method}} (int component\+ID, int custom\+Method\+ID, Q\+String header, Q\+String body)
+\begin{DoxyCompactList}\small\item\em Modifies a custom method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classModel_adedfc4144f7c0643a9d8d8085a6f41a3}{delete\+Component}} (int component\+ID)
+\begin{DoxyCompactList}\small\item\em Deletes a component. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classModel_a71b3bd2ea7abebec93e07ce82e0cf54a}{delete\+Code\+Block}} (int code\+Block\+ID)
+\begin{DoxyCompactList}\small\item\em Deletes a code block. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classModel_a9220f7bbbd2bab1e59804d3142816597}{delete\+Struct}} (int struct\+ID)
+\begin{DoxyCompactList}\small\item\em Delete a struct. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classModel_aa04f5ccf1e591c9d5f8349cb7863ed9a}{delete\+Member}} (int component\+ID, int member\+ID)
+\begin{DoxyCompactList}\small\item\em Delete a member. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classModel_a88b908b556131a2bb8a3029b3d72b82f}{delete\+Custom\+Method}} (int component\+ID, int custom\+Method\+ID)
+\begin{DoxyCompactList}\small\item\em Delete a custom method. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classModel_accad56387357603bc726f4fd895b6c22}\label{classModel_accad56387357603bc726f4fd895b6c22}} 
+void {\bfseries set\+Use\+In\+Main} (int component\+ID, bool use\+In\+Main)
+\item 
+void \mbox{\hyperlink{classModel_a2814e703ad91515df3fb6c83fac5f433}{set\+Object\+Name}} (int component\+ID, Q\+String object\+Name)
+\begin{DoxyCompactList}\small\item\em Sets the object name of a component. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classModel_a3004ad659f19d020a0e717ec9421d078}\label{classModel_a3004ad659f19d020a0e717ec9421d078}} 
+void {\bfseries set\+Item} (int component\+ID, Q\+String item)
+\item 
+\mbox{\Hypertarget{classModel_aa7bc94b8efcc2bc3333fe86a30bbd293}\label{classModel_aa7bc94b8efcc2bc3333fe86a30bbd293}} 
+void {\bfseries set\+Value} (int component\+ID, Q\+String value)
+\item 
+\mbox{\Hypertarget{classModel_ae4391edb409e1f21ee347ae80400855b}\label{classModel_ae4391edb409e1f21ee347ae80400855b}} 
+void {\bfseries set\+Optimist} (int component\+ID, bool optimist)
+\item 
+\mbox{\Hypertarget{classModel_a5eb95c36a3648045f43e3c39edb5ef19}\label{classModel_a5eb95c36a3648045f43e3c39edb5ef19}} 
+void {\bfseries set\+Compare} (int component\+ID, Q\+String compare)
+\item 
+void \mbox{\hyperlink{classModel_a264500862a67c6cb392ea2f835054cbb}{set\+Enumerator}} (int component\+ID, int enumerator\+ID)
+\begin{DoxyCompactList}\small\item\em Sets the enumerator of a procedure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classModel_aeeb3cf1622887f1835fde4874b901898}{set\+Method}} (int component\+ID, Method\+Type method\+Type, Q\+String method\+Body)
+\begin{DoxyCompactList}\small\item\em Sets a overrideable methods body. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classModel_a6514b23361969395551480807e5f1b20}\label{classModel_a6514b23361969395551480807e5f1b20}} 
+void {\bfseries set\+Constructor\+Parameter} (int component\+ID, Q\+String constructor\+Parameter)
+\item 
+\mbox{\Hypertarget{classModel_ac9eca81ac80ba4f72fb8dfe3a9b88cb8}\label{classModel_ac9eca81ac80ba4f72fb8dfe3a9b88cb8}} 
+void {\bfseries set\+Code} (int code\+Block\+ID, Q\+String code)
+\item 
+void \mbox{\hyperlink{classModel_a71355624210e50d404314cc6347d5d38}{set\+Compiler\+Path}} (Q\+String path)
+\begin{DoxyCompactList}\small\item\em Sets the compiler path. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classModel_ac3169d17a8da0eaf6feee8a234fa13d6}{set\+Compiler\+Arguments}} (Q\+String path)
+\begin{DoxyCompactList}\small\item\em Sets the compiler arguments. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classModel_a2b315f6b9e4180d0994b2b4234ed099e}\label{classModel_a2b315f6b9e4180d0994b2b4234ed099e}} 
+void {\bfseries set\+Main\+Id\+Order} (Q\+Vector$<$ int $>$ ids)
+\item 
+void \mbox{\hyperlink{classModel_aef475e4724f28b31c2dabb4525e3d55e}{run}} ()
+\begin{DoxyCompactList}\small\item\em Runs the compiled source code. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classModel_a4c9efed3fbfb8052f980402ce21794bb}{compile}} ()
+\begin{DoxyCompactList}\small\item\em Compiles the project\textquotesingle{}s source code. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classModel_ac7a2ce7fed705f429a456829c36248f9}{stop\+Compile}} ()
+\begin{DoxyCompactList}\small\item\em Stops the compilation process. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classModel_a93b2899ca9f338e2cd7cdb4584eaf7e6}\label{classModel_a93b2899ca9f338e2cd7cdb4584eaf7e6}} 
+Q\+String {\bfseries get\+Compile\+Output} ()
+\item 
+\mbox{\Hypertarget{classModel_ab27f72a025bde3c8aaf933fef3661d61}\label{classModel_ab27f72a025bde3c8aaf933fef3661d61}} 
+Q\+String {\bfseries get\+Compiler\+Path} ()
+\item 
+\mbox{\Hypertarget{classModel_a1745994dec612318c6408e85bb96b8c1}\label{classModel_a1745994dec612318c6408e85bb96b8c1}} 
+Q\+String\+List {\bfseries get\+Compiler\+Arguments} ()
+\item 
+\mbox{\Hypertarget{classModel_a28bebf83fd2056ed19d591d65dd845be}\label{classModel_a28bebf83fd2056ed19d591d65dd845be}} 
+Q\+String {\bfseries get\+Project\+Name} ()
+\item 
+bool \mbox{\hyperlink{classModel_aed979b1abb8e4de481e033f4ef535084}{new\+Project}} ()
+\begin{DoxyCompactList}\small\item\em Creates a new project. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classModel_a56c8300e159a8462902b96467d0d7c13}{save\+Project}} ()
+\begin{DoxyCompactList}\small\item\em Saves the project. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classModel_a6faa7ccd6521e2d1569d24d0a48ef3c7}\label{classModel_a6faa7ccd6521e2d1569d24d0a48ef3c7}} 
+void {\bfseries set\+Project} (Q\+String file)
+\item 
+void \mbox{\hyperlink{classModel_a6e388f9ab33a5807dc4e7b287621b427}{open\+Project}} ()
+\begin{DoxyCompactList}\small\item\em Loads a project. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classModel_a5b78b1c2e1fa07ffed92da365593eaa4}\label{classModel_a5b78b1c2e1fa07ffed92da365593eaa4}} 
+class {\bfseries Test}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The class representing the model that is the brain behind the whole application. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classModel_a565459c4bd6ccc7ee01eb02589020f11}\label{classModel_a565459c4bd6ccc7ee01eb02589020f11}} 
+\index{Model@{Model}!Model@{Model}}
+\index{Model@{Model}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{Model()}{Model()}}
+{\footnotesize\ttfamily Model\+::\+Model (\begin{DoxyParamCaption}\item[{Q\+Object $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a new \mbox{\hyperlink{classModel}{Model}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent object. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classModel_a4c9efed3fbfb8052f980402ce21794bb}\label{classModel_a4c9efed3fbfb8052f980402ce21794bb}} 
+\index{Model@{Model}!compile@{compile}}
+\index{compile@{compile}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{compile()}{compile()}}
+{\footnotesize\ttfamily void Model\+::compile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Compiles the project\textquotesingle{}s source code. 
+
+\mbox{\Hypertarget{classModel_af52497ad89bb97f0a22c4d6c0d631aee}\label{classModel_af52497ad89bb97f0a22c4d6c0d631aee}} 
+\index{Model@{Model}!createCodeBlock@{createCodeBlock}}
+\index{createCodeBlock@{createCodeBlock}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{createCodeBlock()}{createCodeBlock()}}
+{\footnotesize\ttfamily int Model\+::create\+Code\+Block (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a code block. 
+
+\begin{DoxyReturn}{Returns}
+int The new code block\textquotesingle{}s id. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classModel_ac39dedddeec0cdd6aff77147e4a2a88e}\label{classModel_ac39dedddeec0cdd6aff77147e4a2a88e}} 
+\index{Model@{Model}!createComponent@{createComponent}}
+\index{createComponent@{createComponent}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{createComponent()}{createComponent()}}
+{\footnotesize\ttfamily int Model\+::create\+Component (\begin{DoxyParamCaption}\item[{Q\+String}]{name,  }\item[{Component\+Type}]{type }\end{DoxyParamCaption})}
+
+
+
+Creates a component. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the component. \\
+\hline
+{\em type} & The type of the component. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int The id of the component. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classModel_ade5079cc89d1478825a9e7f144e3e2b8}\label{classModel_ade5079cc89d1478825a9e7f144e3e2b8}} 
+\index{Model@{Model}!createCustomMethod@{createCustomMethod}}
+\index{createCustomMethod@{createCustomMethod}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{createCustomMethod()}{createCustomMethod()}}
+{\footnotesize\ttfamily int Model\+::create\+Custom\+Method (\begin{DoxyParamCaption}\item[{int}]{component\+ID }\end{DoxyParamCaption})}
+
+
+
+Creates a custom method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component\+ID} & The id of the component that contains the method. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int The id of the new method. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classModel_a51cf4591e45bd6d7c873d712a84cf5e4}\label{classModel_a51cf4591e45bd6d7c873d712a84cf5e4}} 
+\index{Model@{Model}!createMember@{createMember}}
+\index{createMember@{createMember}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{createMember()}{createMember()}}
+{\footnotesize\ttfamily int Model\+::create\+Member (\begin{DoxyParamCaption}\item[{int}]{component\+ID }\end{DoxyParamCaption})}
+
+
+
+Creates a member. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component\+ID} & The id of the component that contains the member. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int The id of the new member. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classModel_ad7375aec51631ee86f38f19f5a321a88}\label{classModel_ad7375aec51631ee86f38f19f5a321a88}} 
+\index{Model@{Model}!createStruct@{createStruct}}
+\index{createStruct@{createStruct}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{createStruct()}{createStruct()}}
+{\footnotesize\ttfamily int Model\+::create\+Struct (\begin{DoxyParamCaption}\item[{Q\+String}]{name }\end{DoxyParamCaption})}
+
+
+
+Creates a struct. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int The id of the struct. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classModel_a71b3bd2ea7abebec93e07ce82e0cf54a}\label{classModel_a71b3bd2ea7abebec93e07ce82e0cf54a}} 
+\index{Model@{Model}!deleteCodeBlock@{deleteCodeBlock}}
+\index{deleteCodeBlock@{deleteCodeBlock}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{deleteCodeBlock()}{deleteCodeBlock()}}
+{\footnotesize\ttfamily void Model\+::delete\+Code\+Block (\begin{DoxyParamCaption}\item[{int}]{code\+Block\+ID }\end{DoxyParamCaption})}
+
+
+
+Deletes a code block. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code\+Block\+ID} & The id of the code block to be deleted. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classModel_adedfc4144f7c0643a9d8d8085a6f41a3}\label{classModel_adedfc4144f7c0643a9d8d8085a6f41a3}} 
+\index{Model@{Model}!deleteComponent@{deleteComponent}}
+\index{deleteComponent@{deleteComponent}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{deleteComponent()}{deleteComponent()}}
+{\footnotesize\ttfamily void Model\+::delete\+Component (\begin{DoxyParamCaption}\item[{int}]{component\+ID }\end{DoxyParamCaption})}
+
+
+
+Deletes a component. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component\+ID} & The id of the component to be deleted. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classModel_a88b908b556131a2bb8a3029b3d72b82f}\label{classModel_a88b908b556131a2bb8a3029b3d72b82f}} 
+\index{Model@{Model}!deleteCustomMethod@{deleteCustomMethod}}
+\index{deleteCustomMethod@{deleteCustomMethod}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{deleteCustomMethod()}{deleteCustomMethod()}}
+{\footnotesize\ttfamily void Model\+::delete\+Custom\+Method (\begin{DoxyParamCaption}\item[{int}]{component\+ID,  }\item[{int}]{custom\+Method\+ID }\end{DoxyParamCaption})}
+
+
+
+Delete a custom method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component\+ID} & The id of the component that contains the method. \\
+\hline
+{\em custom\+Method\+ID} & The id of the custom method to be deleted. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classModel_aa04f5ccf1e591c9d5f8349cb7863ed9a}\label{classModel_aa04f5ccf1e591c9d5f8349cb7863ed9a}} 
+\index{Model@{Model}!deleteMember@{deleteMember}}
+\index{deleteMember@{deleteMember}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{deleteMember()}{deleteMember()}}
+{\footnotesize\ttfamily void Model\+::delete\+Member (\begin{DoxyParamCaption}\item[{int}]{component\+ID,  }\item[{int}]{member\+ID }\end{DoxyParamCaption})}
+
+
+
+Delete a member. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component\+ID} & The id of the component that contains the member. \\
+\hline
+{\em member\+ID} & The id of the member to be deleted. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classModel_a9220f7bbbd2bab1e59804d3142816597}\label{classModel_a9220f7bbbd2bab1e59804d3142816597}} 
+\index{Model@{Model}!deleteStruct@{deleteStruct}}
+\index{deleteStruct@{deleteStruct}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{deleteStruct()}{deleteStruct()}}
+{\footnotesize\ttfamily void Model\+::delete\+Struct (\begin{DoxyParamCaption}\item[{int}]{struct\+ID }\end{DoxyParamCaption})}
+
+
+
+Delete a struct. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em struct\+ID} & The id of the struct to be deleted. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classModel_a7039adcfbe6dad07ad83d5523c1f14ac}\label{classModel_a7039adcfbe6dad07ad83d5523c1f14ac}} 
+\index{Model@{Model}!generateSource@{generateSource}}
+\index{generateSource@{generateSource}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{generateSource()}{generateSource()}}
+{\footnotesize\ttfamily Q\+String Model\+::generate\+Source (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Generates the source code of the project. 
+
+\begin{DoxyReturn}{Returns}
+Q\+String The generated source code. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classModel_a66ef240bc0e95bc8e5c27114ba1c5146}\label{classModel_a66ef240bc0e95bc8e5c27114ba1c5146}} 
+\index{Model@{Model}!getEnumeratorNameById@{getEnumeratorNameById}}
+\index{getEnumeratorNameById@{getEnumeratorNameById}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{getEnumeratorNameById()}{getEnumeratorNameById()}}
+{\footnotesize\ttfamily Q\+String Model\+::get\+Enumerator\+Name\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{enumerator\+ID }\end{DoxyParamCaption})}
+
+
+
+Returns the enumerator\textquotesingle{}s name corresponding to the given id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enumerator\+ID} & The id of the enumerator. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+String The name of the enumerator. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classModel_ade625d9e136e6633905fa7f8fef829be}\label{classModel_ade625d9e136e6633905fa7f8fef829be}} 
+\index{Model@{Model}!isComponentNameUsed@{isComponentNameUsed}}
+\index{isComponentNameUsed@{isComponentNameUsed}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{isComponentNameUsed()}{isComponentNameUsed()}}
+{\footnotesize\ttfamily bool Model\+::is\+Component\+Name\+Used (\begin{DoxyParamCaption}\item[{Q\+String}]{name }\end{DoxyParamCaption})}
+
+
+
+Checks if the given component name is used by another component. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name to be checked. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true If the name is already in use. 
+
+false If the name is not in use. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classModel_a60cacb84464a5f29046f9df4d88af1ea}\label{classModel_a60cacb84464a5f29046f9df4d88af1ea}} 
+\index{Model@{Model}!isObjectNameUsed@{isObjectNameUsed}}
+\index{isObjectNameUsed@{isObjectNameUsed}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{isObjectNameUsed()}{isObjectNameUsed()}}
+{\footnotesize\ttfamily bool Model\+::is\+Object\+Name\+Used (\begin{DoxyParamCaption}\item[{Q\+String}]{object\+Name }\end{DoxyParamCaption})}
+
+
+
+Checks if the given object name is used by another object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object\+Name} & The name to be checked. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true If the name is already in use. 
+
+false If the name is not in use. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classModel_aad2e3dfff50a7974f6bc84c29b95f524}\label{classModel_aad2e3dfff50a7974f6bc84c29b95f524}} 
+\index{Model@{Model}!modifyCustomMethod@{modifyCustomMethod}}
+\index{modifyCustomMethod@{modifyCustomMethod}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{modifyCustomMethod()}{modifyCustomMethod()}}
+{\footnotesize\ttfamily void Model\+::modify\+Custom\+Method (\begin{DoxyParamCaption}\item[{int}]{component\+ID,  }\item[{int}]{custom\+Method\+ID,  }\item[{Q\+String}]{header,  }\item[{Q\+String}]{body }\end{DoxyParamCaption})}
+
+
+
+Modifies a custom method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component\+ID} & The id of the component that contains the method. \\
+\hline
+{\em custom\+Method\+ID} & The id of the custom method. \\
+\hline
+{\em header} & The new header of the custom method. \\
+\hline
+{\em body} & The new body of the custom method. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classModel_a239cc7a1af198f64ab1fc97efaf79de3}\label{classModel_a239cc7a1af198f64ab1fc97efaf79de3}} 
+\index{Model@{Model}!modifyMember@{modifyMember}}
+\index{modifyMember@{modifyMember}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{modifyMember()}{modifyMember()}}
+{\footnotesize\ttfamily void Model\+::modify\+Member (\begin{DoxyParamCaption}\item[{int}]{component\+ID,  }\item[{int}]{member\+ID,  }\item[{Q\+String}]{type,  }\item[{Q\+String}]{name }\end{DoxyParamCaption})}
+
+
+
+Modifies a member. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component\+ID} & The id of the component that contains the member. \\
+\hline
+{\em member\+ID} & The id of the member. \\
+\hline
+{\em type} & The new type of the member. \\
+\hline
+{\em name} & The new name of the member. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classModel_aed979b1abb8e4de481e033f4ef535084}\label{classModel_aed979b1abb8e4de481e033f4ef535084}} 
+\index{Model@{Model}!newProject@{newProject}}
+\index{newProject@{newProject}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{newProject()}{newProject()}}
+{\footnotesize\ttfamily bool Model\+::new\+Project (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a new project. 
+
+\begin{DoxyReturn}{Returns}
+true If the project was created successfully. 
+
+false If the project has not been created. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classModel_a6e388f9ab33a5807dc4e7b287621b427}\label{classModel_a6e388f9ab33a5807dc4e7b287621b427}} 
+\index{Model@{Model}!openProject@{openProject}}
+\index{openProject@{openProject}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{openProject()}{openProject()}}
+{\footnotesize\ttfamily void Model\+::open\+Project (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads a project. 
+
+\mbox{\Hypertarget{classModel_aef475e4724f28b31c2dabb4525e3d55e}\label{classModel_aef475e4724f28b31c2dabb4525e3d55e}} 
+\index{Model@{Model}!run@{run}}
+\index{run@{run}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Model\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Runs the compiled source code. 
+
+\mbox{\Hypertarget{classModel_a56c8300e159a8462902b96467d0d7c13}\label{classModel_a56c8300e159a8462902b96467d0d7c13}} 
+\index{Model@{Model}!saveProject@{saveProject}}
+\index{saveProject@{saveProject}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{saveProject()}{saveProject()}}
+{\footnotesize\ttfamily bool Model\+::save\+Project (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Saves the project. 
+
+\begin{DoxyReturn}{Returns}
+true If the project was saved successfully. 
+
+false If the project has not been saved. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classModel_ac3169d17a8da0eaf6feee8a234fa13d6}\label{classModel_ac3169d17a8da0eaf6feee8a234fa13d6}} 
+\index{Model@{Model}!setCompilerArguments@{setCompilerArguments}}
+\index{setCompilerArguments@{setCompilerArguments}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{setCompilerArguments()}{setCompilerArguments()}}
+{\footnotesize\ttfamily void Model\+::set\+Compiler\+Arguments (\begin{DoxyParamCaption}\item[{Q\+String}]{args }\end{DoxyParamCaption})}
+
+
+
+Sets the compiler arguments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & The arguments of the compiler. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classModel_a71355624210e50d404314cc6347d5d38}\label{classModel_a71355624210e50d404314cc6347d5d38}} 
+\index{Model@{Model}!setCompilerPath@{setCompilerPath}}
+\index{setCompilerPath@{setCompilerPath}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{setCompilerPath()}{setCompilerPath()}}
+{\footnotesize\ttfamily void Model\+::set\+Compiler\+Path (\begin{DoxyParamCaption}\item[{Q\+String}]{path }\end{DoxyParamCaption})}
+
+
+
+Sets the compiler path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The path to the compiler. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classModel_a264500862a67c6cb392ea2f835054cbb}\label{classModel_a264500862a67c6cb392ea2f835054cbb}} 
+\index{Model@{Model}!setEnumerator@{setEnumerator}}
+\index{setEnumerator@{setEnumerator}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{setEnumerator()}{setEnumerator()}}
+{\footnotesize\ttfamily void Model\+::set\+Enumerator (\begin{DoxyParamCaption}\item[{int}]{component\+ID,  }\item[{int}]{enumerator\+ID }\end{DoxyParamCaption})}
+
+
+
+Sets the enumerator of a procedure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component\+ID} & The id of the component that uses the enumerator. \\
+\hline
+{\em enumerator\+ID} & The id of the enumerator. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classModel_aeeb3cf1622887f1835fde4874b901898}\label{classModel_aeeb3cf1622887f1835fde4874b901898}} 
+\index{Model@{Model}!setMethod@{setMethod}}
+\index{setMethod@{setMethod}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{setMethod()}{setMethod()}}
+{\footnotesize\ttfamily void Model\+::set\+Method (\begin{DoxyParamCaption}\item[{int}]{component\+ID,  }\item[{Method\+Type}]{method\+Type,  }\item[{Q\+String}]{method\+Body }\end{DoxyParamCaption})}
+
+
+
+Sets a overrideable methods body. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component\+ID} & The id of the component that contains the method. \\
+\hline
+{\em method\+Type} & The type of the method. \\
+\hline
+{\em method\+Body} & The new body of the method. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classModel_a2814e703ad91515df3fb6c83fac5f433}\label{classModel_a2814e703ad91515df3fb6c83fac5f433}} 
+\index{Model@{Model}!setObjectName@{setObjectName}}
+\index{setObjectName@{setObjectName}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{setObjectName()}{setObjectName()}}
+{\footnotesize\ttfamily void Model\+::set\+Object\+Name (\begin{DoxyParamCaption}\item[{int}]{component\+ID,  }\item[{Q\+String}]{object\+Name }\end{DoxyParamCaption})}
+
+
+
+Sets the object name of a component. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component\+ID} & The id of the component that needs to be modified. \\
+\hline
+{\em object\+Name} & The new object name. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classModel_ac7a2ce7fed705f429a456829c36248f9}\label{classModel_ac7a2ce7fed705f429a456829c36248f9}} 
+\index{Model@{Model}!stopCompile@{stopCompile}}
+\index{stopCompile@{stopCompile}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{stopCompile()}{stopCompile()}}
+{\footnotesize\ttfamily void Model\+::stop\+Compile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Stops the compilation process. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+model.\+h\item 
+model.\+cpp\end{DoxyCompactItemize}

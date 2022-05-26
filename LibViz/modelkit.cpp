@@ -1,5 +1,12 @@
 #include "modelkit.h"
 
+/*!
+ * \brief Constructs a new Component object.
+ * 
+ * \param name The name of the component.
+ * \param type The type of the component.
+ * \param id The id of the component.
+ */
 Component::Component(QString name, ComponentType type, int id) : name(name), id(id), type(type){
     enumeratorID = -1;
     constructorParameter = "";
@@ -10,6 +17,11 @@ Component::Component(QString name, ComponentType type, int id) : name(name), id(
     }
 }
 
+/*!
+ * \brief Generates the source code of the component.
+ * 
+ * \return QString The generated source code.
+ */
 QString Component::getSource() const{
     QString source;
     QTextStream ts(&source);
@@ -101,6 +113,11 @@ QString Component::getSource() const{
     return source;
 }
 
+/*!
+ * \brief Generates the source code of the component that is used for object creation.
+ * 
+ * \return QString 
+ */
 QString Component::getSourceForObjectCreation() const{
     QString source;
     QTextStream ts(&source);
@@ -114,7 +131,11 @@ QString Component::getSourceForObjectCreation() const{
     return source;
 }
 
-
+/*!
+ * \brief Generates the source code of the component that is used in the main function.
+ * 
+ * \return QString 
+ */
 QString Component::getSourceForMain() const{
     if(type == DEFAULT || type == ARRAY || type == INTERVAL || type == STRINGSTREAM || type == SEQINFILE){
         return "";
@@ -129,11 +150,22 @@ QString Component::getSourceForMain() const{
     return source;
 }
 
+/*!
+ * \brief Sets the enumerator of the component.
+ * 
+ * \param enumeratorID The id of the enumerator.
+ * \param enumeratorObjectName The object name of the enumerator.
+ */
 void Component::setEnumerator(int enumeratorID, QString enumeratorObjectName){
     this->enumeratorID = enumeratorID;
     this->enumeratorObjectName = enumeratorObjectName;
 }
 
+/*!
+ * \brief Generates the source code of the Struct object.
+ * 
+ * \return QString The generated source code.
+ */
 QString Struct::getSource(){
     QString source;
     QTextStream ts(&source);

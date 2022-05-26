@@ -1,0 +1,107 @@
+\hypertarget{classDataAccess}{}\doxysection{Data\+Access Class Reference}
+\label{classDataAccess}\index{DataAccess@{DataAccess}}
+
+
+Class representing a data access object. This class is used to read and write data from and to files.  
+
+
+
+
+{\ttfamily \#include $<$dataaccess.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDataAccess_af99b77ec290d1e723d0540ba9d9a95ba}{Data\+Access}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new Data Access object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDataAccess_abc44dbb3647e7a5fdd30f0fbabf6130f}{write\+Source}} (Q\+String source)
+\begin{DoxyCompactList}\small\item\em Writes the generated source code to a file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDataAccess_a74edc6d4c53842b3a8d70e36feb6d51a}{save\+Project}} (\mbox{\hyperlink{structSaveData}{Save\+Data}} data)
+\begin{DoxyCompactList}\small\item\em Saves the project data to a xml file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSaveData}{Save\+Data}} \mbox{\hyperlink{classDataAccess_a0365033e11fa7ff4cb90d06ac7b9e5ea}{load\+Project}} (Q\+String project\+Name)
+\begin{DoxyCompactList}\small\item\em Loads project data from a xml file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a data access object. This class is used to read and write data from and to files. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDataAccess_af99b77ec290d1e723d0540ba9d9a95ba}\label{classDataAccess_af99b77ec290d1e723d0540ba9d9a95ba}} 
+\index{DataAccess@{DataAccess}!DataAccess@{DataAccess}}
+\index{DataAccess@{DataAccess}!DataAccess@{DataAccess}}
+\doxysubsubsection{\texorpdfstring{DataAccess()}{DataAccess()}}
+{\footnotesize\ttfamily Data\+Access\+::\+Data\+Access (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a new Data Access object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDataAccess_a0365033e11fa7ff4cb90d06ac7b9e5ea}\label{classDataAccess_a0365033e11fa7ff4cb90d06ac7b9e5ea}} 
+\index{DataAccess@{DataAccess}!loadProject@{loadProject}}
+\index{loadProject@{loadProject}!DataAccess@{DataAccess}}
+\doxysubsubsection{\texorpdfstring{loadProject()}{loadProject()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSaveData}{Save\+Data}} Data\+Access\+::load\+Project (\begin{DoxyParamCaption}\item[{Q\+String}]{project\+Name }\end{DoxyParamCaption})}
+
+
+
+Loads project data from a xml file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em project\+Name} & Name (path) of the project to be loaded. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structSaveData}{Save\+Data}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataAccess_a74edc6d4c53842b3a8d70e36feb6d51a}\label{classDataAccess_a74edc6d4c53842b3a8d70e36feb6d51a}} 
+\index{DataAccess@{DataAccess}!saveProject@{saveProject}}
+\index{saveProject@{saveProject}!DataAccess@{DataAccess}}
+\doxysubsubsection{\texorpdfstring{saveProject()}{saveProject()}}
+{\footnotesize\ttfamily bool Data\+Access\+::save\+Project (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSaveData}{Save\+Data}}}]{data }\end{DoxyParamCaption})}
+
+
+
+Saves the project data to a xml file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Data to be saved. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataAccess_abc44dbb3647e7a5fdd30f0fbabf6130f}\label{classDataAccess_abc44dbb3647e7a5fdd30f0fbabf6130f}} 
+\index{DataAccess@{DataAccess}!writeSource@{writeSource}}
+\index{writeSource@{writeSource}!DataAccess@{DataAccess}}
+\doxysubsubsection{\texorpdfstring{writeSource()}{writeSource()}}
+{\footnotesize\ttfamily bool Data\+Access\+::write\+Source (\begin{DoxyParamCaption}\item[{Q\+String}]{source }\end{DoxyParamCaption})}
+
+
+
+Writes the generated source code to a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & The generated source code. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+dataaccess.\+h\item 
+dataaccess.\+cpp\end{DoxyCompactItemize}

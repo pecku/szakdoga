@@ -6,6 +6,10 @@
 #include <QVBoxLayout>
 #include <QLineEdit>
 
+/*!
+ * \brief Class representing the dialog for modifying the settings of the application.
+ * 
+ */
 class SettingsDialog : public QDialog
 {
     Q_OBJECT

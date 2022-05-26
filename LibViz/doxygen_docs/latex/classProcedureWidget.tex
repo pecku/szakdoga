@@ -1,0 +1,143 @@
+\hypertarget{classProcedureWidget}{}\doxysection{Procedure\+Widget Class Reference}
+\label{classProcedureWidget}\index{ProcedureWidget@{ProcedureWidget}}
+
+
+Class representing a procedure\textquotesingle{}s widget.  
+
+
+
+
+{\ttfamily \#include $<$procedurewidget.\+h$>$}
+
+
+
+Inheritance diagram for Procedure\+Widget\+:
+% FIG 0
+
+
+Collaboration diagram for Procedure\+Widget\+:
+% FIG 1
+\doxysubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classProcedureWidget_a4758e1b5c1868fc3515801e120618cb1}\label{classProcedureWidget_a4758e1b5c1868fc3515801e120618cb1}} 
+void {\bfseries use\+In\+Main\+Checked} (Q\+String component\+Name, int component\+ID)
+\item 
+\mbox{\Hypertarget{classProcedureWidget_a05a03d600cd74e05a51c128e9bac2179}\label{classProcedureWidget_a05a03d600cd74e05a51c128e9bac2179}} 
+void {\bfseries use\+In\+Main\+Unchecked} (int component\+ID)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classProcedureWidget_a12ab6286cf1d71e63e448c7975315c9d}{Procedure\+Widget}} (int id, Q\+String name, Component\+Type type, \mbox{\hyperlink{classModel}{Model}} $\ast$model, Q\+Widget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructs a new Procedure Widget object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classProcedureWidget_a638923dc367a2474b45e26cfc0a7173c}{Procedure\+Widget}} (const \mbox{\hyperlink{classComponent}{Component}} \&component, \mbox{\hyperlink{classModel}{Model}} $\ast$model, Q\+Widget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructs a new Procedure Widget object from the object stored in the model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProcedureWidget_ae56fd93487f5d3a561feeb363b077170}{add\+Enumerator\+Choice}} (Q\+String enumerator\+Name, int enumerator\+ID)
+\begin{DoxyCompactList}\small\item\em Adds a new enumerator choice to the enumerator combobox. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProcedureWidget_a077fb33c8985413a03fb1f4986149974}{remove\+Enumerator\+Choice}} (int enumerator\+ID)
+\begin{DoxyCompactList}\small\item\em Removes an enumerator choice from the enumerator combobox. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classProcedureWidget_a4a7ea2f7a5e151179383b0d7e08e3978}\label{classProcedureWidget_a4a7ea2f7a5e151179383b0d7e08e3978}} 
+void {\bfseries select\+Enumerator} (Q\+String enumerator\+Name)
+\item 
+bool \mbox{\hyperlink{classProcedureWidget_a928224a88887c5e30e50bfd000bb4036}{check\+Required}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the required fields are filled in. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class representing a procedure\textquotesingle{}s widget. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classProcedureWidget_a12ab6286cf1d71e63e448c7975315c9d}\label{classProcedureWidget_a12ab6286cf1d71e63e448c7975315c9d}} 
+\index{ProcedureWidget@{ProcedureWidget}!ProcedureWidget@{ProcedureWidget}}
+\index{ProcedureWidget@{ProcedureWidget}!ProcedureWidget@{ProcedureWidget}}
+\doxysubsubsection{\texorpdfstring{ProcedureWidget()}{ProcedureWidget()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Procedure\+Widget\+::\+Procedure\+Widget (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{Q\+String}]{name,  }\item[{Component\+Type}]{type,  }\item[{\mbox{\hyperlink{classModel}{Model}} $\ast$}]{model,  }\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a new Procedure Widget object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id of the procedure. \\
+\hline
+{\em name} & The name of the procedure. \\
+\hline
+{\em type} & The type of the procedure. \\
+\hline
+{\em model} & The model that stores the procedure. \\
+\hline
+{\em parent} & The parent widget. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classProcedureWidget_a638923dc367a2474b45e26cfc0a7173c}\label{classProcedureWidget_a638923dc367a2474b45e26cfc0a7173c}} 
+\index{ProcedureWidget@{ProcedureWidget}!ProcedureWidget@{ProcedureWidget}}
+\index{ProcedureWidget@{ProcedureWidget}!ProcedureWidget@{ProcedureWidget}}
+\doxysubsubsection{\texorpdfstring{ProcedureWidget()}{ProcedureWidget()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Procedure\+Widget\+::\+Procedure\+Widget (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classComponent}{Component}} \&}]{component,  }\item[{\mbox{\hyperlink{classModel}{Model}} $\ast$}]{model,  }\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Constructs a new Procedure Widget object from the object stored in the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component} & The object that stores the data. \\
+\hline
+{\em model} & The model that stores the procedure. \\
+\hline
+{\em parent} & The parent widget. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classProcedureWidget_ae56fd93487f5d3a561feeb363b077170}\label{classProcedureWidget_ae56fd93487f5d3a561feeb363b077170}} 
+\index{ProcedureWidget@{ProcedureWidget}!addEnumeratorChoice@{addEnumeratorChoice}}
+\index{addEnumeratorChoice@{addEnumeratorChoice}!ProcedureWidget@{ProcedureWidget}}
+\doxysubsubsection{\texorpdfstring{addEnumeratorChoice()}{addEnumeratorChoice()}}
+{\footnotesize\ttfamily void Procedure\+Widget\+::add\+Enumerator\+Choice (\begin{DoxyParamCaption}\item[{Q\+String}]{enumerator\+Name,  }\item[{int}]{enumerator\+ID }\end{DoxyParamCaption})}
+
+
+
+Adds a new enumerator choice to the enumerator combobox. 
+
+\mbox{\Hypertarget{classProcedureWidget_a928224a88887c5e30e50bfd000bb4036}\label{classProcedureWidget_a928224a88887c5e30e50bfd000bb4036}} 
+\index{ProcedureWidget@{ProcedureWidget}!checkRequired@{checkRequired}}
+\index{checkRequired@{checkRequired}!ProcedureWidget@{ProcedureWidget}}
+\doxysubsubsection{\texorpdfstring{checkRequired()}{checkRequired()}}
+{\footnotesize\ttfamily bool Procedure\+Widget\+::check\+Required (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Checks if the required fields are filled in. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classComponentWidget}{Component\+Widget}}.
+
+\mbox{\Hypertarget{classProcedureWidget_a077fb33c8985413a03fb1f4986149974}\label{classProcedureWidget_a077fb33c8985413a03fb1f4986149974}} 
+\index{ProcedureWidget@{ProcedureWidget}!removeEnumeratorChoice@{removeEnumeratorChoice}}
+\index{removeEnumeratorChoice@{removeEnumeratorChoice}!ProcedureWidget@{ProcedureWidget}}
+\doxysubsubsection{\texorpdfstring{removeEnumeratorChoice()}{removeEnumeratorChoice()}}
+{\footnotesize\ttfamily void Procedure\+Widget\+::remove\+Enumerator\+Choice (\begin{DoxyParamCaption}\item[{int}]{enumerator\+ID }\end{DoxyParamCaption})}
+
+
+
+Removes an enumerator choice from the enumerator combobox. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+procedurewidget.\+h\item 
+procedurewidget.\+cpp\end{DoxyCompactItemize}

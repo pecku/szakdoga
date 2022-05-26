@@ -1,5 +1,13 @@
 #include "custommethodwidget.h"
 
+/*!
+ * \brief Constructs a new Custom Method Widget object.
+ * 
+ * \param id The id of the custom method.
+ * \param header The header of the custom method.
+ * \param body The body of the custom method.
+ * \param parent The parent widget.
+ */
 CustomMethodWidget::CustomMethodWidget(const int id, QString header, QString body, QWidget *parent) : QWidget(parent), id(id)
 {
     hboxlayout = new QHBoxLayout(this);

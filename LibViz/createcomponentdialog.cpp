@@ -1,5 +1,10 @@
 #include "createcomponentdialog.h"
 
+/*!
+ * \brief Constructs a new Create Component Widget object.
+ * 
+ * \param model 
+ */
 CreateComponentDialog::CreateComponentDialog(Model* model) : QDialog(), model(model)
 {
     setWindowTitle("New component");
@@ -38,6 +43,10 @@ CreateComponentDialog::CreateComponentDialog(Model* model) : QDialog(), model(mo
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 }
 
+/*!
+ * \brief Checks if the inputs in the dialog are valid.
+ * 
+ */
 void CreateComponentDialog::wantToAccept(){
     bool acceptable = true;
     errorLabel->hide();
@@ -66,6 +75,10 @@ void CreateComponentDialog::wantToAccept(){
     }
 }
 
+/*!
+ * \brief Clears the inputs in the dialog.
+ * 
+ */
 void CreateComponentDialog::clear(){
     nameLineEdit->clear();
     componentTypeSelect->setCurrentIndex(-1);

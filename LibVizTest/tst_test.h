@@ -7,6 +7,10 @@
 
 #define TEST
 
+/*!
+ * \brief Test class for the LibViz project.
+ * 
+ */
 class Test : public QObject
 {
     Q_OBJECT

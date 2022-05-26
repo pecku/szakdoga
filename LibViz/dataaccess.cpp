@@ -1,5 +1,9 @@
 #include "dataaccess.h"
 
+/*!
+ * \brief Constructs a new Data Access object
+ * 
+ */
 DataAccess::DataAccess()
 {
     QFile file(":/library/library.hpp");
@@ -9,6 +13,13 @@ DataAccess::DataAccess()
     file.close();
 }
 
+/*!
+ * \brief Writes the generated source code to a file.
+ * 
+ * \param source The generated source code.
+ * \return true 
+ * \return false 
+ */
 bool DataAccess::writeSource(QString source){
     QFile file("main.cpp");
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
@@ -22,6 +33,13 @@ bool DataAccess::writeSource(QString source){
     return true;
 }
 
+/*!
+ * \brief Saves the project data to a xml file.
+ * 
+ * \param data Data to be saved.
+ * \return true 
+ * \return false 
+ */
 bool DataAccess::saveProject(SaveData data){
     QXmlStreamWriter xmlWriter;
     QFile file(data.projectName);
@@ -127,6 +145,12 @@ bool DataAccess::saveProject(SaveData data){
     return true;
 }
 
+/*!
+ * \brief Loads project data from a xml file.
+ * 
+ * \param projectName Name (path) of the project to be loaded.
+ * \return SaveData 
+ */
 SaveData DataAccess::loadProject(QString projectName){
     QMap<int,Component*> components;
     QMap<int,CodeBlock*> codeblocks;

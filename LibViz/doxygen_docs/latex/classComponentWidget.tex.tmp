@@ -1,0 +1,226 @@
+\hypertarget{classComponentWidget}{}\doxysection{Component\+Widget Class Reference}
+\label{classComponentWidget}\index{ComponentWidget@{ComponentWidget}}
+
+
+Class that represents a component widget.  
+
+
+
+
+{\ttfamily \#include $<$componentwidget.\+h$>$}
+
+
+
+Inheritance diagram for Component\+Widget\+:
+% FIG 0
+
+
+Collaboration diagram for Component\+Widget\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classComponentWidget_a1c8392b4c617e61ff632998733fd4fca}{Component\+Widget}} (int id, Q\+String name, Component\+Type type, \mbox{\hyperlink{classModel}{Model}} $\ast$model, Q\+Widget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructs a new \mbox{\hyperlink{classComponent}{Component}} Widget object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classComponentWidget_a238a55a506101714b3ef20b1fab7de6e}\label{classComponentWidget_a238a55a506101714b3ef20b1fab7de6e}} 
+Q\+String {\bfseries get\+Name} ()
+\item 
+\mbox{\Hypertarget{classComponentWidget_afc6d4720964759039ad27a81cc50dd49}\label{classComponentWidget_afc6d4720964759039ad27a81cc50dd49}} 
+Component\+Type {\bfseries get\+Type} ()
+\item 
+\mbox{\Hypertarget{classComponentWidget_aadde7e180b2b11e6e0060641f38dda44}\label{classComponentWidget_aadde7e180b2b11e6e0060641f38dda44}} 
+int {\bfseries get\+ID} ()
+\item 
+\mbox{\Hypertarget{classComponentWidget_ade402bb6439d7bdd8742f6aab79adb16}\label{classComponentWidget_ade402bb6439d7bdd8742f6aab79adb16}} 
+virtual bool {\bfseries check\+Required} ()=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classComponentWidget_a4632a181e0f215a491bb78efc35fd398}{check\+Required\+Base}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the required fields are filled in. (This is a base method for use by child classes) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classComponentWidget_a270d1c16ae0768426681740b400f7e81}{connect\+Signals}} ()
+\begin{DoxyCompactList}\small\item\em Connects the signals of members to the correct slots. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classComponentWidget_a202a64018d6487078a2c5153c456fb04}{create\+Member}} (int id, Q\+String type=\char`\"{}\char`\"{}, Q\+String name=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Creates a new member widget. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classComponentWidget_abf765b8a0ddb2777619ad5bfb2de665d}{create\+Custom\+Method}} (int id, Q\+String header=\char`\"{}\char`\"{}, Q\+String body=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Creates a new custom method widget. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classComponentWidget_a9e3006288e654e7ec0f15ea89fdd35fb}{create\+Members}} (Q\+Map$<$ int, \mbox{\hyperlink{structMember}{Member}} $>$ members)
+\begin{DoxyCompactList}\small\item\em Creates member widgets from a map of ids and member objects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classComponentWidget_adec7fca9b43489812b2d8960167fadc5}{create\+Custom\+Methods}} (Q\+Map$<$ int, \mbox{\hyperlink{structCustomMethod}{Custom\+Method}} $>$ custom\+Methods)
+\begin{DoxyCompactList}\small\item\em Creates custom method widgets from a map of ids and custom method objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classComponentWidget_ac5c08aef334818ef6bcf7ac1cc93df29}\label{classComponentWidget_ac5c08aef334818ef6bcf7ac1cc93df29}} 
+Component\+Type {\bfseries type}
+\item 
+\mbox{\Hypertarget{classComponentWidget_a8e0568671e030e47d61f2055bc01b844}\label{classComponentWidget_a8e0568671e030e47d61f2055bc01b844}} 
+const int {\bfseries id}
+\item 
+\mbox{\Hypertarget{classComponentWidget_a26031d4a678fc8f221aad09947d7d219}\label{classComponentWidget_a26031d4a678fc8f221aad09947d7d219}} 
+\mbox{\hyperlink{classModel}{Model}} $\ast$ {\bfseries model}
+\item 
+\mbox{\Hypertarget{classComponentWidget_a04ece6922f4aaabbb05f8c6428097b72}\label{classComponentWidget_a04ece6922f4aaabbb05f8c6428097b72}} 
+Q\+Grid\+Layout $\ast$ {\bfseries gridlayout}
+\item 
+\mbox{\Hypertarget{classComponentWidget_a360d10bdf99bc047481c6321e932fbfb}\label{classComponentWidget_a360d10bdf99bc047481c6321e932fbfb}} 
+Q\+V\+Box\+Layout $\ast$ {\bfseries vboxlayout}
+\item 
+\mbox{\Hypertarget{classComponentWidget_ac3a3d8c1959daf36a40b855be97270c3}\label{classComponentWidget_ac3a3d8c1959daf36a40b855be97270c3}} 
+Q\+Label $\ast$ {\bfseries object\+Name\+Label}
+\item 
+\mbox{\Hypertarget{classComponentWidget_ae7673756f3715ff02a5d5ce10377d897}\label{classComponentWidget_ae7673756f3715ff02a5d5ce10377d897}} 
+Q\+Line\+Edit $\ast$ {\bfseries object\+Name\+Line\+Edit}
+\item 
+\mbox{\Hypertarget{classComponentWidget_a5843d0f2c7607b50396d1898350a48d7}\label{classComponentWidget_a5843d0f2c7607b50396d1898350a48d7}} 
+Q\+Label $\ast$ {\bfseries item\+Type\+Label}
+\item 
+\mbox{\Hypertarget{classComponentWidget_ae85fc09c7884b692ec8d5e5bae3666fb}\label{classComponentWidget_ae85fc09c7884b692ec8d5e5bae3666fb}} 
+Q\+Line\+Edit $\ast$ {\bfseries item\+Type\+Line\+Edit}
+\item 
+\mbox{\Hypertarget{classComponentWidget_a30afa58317bda13b9c82cdbec2a1a4be}\label{classComponentWidget_a30afa58317bda13b9c82cdbec2a1a4be}} 
+Q\+Label $\ast$ {\bfseries constructor\+Parameter\+Label}
+\item 
+\mbox{\Hypertarget{classComponentWidget_aebd4beaa6f5681bfc8a739c224917f0a}\label{classComponentWidget_aebd4beaa6f5681bfc8a739c224917f0a}} 
+Q\+Line\+Edit $\ast$ {\bfseries constructor\+Parameter\+Line\+Edit}
+\item 
+\mbox{\Hypertarget{classComponentWidget_a6ddebe8f180069cd7b95bbf11d8d31e1}\label{classComponentWidget_a6ddebe8f180069cd7b95bbf11d8d31e1}} 
+Q\+Label $\ast$ {\bfseries destructor\+Label}
+\item 
+\mbox{\Hypertarget{classComponentWidget_a66a6344475be8569f96b8aa694d61cf4}\label{classComponentWidget_a66a6344475be8569f96b8aa694d61cf4}} 
+\mbox{\hyperlink{classPopUpTextEdit}{Pop\+Up\+Text\+Edit}} $\ast$ {\bfseries destructor\+Text\+Edit}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that represents a component widget. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classComponentWidget_a1c8392b4c617e61ff632998733fd4fca}\label{classComponentWidget_a1c8392b4c617e61ff632998733fd4fca}} 
+\index{ComponentWidget@{ComponentWidget}!ComponentWidget@{ComponentWidget}}
+\index{ComponentWidget@{ComponentWidget}!ComponentWidget@{ComponentWidget}}
+\doxysubsubsection{\texorpdfstring{ComponentWidget()}{ComponentWidget()}}
+{\footnotesize\ttfamily Component\+Widget\+::\+Component\+Widget (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{Q\+String}]{name,  }\item[{Component\+Type}]{type,  }\item[{\mbox{\hyperlink{classModel}{Model}} $\ast$}]{model,  }\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a new \mbox{\hyperlink{classComponent}{Component}} Widget object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id of the component. \\
+\hline
+{\em name} & The name of the component. \\
+\hline
+{\em type} & The type of the component. \\
+\hline
+{\em model} & The model object that stores the component. \\
+\hline
+{\em parent} & The parent of the widget. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classComponentWidget_a4632a181e0f215a491bb78efc35fd398}\label{classComponentWidget_a4632a181e0f215a491bb78efc35fd398}} 
+\index{ComponentWidget@{ComponentWidget}!checkRequiredBase@{checkRequiredBase}}
+\index{checkRequiredBase@{checkRequiredBase}!ComponentWidget@{ComponentWidget}}
+\doxysubsubsection{\texorpdfstring{checkRequiredBase()}{checkRequiredBase()}}
+{\footnotesize\ttfamily bool Component\+Widget\+::check\+Required\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Checks if the required fields are filled in. (This is a base method for use by child classes) 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classComponentWidget_a270d1c16ae0768426681740b400f7e81}\label{classComponentWidget_a270d1c16ae0768426681740b400f7e81}} 
+\index{ComponentWidget@{ComponentWidget}!connectSignals@{connectSignals}}
+\index{connectSignals@{connectSignals}!ComponentWidget@{ComponentWidget}}
+\doxysubsubsection{\texorpdfstring{connectSignals()}{connectSignals()}}
+{\footnotesize\ttfamily void Component\+Widget\+::connect\+Signals (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Connects the signals of members to the correct slots. 
+
+\mbox{\Hypertarget{classComponentWidget_abf765b8a0ddb2777619ad5bfb2de665d}\label{classComponentWidget_abf765b8a0ddb2777619ad5bfb2de665d}} 
+\index{ComponentWidget@{ComponentWidget}!createCustomMethod@{createCustomMethod}}
+\index{createCustomMethod@{createCustomMethod}!ComponentWidget@{ComponentWidget}}
+\doxysubsubsection{\texorpdfstring{createCustomMethod()}{createCustomMethod()}}
+{\footnotesize\ttfamily void Component\+Widget\+::create\+Custom\+Method (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{Q\+String}]{header = {\ttfamily \char`\"{}\char`\"{}},  }\item[{Q\+String}]{body = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Creates a new custom method widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id of the custom method. \\
+\hline
+{\em header} & The header of the custom method. \\
+\hline
+{\em body} & The body of the custom method. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classComponentWidget_adec7fca9b43489812b2d8960167fadc5}\label{classComponentWidget_adec7fca9b43489812b2d8960167fadc5}} 
+\index{ComponentWidget@{ComponentWidget}!createCustomMethods@{createCustomMethods}}
+\index{createCustomMethods@{createCustomMethods}!ComponentWidget@{ComponentWidget}}
+\doxysubsubsection{\texorpdfstring{createCustomMethods()}{createCustomMethods()}}
+{\footnotesize\ttfamily void Component\+Widget\+::create\+Custom\+Methods (\begin{DoxyParamCaption}\item[{Q\+Map$<$ int, \mbox{\hyperlink{structCustomMethod}{Custom\+Method}} $>$}]{custom\+Methods }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Creates custom method widgets from a map of ids and custom method objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em custom\+Methods} & Map of ids and custom method objects. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classComponentWidget_a202a64018d6487078a2c5153c456fb04}\label{classComponentWidget_a202a64018d6487078a2c5153c456fb04}} 
+\index{ComponentWidget@{ComponentWidget}!createMember@{createMember}}
+\index{createMember@{createMember}!ComponentWidget@{ComponentWidget}}
+\doxysubsubsection{\texorpdfstring{createMember()}{createMember()}}
+{\footnotesize\ttfamily void Component\+Widget\+::create\+Member (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{Q\+String}]{type = {\ttfamily \char`\"{}\char`\"{}},  }\item[{Q\+String}]{name = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Creates a new member widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id of the member. \\
+\hline
+{\em type} & The type of the member. \\
+\hline
+{\em name} & The name of the member. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classComponentWidget_a9e3006288e654e7ec0f15ea89fdd35fb}\label{classComponentWidget_a9e3006288e654e7ec0f15ea89fdd35fb}} 
+\index{ComponentWidget@{ComponentWidget}!createMembers@{createMembers}}
+\index{createMembers@{createMembers}!ComponentWidget@{ComponentWidget}}
+\doxysubsubsection{\texorpdfstring{createMembers()}{createMembers()}}
+{\footnotesize\ttfamily void Component\+Widget\+::create\+Members (\begin{DoxyParamCaption}\item[{Q\+Map$<$ int, \mbox{\hyperlink{structMember}{Member}} $>$}]{members }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Creates member widgets from a map of ids and member objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em members} & Map of ids and member objects. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+componentwidget.\+h\item 
+componentwidget.\+cpp\end{DoxyCompactItemize}

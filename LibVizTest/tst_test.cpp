@@ -11,6 +11,10 @@ Test::~Test()
 
 }
 
+/*!
+ * \brief Test for model creation. Checks if the created model has the correct initial values.
+ * 
+ */
 void Test::test_model_init(){
     QCOMPARE(model->projectName, "");
     QCOMPARE(model->components.size(), 0);
@@ -21,12 +25,20 @@ void Test::test_model_init(){
     QVERIFY(!model->compileFailed);
 }
 
+/*!
+ * \brief Test for id creation. Checks if the the created id is appropriate and the variable storing the last id changes as expected.
+ * 
+ */
 void Test::test_new_id(){
     int lastId = model->lastID;
     QCOMPARE(model->newID(), lastId+1);
     QCOMPARE(model->lastID, lastId+1);
 }
 
+/*!
+ * \brief Data for test_create_component test case.
+ * 
+ */
 void Test::test_create_component_data(){
     QTest::addColumn<QString>("component_name");
     QTest::addColumn<ComponentType>("component_type");
@@ -43,6 +55,10 @@ void Test::test_create_component_data(){
     QTest::newRow("seqinfile") << "SeqInFileComponent" << SEQINFILE;
 }
 
+/*!
+ * \brief Test for component creation. Checks if the created component has the correct initial values.
+ * 
+ */
 void Test::test_create_component()
 {
     QFETCH(QString, component_name);
@@ -55,6 +71,10 @@ void Test::test_create_component()
     QCOMPARE(component->getID(), model->lastID);
 }
 
+/*!
+ * \brief Test for struct creation. Checks if the created struct has the correct initial values.
+ * 
+ */
 void Test::test_create_struct()
 {
     QString name = "TestStruct";
@@ -64,6 +84,10 @@ void Test::test_create_struct()
     QCOMPARE(_struct->getID(), model->lastID);
 }
 
+/*!
+ * \brief Test for codeblock creation. Checks if the created codeblock has the correct initial values.
+ * 
+ */
 void Test::test_create_codeblock(){
     model->createCodeBlock();
     CodeBlock* codeblock = model->codeblocks[model->lastID];
@@ -71,22 +95,38 @@ void Test::test_create_codeblock(){
     QCOMPARE(codeblock->getID(), model->lastID);
 }
 
+/*!
+ * \brief Test for used component names. Checks if the given component name's status is recognized as expected (used or not).
+ * 
+ */
 void Test::test_used_component_name(){
     QVERIFY(model->isComponentNameUsed("CountingComponent"));
     QVERIFY(model->isComponentNameUsed("TestStruct"));
     QVERIFY(!model->isComponentNameUsed("notInUseComponentName"));
 }
 
+/*!
+ * \brief Test for used object names. Checks if the given object name's status is recognized as expected (used or not).
+ * 
+ */
 void Test::test_used_object_name(){
     model->setObjectName(2, "usedObjectName");
     QVERIFY(model->isObjectNameUsed("usedObjectName"));
     QVERIFY(!model->isObjectNameUsed("notInUseObjectName"));
 }
 
+/*!
+ * \brief Test for getting an enumerator's name from its id. Checks if the returned name is correct.
+ * 
+ */
 void Test::test_enumerator_name_by_id(){
     QCOMPARE(model->getEnumeratorNameById(9), "IntervalComponent");
 }
 
+/*!
+ * \brief Test for member creation. Checks if a member is created in the correct component object.
+ * 
+ */
 void Test::test_create_member(){
     model->components[0] = component;
     QCOMPARE(component->getMembers().size(), 0);
@@ -94,6 +134,10 @@ void Test::test_create_member(){
     QCOMPARE(component->getMembers().size(), 1);
 }
 
+/*!
+ * \brief Test for method creation. Checks if a method is created in the correct component object.
+ * 
+ */
 void Test::test_create_method(){
     model->components[0] = component;
     QCOMPARE(component->getCustomMethods().size(), 0);
@@ -101,6 +145,10 @@ void Test::test_create_method(){
     QCOMPARE(component->getCustomMethods().size(), 1);
 }
 
+/*!
+ * \brief Test for saved settings load. Checks the model can load the previously saved settings correctly.
+ * 
+ */
 void Test::test_load_config(){
     QString path = "This/Is/A/Path";
     model->settings->setValue("CompilerPath",path);
@@ -115,6 +163,10 @@ void Test::test_load_config(){
     QVERIFY(model->compilerPathSet);
 }
 
+/*!
+ * \brief Test for model setter methods. Checks if after setting the model's properties, the correct values are set.
+ * 
+ */
 void Test::test_setters(){
     model->components[0] = component;
     component->createMember(20000);
@@ -155,6 +207,10 @@ void Test::test_setters(){
     QCOMPARE(codeblock->getCode(), "setterTestCode");
 }
 
+/*!
+ * \brief Test for compilation errors. Checks if the model can detect compilation errors correctly.
+ * 
+ */
 void Test::test_compile_failed(){
     model->compileFailed = false;
     model->compileFinished(1,QProcess::ExitStatus::CrashExit);
@@ -164,6 +220,10 @@ void Test::test_compile_failed(){
     QVERIFY(model->compileFailed);
 }
 
+/*!
+ * \brief Test for deletions. Checks if the model can delete the correct objects from the correct places.
+ * 
+ */
 void Test::test_deletes(){
     auto members = component->getMembers();
     QVERIFY(members.contains(20000));
@@ -187,6 +247,10 @@ void Test::test_deletes(){
     QVERIFY(!model->structs.contains(35000));
 }
 
+/*!
+ * \brief Test for the 'compiler not set' signal. Checks if the correct signal is emitted at the correct time.
+ * 
+ */
 void Test::test_signal_compiler_not_set(){
     model->compilerPathSet = false;
     QSignalSpy spy(model, SIGNAL(compilerPathNotSet()));
@@ -194,6 +258,10 @@ void Test::test_signal_compiler_not_set(){
     QCOMPARE(spy.count(), 1);
 }
 
+/*!
+ * \brief Test for the 'have compile output' signal. Checks if the correct signal is emitted at the correct time.
+ * 
+ */
 void Test::test_signal_have_compile_output(){
     QSignalSpy spy(model, SIGNAL(haveCompileOutput(QString)));
     model->compileFinished(0,QProcess::ExitStatus::NormalExit);
@@ -204,6 +272,10 @@ void Test::test_signal_have_compile_output(){
     QVERIFY(arguments.at(0).typeId() == QMetaType::QString);
 }
 
+/*!
+ * \brief Test for the 'compile process ended' signal. Checks if the correct signal is emitted at the correct time.
+ * 
+ */
 void Test::test_signal_compile_process_ended(){
     QSignalSpy spy(model, SIGNAL(compileProcessEnded()));
     model->compileFinished(0,QProcess::ExitStatus::NormalExit);
@@ -211,6 +283,10 @@ void Test::test_signal_compile_process_ended(){
     QCOMPARE(spy.count(), 2);
 }
 
+/*!
+ * \brief Test for the 'need project name for save' signal. Checks if the correct signal is emitted at the correct time.
+ * 
+ */
 void Test::test_signal_need_project_name_for_save(){
     QSignalSpy spy(model, SIGNAL(needProjectNameForSave()));
     model->saveProject();
@@ -218,12 +294,20 @@ void Test::test_signal_need_project_name_for_save(){
     QCOMPARE(spy.count(), 2);
 }
 
+/*!
+ * \brief Test for the 'need project name for open' signal. Checks if the correct signal is emitted at the correct time.
+ * 
+ */
 void Test::test_signal_need_project_name_for_open(){
     QSignalSpy spy(model, SIGNAL(needProjectNameForOpen()));
     model->openProject();
     QCOMPARE(spy.count(), 1);
 }
 
+/*!
+ * \brief Test for the 'want to generate source' signal. Checks if the correct signal is emitted at the correct time.
+ * 
+ */
 void Test::test_signal_want_to_generate_source(){
     QSignalSpy spy(model, SIGNAL(wantToGenerateSource()));
     model->compilerPathSet = true;
@@ -231,6 +315,10 @@ void Test::test_signal_want_to_generate_source(){
     QCOMPARE(spy.count(), 1);
 }
 
+/*!
+ * \brief Test for the 'project loaded' signal. Checks if the correct signal is emitted at the correct time.
+ * 
+ */
 void Test::test_signal_project_loaded(){
     QSignalSpy spy(model, SIGNAL(projectLoaded(SaveData)));
     model->projectName = "project";

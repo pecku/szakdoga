@@ -4,6 +4,10 @@
 #include <QWidget>
 #include "componentwidget.h"
 
+/*!
+ * \brief Class representing the widget for enumerators.
+ * 
+ */
 class EnumeratorWidget : public ComponentWidget
 {
     Q_OBJECT

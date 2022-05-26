@@ -1,0 +1,212 @@
+\hypertarget{classComponent}{}\doxysection{Component Class Reference}
+\label{classComponent}\index{Component@{Component}}
+
+
+Class that represent a \mbox{\hyperlink{classComponent}{Component}}. It can either be a procedure or an enumerator.  
+
+
+
+
+{\ttfamily \#include $<$modelkit.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classComponent_a162327af50ebb046e671d387e4187ddc}{Component}} (Q\+String name, Component\+Type type, int id)
+\begin{DoxyCompactList}\small\item\em Constructs a new \mbox{\hyperlink{classComponent}{Component}} object. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classComponent_ab6e2c374d3f098697d4db5abcf06df96}{get\+Source}} () const
+\begin{DoxyCompactList}\small\item\em Generates the source code of the component. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classComponent_aa07d33b1f7bcb6d477ded9877c79debd}{get\+Source\+For\+Main}} () const
+\begin{DoxyCompactList}\small\item\em Generates the source code of the component that is used in the main function. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classComponent_a423f643b006c3b10f0361af60c5f7c8a}{get\+Source\+For\+Object\+Creation}} () const
+\begin{DoxyCompactList}\small\item\em Generates the source code of the component that is used for object creation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classComponent_a559cf24283848d662cfcb14cade9a2c9}\label{classComponent_a559cf24283848d662cfcb14cade9a2c9}} 
+Q\+String {\bfseries get\+Name} () const
+\item 
+\mbox{\Hypertarget{classComponent_a87ac25118d4ef0d2e3d972ace193ede3}\label{classComponent_a87ac25118d4ef0d2e3d972ace193ede3}} 
+int {\bfseries get\+ID} () const
+\item 
+\mbox{\Hypertarget{classComponent_a7e3fdbc431e03746f3437cde104ce5ef}\label{classComponent_a7e3fdbc431e03746f3437cde104ce5ef}} 
+bool {\bfseries get\+Use\+In\+Main} () const
+\item 
+\mbox{\Hypertarget{classComponent_a2be4ab54d19a26ceec73c849df0756cc}\label{classComponent_a2be4ab54d19a26ceec73c849df0756cc}} 
+Q\+String {\bfseries get\+Object\+Name} () const
+\item 
+\mbox{\Hypertarget{classComponent_a39ba6f0bc561e3e24c849e35bdd19c42}\label{classComponent_a39ba6f0bc561e3e24c849e35bdd19c42}} 
+Component\+Type {\bfseries get\+Type} () const
+\item 
+\mbox{\Hypertarget{classComponent_a7680d3c6215ddc623ed0abb05e9ba5cd}\label{classComponent_a7680d3c6215ddc623ed0abb05e9ba5cd}} 
+Q\+String {\bfseries get\+Item} () const
+\item 
+\mbox{\Hypertarget{classComponent_a9653c9a10ac4b227c6797cef4493c887}\label{classComponent_a9653c9a10ac4b227c6797cef4493c887}} 
+int {\bfseries get\+Enumerator\+ID} () const
+\item 
+\mbox{\Hypertarget{classComponent_a149cb3fb54502c2000ca55a6b4c36b40}\label{classComponent_a149cb3fb54502c2000ca55a6b4c36b40}} 
+Q\+String {\bfseries get\+Enumerator\+Object\+Name} () const
+\item 
+\mbox{\Hypertarget{classComponent_acf90a34add7575c5852489556fd9165f}\label{classComponent_acf90a34add7575c5852489556fd9165f}} 
+bool {\bfseries get\+Optimist} () const
+\item 
+\mbox{\Hypertarget{classComponent_a6c0f97676bd466b448c5fdde31d3b191}\label{classComponent_a6c0f97676bd466b448c5fdde31d3b191}} 
+Q\+String {\bfseries get\+Value} () const
+\item 
+\mbox{\Hypertarget{classComponent_a81af98f818484093fa4a4799b28131b7}\label{classComponent_a81af98f818484093fa4a4799b28131b7}} 
+Q\+String {\bfseries get\+Compare} () const
+\item 
+\mbox{\Hypertarget{classComponent_a29278ecae57069dff46f252db85727db}\label{classComponent_a29278ecae57069dff46f252db85727db}} 
+Q\+String {\bfseries get\+Constructor\+Parameter} () const
+\item 
+\mbox{\Hypertarget{classComponent_a4aa6e947753910b39d67f716986c4822}\label{classComponent_a4aa6e947753910b39d67f716986c4822}} 
+Q\+Map$<$ Method\+Type, Q\+String $>$ {\bfseries get\+Methods} () const
+\item 
+\mbox{\Hypertarget{classComponent_ab470137d7cdf5e08ec0f07fb58fff264}\label{classComponent_ab470137d7cdf5e08ec0f07fb58fff264}} 
+Q\+Map$<$ int, \mbox{\hyperlink{structMember}{Member}} $>$ {\bfseries get\+Members} () const
+\item 
+\mbox{\Hypertarget{classComponent_a133190cd13bbf609befed327a535e6f5}\label{classComponent_a133190cd13bbf609befed327a535e6f5}} 
+Q\+Map$<$ int, \mbox{\hyperlink{structCustomMethod}{Custom\+Method}} $>$ {\bfseries get\+Custom\+Methods} () const
+\item 
+\mbox{\Hypertarget{classComponent_a7a0d3c7a68ebf32c1542e6c80808a47d}\label{classComponent_a7a0d3c7a68ebf32c1542e6c80808a47d}} 
+void {\bfseries set\+Use\+In\+Main} (bool use\+In\+Main)
+\item 
+\mbox{\Hypertarget{classComponent_ae09c2a5344d86f2eff29dcb0cd376d5e}\label{classComponent_ae09c2a5344d86f2eff29dcb0cd376d5e}} 
+void {\bfseries set\+Object\+Name} (Q\+String object\+Name)
+\item 
+\mbox{\Hypertarget{classComponent_a3564edb0abd5012796b1d69e55065c9f}\label{classComponent_a3564edb0abd5012796b1d69e55065c9f}} 
+void {\bfseries set\+Item} (Q\+String item)
+\item 
+\mbox{\Hypertarget{classComponent_abd8bc908f0774c1d0c048357afc2694b}\label{classComponent_abd8bc908f0774c1d0c048357afc2694b}} 
+void {\bfseries set\+Value} (Q\+String value)
+\item 
+\mbox{\Hypertarget{classComponent_abfff7df63fc384a6253e5c88e4a08dc1}\label{classComponent_abfff7df63fc384a6253e5c88e4a08dc1}} 
+void {\bfseries set\+Optimist} (bool optimist)
+\item 
+\mbox{\Hypertarget{classComponent_ae1a3d04bad6e075dd78c7e8107708b01}\label{classComponent_ae1a3d04bad6e075dd78c7e8107708b01}} 
+void {\bfseries set\+Compare} (Q\+String compare)
+\item 
+void \mbox{\hyperlink{classComponent_a48c035071a9ccffe5d2f8f8a70302437}{set\+Enumerator}} (int enumerator\+ID, Q\+String enumerator\+Object\+Name)
+\begin{DoxyCompactList}\small\item\em Sets the enumerator of the component. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classComponent_af0be68a0233f9231c8d036f524336607}\label{classComponent_af0be68a0233f9231c8d036f524336607}} 
+void {\bfseries set\+Method} (Method\+Type method\+Type, Q\+String method\+Body)
+\item 
+\mbox{\Hypertarget{classComponent_a08ace6e019d79c015dc3aa8aa09d5fdf}\label{classComponent_a08ace6e019d79c015dc3aa8aa09d5fdf}} 
+void {\bfseries set\+Member} (int id, Q\+String type, Q\+String name)
+\item 
+\mbox{\Hypertarget{classComponent_af19fcfe818bce6744445b26f4ac8d652}\label{classComponent_af19fcfe818bce6744445b26f4ac8d652}} 
+void {\bfseries create\+Member} (int id)
+\item 
+\mbox{\Hypertarget{classComponent_ac4acd2cfb3fe90cb045055e078a177e1}\label{classComponent_ac4acd2cfb3fe90cb045055e078a177e1}} 
+void {\bfseries delete\+Member} (int id)
+\item 
+\mbox{\Hypertarget{classComponent_a5941875078416f48da238b80bb44f49c}\label{classComponent_a5941875078416f48da238b80bb44f49c}} 
+void {\bfseries set\+Custom\+Method} (int id, Q\+String header, Q\+String body)
+\item 
+\mbox{\Hypertarget{classComponent_a5921e81a93a4473858398c6a543d83a0}\label{classComponent_a5921e81a93a4473858398c6a543d83a0}} 
+void {\bfseries create\+Custom\+Method} (int id)
+\item 
+\mbox{\Hypertarget{classComponent_af2dc1a1f94aad02d0348a5fd98097147}\label{classComponent_af2dc1a1f94aad02d0348a5fd98097147}} 
+void {\bfseries delete\+Custom\+Method} (int id)
+\item 
+\mbox{\Hypertarget{classComponent_a040809b81a4c95d5de94a7bc00c027b3}\label{classComponent_a040809b81a4c95d5de94a7bc00c027b3}} 
+void {\bfseries set\+Methods} (Q\+Map$<$ Method\+Type, Q\+String $>$ methods)
+\item 
+\mbox{\Hypertarget{classComponent_a07b95e29d1f48a342f9bb6a5eea61326}\label{classComponent_a07b95e29d1f48a342f9bb6a5eea61326}} 
+void {\bfseries set\+Members} (Q\+Map$<$ int, \mbox{\hyperlink{structMember}{Member}} $>$ members)
+\item 
+\mbox{\Hypertarget{classComponent_a0032027481d7649d30b0207d5dd963c3}\label{classComponent_a0032027481d7649d30b0207d5dd963c3}} 
+void {\bfseries set\+Custom\+Methods} (Q\+Map$<$ int, \mbox{\hyperlink{structCustomMethod}{Custom\+Method}} $>$ custom\+Methods)
+\item 
+\mbox{\Hypertarget{classComponent_a5d4cf05e9f3955a3a7f63065e6c0907e}\label{classComponent_a5d4cf05e9f3955a3a7f63065e6c0907e}} 
+void {\bfseries set\+Constructor\+Parameter} (Q\+String constructor\+Parameter)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that represent a \mbox{\hyperlink{classComponent}{Component}}. It can either be a procedure or an enumerator. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classComponent_a162327af50ebb046e671d387e4187ddc}\label{classComponent_a162327af50ebb046e671d387e4187ddc}} 
+\index{Component@{Component}!Component@{Component}}
+\index{Component@{Component}!Component@{Component}}
+\doxysubsubsection{\texorpdfstring{Component()}{Component()}}
+{\footnotesize\ttfamily Component\+::\+Component (\begin{DoxyParamCaption}\item[{Q\+String}]{name,  }\item[{Component\+Type}]{type,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Constructs a new \mbox{\hyperlink{classComponent}{Component}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the component. \\
+\hline
+{\em type} & The type of the component. \\
+\hline
+{\em id} & The id of the component. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classComponent_ab6e2c374d3f098697d4db5abcf06df96}\label{classComponent_ab6e2c374d3f098697d4db5abcf06df96}} 
+\index{Component@{Component}!getSource@{getSource}}
+\index{getSource@{getSource}!Component@{Component}}
+\doxysubsubsection{\texorpdfstring{getSource()}{getSource()}}
+{\footnotesize\ttfamily Q\+String Component\+::get\+Source (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Generates the source code of the component. 
+
+\begin{DoxyReturn}{Returns}
+Q\+String The generated source code. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classComponent_aa07d33b1f7bcb6d477ded9877c79debd}\label{classComponent_aa07d33b1f7bcb6d477ded9877c79debd}} 
+\index{Component@{Component}!getSourceForMain@{getSourceForMain}}
+\index{getSourceForMain@{getSourceForMain}!Component@{Component}}
+\doxysubsubsection{\texorpdfstring{getSourceForMain()}{getSourceForMain()}}
+{\footnotesize\ttfamily Q\+String Component\+::get\+Source\+For\+Main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Generates the source code of the component that is used in the main function. 
+
+\begin{DoxyReturn}{Returns}
+Q\+String 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classComponent_a423f643b006c3b10f0361af60c5f7c8a}\label{classComponent_a423f643b006c3b10f0361af60c5f7c8a}} 
+\index{Component@{Component}!getSourceForObjectCreation@{getSourceForObjectCreation}}
+\index{getSourceForObjectCreation@{getSourceForObjectCreation}!Component@{Component}}
+\doxysubsubsection{\texorpdfstring{getSourceForObjectCreation()}{getSourceForObjectCreation()}}
+{\footnotesize\ttfamily Q\+String Component\+::get\+Source\+For\+Object\+Creation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Generates the source code of the component that is used for object creation. 
+
+\begin{DoxyReturn}{Returns}
+Q\+String 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classComponent_a48c035071a9ccffe5d2f8f8a70302437}\label{classComponent_a48c035071a9ccffe5d2f8f8a70302437}} 
+\index{Component@{Component}!setEnumerator@{setEnumerator}}
+\index{setEnumerator@{setEnumerator}!Component@{Component}}
+\doxysubsubsection{\texorpdfstring{setEnumerator()}{setEnumerator()}}
+{\footnotesize\ttfamily void Component\+::set\+Enumerator (\begin{DoxyParamCaption}\item[{int}]{enumerator\+ID,  }\item[{Q\+String}]{enumerator\+Object\+Name }\end{DoxyParamCaption})}
+
+
+
+Sets the enumerator of the component. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enumerator\+ID} & The id of the enumerator. \\
+\hline
+{\em enumerator\+Object\+Name} & The object name of the enumerator. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+modelkit.\+h\item 
+modelkit.\+cpp\end{DoxyCompactItemize}

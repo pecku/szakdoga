@@ -1,5 +1,14 @@
 #include "componentwidget.h"
 
+/*!
+ * \brief Constructs a new Component Widget object.
+ * 
+ * \param id The id of the component.
+ * \param name The name of the component.
+ * \param type The type of the component.
+ * \param model The model object that stores the component.
+ * \param parent The parent of the widget.
+ */
 ComponentWidget::ComponentWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent)
     :  QWidget(parent), name(name), type(type), id(id), model(model)
 {
@@ -55,6 +64,10 @@ ComponentWidget::ComponentWidget(int id, QString name, ComponentType type, Model
     vboxlayout->addLayout(customMethodLayout);
 }
 
+/*!
+ * \brief Connects the signals of members to the correct slots.
+ * 
+ */
 void ComponentWidget::connectSignals(){
     connect(objectNameLineEdit,SIGNAL(editingFinished()),this,SLOT(objectNameChanged()));
     connect(itemTypeLineEdit,SIGNAL(editingFinished()),this,SLOT(itemTypeChanged()));
@@ -62,6 +75,12 @@ void ComponentWidget::connectSignals(){
     connect(destructorTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
 }
 
+/*!
+ * \brief Checks if the required fields are filled in. (This is a base method for use by child classes)
+ * 
+ * \return true 
+ * \return false 
+ */
 bool ComponentWidget::checkRequiredBase(){
     bool allgood = true;
     objectNameLineEdit->setStyleSheet("");
@@ -77,10 +96,21 @@ bool ComponentWidget::checkRequiredBase(){
     return allgood;
 }
 
+/*!
+ * \brief Slot for when the 'Add new private member' button is clicked.
+ * 
+ */
 void ComponentWidget::onAddNewMemberClicked(){
     createMember(model->createMember(this->id));
 }
 
+/*!
+ * \brief Creates a new member widget.
+ * 
+ * \param id The id of the member.
+ * \param type The type of the member.
+ * \param name The name of the member.
+ */
 void ComponentWidget::createMember(int id, QString type, QString name){
     MemberWidget* member = new MemberWidget(id, type, name);
     memberLayout->addWidget(member);
@@ -89,6 +119,10 @@ void ComponentWidget::createMember(int id, QString type, QString name){
     connect(member,SIGNAL(deleteMe()),this,SLOT(deleteMember()));
 }
 
+/*!
+ * \brief Deletes the member widget which the signal came from.
+ * 
+ */
 void ComponentWidget::deleteMember(){
     MemberWidget* member = qobject_cast<MemberWidget*>(sender());
     members.removeAll(member);
@@ -97,15 +131,30 @@ void ComponentWidget::deleteMember(){
     delete member;
 }
 
+/*!
+ * \brief Slot for modifying a member object stored in the model corresponding to the changed member widget.
+ * 
+ */
 void ComponentWidget::memberChanged(){
     MemberWidget* member = qobject_cast<MemberWidget*>(sender());
     model->modifyMember(this->id, member->getID(), member->getType(), member->getName());
 }
 
+/*!
+ * \brief Slot for when the 'Add new method' button is clicked.
+ * 
+ */
 void ComponentWidget::onAddNewMethodClicked(){
     createCustomMethod(model->createCustomMethod(this->id));
 }
 
+/*!
+ * \brief Creates a new custom method widget.
+ * 
+ * \param id The id of the custom method.
+ * \param header The header of the custom method.
+ * \param body The body of the custom method.
+ */
 void ComponentWidget::createCustomMethod(int id, QString header, QString body){
     CustomMethodWidget* customMethod = new CustomMethodWidget(id, header, body);
     customMethodLayout->addWidget(customMethod);
@@ -114,6 +163,10 @@ void ComponentWidget::createCustomMethod(int id, QString header, QString body){
     connect(customMethod,SIGNAL(deleteMe()),this,SLOT(deleteMethod()));
 }
 
+/*!
+ * \brief Deletes the custom method widget which the signal came from.
+ * 
+ */
 void ComponentWidget::deleteMethod(){
     CustomMethodWidget* customMethod = qobject_cast<CustomMethodWidget*>(sender());
     customMethods.removeAll(customMethod);
@@ -122,23 +175,41 @@ void ComponentWidget::deleteMethod(){
     delete customMethod;
 }
 
+/*!
+ * \brief Creates member widgets from a map of ids and member objects.
+ * 
+ * \param members Map of ids and member objects.
+ */
 void ComponentWidget::createMembers(QMap<int, Member> members){
     foreach(Member member, members){
         createMember(member.id, member.type, member.name);
     }
 }
 
+/*!
+ * \brief Creates custom method widgets from a map of ids and custom method objects.
+ * 
+ * \param customMethods Map of ids and custom method objects.
+ */
 void ComponentWidget::createCustomMethods(QMap<int, CustomMethod> customMethods){
     foreach(CustomMethod customMethod, customMethods){
         createCustomMethod(customMethod.id, customMethod.header, customMethod.body);
     }
 }
 
+/*!
+ * \brief Slot for modifying a custom method object stored in the model corresponding to the changed custom method widget.
+ * 
+ */
 void ComponentWidget::methodChanged(){
     CustomMethodWidget* customMethod = qobject_cast<CustomMethodWidget*>(sender());
     model->modifyCustomMethod(this->id, customMethod->getID(), customMethod->getHeader(), customMethod->getBody());
 }
 
+/*!
+ * \brief Slot for modifying the object name in the model correspondig to the changed object name widget.
+ * 
+ */
 void ComponentWidget::objectNameChanged(){
     QString objectName = objectNameLineEdit->text();
     objectNameLineEdit->setStyleSheet("");
@@ -154,15 +225,27 @@ void ComponentWidget::objectNameChanged(){
     }
 }
 
+/*!
+ * \brief Slot for modifying the item type in the model correspondig to the changed item type widget.
+ * 
+ */
 void ComponentWidget::itemTypeChanged(){
     model->setItem(this->id,itemTypeLineEdit->text());
 }
 
+/*!
+ * \brief Slot for modifying the data in the model correspondig to the changed text widget.
+ * 
+ */
 void ComponentWidget::popUpTextChanged(){
     PopUpTextEdit* popUpTextEdit = qobject_cast<PopUpTextEdit*>(sender());
     model->setMethod(this->id,popUpTextEdit->getMethodType(),popUpTextEdit->toPlainText());
 }
 
+/*!
+ * \brief Slot for modifying the constructor parameters stored in the model correspondig to the changed constructor parameters widget.
+ * 
+ */
 void ComponentWidget::constructorParameterChanged(){
     QLineEdit* lineEdit = qobject_cast<QLineEdit*>(sender());
     model->setConstructorParameter(this->id,lineEdit->text());

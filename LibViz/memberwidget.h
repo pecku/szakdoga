@@ -6,6 +6,10 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 
+/*!
+ * \brief Class representing a widget for a member object.
+ * 
+ */
 class MemberWidget : public QWidget
 {
     Q_OBJECT

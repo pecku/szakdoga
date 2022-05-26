@@ -10,6 +10,10 @@
 #include <QTextStream>
 #include "modelkit.h"
 
+/*!
+ * \brief Class representing a data access object. This class is used to read and write data from and to files.
+ * 
+ */
 class DataAccess
 {
 public:

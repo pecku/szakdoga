@@ -10,6 +10,10 @@
 #include <QLabel>
 #include "model.h"
 
+/*!
+ * \brief Class representing the dialog for creating a new component.
+ * 
+ */
 class CreateComponentDialog : public QDialog
 {
     Q_OBJECT

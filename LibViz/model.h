@@ -7,6 +7,10 @@
 #include "modelkit.h"
 #include "dataaccess.h"
 
+/*!
+ * \brief The class representing the model that is the brain behind the whole application.
+ * 
+ */
 class Model : public QObject
 {
     Q_OBJECT

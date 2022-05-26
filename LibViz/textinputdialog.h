@@ -7,6 +7,10 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
+/*!
+ * \brief Class representing a dialog for a text input.
+ * 
+ */
 class TextInputDialog : public QDialog
 {
     Q_OBJECT

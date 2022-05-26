@@ -1,5 +1,9 @@
 #include "settingsdialog.h"
 
+/*!
+ * \brief Constructs a new Settings Dialog object.
+ * 
+ */
 SettingsDialog::SettingsDialog()
 {
     setWindowTitle("Settings");

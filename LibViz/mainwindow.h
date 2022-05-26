@@ -21,6 +21,10 @@
 #include "settingsdialog.h"
 #include "model.h"
 
+/*!
+ * \brief Class representing the main window of the application.
+ * 
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT

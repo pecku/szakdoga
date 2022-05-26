@@ -1,5 +1,14 @@
 #include "enumeratorwidget.h"
 
+/*!
+ * \brief Construct a new Enumerator Widget object
+ * 
+ * \param id The id of the enumerator.
+ * \param name The name of the enumerator.
+ * \param type The type of the enumerator.
+ * \param model The model object that stores the enumerator.
+ * \param parent The parent of the widget.
+ */
 EnumeratorWidget::EnumeratorWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent)
     : ComponentWidget(id,name,type,model,parent)
 {
@@ -7,6 +16,13 @@ EnumeratorWidget::EnumeratorWidget(int id, QString name, ComponentType type, Mod
     connectSignals();
 }
 
+/*!
+ * \brief Construct a new Enumerator Widget object
+ * 
+ * \param component The component object that stores the data of the enumerator.
+ * \param model The model object that stores the enumerator.
+ * \param parent The parent of the widget.
+ */
 EnumeratorWidget::EnumeratorWidget(const Component& component, Model* model, QWidget *parent) : ComponentWidget(component.getID(),component.getName(),component.getType(),model,parent)
 {
     initSegments();
@@ -27,6 +43,10 @@ EnumeratorWidget::EnumeratorWidget(const Component& component, Model* model, QWi
     connectSignals();
 }
 
+/*!
+ * \brief Initialize the widgets of the enumerator widget.
+ * 
+ */
 void EnumeratorWidget::initSegments(){
     int gridlayoutIndex = 3;
 
@@ -62,6 +82,10 @@ void EnumeratorWidget::initSegments(){
     }
 }
 
+/*!
+ * \brief Connect the signals of the widget's members to the correct slots.
+ * 
+ */
 void EnumeratorWidget::connectSignals(){
     if(firstTextEdit != nullptr) connect(firstTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
     if(nextTextEdit != nullptr) connect(nextTextEdit,SIGNAL(textChanged()),this,SLOT(popUpTextChanged()));
@@ -71,6 +95,12 @@ void EnumeratorWidget::connectSignals(){
     ComponentWidget::connectSignals();
 }
 
+/*!
+ * \brief Checks if the required fields are filled in.
+ * 
+ * \return true 
+ * \return false 
+ */
 bool EnumeratorWidget::checkRequired(){
     bool allgood = checkRequiredBase();
     if(type == DEFAULT){

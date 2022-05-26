@@ -8,6 +8,10 @@
 #include <QRadioButton>
 #include "componentwidget.h"
 
+/*!
+ * \brief Class representing a procedure's widget.
+ * 
+ */
 class ProcedureWidget : public ComponentWidget
 {
     Q_OBJECT

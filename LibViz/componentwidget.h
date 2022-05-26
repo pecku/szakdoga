@@ -10,6 +10,10 @@
 #include "model.h"
 #include "popuptextedit.h"
 
+/*!
+ * \brief Class that represents a component widget.
+ * 
+ */
 class ComponentWidget : public QWidget
 {
     Q_OBJECT

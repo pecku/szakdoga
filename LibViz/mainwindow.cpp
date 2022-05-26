@@ -1,5 +1,10 @@
 #include "mainwindow.h"
 
+/*!
+ * \brief Constructs a new Main Window object.
+ * 
+ * \param parent The parent widget.
+ */
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -27,6 +32,10 @@ MainWindow::MainWindow(QWidget *parent)
     initSourceSegment();
 }
 
+/*!
+ * \brief Creates a component widget with the data provided in the 'create component dialog'.
+ * 
+ */
 void MainWindow::createComponent(){
     QString name = createComponentDialog->getName();
     if(createComponentDialog->getComponent() == -1){
@@ -59,6 +68,10 @@ void MainWindow::createComponent(){
     }
 }
 
+/*!
+ * \brief Deletes a component widget that is currently selected in the toolbox.
+ * 
+ */
 void MainWindow::deleteComponent(){
     ComponentWidget* component = qobject_cast<ComponentWidget*>(toolBox->currentWidget());
     if(component == nullptr){
@@ -106,11 +119,22 @@ void MainWindow::deleteComponent(){
     }
 }
 
+/*!
+ * \brief Adds an item to the 'main list widget'.
+ * 
+ * \param componentName Name of the component to be added to the list.
+ * \param componentID Id of the component to be added to the list.
+ */
 void MainWindow::addListItem(QString componentName, int componentID){
     QListWidgetItem* listItem = new QListWidgetItem(componentName,listWidget,componentID);
     listItem->setData(Qt::UserRole,"component");
 }
 
+/*!
+ * \brief Deletes an item from the 'main list widget' identified by the given id.
+ * 
+ * \param id The id of the item to be deleted.
+ */
 void MainWindow::deleteListItem(int id){
     listWidget->clearSelection();
     QListWidgetItem* item = nullptr;
@@ -123,6 +147,10 @@ void MainWindow::deleteListItem(int id){
     listWidget->takeItem(listWidget->row(item));
 }
 
+/*!
+ * \brief Deletes the currently selected item from the 'main list widget'.
+ * 
+ */
 void MainWindow::deleteListItem(){
     if(listWidget->currentItem() == nullptr) return;
     QListWidgetItem* currentItem = listWidget->currentItem();
@@ -140,6 +168,10 @@ void MainWindow::deleteListItem(){
     }
 }
 
+/*!
+ * \brief Creates a code block item in the 'main list widget'.
+ * 
+ */
 void MainWindow::createCodeBlock(){
     int id = model->createCodeBlock();
     QListWidgetItem* item = new QListWidgetItem("",listWidget,id);
@@ -147,6 +179,11 @@ void MainWindow::createCodeBlock(){
     item->setFlags(item->flags() | Qt::ItemIsEditable);
 }
 
+/*!
+ * \brief Slot for when a list item in the 'main list widget' is edited.
+ * 
+ * \param item The list widget item that was edited.
+ */
 void MainWindow::listItemChanged(QListWidgetItem* item){
     QVector<int> ids;
     for(int i = 0; i < listWidget->count(); i++){
@@ -157,6 +194,10 @@ void MainWindow::listItemChanged(QListWidgetItem* item){
     model->setCode(item->type(), item->text());
 }
 
+/*!
+ * \brief Initialize the dialog objects used by the application.
+ * 
+ */
 void MainWindow::initDialogs(){
     createComponentDialog = new CreateComponentDialog(model);
     connect(createComponentDialog,SIGNAL(accepted()),this,SLOT(createComponent()));
@@ -167,6 +208,10 @@ void MainWindow::initDialogs(){
     connect(settingsDialog,SIGNAL(accepted()),this,SLOT(updateSettings()));
 }
 
+/*!
+ * \brief Initialize the actions used by the application.
+ * 
+ */
 void MainWindow::initActions(){
     createComponentAction = new QAction(QIcon(":/icons/new_button.svg"),"Create Component");
     deleteComponentAction = new QAction(QIcon(":/icons/delete_button.svg"), "Delete Selected Component");
@@ -198,6 +243,10 @@ void MainWindow::initActions(){
     connect(saveProjectAction,SIGNAL(triggered()),this,SLOT(saveProject()));
 }
 
+/*!
+ * \brief Initialize the components of the menu bar.
+ * 
+ */
 void MainWindow::initMenuBar(){
     menuBar = new QMenuBar();
     setMenuBar(menuBar);
@@ -229,6 +278,10 @@ void MainWindow::initMenuBar(){
     settingsMenu->addAction(settingsAction);
 }
 
+/*!
+ * \brief Initialize the components of the 'Component Editor' segment.
+ * 
+ */
 void MainWindow::initComponentEditorSegment(){
     componentEditorWidget = new QWidget();
     componentEditorLayout = new QVBoxLayout();
@@ -251,6 +304,10 @@ void MainWindow::initComponentEditorSegment(){
     componentEditorToolBar->addAction(deleteComponentAction);
 }
 
+/*!
+ * \brief Initialize the components of the 'Main List' segment.
+ * 
+ */
 void MainWindow::initListSegment(){
     listSegmentWidget = new QWidget();
     listSegmentLayout = new QVBoxLayout();
@@ -281,6 +338,10 @@ void MainWindow::initListSegment(){
     connect(listWidget,SIGNAL(itemChanged(QListWidgetItem*)),this,SLOT(listItemChanged(QListWidgetItem*)));
 }
 
+/*!
+ * \brief Initialize the components of the 'Source' segment.
+ * 
+ */
 void MainWindow::initSourceSegment(){
     buildSplitter = new QSplitter(Qt::Vertical);
 
@@ -303,6 +364,10 @@ void MainWindow::initSourceSegment(){
     centralSplitter->addWidget(buildSplitter);
 }
 
+/*!
+ * \brief Checks if everything is ready to generate the source code and if it is then the source code is generated by the model and displayed.
+ * 
+ */
 void MainWindow::generateSource(){
     bool allgood = true;
 
@@ -326,20 +391,36 @@ void MainWindow::generateSource(){
     sourceTextBrowser->setText(model->generateSource());
 }
 
+/*!
+ * \brief Opens the dialog for creating a new component.
+ * 
+ */
 void MainWindow::showCreateComponentDialog(){
     createComponentDialog->clear();
     createComponentDialog->exec();
 }
 
+/*!
+ * \brief Opens the dialog for changing the settings of the application.
+ * 
+ */
 void MainWindow::showSettingsDialog(){
     settingsDialog->exec();
 }
 
+/*!
+ * \brief Updates the settings in the model.
+ * 
+ */
 void MainWindow::updateSettings(){
     model->setCompilerPath(settingsDialog->getCompilerPath());
     model->setCompilerArguments(settingsDialog->getArguments());
 }
 
+/*!
+ * \brief Runs the compiled application.
+ * 
+ */
 void MainWindow::modelRun(){
     runAction->setDisabled(true);
     buildAction->setDisabled(true);
@@ -347,6 +428,10 @@ void MainWindow::modelRun(){
     model->run();
 }
 
+/*!
+ * \brief Starts the compilation process of the generated source code.
+ * 
+ */
 void MainWindow::modelCompile(){
     runAction->setDisabled(true);
     buildAction->setDisabled(true);
@@ -354,24 +439,45 @@ void MainWindow::modelCompile(){
     model->compile();
 }
 
+/*!
+ * \brief Stops the compilation process.
+ * 
+ */
 void MainWindow::modelStopCompile(){
     model->stopCompile();
 }
 
+/*!
+ * \brief Shows the compilation output in the 'Source' segment.
+ * 
+ * \param output The compilation output.
+ */
 void MainWindow::showCompileOutput(QString output){
     compileOutputBrowser->setPlainText(output);
 }
 
+/*!
+ * \brief Sets the run, build and stop compile actions' state according to allow compilation.
+ * 
+ */
 void MainWindow::allowCompile(){
     runAction->setEnabled(true);
     buildAction->setEnabled(true);
     stopCompileAction->setDisabled(true);
 }
 
+/*!
+ * \brief Shows a warning text in the compilation output segment if the compiler path has not been set.
+ * 
+ */
 void MainWindow::showCompilerPathWarning(){
     compileOutputBrowser->setPlainText("Compiler path not set! Please go to the Settings menu and configure the compiler.");
 }
 
+/*!
+ * \brief Changes the active item in the toolbox according to the selected item in the 'Main List' segment.
+ * 
+ */
 void MainWindow::changeSelectedComponent(){
     if(listWidget->currentItem() == nullptr) return;
 
@@ -388,6 +494,10 @@ void MainWindow::changeSelectedComponent(){
     }
 }
 
+/*!
+ * \brief Starts the creation of a new project.
+ * 
+ */
 void MainWindow::newProject(){
     if(showDiscardWarning()){
         if(model->newProject()){
@@ -396,18 +506,30 @@ void MainWindow::newProject(){
     }
 }
 
+/*!
+ * \brief Starts the project saving process.
+ * 
+ */
 void MainWindow::saveProject(){
     if(model->saveProject()){
         setWindowTitle((QString)APP_NAME + " - " + model->getProjectName());
     }
 }
 
+/*!
+ * \brief Starts the project loading process.
+ * 
+ */
 void MainWindow::loadProject(){
     if(showDiscardWarning()){
         model->openProject();
     }
 }
 
+/*!
+ * \brief Opens the dialog for project saving.
+ * 
+ */
 void MainWindow::showProjectSaveDialog(){
     QFileDialog fileDialog;
     fileDialog.setAcceptMode(QFileDialog::AcceptSave);
@@ -421,6 +543,10 @@ void MainWindow::showProjectSaveDialog(){
     model->setProject(file);
 }
 
+/*!
+ * \brief Opens the dialog for project loading.
+ * 
+ */
 void MainWindow::showProjectOpenDialog(){
     QFileDialog fileDialog;
     fileDialog.setAcceptMode(QFileDialog::AcceptOpen);
@@ -434,6 +560,11 @@ void MainWindow::showProjectOpenDialog(){
     model->setProject(file);
 }
 
+/*!
+ * \brief Loads the data provided by the model into the view.
+ * 
+ * \param data The data that has been loaded by the model.
+ */
 void MainWindow::refresh(const SaveData& data){
     clear();
     setWindowTitle((QString)APP_NAME + " - " + data.projectName);
@@ -484,6 +615,10 @@ void MainWindow::refresh(const SaveData& data){
     }
 }
 
+/*!
+ * \brief Clears every segment in the view.
+ * 
+ */
 void MainWindow::clear(){
     while(toolBox->count()){
         toolBox->removeItem(toolBox->currentIndex());
@@ -497,6 +632,12 @@ void MainWindow::clear(){
     structWidgets.clear();
 }
 
+/*!
+ * \brief Opens a dialog with a warning message if the user has unsaved changes and would discard them with an action.
+ * 
+ * \return true 
+ * \return false 
+ */
 bool MainWindow::showDiscardWarning(){
     QMessageBox msg(QMessageBox::Icon::Question, "Discard changes", "Unsaved changes might be lost!\nDo you want to continue?", QMessageBox::Yes | QMessageBox::No, this);
     msg.setDefaultButton(QMessageBox::No);
@@ -506,6 +647,11 @@ bool MainWindow::showDiscardWarning(){
     else return true;
 }
 
+/*!
+ * \brief Stops the closing of the application if the user doesn't want to discard their changes.
+ * 
+ * \param event 
+ */
 void MainWindow::closeEvent(QCloseEvent *event)
 {
     if(showDiscardWarning()){
@@ -515,7 +661,10 @@ void MainWindow::closeEvent(QCloseEvent *event)
     }
 }
 
-
+/*!
+ * \brief Destroy the Main Window object.
+ * 
+ */
 MainWindow::~MainWindow()
 {
 }

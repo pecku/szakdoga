@@ -1,0 +1,82 @@
+\hypertarget{classStruct}{}\doxysection{Struct Class Reference}
+\label{classStruct}\index{Struct@{Struct}}
+
+
+Class that represents a struct used in the application.  
+
+
+
+
+{\ttfamily \#include $<$modelkit.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classStruct_ab889cce63b678c2e3fa6dca38a9229cf}\label{classStruct_ab889cce63b678c2e3fa6dca38a9229cf}} 
+{\bfseries Struct} (Q\+String name, int id)
+\item 
+Q\+String \mbox{\hyperlink{classStruct_a39f17651f5f5bf3cdeb065b469baea38}{get\+Source}} ()
+\begin{DoxyCompactList}\small\item\em Generates the source code of the \mbox{\hyperlink{classStruct}{Struct}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStruct_acda15022bffdb099f6832d05d7c382f9}\label{classStruct_acda15022bffdb099f6832d05d7c382f9}} 
+Q\+String {\bfseries get\+Name} () const
+\item 
+\mbox{\Hypertarget{classStruct_abf6860b2f26802e4c9a96ad131a3816c}\label{classStruct_abf6860b2f26802e4c9a96ad131a3816c}} 
+int {\bfseries get\+ID} () const
+\item 
+\mbox{\Hypertarget{classStruct_ac2e8810a1c78ff4bb9b7f57475b84e7d}\label{classStruct_ac2e8810a1c78ff4bb9b7f57475b84e7d}} 
+Q\+Map$<$ int, \mbox{\hyperlink{structMember}{Member}} $>$ {\bfseries get\+Members} () const
+\item 
+\mbox{\Hypertarget{classStruct_a0e0cedf7cb5bcb2509110a3e8a699bac}\label{classStruct_a0e0cedf7cb5bcb2509110a3e8a699bac}} 
+Q\+Map$<$ int, \mbox{\hyperlink{structCustomMethod}{Custom\+Method}} $>$ {\bfseries get\+Custom\+Methods} () const
+\item 
+\mbox{\Hypertarget{classStruct_abffd1b29a8ea9cf392079ad2076d0235}\label{classStruct_abffd1b29a8ea9cf392079ad2076d0235}} 
+void {\bfseries set\+Member} (int id, Q\+String type, Q\+String name)
+\item 
+\mbox{\Hypertarget{classStruct_aeb27da50e1ed95aac4bd45e18c69e2b0}\label{classStruct_aeb27da50e1ed95aac4bd45e18c69e2b0}} 
+void {\bfseries create\+Member} (int id)
+\item 
+\mbox{\Hypertarget{classStruct_a25649da109826a1500e9c7f3df214b51}\label{classStruct_a25649da109826a1500e9c7f3df214b51}} 
+void {\bfseries delete\+Member} (int id)
+\item 
+\mbox{\Hypertarget{classStruct_a8c0d906c58dbc5975a8617d89b0aac0c}\label{classStruct_a8c0d906c58dbc5975a8617d89b0aac0c}} 
+void {\bfseries set\+Custom\+Method} (int id, Q\+String header, Q\+String body)
+\item 
+\mbox{\Hypertarget{classStruct_a6f9a64d2bfd777b45133cb746a6649f7}\label{classStruct_a6f9a64d2bfd777b45133cb746a6649f7}} 
+void {\bfseries create\+Custom\+Method} (int id)
+\item 
+\mbox{\Hypertarget{classStruct_a910dbdebe9d12f1a97d31f38eefaca9c}\label{classStruct_a910dbdebe9d12f1a97d31f38eefaca9c}} 
+void {\bfseries delete\+Custom\+Method} (int id)
+\item 
+\mbox{\Hypertarget{classStruct_a4f4f9c62361d437168d6f843c0b39cf8}\label{classStruct_a4f4f9c62361d437168d6f843c0b39cf8}} 
+void {\bfseries set\+Members} (Q\+Map$<$ int, \mbox{\hyperlink{structMember}{Member}} $>$ members)
+\item 
+\mbox{\Hypertarget{classStruct_a93cb407fd5cfda055cce7d928d2ada9f}\label{classStruct_a93cb407fd5cfda055cce7d928d2ada9f}} 
+void {\bfseries set\+Custom\+Methods} (Q\+Map$<$ int, \mbox{\hyperlink{structCustomMethod}{Custom\+Method}} $>$ custom\+Methods)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that represents a struct used in the application. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classStruct_a39f17651f5f5bf3cdeb065b469baea38}\label{classStruct_a39f17651f5f5bf3cdeb065b469baea38}} 
+\index{Struct@{Struct}!getSource@{getSource}}
+\index{getSource@{getSource}!Struct@{Struct}}
+\doxysubsubsection{\texorpdfstring{getSource()}{getSource()}}
+{\footnotesize\ttfamily Q\+String Struct\+::get\+Source (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Generates the source code of the \mbox{\hyperlink{classStruct}{Struct}} object. 
+
+\begin{DoxyReturn}{Returns}
+Q\+String The generated source code. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+modelkit.\+h\item 
+modelkit.\+cpp\end{DoxyCompactItemize}

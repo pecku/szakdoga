@@ -1,5 +1,14 @@
 #include "procedurewidget.h"
 
+/*!
+ * \brief Constructs a new Procedure Widget object.
+ * 
+ * \param id The id of the procedure.
+ * \param name The name of the procedure.
+ * \param type The type of the procedure.
+ * \param model The model that stores the procedure.
+ * \param parent The parent widget.
+ */
 ProcedureWidget::ProcedureWidget(int id, QString name, ComponentType type, Model* model, QWidget *parent)
     :  ComponentWidget(id,name,type,model,parent)
 {
@@ -7,6 +16,13 @@ ProcedureWidget::ProcedureWidget(int id, QString name, ComponentType type, Model
     connectSignals();
 }
 
+/*!
+ * \brief Constructs a new Procedure Widget object from the object stored in the model.
+ * 
+ * \param component The object that stores the data.
+ * \param model The model that stores the procedure.
+ * \param parent The parent widget.
+ */
 ProcedureWidget::ProcedureWidget(const Component& component, Model* model, QWidget *parent) : ComponentWidget(component.getID(),component.getName(),component.getType(),model,parent)
 {
     initSegments();
@@ -40,6 +56,10 @@ ProcedureWidget::ProcedureWidget(const Component& component, Model* model, QWidg
     connectSignals();
 }
 
+/*!
+ * \brief Initialize the widgets of the procedure widget.
+ * 
+ */
 void ProcedureWidget::initSegments(){
     int gridlayoutIndex = 3;
 
@@ -132,6 +152,10 @@ void ProcedureWidget::initSegments(){
     gridlayout->addWidget(whileCondTextEdit,gridlayoutIndex,1);
 }
 
+/*!
+ * \brief Connect the signals of the widget's members to the correct slots.
+ * 
+ */
 void ProcedureWidget::connectSignals(){
     connect(useInMainCheckBox,SIGNAL(stateChanged(int)),this,SLOT(useInMainChanged()));
     connect(enorComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(enorChanged(int)));
@@ -148,6 +172,12 @@ void ProcedureWidget::connectSignals(){
     ComponentWidget::connectSignals();
 }
 
+/*!
+ * \brief Checks if the required fields are filled in.
+ * 
+ * \return true 
+ * \return false 
+ */
 bool ProcedureWidget::checkRequired(){
     bool allgood = checkRequiredBase();
     enorComboBox->setStyleSheet("");
@@ -201,6 +231,10 @@ bool ProcedureWidget::checkRequired(){
     return allgood;
 }
 
+/*!
+ * \brief Slot for when the 'use in main' checkbox is changed.
+ * 
+ */
 void ProcedureWidget::useInMainChanged(){
     bool checked = qobject_cast<QCheckBox*>(sender())->isChecked();
     model->setUseInMain(this->id,checked);
@@ -211,29 +245,53 @@ void ProcedureWidget::useInMainChanged(){
     }
 }
 
+/*!
+ * \brief Slot for when the enumerator selection changes.
+ * 
+ */
 void ProcedureWidget::enorChanged(int index){
     if(index < 0) return;
     model->setEnumerator(this->id,enorComboBox->itemData(index).toInt());
 }
 
+/*!
+ * \brief Slot for when the 'optimist' checkbox is changed.
+ * 
+ */
 void ProcedureWidget::optimistChanged(){
     model->setOptimist(this->id,qobject_cast<QCheckBox*>(sender())->isChecked());
 }
 
+/*!
+ * \brief Slot for when the 'value' has been edited.
+ * 
+ */
 void ProcedureWidget::valueChanged(){
     model->setValue(this->id,qobject_cast<QLineEdit*>(sender())->text());
 }
 
+/*!
+ * \brief Slot for when the 'compare' type changed.
+ * 
+ */
 void ProcedureWidget::compareChanged(){
     model->setCompare(this->id,qobject_cast<QRadioButton*>(sender())->isChecked()?"Greater":"Less");
 }
 
+/*!
+ * \brief Adds a new enumerator choice to the enumerator combobox.
+ * 
+ */
 void ProcedureWidget::addEnumeratorChoice(QString enumeratorName, int enumeratorID){
     if(enorComboBox->findText(enumeratorName) == -1){
         enorComboBox->addItem(enumeratorName,enumeratorID);
     }
 }
 
+/*!
+ * \brief Removes an enumerator choice from the enumerator combobox.
+ * 
+ */
 void ProcedureWidget::removeEnumeratorChoice(int enumeratorID){
     for(int i = 0; i < enorComboBox->count(); i++){
         if(enorComboBox->itemData(i).toInt() == enumeratorID){

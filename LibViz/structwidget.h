@@ -8,6 +8,10 @@
 #include "custommethodwidget.h"
 #include "model.h"
 
+/*!
+ * \brief Class representing a struct's widget.
+ * 
+ */
 class StructWidget : public QWidget
 {
     Q_OBJECT

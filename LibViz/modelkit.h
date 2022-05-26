@@ -5,9 +5,22 @@
 #include <QString>
 #include <QTextStream>
 
+/*!
+ * \brief Stores the possible component types.
+ * 
+ */
 enum ComponentType{COUNTING, LINSEARCH, MAXSEARCH, SELECTION, SUMMATION, DEFAULT, ARRAY, INTERVAL, STRINGSTREAM, SEQINFILE};
+
+/*!
+ * \brief Stores the possible method types.
+ * 
+ */
 enum MethodType{DESTRUCTOR, NEUTRAL, ADD, FUNC, COND, FIRST, WHILECOND, NEXT, END, CURRENT};
 
+/*!
+ * \brief A map that returns the string form of a ComponentType.
+ * 
+ */
 static const QMap<ComponentType,QString> componentTypeNameStrings = {
     {COUNTING, "Counting"},
     {LINSEARCH, "LinSearch"},
@@ -21,6 +34,10 @@ static const QMap<ComponentType,QString> componentTypeNameStrings = {
     {SEQINFILE, "SeqInFileEnumerator"}
 };
 
+/*!
+ * \brief A map that returns the header string of a MethodType.
+ * 
+ */
 static const QMap<MethodType,QPair<QString,QString>> methodHeaderStrings = {
     {DESTRUCTOR, QPair<QString,QString>("(",")")},
     {NEUTRAL, QPair<QString,QString>("neutral(",") const")},
@@ -34,6 +51,10 @@ static const QMap<MethodType,QPair<QString,QString>> methodHeaderStrings = {
     {CURRENT, QPair<QString,QString>("current(",") const")}
 };
 
+/*!
+ * \brief A map that returns the string form of a MethodType.
+ * 
+ */
 static const QMap<MethodType,QString> methodTypeStrings = {
     {DESTRUCTOR, "destructor"},
     {NEUTRAL, "neutral"},
@@ -47,6 +68,10 @@ static const QMap<MethodType,QString> methodTypeStrings = {
     {CURRENT, "current"}
 };
 
+/*!
+ * \brief A map that returns the MethodType from a string.
+ * 
+ */
 static const QMap<QString,MethodType> methodTypeFromString = {
     {methodTypeStrings[DESTRUCTOR], DESTRUCTOR},
     {methodTypeStrings[NEUTRAL], NEUTRAL},
@@ -60,6 +85,10 @@ static const QMap<QString,MethodType> methodTypeFromString = {
     {methodTypeStrings[CURRENT], CURRENT}
 };
 
+/*!
+ * \brief A map that returns the ComponentType from a string.
+ * 
+ */
 static const QMap<QString,ComponentType> componentTypeFromString = {
     {componentTypeNameStrings[COUNTING], COUNTING},
     {componentTypeNameStrings[LINSEARCH], LINSEARCH},
@@ -73,6 +102,10 @@ static const QMap<QString,ComponentType> componentTypeFromString = {
     {componentTypeNameStrings[SEQINFILE], SEQINFILE}
 };
 
+/*!
+ * \brief Struct that represents a member object used in Components and Structs.
+ * 
+ */
 struct Member{
     int id;
     QString type;
@@ -82,6 +115,10 @@ struct Member{
     Member(QString type, QString name) : type(type), name(name){}
 };
 
+/*!
+ * \brief Struct that represents a custom method object used in Components and Structs.
+ * 
+ */
 struct CustomMethod{
     QString header;
     QString body;
@@ -91,6 +128,10 @@ struct CustomMethod{
     CustomMethod(QString header, QString body) : header(header), body(body){}
 };
 
+/*!
+ * \brief Class that represent a Component. It can either be a procedure or an enumerator.
+ * 
+ */
 class Component{
 private:
     QString name;
@@ -150,6 +191,10 @@ public:
     void setConstructorParameter(QString constructorParameter){this->constructorParameter = constructorParameter;}
 };
 
+/*!
+ * \brief Class that represents a code block used in the 'Main' function.
+ * 
+ */
 class CodeBlock{
 private:
     int id;
@@ -164,6 +209,10 @@ public:
     void setCode(QString code){this->code = code;}
 };
 
+/*!
+ * \brief Class that represents a struct used in the application.
+ * 
+ */
 class Struct{
 private:
     QString name;
@@ -189,6 +238,10 @@ public:
     void setCustomMethods(QMap<int,CustomMethod> customMethods){this->customMethods = customMethods;}
 };
 
+/*!
+ * \brief Struct that represents a object storing the data of a project that needs to be saved and loaded.
+ * 
+ */
 struct SaveData{
     QString projectName;
     QMap<int,Component*> components;

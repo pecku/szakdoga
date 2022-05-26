@@ -1,5 +1,9 @@
 #include "textinputdialog.h"
 
+/*!
+ * \brief Constructs a new Text Input Dialog object.
+ * 
+ */
 TextInputDialog::TextInputDialog()
 {
     saveButton = new QPushButton("Save");

@@ -7,6 +7,10 @@
 #include <QVBoxLayout>
 #include "popuptextedit.h"
 
+/*!
+ * \brief Class representing the widget for a custom method.
+ * 
+ */
 class CustomMethodWidget : public QWidget
 {
     Q_OBJECT

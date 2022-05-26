@@ -5,6 +5,10 @@
 #include "textinputdialog.h"
 #include "modelkit.h"
 
+/*!
+ * \brief Class representing the text edit that has a pop-up input dialog.
+ * 
+ */
 class PopUpTextEdit : public QTextBrowser
 {
     Q_OBJECT
