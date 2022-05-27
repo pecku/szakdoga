@@ -326,6 +326,9 @@ void Model::compile(){
         compileFailed = true;
     }else{
         emit wantToGenerateSource();
+        if(!compilerArguments.contains("main.cpp")){
+            compilerArguments.prepend("main.cpp");
+        }
         compileProcess->start(compilerPath, compilerArguments);
     }
 }
@@ -391,7 +394,6 @@ void Model::setCompilerPath(QString path){
  */
 void Model::setCompilerArguments(QString args){
     compilerArguments = args.split(" ");
-    compilerArguments.prepend("main.cpp");
     compilerArguments.removeAll("");
     settings->setValue("CompilerArguments",args);
 }
@@ -403,7 +405,6 @@ void Model::setCompilerArguments(QString args){
 void Model::loadConfig(){
     compilerPath = settings->value("CompilerPath", "").toString();
     compilerArguments = settings->value("CompilerArguments", "").toStringList();
-    compilerArguments.prepend("main.cpp");
     compilerArguments.removeAll("");
     if(compilerPath == ""){
         compilerPathSet = false;

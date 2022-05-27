@@ -1,5 +1,3 @@
-> Borító
-
 # Témabejelentő
 
 Egy olyan kódszerkesztő, amely támogatja az osztály-sablon könyvtár biztosította eszközök egyszerű létrehozását vizuális formában. Hozzájárul a kód újra felhasználásának gyakorlásához és az objektumorientált programok öröklődéseinek megértéséhez. Emellett fejleszti a programtervezési készségeket a programozási tételek mentén. Az átlagos kóddal szemben sokkal érthetőbb formában jeleníti meg egy program összetételét.
@@ -23,14 +21,17 @@ Az alkalmazás Qt Creator segítségével lesz megvalósítva C++ nyelven. Azér
     1. [Fejlesztői környezet](#fejlesztői-környezet)
     2. [Drótváztervek](#drótváztervek)
 	3. [Használati esetek](#használati-esetek)
-    4. [Architektúra](#architektúra)
-    5. [Nézet](#nézet)
+    4. [Osztály-sablon könyvtár](#osztály-sablon-könyvtár)
+    5. [Architektúra](#architektúra)
+    6. [Nézet](#nézet)
 		1. [MainWindow](#mainwindow)
 		2. [ComponentWidget, ProcedureWidget, EnumeratorWidget](#componentwidget-procedurewidget-enumeratorwidget)
 		3. [StructWidget](#structwidget)
 		4. [MemberWidget és CustomMethodWidget](#memberwidget-és-custommethodwidget)
 		5. [PopUpTextEdit és TextInputDialog](#popuptextedit-és-textinputdialog)
-    6. [Modell](#modell)
+        6. [SettingsDialog](#settingsdialog)
+        7. [CreateComponentDialog](#createcomponentdialog)
+    7. [Modell](#modell)
 		1. [Modell adattagok és metódusok](#modell-adattagok-és-metódusok)
 			1. [Adattagok](#adattagok)
 			2. [Projektkezelés](#projektkezelés)
@@ -43,25 +44,20 @@ Az alkalmazás Qt Creator segítségével lesz megvalósítva C++ nyelven. Azér
 			9. [Fordítás és futtatás](#fordítás-és-futtatás)
 		3. [Modell által használt osztályok](#modell-által-használt-osztályok)
 			1. [Component](#component)
-			2. [SaveData](#savedata)
-			3. [Egyéb segédobjektumok](#egyéb-segédobjektumok)
-    7. [Perzisztencia](#perzisztencia)
-	8. [Signal-ok és Slot-ok](#signal-ok-és-slot-ok)
-	9. [Resources](#resources)
-	10. [Tesztelés](#tesztelés)
+            2. [Struct](#struct)
+            3. [Member](#member)
+            4. [CustomMethod](#custommethod)
+            5. [CodeBlock](#codeblock)
+			6. [SaveData](#savedata)
+			7. [Egyéb segédobjektumok](#egyéb-segédobjektumok)
+    8. [Perzisztencia](#perzisztencia)
+	9. [Signal-ok és Slot-ok](#signal-ok-és-slot-ok)
+	10. [Fájlok tartalma](#fájlok-tartalma)
+	11. [Tesztelés](#tesztelés)
 		1. [Kézi tesztek](#kézi-tesztek)
 		2. [Automatikus tesztek](#automatikus-tesztek)
 4. [Összefoglalás](#összefoglalás)
 5. [További fejlesztési lehetőségek](#további-fejlesztési-lehetőségek)
-    1. [Component Editor](#component-editor)
-    2. [Fordító](#fordító)
-    3. [Main Editor](#main-editor)
-    4. [Hivatkozások](#hivatkozások)
-    5. [Kódszerkesztő](#kódszerkesztő)
-    6. [Syntax Higlighting](#syntax-higlighting)
-    7. [Cross-platform](#cross-platform)
-    8. [Nyelv](#nyelv)
-    9. [Megjelenés](#megjelenés)
 6. [Forrásjegyzék](#forrásjegyzék)
 
 # Köszönetnyilvánítás
@@ -76,49 +72,37 @@ Köszönet a családomnak és barátaimnak, hogy minden támogatást megadtak, a
 
 # Bevezetés
 
-Programozás során elengedhetetlen alapokat nyújt a programozási tételek használata, megfelelő alkalmazása. Ezért nem is meglepő, hogy az egyetemen is már az első félévben találkoznak ezzel a hallgatók.
+Napjainkban az absztrakt gondolkodás az informatika egyik kulcskompetenciája. Erősen befolyásolja a matematikai és programozási képességeket, és fejlesztése felgyorsítja a problémák hatékony megoldását. Segít az új dolgok felfedezésében és felismerésében, és strukturált gondolkodásmódhoz vezet [1]. Fontossága miatt érdemes már gyermekkorban elkezdeni a fejlesztését, és felnőttkorban is folytatni. A felsőoktatás szintjén a fejlesztés általában valamilyen ismeretátadáshoz kapcsolódik, ahol a jelenlegi tendenciák és igények kerülnek előtérbe. A programozásban az objektumorientáltság [2] és a komponensalapú programozás [3] a világtrendek közé tartozik.
 
-E tudás elsajátításának megkönnyítése érdekében hozta létre dr. Gregorics Tibor Tanár Úr a programozási tételekhez osztálysablonokat megvalósító c++ könyvtárat, amely ezáltal hozzájárul mind a kód újra felhasználásának gyakorlásához, mind az objektumorientált programok öröklődéseinek megértéséhez, de a legfontosabb, hogy fejleszti a programtervezési készségeket a programozási tételek mentén.
+A komponensalapú programozásnál előre megírt könyvtárakat és sablonokat kell használni. A könyvtárak segítségével sok időt és fáradságot lehet megspórolni, ezért széles körben használják őket [4,5,6], de a programozó szabadságát is korlátozhatják. Használatukhoz meg kell érteni a megoldandó problémát, és fel kell ismerni, hogy például egy könyvtár összetevői hol alkalmazhatók hatékonyan a megoldásban. Ez a megértés már a tervezés szintjén absztrakciót igényel.
 
-A második félévben találkoztam az osztálysablon könyvtárral az Objektumelvű Programozás tárgy keretein belül. Eleinte nem volt a kedvencem, de a félév végére rájöttem, hogy mekkora jelentősége is van igazából.
+A második lehetőség az absztrakt gondolkodás fejlesztésére a felsőoktatás szintjén az objektumorientált programozás oktatása. Ezt a fajta programozást világszerte használják, és a tanterv szerves részét képezi. Az objektumorientáció központi gondolata az objektumok klasszifikációja közös tulajdonságaik és műveleteik alapján. Ez a klasszifikáció absztrakt megértést igényel.
 
-Mikor eljött az idő a szakdolgozati témaválasztásnak, sokat gondolkoztam, hogy mi is legyen a téma, végül Várkonyi Teréz Anna tanárnő weboldalán futottam össze egy kiírt témával, amely felkeltette az érdeklődésemet és így jöhetett létre jelen dolgozat.
+E tudás elsajátításának megkönnyítése érdekében hozta létre dr. Gregorics Tibor Tanár Úr a programozási tételekhez osztálysablonokat megvalósító C++ könyvtárat [7,8], amely ezáltal hozzájárul mind a kód újra felhasználásának gyakorlásához, mind az objektumorientált programok öröklődéseinek megértéséhez, de a legfontosabb, hogy fejleszti a programtervezési készségeket a programozási tételek mentén. Az osztály-sablon könyvtár ahhoz a programozási módszerhez illeszkedik, amely programozási tételekre vezeti vissza a megoldandó feladatot, és a megoldó programkódhoz a könyvtár elemeinek újrahasznosításával jut el. Ehhez egyrészt objektum-orientált technikákra (objektum összetétel, származtatás, virtuális metódusok felüldefiniálása), másrészt osztály-sablonok példányosítására van szükség. A könyvtárban alapvetően kétféle osztályt találunk. Egyfelől a különféle programozási tételeket (algoritmikus mintákat) általánosan leíró osztály-sablonokat, másfelől a nevezetes felsorolásokat (például: tömb, intervallum, fájl) definiáló osztály-sablonokat.
 
-Az alap terv az volt, hogy a könyvtár használatát mégtovább egyszerűsítsük és befogadhatóbbá tegyük azok számára, akik részben még csak ismerkednek a programozással. A felület tehát előre összeállított, minden fontos elemet tartalmazó komponenseket biztosít az átláthatóság kedvéért.
+A könyvtár alapú megoldáshoz az egész programot strukturálni kell, és a struktúrában lévő komponenseket (algoritmikus mintákat) meg kell tervezni a tényleges kódolás megkezdése előtt. Ezt azért fontos hangsúlyozni, mert az egyetemi tanulmányok kezdetén sok esetben a hallgatók nem így tekintenek egy-egy programozási feladatra. Mint az évek óta tartó oktatói tapasztalat mutatja, a hallgatók többsége csak elkezd kódolni, és a munka során fedezik fel a megoldás következő lépéseit. Ez egyedivé teszi a megoldásukat, de sajnos rossz vagy nem hatékony programokat eredményezhet. Másrészt az összetevők előzetes tervezésének kikényszerítésével megtanulják, hogyan kell gyorsan átlátni egy problémát, és mivel van elképzelésük a megoldásról, a kódolás ideje csökken. A programjuk számos lehetséges gyenge pontját is felismerhetik, mielőtt elkezdenék írni, hiszen minden algoritmikus sémának vannak tipikus sebezhetőségei: pl. a maximum keresés algoritmusa nem használható üres felsorolók esetén. Egy másik fontos előnye, hogy a tanulók a minták helyes és leghatékonyabb algoritmusának megismerésével (a könyvtár segítségével) elkezdenek helyes és hatékonyabb programokat készíteni.
 
-## Osztály-sablon könyvtár
+E szakdolgozat célja a könyvtár befogadhatóbbá tétele azok számára, akik még keveset foglalkoztak programozással és a fent felsorolt ismereteket nem sajátították el mélyen, viszont a programozási tételekben való gondolkodást fejleszteni szeretnék. Ezt egy vizuális szerkesztő segítségével teszi meg, amelyben a komponensek külön egységként, avagy dobozként kezelhetőek és építőkocka-szerűen összeilleszthetőek.
 
-Az osztály-sablon könyvtár a visszavezetéssel tervezett programok C++-beli megvalósítását támogatja. Ahhoz a programozási módszerhez illeszkedik, amely programozási tételekre vezeti vissza a megoldandó feladatot, és a megoldó programkódhoz a könyvtár elemeinek újrahasznosításával jut el. Ehhez egyrészt objektum-orientált technikákra (objektum összetétel, származtatás, virtuális metódusok felüldefiniálása), másrészt osztály-sablonok példányosítására van szükség. A könyvtárban alapvetően kétféle osztályt találunk. Egyfelől a különféle programozási tételeket általánosan leíró osztály-sablonokat, másfelől a nevezetes felsorolásokat definiáló osztály-sablonokat.
-
-Egy tipikus felhasználása a könyvtárnak a következő:
-1. Egy konkrét feladat megoldásához származtatunk egy osztályt a feladat megoldására alkalmas programozási tétel osztály-sablonjából,
-	1. megadva ezen osztály-sablon sablon-paramétereit (köztük a megoldáshoz felsorolandó elemek típusát: Item ),
-	2. felüldefiniálva az osztály-sablon bizonyos virtuális metódusait.
-2. Példányosítjuk a fenti osztályt, és ezzel létrehozunk egy tevékenység objektumot.
-3. Példányosítunk egy alkalmas felsoroló objektumot. Ennek osztályát vagy közvetlenül a könyvtárból vesszük, vagy magunk implementáljuk a könyvtár Enumerator interfészét megvalósítva a first() , next() , current() , end() metódusokat. Ügyelni kell arra, hogy a felsorolt elemek típusa egyezzen meg a programozási tétel által feldolgozott elemek típusával. (Ez az Item sablon-paraméter helyébe írt típus).
-4. Hozzákapcsoljuk a tevékenység objektumhoz ( addEnumerator() ) a felsoroló objektumot.
-5. A tevékenység objektumnak meghívjuk a run() metódusát, majd különféle getter-ekkel lekérdezzük a tevékenység eredményét.
-
-### Szerkezete
-
-![Osztály-sablon könyvtár szerkezete uml diagrammal](../diagram/docs/gtlib.svg)
+A dolgozat két fő részből áll: felhasználói és fejlesztői dokumentációból. A felhasználói dokumentációban fellelhető az alkalmazásról szóló általános leírás, a futtatáshoz szükséges követelmények és a telepítési útmutató. Emellett részletes használati útmutatást, valamint a felhasználói felület megértését elősegítő ábrákat és leírásokat tartalmaz. A fejlesztői dokumentáció fő részei magában foglalják a megvalósításhoz használt fejlesztői környezetről és módszerekről szóló leírást, az applikáció megjelenésének és működésének részletes specifikációját, amely a nézetet felépítő osztályokat, a modell osztályait és azok működését elősegítő egyéb objektumokat ismerteti. Szó esik az osztályok közötti kommunikációról, a projekt felépítéséről, valamint a megfelelő működés ellenőrzéséhez elengedhetetlen tesztelésről. 
 
 # Felhasználói dokumentáció
 
+Ebben a fejezetben az alkalmazás futtatáshoz szükséges követelmények és a telepítési és használati útmutató olvasható.
+
 ## Applikáció bemutatása
 
-Programozás során elengedhetetlen alapokat nyújt a programozási tételek használata, megfelelő alkalmazása. E tudás elsajátításának megkönnyítése érdekében hozta létre dr. Gregorics Tibor Tanár Úr a programozási tételekhez osztálysablonokat megvalósító c++ könyvtárat, amely ezáltal hozzájárul mind a kód újrafelhasználásának gyakorlásához, mind az objektumorientált programok öröklődéseinek megértéséhez, de a legfontosabb, hogy fejleszti a programtervezési készségeket a programozási tételek mentén.
-
-Az osztály-sablon könyvtár a visszavezetéssel tervezett programok C++-beli megvalósítását támogatja. Ahhoz a programozási módszerhez illeszkedik, amely programozási tételekre vezeti vissza a megoldandó feladatot, és a megoldó programkódhoz a könyvtár elemeinek újrahasznosításával jut el. Ehhez egyrészt objektum-orientált technikákra (objektum összetétel, származtatás, virtuális metódusok felüldefiniálása), másrészt osztály-sablonok példányosítására van szükség. A könyvtárban alapvetően kétféle osztályt találunk. Egyfelől a különféle programozási tételeket általánosan leíró osztály-sablonokat, másfelől a nevezetes felsorolásokat definiáló osztály-sablonokat.
+Az osztály-sablon könyvtárban alapvetően kétféle osztályt találunk. Egyfelől a különféle programozási tételeket általánosan leíró osztály-sablonokat, másfelől a nevezetes felsorolásokat definiáló osztály-sablonokat.
 
 Egy tipikus felhasználása a könyvtárnak a következő:
-1. Egy konkrét feladat megoldásához származtatunk egy osztályt a feladat megoldására alkalmas programozási tétel osztály-sablonjából,
-	1. megadva ezen osztály-sablon sablon-paramétereit (köztük a megoldáshoz felsorolandó elemek típusát: Item ),
-	2. felüldefiniálva az osztály-sablon bizonyos virtuális metódusait.
-2. Példányosítjuk a fenti osztályt, és ezzel létrehozunk egy tevékenység objektumot.
-3. Példányosítunk egy alkalmas felsoroló objektumot. Ennek osztályát vagy közvetlenül a könyvtárból vesszük, vagy magunk implementáljuk a könyvtár Enumerator interfészét megvalósítva a first() , next() , current() , end() metódusokat. Ügyelni kell arra, hogy a felsorolt elemek típusa egyezzen meg a programozási tétel által feldolgozott elemek típusával. (Ez az Item sablon-paraméter helyébe írt típus).
-4. Hozzákapcsoljuk a tevékenység objektumhoz ( addEnumerator() ) a felsoroló objektumot.
-5. A tevékenység objektumnak meghívjuk a run() metódusát, majd különféle getter-ekkel lekérdezzük a tevékenység eredményét.
+1.	Egy konkrét feladat megoldásához származtatunk egy osztályt a feladat megoldására alkalmas programozási tétel osztály-sablonjából,
+    1.	megadva ezen osztály-sablon sablon-paramétereit (köztük a megoldáshoz felsorolandó elemek típusát: Item),
+    2.	felüldefiniálva az osztály-sablon bizonyos virtuális metódusait.
+2.	Példányosítjuk a fenti osztályt, és ezzel létrehozunk egy tevékenység objektumot.
+3.	Példányosítunk egy alkalmas felsoroló objektumot. Ennek osztályát vagy közvetlenül a könyvtárból vesszük, vagy magunk implementáljuk a könyvtár Enumerator interfészét megvalósítva a first() , next() , current() , end() metódusokat. Ügyelni kell arra, hogy a felsorolt elemek típusa egyezzen meg a programozási tétel által feldolgozott elemek típusával. (Ez az Item sablon-paraméter helyébe írt típus).
+4.	Hozzákapcsoljuk a tevékenység objektumhoz a felsoroló objektumot az addEnumerator() metódus segítségével.
+5.	A tevékenység objektumnak meghívjuk a run() metódusát, majd különféle getter-ekkel lekérdezzük a tevékenység eredményét.
+
 
 ![Programozási tétel és felsoroló osztálysablon uml](../diagram/docs/procedure-enumerator.svg)
 
@@ -128,23 +112,23 @@ A felhasználónak lehetősége van kedve szerint létrehozni osztályokat a pro
 
 Az általunk létrehozott osztályok közül a "main függvényben felhasználandónak" jelölt programozási tételeket megvalósító osztályok megjelennek az ezt reprezentáló listában, amely a program futásának manipulálására hivatott. Itt lehet meghatározni, hogy milyen sorrendben fussanak le a tételeink, emellett plusz kódrészleteket is tudunk hozzáadni, amely lehetőséget biztosít egyéb kiíratásokra, beolvasásokra, ellenőrzésekre.
 
-A megadott adatok alapján a program generál egy c++ forráskódot, amelyet akár fel is használhatunk saját környezetben, azonban az applikációban rendelkezésre áll a forráskód lefordításának és futtatásának lehetősége. Ehhez a beállításokban szükséges bekonfigurálni a g++ fordító adatait. Az alkalmazás megjeleníti a fordítás és futtatás kimenetét is.
+A megadott adatok alapján a program generál egy c++ forráskódot, amelyet akár fel is használhatunk saját környezetben, azonban az applikációban rendelkezésre áll a forráskód lefordításának és futtatásának lehetősége. Ehhez a beállításokban szükséges bekonfigurálni a g++ fordító [9] adatait. Az alkalmazás megjeleníti a fordítás és futtatás kimenetét is.
+
 
 ## Telepítés és rendszerkövetelmények
 
 A LibViz tesztelése elsősorban Windows 10-en zajlott, így ez az elsődlegesen támogatott operációs rendszer.
 
-Az alkalmazás egy Windows 10-en futtatható verziója tömörített formában is mellékelve van. Kicsomagoljuk az állományt, amely ezután LibViz mappában található `LibViz.exe` fájl indításával futtatható.
+Az alkalmazás egy Windows 10-en futtatható verziója tömörített formában is mellékelve van. Kicsomagoljuk az állományt, amely ezután LibViz mappában található LibViz.exe fájl indításával futtatható.
 
-Ha a felhasználó a forráskód alapján szeretné futtatni a programot lokális környezetben, akkor erre is van lehetőség.
-A buildelés a Qt Creator segítségével a legegyszerűbb. Ezen belül a Qt 6.0-ás verziója ajánlott, mivel ebben íródott a program.
+Ha a felhasználó a forráskód alapján szeretné futtatni a programot lokális környezetben, akkor erre is van lehetőség. A buildelés a Qt Creator [10] segítségével a legegyszerűbb. Ezen belül a Qt 6.0-ás verziója ajánlott, mivel ebben íródott a program.
 
-0.  *előzetes rendszerfüggő compiler, kit beállítások*
-1.	projekt betöltése a Qt Creator-be
-2.	futtatás
+1.	előzetes rendszerfüggő compiler, kit beállítások
+2.	projekt betöltése a Qt Creator-be
+3.	futtatás
 
-A program már használható is.
-Az ilyen módon történő telepítéssel kapcsolatban további információkat lehet találni a Qt Creator dokumentációjában.
+A program már használható is. Az ilyen módon történő telepítéssel kapcsolatban további információkat lehet találni a Qt Creator dokumentációjában [11].
+
 
 |  Minimum rendszerkövetelmény |   |
 |--------------------:|:-----------|
@@ -208,7 +192,7 @@ Egy komponens egyszerűen a mezőinek a kitöltésével módosítható. A metód
 
 ![Metódus hozzáadása](./use_pictures/new-method.PNG)
 
-A metódusokban hivatkozni lehet saját objektumokra. Ezt az objektum *objektumnevét* felhasználva tehetjük meg úgy, hogy azt '%' jelek közé tesszük a X. ábrán látható módon. Ezzel azt érjük el, hogy a hivatkozott objektum a kódgeneráláskor az adott helyen lesz létrehozva és futtatva, mint ahogy az a X. ábrán is látható.
+A metódusokban hivatkozni lehet saját objektumokra. Ezt az objektum *objektumnevét* felhasználva tehetjük meg úgy, hogy azt '%' jelek közé tesszük a lenti ábrán látható módon. Ezzel azt érjük el, hogy a hivatkozott objektum a kódgeneráláskor az adott helyen lesz létrehozva és futtatva.
 
 ![Hivatkozás objektumra](./use_pictures/reference-object.PNG)
 ![Hivatkozott objektum forráskód](./use_pictures/reference-object-source.PNG)
@@ -241,8 +225,7 @@ Az ábrán egy fordítási hiba látható.
 
 # Fejlesztői dokumentáció
 
-A következőkben az alkalmazás fejlesztői szempontú felépítését mutatom be.
-A fejezetben található ábrákat és diagramokat `plantuml` segítségével készítettem, kivéve ahol más forrást jelölök meg.
+A következőkben az alkalmazás fejlesztői szempontú felépítését mutatom be. A fejezetben található ábrákat és diagramokat plantuml [12] segítségével készítettem, kivéve ahol más forrást jelölök meg.
 
 ## Fejlesztői környezet
 
@@ -252,18 +235,18 @@ A Qt Creator telepítését a Qt hivatalos oldalán elérhető leírás és let�
 
 ## Drótváztervek
 
-A LibViz alkalmazás nézete információ megjelenítést és bekérést szolgáló dialógus ablakokból, valamint egy fő ablakból áll, amely kisebb mértékben testreszabható a megjelenített szekciók átméretezésével vagy elrejtésével. A drótvázak elkészítése a `MockFlow` nevű ingyenes webes alkalmazással lett megvalósítva.
+A LibViz alkalmazás nézete információ megjelenítést és bekérést szolgáló dialógus ablakokból, valamint egy fő ablakból áll, amely kisebb mértékben testre szabható a megjelenített szekciók átméretezésével vagy elrejtésével. A drótvázak elkészítése a MockFlow [13] nevű ingyenes webes alkalmazással lett megvalósítva.
 
 A fő ablak három fontosabb szekcióra bontható, melyek a következők:
 - A `Component Editor` a saját osztályoknak biztosított hely. Itt hozhatunk létre új elemeket, valamint módosíthatjuk a meglévőket. 
 - A `Main List` a komponensek listáját tartalmazza. Itt állíthatjuk be, hogy a létrehozott komponensek milyen sorrendben fussanak a programunkban, valamint hozzáadhatunk további kódrészleteket is.
 - A jobb oldalon található szövegmezők és gombok a generált forráskód böngészését, a programunk fordítását és futtatását, és iméntiek kimenetének megtekintését teszik lehetővé.
 
-A nézet felépítése a X-as ábrán látható. Bal oldalt az általunk létrehozott osztályokat, középen a program futásának felépítését, végül jobb oldalt a létrejött program forráskódját valamint a fordítás, és futtatás eredményeit láthatjuk.
+A nézet felépítése a lenti ábrán látható. Bal oldalt az általunk létrehozott osztályokat, középen a program futásának felépítését, végül jobb oldalt a létrejött program forráskódját valamint a fordítás, és futtatás eredményeit láthatjuk.
 
 ![Az alkalmazás fő ablaka](./wireframes/mainwindow.png)
 
-A X. ábrán látható egy komponens nézetbeli felépítésének terve, amely tartalmaz gombokat, és többféle beviteli mezőket.
+A lenti ábrán látható egy komponens nézetbeli felépítésének terve, amely tartalmaz gombokat, és többféle beviteli mezőket.
 
 ![Komponens](./wireframes/component.png)
 
@@ -284,19 +267,19 @@ A következő dialógusablakokkal találkozhat a felhasználó az alkalmazás ha
 
 ![Figyelmeztetés változások mentésére dialógusablak](./wireframes/discarddialog.png)
 
-## Osztály-sablon könyvtár
-
-### Szerkezete
-
-![Osztály-sablon könyvtár szerkezete uml diagrammal](../diagram/docs/gtlib.svg)
-
 ## Használati esetek
 
 ![Használati esetek](../diagram/docs/Use-Case.svg)
 
-## Architektúra
+## Osztály-sablon könyvtár
 
-> csomagdiagram
+Az osztály-sablon könyvtárban két ősosztály található, a Procedure és az Enumerator, amelyekből a specifikus tulajdonságokkal rendelkező programozási tételek és enumerátorok öröklődnek.
+
+![Osztály-sablon könyvtár szerkezete uml diagrammal](../diagram/docs/gtlib.svg)
+
+Az osztályok kapcsolata a projektben az osztály-sablon könyvtár szerkezeti felépítését vette alapul, így sok esetben fellelhetőek hasonlóságok a megvalósításban. 
+
+## Architektúra
 
 Az alkalmazás háromrétegű nézet-modell-perzisztencia architektúrával lett megvalósítva.
 
@@ -337,7 +320,7 @@ Az itt nem említett függvények nevükből adódó egyértelmű működést bi
 
 ### ComponentWidget, ProcedureWidget, EnumeratorWidget
 
-A ComponentWidget (X. ábra) szolgál a ProcedureWidgetben (X. ábra) és az EnumeratorWidgetben (X. ábra) található közös elemek és funkciók biztosítására. Az utóbbi kettőben található eltérések főleg a felülírandó metódusokban és egymással való kapcsolatukban valósulnak meg.
+A ComponentWidget szolgál a ProcedureWidgetben és az EnumeratorWidgetben található közös elemek és funkciók biztosítására. Az utóbbi kettőben található eltérések főleg a felülírandó metódusokban és egymással való kapcsolatukban valósulnak meg.
 
 ![ComponentWidget uml](../diagram/docs/ComponentWidget.svg)
 ![EnumeratorWidget uml](../diagram/docs/EnumeratorWidget.svg)
@@ -358,20 +341,20 @@ Ez a két widget előre meghatározott kinézettel és előre definiált singalo
 
 ### PopUpTextEdit és TextInputDialog
 
-A PopUpTextEdit widget (X. ábra) egy szövegmező, amelyet az előzőekben említett widgetek használnak. A szövegmező közvetlenül a felületen is megjelenik, de a tartalma ott nem szerkeszthető. Tartalom hozzáadásához rá kell kattintani, így megjelenik egy TextInputDialog (X. ábra), amelyben egy szerkesztő widget található, ahol a szövegmező tartalma szerkeszthető.
+A PopUpTextEdit widget egy szövegmező, amelyet az előzőekben említett widgetek használnak. A szövegmező közvetlenül a felületen is megjelenik, de a tartalma ott nem szerkeszthető. Tartalom hozzáadásához rá kell kattintani, így megjelenik egy TextInputDialog, amelyben egy szerkesztő widget található, ahol a szövegmező tartalma szerkeszthető.
 
 ![PopUpTextEdit uml](../diagram/docs/PopUpTextEdit.svg)
 ![TextInputDialog uml](../diagram/docs/TextInputDialog.svg)
 
 ### SettingsDialog
 
-A SettingsDialog (X. ábra) egy felugró ablak, amelyben a g++ fordító elérési útját, valamint az igény szerinti argumentumokat tudjuk megadja.
+A SettingsDialog egy felugró ablak, amelyben a g++ fordító elérési útját, valamint az igény szerinti argumentumokat tudjuk megadja.
 
 ![SettingsDialog uml](../diagram/docs/SettingsDialog.svg)
 
 ### CreateComponentDialog
 
-A CreateComponentDialog (X. ábra) egy felugró ablak, amelyben a létrehozandó komponensek nevét és típusát tudjuk megadni. Ezt egy egyszerű szövegmező és egy lenyíló választó menü segítségével tudjuk megtenni.
+A CreateComponentDialog egy felugró ablak, amelyben a létrehozandó komponensek nevét és típusát tudjuk megadni. Ezt egy egyszerű szövegmező és egy lenyíló választó menü segítségével tudjuk megtenni.
 
 ![CreateComponentDialog uml](../diagram/docs/CreateComponentDialog.svg)
 
@@ -379,18 +362,9 @@ A CreateComponentDialog (X. ábra) egy felugró ablak, amelyben a létrehozandó
 
 ![Modell kapcsolatok uml](../diagram/docs/Model-relations.svg)
 
-![Model uml](../diagram/docs/Model.svg)
-![Component uml](../diagram/docs/Component.svg)
-![CodeBlock uml](../diagram/docs/CodeBlock.svg)
-![Struct uml](../diagram/docs/Struct.svg)
-![Member uml](../diagram/docs/Member.svg)
-![CustomMethod uml](../diagram/docs/CustomMethod.svg)
-![SaveData uml](../diagram/docs/SaveData.svg)
-![ComponentType uml](../diagram/docs/ComponentType.svg)
-![MethodType uml](../diagram/docs/MethodType.svg)
-
 ### Modell adattagok és metódusok
 
+![Model uml](../diagram/docs/Model.svg)
 
 #### Adattagok
 
@@ -494,6 +468,8 @@ A CreateComponentDialog (X. ábra) egy felugró ablak, amelyben a létrehozandó
 
 #### Component
 
+![Component uml](../diagram/docs/Component.svg)
+
 Adattagjai:
 - name: A komponens neve.
 - id: A komponens azonosítója.
@@ -512,7 +488,49 @@ Adattagjai:
 
 A Component metódusai továbbá a nevükből egyértelmű létrehozó, törlő, setter és getter metódusok.
 
-### SaveData
+#### Struct
+ 
+![Struct uml](../diagram/docs/Struct.svg)
+
+Adattagjai:
+- name: A struktúra neve.
+- id: A struktúra azonosítója.
+- members: A struktúra adattagjai azonosítókkal párosítva.
+- customMethods: A struktúra saját metódusai azonosítókkal párosítva.
+
+A Struct metódusai továbbá a nevükből egyértelmű létrehozó, törlő, setter és getter metódusok.
+
+#### Member
+
+Adattagjai:
+- id: Az adattag azonosítója.
+- type: Az adattag típusa.
+- name: Az adattag neve
+
+![Member uml](../diagram/docs/Member.svg)
+
+#### CustomMethod
+
+Adattagjai:
+- id: A metódus azonosítója.
+- header: A metódus fejléce.
+- body: A metódus törzse.
+
+![CustomMethod uml](../diagram/docs/CustomMethod.svg)
+
+#### CodeBlock
+
+Adattagjai:
+- id: A kódblokk azonosítója.
+- code: A kódblokk által tartalmazott kód.
+
+A CodeBlock metódusai továbbá a nevükből egyértelmű setter és getter metódusok.
+
+![CodeBlock uml](../diagram/docs/CodeBlock.svg)
+
+#### SaveData
+
+![SaveData uml](../diagram/docs/SaveData.svg)
 
 Adattagjai:
 
@@ -535,6 +553,8 @@ A SaveData konstruktorában minden tárolandó adatot egyben meg lehet adni.
 - methodTypeFromString: Egy asszociatív tároló, amely segítségével metódus elnevezése alapján visszakapjuk a metódus típusát.
 - componentTypeFromString: Egy asszociatív tároló, amely segítségével komponens elnevezése alapján visszakapjuk a komponens típusát.
 
+![ComponentType uml](../diagram/docs/ComponentType.svg)
+![MethodType uml](../diagram/docs/MethodType.svg)
 
 ## Perzisztencia
 
@@ -827,7 +847,25 @@ __TextInputDialog__
 | saveButton | clicked() | accept() |
 | cancelButton | clicked() | reject() |
             
-## Resources
+## Fájlok tartalma
+
+A Qt projektet leíró fájl LibViz.pro névvel rendelkezik.
+
+Minden .h és .cpp fájl a nevéből egyértelműen kikövetkeztethető tartalommal rendelkezik, azaz a tartalmazott osztály nevével van ellátva. Ez alól kivétel képez a modelkit.h és a modelkit.cpp, amelyek a modell működéséhez szükséges egyéb osztályokat és objektumokat tartalmazzák:
+- Component
+- SaveData
+- CodeBlock
+- Struct
+- CustomMethod
+- Member
+- ComponentType
+- MethodType
+- componentTypeNameStrings
+- methodHeaderStrings
+- methodTypeStrings
+- methodTypeFromString
+- componentTypeFromString
+
 
 A projektben szereplő `resources.qrc` fájl tartalmazza a hivatkozásokat az alkalmazásban felhasznált ikonokra és az osztálysablon könyvtár header fájljára.
 
@@ -1293,38 +1331,67 @@ Az osztálysablon könyvtár header fájlja a projekt gyökerében a `library` m
 Az automatikus tesztek a [Qt Test keretrendszer](https://doc.qt.io/qt-6/qtest-overview.html) segítségével lettek megvalósítva. A teszteléshez egy külön projekt lett létrehozva, amely hivatkozik az fő projekt fájljaira.
 
 Tesztesetek:
-- test_model_init: A modell kezdeti értékeinek ellenőrzése.
-- test_new_id: Egyedi megfelelő generálása.
-- test_create_component: Különböző típusú komponensek létrehozása.
-- test_create_struct: Struct létrehozása.
-- test_create_codeblock: Kódblokk létrehozása.
-- test_used_component_name: Használt komponensnév ellenőrzés.
-- test_used_object_name: Használt objektumnév ellenőrzés.
-- test_enumerator_name_by_id: Enumerátornév lekérése azonosító alapján.
-- test_create_member: Új adattag hozzáadása egy komponenshez.
-- test_create_method: Új metódus hozzáadása egy komponenshez.
-- test_load_config: Beállítások betöltése.
-- test_setters: Setterek működésének ellenőrzése.
-- test_compile_failed: Fordítási hiba felismerésének ellenőrzése.
-- test_deletes: Modellbeli egységek törlése.
+- __test_model_init__: Ellenőrzi, hogy egy frissen létrehozott Model objektum a megfelelő kezdőértékekkel rendelkezik-e. Átmegy a teszten, ha:
+  - A projekt neve egy üres szöveg.
+  - Nem létezik egy komponens, kódblokk vagy struktúra se.
+  - Üres a fő lista.
+  - Az utolsó egyedi azonosító értéke 0.
+  - Nincs feljegyezve fordítási hiba.
+- __test_new_id__: Egyedi azonosító megfelelő generálása. Átmegy a teszten, ha:
+  - Új azonosító generálása után az utolsó azonosító értéke 1-gyel nőtt.
+  - Az új azonosító a generálás előtti utolsó azonosítónál 1-gyel nagyobb.
+- __test_create_component__: Különböző típusú komponensek létrehozása. Átmegy a teszten, ha:
+  - Minden különböző típusú objektum a megadott névvel rendelkezik a létrehozás után.
+  - Minden különböző típusú objektum a neki megfelelő típusértékkel rendelkezik a létrehozás után.
+  - Minden különböző típusú objektumnak azonosítója a soron következő generált azonosító.
+- __test_create_struct__: Struct létrehozása. Átmegy a teszten, ha:
+  - A létrehozott objektum a megadott névvel rendelkezik.
+  - A létrehozott objektum a soron következő egyedi azonosítót kapta meg.
+- __test_create_codeblock__: Kódblokk létrehozása. Átmegy a teszten, ha:
+  - A kódblokk által tartalmazott kód üres.
+  - A létrehozott objektum a soron következő egyedi azonosítót kapta meg.
+- __test_used_component_name__: Használt komponensnév ellenőrzés. Átmegy a teszten, ha:
+  - Felismeri, hogy egy ténylegesen használt komponensnév már használatban van.
+  - Felismeri, hogy egy ténylegesen nem használt komponensnév még nincs használatban.
+- __test_used_object_name__: Használt objektumnév ellenőrzés. Átmegy a teszten, ha:
+  - Felismeri, hogy egy ténylegesen használt objektumnév már használatban van.
+  - Felismeri, hogy egy ténylegesen nem használt objektumnév még nincs használatban.
+- __test_enumerator_name_by_id__: Enumerátornév lekérése azonosító alapján. Átmegy a teszten, ha:
+  - Egy megadott azonosító alapján az ahhoz tartozó enumerátor nevét adja eredményül.
+- __test_create_member__: Új adattag hozzáadása egy komponenshez. Átmegy a teszten, ha:
+  - Egy adattag hozzáadásánál a használt komponensben tárolt adattagok száma 1-gyel nőtt.
+- __test_create_method__: Új metódus hozzáadása egy komponenshez. Átmegy a teszten, ha:
+  - Egy metódus hozzáadásánál a használt komponensben tárolt metódusok száma 1-gyel nőtt.
+- __test_load_config__: A g++ fordító elmentett beállításainak betöltése. Átmegy a teszten, ha:
+  - A fordító elérési útjának a mentése után ugyanazt az elérési utat tölti be a betöltő metódus meghívásával.
+  - A fordító argumentumainak a mentése után ugyanazt az argumentum listát tölti be a betöltő metódus meghívásával.
+  - A fordító elérési útjának beállítottsági állapotát jelző változó igaz értékkel rendelkezik a betöltés után.
+- __test_setters__: Setterek működésének ellenőrzése. Átmegy a teszten, ha:
+  - A modell minden setter metódusát egy-egy teszt értékkel meghívva, az objektumok a megfelelő értékeket tartalmazzák.
+- __test_compile_failed__: Fordítási hiba felismerésének ellenőrzése. Átmegy a teszten, ha:
+  - A modell fordítási eredményeit kezelő metódusokat fordítási hibával meghívva a fordítási hibát jelző változó értéke igaz.
+- __test_deletes__: Modellbeli egységek törlése. Átmegy a teszten, ha:
+  - A modell minden törlő metódusát egy-egy teszt értékkel meghívva, az adott elemek törlődnek a tárolókból.
 
-*signalok megfelelő működéséért felelő tesztesetek:*
-- test_signal_compiler_not_set
-- test_signal_have_compile_output
-- test_signal_compile_process_ended
-- test_signal_need_project_name_for_save
-- test_signal_need_project_name_for_open
-- test_signal_want_to_generate_source
-- test_signal_project_loaded
+signalok megfelelő működéséért felelő tesztesetek:
+- __test_signal_compiler_not_set__
+- __test_signal_have_compile_output__
+- __test_signal_compile_process_ended__
+- __test_signal_need_project_name_for_save__
+- __test_signal_need_project_name_for_open__
+- __test_signal_want_to_generate_source__
+- __test_signal_project_loaded__
+
+A signal tesztesetekben a modell megfelelő függvényei kerülnek meghívásra és ellenőrizzük, hogy minden esetben kiváltódtak-e a vizsgált sigalok.
+
 
 
 # Összefoglalás
 
-A programozási tételek ismerete és alkalmazása tehát pozitív hatással lehet kód minőségére, ezért hasznos ennek a gyakorlása. 
+Az osztály-sablon könyvtár segítségével bármilyen ciklust tartalmazó algoritmus átstrukturálható alapvető algoritmikus minták sorozatává (pl. összegzés, lineáris keresés, megszámlálás stb.), és bármilyen feladat absztrakt szinten leírható. Az egyetlen kérdés, amit minden problémánál meg kell válaszolni, hogy milyen algoritmikus mintákra van szükség a megoldáshoz. A programozási feladat ilyen átlátásához absztrakt gondolkodás szükséges, melynek eredményeképpen a programozók gyorsabban oldhatják meg a feladatokat, és megoldásuk megbízhatóbbá válhat. A programok készítésének három fontos lépését is megtanulhatják: a fő komponensek felfedezését, a gyengeségek kezelését és a helyes algoritmusok alkalmazását.
 
-...
+A szakdolgozat célja a könyvtár befogadhatóbbá tétele, melynek legfontosabb eleme, hogy olyan felhasználói felületet biztosít, amelyen keresztül a programkód még tagoltabb, emészthetőbb és bizonyos mértékig vizuálisabb formában jelenik meg. A felhasználó által létrehozott, tetszés szerint szerkeszthető egységek átláthatóan jelennek meg a felületen, majd ezekből az alkalmazás C++ forráskódot generál, amely mellé a fordítás és futtatás funkciók is biztosítottak.
 
-Remélem valamilyen formában a jövőben segítséget nyújthat a szakdolgozatban foglalt alkalmazás a programozni tanuló hallgatók számára.
 
 # További fejlesztési lehetőségek
 
@@ -1368,3 +1435,43 @@ Az alkalmazás jelenleg csak angol nyelvű felhasználói felülettel rendelkezi
 A jelenlegi megjelenés a használt platfrom által biztosított alapértelmezett grafikus elemeket használja. Egyedi grafikus elemek tervezése fejleszthetné az applikáció átláthatóságát, esetleg képességeit is.
 
 # Forrásjegyzék
+
+[1] Hansen, N., Koudenburg, N., Hiersemann, R., Tellegen, P.J., Kocsev, M., Postmes, T.: Laptop usage affects abstract reasoning of children in the developing world, Computers & Education, Vol. 59, 2012, [989-1000].
+
+[2] Rumbaugh, J., Blaha, M., Premerlani, W., Eddy, F., Lorensen, W.: Object-Oriented Modeling and Design, Prentice Hall, 1991, [500], ISBN-9780136298410.
+
+[3] Szyperski, C., Gruntz, D., Mure, S.: Component Software: Beyond Object-oriented Programming, Addison-Wesley Professional, 2002, [624], ISBN-9780321753021.
+
+[4] Kirk, B.S., Peterson, J.W., Stogner R.H.: libMesh: a C++ library for parallel adaptive mesh refinement/coarsening simulations, Engineering with Computers Vol. 22, 2006, [237-254].
+
+[5] Blumenthal, D.B., Bougleux, S., Gamper, J., Brun, L.: GEDLIB: A C++ Library for Graph Edit Distance Computation. In: Conte, D., Ramel J.-Y., Foggia, P. (eds.) Graph-Based Representations in Pattern Recognition, Springer Cham, 2019, [247], ISBN-9783030200800
+
+[6] Carpentier, J., Saurel, G., Buondonno, G., Mirabel, J., Lamiraux, F., Stasse, O., Mansard, N.: The Pinocchio C++ library: A fast and exible implementation of rigid body dynamics algorithms and their analytical derivatives. In: 2019 IEEE/SICE International Symposium on System Integration (SII), IEEE Press, 2019, [614-619].
+
+[7] Gregorics, T.: Analogous programming with a template class library, Teaching Mathematics and Computer Science, Vol. 10/1, 2012, [135-152].
+
+[8] Template class library [Online]. Link: https://people.inf.elte.hu/gt/oep/library.zip
+Elérés dátuma: 2022.05.12.
+
+[9] g++ [Online]. Linkek: https://gcc.gnu.org/, https://www.mingw-w64.org/
+Elérés dátuma: 2022.05.12.
+
+[10] Qt hivatalos oldala [Online]. Link: https://www.qt.io/
+Elérés dátuma: 2022.05.12.
+
+[11] Qt 6 Documentation [Online]. Link: https://doc.qt.io/qt-6/
+Elérés dátuma: 2022.05.12.
+
+[12] plantuml [Online]. Link: https://plantuml.com/
+Elérés dátuma: 2022.05.12.
+
+[13] MockFlow [Online]. Link: https://www.mockflow.com/
+Elérés dátuma: 2022.05.12.
+
+[14] Qt Test keretrendszer [Online]. Link: https://doc.qt.io/qt-6/qtest-overview.html
+Elérés dátuma: 2022.05.12.
+
+[15] Várkony Teréz Anna, Gregorics Tibor: Improvement of Abstract Reasoning in Teaching Computer Science at Higher Education Level, In: Engineering for Sustainable Future, 2020, [239-248], DOI: 10.1007/978-3-030-36841-8_23 (Annamária R. Várkonyi-Kóczy: Engineering for Sustainable Future, Springer Cham, 2020, [384], ISBN-978-3-030-36841-8)
+
+[16] GitHub elérhetőség [Online]. Link: https://github.com/pecku/szakdoga 
+Elérés dátuma: 2022.05.12.
